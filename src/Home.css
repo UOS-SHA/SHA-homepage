@@ -1,0 +1,101 @@
+html, body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll; /* 세로 스크롤은 유지 */
+  scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.wholearea {
+    background-color: black;
+}
+
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: black;
+}
+
+.video-box {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 50px auto; 
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+.video-box video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.top-bar {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 88px;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.nav-content {
+    padding: 0;
+    height: 88px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 120px;
+    margin-right: 84px;
+}
+
+.nav-link {
+    top: 33px;
+    width: 107px;
+    height: 22px;
+    text-decoration: none;
+    color: white;
+    
+}
+
+.logobox {
+    width: 64px;
+    height: 44.34px;
+    margin-left: 55px;
+}
+
+.active-link {
+    color: #5DFFC6;
+}
+
+.mouse {
+    position: fixed;
+    bottom: 19px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.mouse img {
+    width: 40PX;
+    height: auto;
+}
