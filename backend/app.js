@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const recruitRouter = require('./routes/recruit');
 const studyRouter = require('./routes/study');
+const adminRouter = require('./routes/admin');
 
 
 db.sequelize
@@ -34,6 +35,7 @@ app.get('/', (req, res) => {
 
 app.use('/recruit', recruitRouter);
 app.use('/study', studyRouter);
+app.use('/admin', adminRouter);
 
 
 

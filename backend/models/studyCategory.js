@@ -4,12 +4,17 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        unique: true
+        unique: true,
+        primaryKey: true
       },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
         },
+      url: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     }, {
       timestamps: true
   });

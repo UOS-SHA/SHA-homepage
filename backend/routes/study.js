@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const studyController = require('../controllers/studyController');
+const { getWeek, getCategory, getSemester } = require('../controllers/studyController');
 
-router.get('/', studyController.getStudy);
+router.get('/:semester/:category', getWeek);
+router.get('/:semester', getCategory);
+router.get('/', getSemester);
 
-router.post('/study/smester', studyController.createSemester);
-
-router.put('/study/')
+module.exports = router;

@@ -12,10 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      url: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
+      categoryId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      }
     }, {
         timestamps: true
     });

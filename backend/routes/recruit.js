@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const recruitController = require('../controllers/recruitController');
+const { application } = require('../controllers/recruitController');
 
-router.post('/', recruitController.application);
+router.post('/', application);
 
 module.exports = router;
