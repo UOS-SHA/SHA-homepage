@@ -1,0 +1,342 @@
+html, body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.recruit-container {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.JoinUs {
+    position: fixed;
+    height: 100vh;
+    margin-top: 88px;
+    width: 600px;
+    background-color: black;
+}
+
+.word-box {
+    margin-left: 95px;
+    margin-top: 100px; 
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: black;
+}
+
+.title {
+    width: 440px;
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+.info {
+    width: 440px;
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px; /* 177.778% */
+}
+
+.line {
+    position: fixed;
+    margin-top: 88px;
+    margin-left: 600px;
+    width: 0.5px;
+    height: 100vh;
+    background-color: #A1A1A1;
+    z-index: 99;
+}
+
+.recruit-sheet {
+    margin-top: 88px;
+    padding-left: 600.6px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.fillout {
+    position: fixed;
+    width: 100%;
+    height: 120px;
+    background-color: black;
+    z-index: 800;
+    pointer-events: none;  /* ← 클릭 차단 안 함 */
+}
+
+.fillout p {
+    margin-top: 90px;
+    margin-left: 10px;
+    font-size: 14px;
+    color: white;
+}
+
+.line2 {
+    position: fixed;
+    margin-top: 120px;
+    width: 100%;
+    height: 0.5px;
+    background-color: #A1A1A1;
+}
+
+.scroll-box {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+    margin-top: 120.7px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll; /* 세로 스크롤은 유지 */
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    overscroll-behavior-y: none;    /* 수직 탄력 스크롤 완전 제거 */
+    scroll-behavior: smooth;        /* 선택사항: 스크롤 부드럽게 */
+}
+
+.scroll-box::-webkit-scrollbar {
+    display: none;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    width: 100%;
+    flex-shrink: 0;
+    height: 330px;
+    overflow-x: hidden;
+}
+
+.label-box {
+    background-color: black;
+    margin-left: 70px;
+    width: 80px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+.name {
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.input-box {
+    background-color: black;
+    margin-left: 80px;
+    width: 340px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.input {
+    width: 320px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #A1A1A1;
+    background: rgba(255, 255, 255, 0.10);
+    z-index: 99;
+    color: white;
+}
+
+
+.line3 {
+    width: 100%;
+    height: 0.7px;
+    border-top: 1px dotted #A1A1A1; /* 수평 점선 */
+
+}
+
+.writing-box {
+    background-color: black;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-shrink: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.label-box2{
+    background-color: black;
+    margin-left: 70px;
+    width: 80px;
+    height: 310px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 140px;
+}
+
+.name2 {
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.input-box2 {
+    background-color: black;
+    padding: 10px 0;
+    margin-left: 80px;
+    width: 550px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+.input2 {
+    width: 550px;
+    height: 140px;
+    border-radius: 10px;
+    border: 1px solid #A1A1A1;
+    background: rgba(255, 255, 255, 0.10);
+    z-index: 99;
+    color: white;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    scrollbar-width: none; /* Firefox */
+}
+
+.line4 {
+    width: 100%;
+    height: 0.7px;
+    border-top: 1px dotted #A1A1A1; /* 수평 점선 */
+
+}
+
+.link-box {
+    background-color: black;
+    padding: 40px 0;
+    min-height: 200px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-shrink: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+
+.label-box3{
+    background-color: black;
+    margin-left: 70px;
+    width: 80px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.name3 {
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.input-box3 {
+    background-color: black;
+    margin-left: 80px;
+    width: 550px;
+    min-height: 200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.input3 {
+    width: 550px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #A1A1A1;
+    background: rgba(255, 255, 255, 0.10);
+    z-index: 99;
+    color: white;
+}
+
+.input3-add-button {
+    width: 550px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px dotted #A1A1A1; /* 수평 점선 */
+    background: black;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plus {
+    width: 27px;
+    height: 27px;
+}
+
+.line5 {
+    width: 100%;
+    height: 0.7px;
+    border-top: 1px dotted #A1A1A1; /* 수평 점선 */
+}
+
+.jiwon-box {
+    background-color: black;
+    height: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 925px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    z-index: 999;
+}
+
+.jiwon {
+    width: 180px;
+    height: 48px;
+    border-radius: 10px;
+    background: #5DFFC6;
+    color: #060606;
+    font-family: Pretendard;
+    font-size:16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    z-index: 999;
+}

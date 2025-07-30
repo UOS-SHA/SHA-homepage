@@ -1,0 +1,586 @@
+html, body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll; /* 세로 스크롤은 유지 */
+  scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.wholearea {
+    background-color: black;
+    overflow: visible;
+}
+
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: black;
+}
+
+.video-box {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 50px auto; 
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+.video-box video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.top-bar {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 88px;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.nav-content {
+    padding: 0;
+    height: 88px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 120px;
+    margin-right: 84px;
+}
+
+.nav-link {
+    top: 33px;
+    width: 107px;
+    height: 22px;
+    text-decoration: none;
+    color: white;
+    
+}
+
+.logobox {
+    width: 64px;
+    height: 44.34px;
+    margin-left: 55px;
+}
+
+.active-link {
+    color: #5DFFC6;
+}
+
+.mouse {
+    position: fixed;
+    bottom: 19px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.mouse img {
+    width: 40PX;
+    height: auto;
+}
+
+.SHA {
+    margin-top: 251px;
+    height: 800px;
+    position: relative;
+    background-color: transparent;
+}
+
+.homelogo-box {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+    width: 300px;
+    height: 400px;
+    margin-top: 70px;
+
+}
+
+.logo-box2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: auto;
+}
+
+.word-SHA {
+    position: absolute;
+    left: 51%;
+    transform: translateX(-50%);
+    width: 135px;
+    height: auto;
+    margin-top: 150px;
+}
+
+.UOS-Hacking-club {
+    position: absolute;
+    left: 51%;
+    transform: translateX(-50%);
+    width: 141px;
+    height: auto;
+    margin-top: 203px;
+}
+
+.circle {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 550px;
+    height: 550px;
+    border-radius: 679px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 50px 50px rgba(255, 255, 255, 0.05);
+}
+
+.word-box2{
+    color: #FFF;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 550;
+    line-height: 35px; /* 175% */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: auto;
+    margin-top: 350px;
+}
+
+.activities {
+    margin-top: 180px;
+    background-color: black;
+    height: 1600px;
+    overflow: visible;
+    position: relative;
+}
+
+.circle-wrapper {
+    width: 1500px;
+    height: 1500px;
+    flex-shrink: 0;
+    border-radius: 1944px;
+    position: absolute;
+    left: -950px;  /* 1500px * 0.65 = 975px, 음수 방향으로 픽셀 고정 */
+    background-color: transparent;
+
+}
+
+.top-fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1500px;
+    height: 200px;
+    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, #000 100%);
+    pointer-events: none; /* 클릭 영향 없도록 */
+    z-index: 200;
+}
+
+.bottom-fade {
+    position: absolute;
+    bottom: 3%;
+    left: 0;
+    width: 1500px;
+    height: 200px;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 100%);
+    pointer-events: none;
+    z-index: 200;
+}
+
+.homeline1 {
+    width: 1500px;
+    height: 1500px;
+    flex-shrink: 0;
+    border-radius: 1944px;
+    border: 1px solid #FFF;
+    position: absolute;
+    left: -950px;  /* 1500px * 0.65 = 975px, 음수 방향으로 픽셀 고정 */
+
+    mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+    overflow: visible;
+}
+
+
+.bizz1 {
+    position: absolute;
+    left: calc(750px + 750px * 0.7071);
+    top: calc(750px - 750px * 0.7071);
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #9B9B9B;
+    z-index: 100;
+}
+
+.bizz2 {
+    position: absolute;
+    left: calc(750px + 750px * 0.7071);
+    top: calc(750px + 750px * 0.7071);
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #9B9B9B;
+    z-index: 100;
+}
+
+
+.special-bizz {
+    position: absolute;
+    left: calc(750px + 750px );
+    top: calc(750px);
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 100;
+    box-shadow: 0px 0px 25.81px 25.81px rgba(255, 255, 255, 0.1);
+}
+
+
+.homeline2 {
+    position: absolute;
+    left: calc(750px + 750px * 0);   /* x좌표 그대로 750px 중심 */    
+    top: 752px;
+    transform: translate(-50%, -50%);
+    width: calc(750px + 750px * 1);
+    height: 1px;
+    border-top: 1px dotted #E0E0E0; 
+    z-index: 100;
+
+}
+
+.word-ACTIVITIES {
+    position: absolute;
+    margin-top: 480px;
+    margin-left: 70px;
+    width: 400px;
+    height: auto;
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.homeline3 {
+    position: absolute;
+    left: calc(750px + 750px); /* special-bizz 위치 기준 */
+    top: 750px;
+    width: 520px;
+    height: 1px;
+    border-top: 1px dotted #E0E0E0;
+    transform-origin: left center;
+    transform: rotate(-14deg);
+
+}
+
+.homeline4 {
+    position: absolute;
+    left: calc(750px + 750px); /* special-bizz 위치 기준 */
+    top: 750px;
+    width: 520px;
+    height: 1px;
+    border-top: 1px dotted #E0E0E0;
+    transform-origin: left center;
+    transform: rotate(14deg);
+
+}
+
+.studylogo-box {
+    background-color: white;
+    width: 273px;
+    height: 273px;
+    position: absolute;
+    border-radius: 50%;
+    margin-left: 955px;
+    margin-top: 614px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.studylogo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+
+}
+
+
+
+.home-wordbox {
+    background-color: black;
+    width: 500px;
+    height: auto;
+    position: absolute;
+    margin-top: 900px;
+    left: 842px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.words {
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px; /* 175% */
+}
+
+.word-study {
+    height: 90px;
+    color: #FFF;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.tag-box {
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.tag {
+    border-radius: 10px;
+    width: 120px;
+    border: 1px solid #5DFFC6;
+    display: flex;
+    justify-content: center;
+}
+
+.tag p{
+    color: #5DFFC6;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 10px; /* 175% */
+}
+
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0.00) 100%);
+}
+
+.achievements {
+    margin-top: 280px;
+    height: 1700px;
+    overflow: visible;
+    position: relative;
+}
+
+.word-ACHIEVEMENTS {
+    margin-left: 100px;
+    margin-top: 70px;
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.achieve-box {
+    position: relative;
+    background-color: black;
+    margin-left: 760px;
+    margin-top: 100px;
+    width: 500px;
+}
+
+.date-box {
+    position: absolute;
+    left: 0;
+    top: -2px;
+    margin-top: 0;
+    width: 100px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 199px;
+}
+
+.date {
+    color: rgba(255, 255, 255, 0.60);
+    text-align: right;
+    font-family: Pretendard;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 470;
+    line-height: 35px; /* 175% */
+}
+
+.line-box {
+    width: 100px;
+    height: 1000px;
+    position: absolute;
+    left: 100px;
+    top: 5px;
+}
+
+.achieve-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 1179px;
+    background-color: white;
+}
+
+.bizz-box {
+    position: absolute;
+    left: 50%; /* 선과 같은 x축에 배치 */
+    top: 0;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 210px;
+}
+
+.achieve-bizz {
+    left: 27px;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #FFF;
+    filter: drop-shadow(0 0 25.806px rgba(255, 255, 255, 0.10));
+    box-shadow: 0px 0px 25.81px 25.81px rgba(255, 255, 255, 0.1);
+}
+
+.hangeo-box {
+    position: absolute;
+    left: 200px;
+    top: -17px;
+    margin-top: 0;
+    width: 100px;
+    height: 1230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;  /* 왼쪽으로 정렬되게 함 */    
+    gap: 167px;
+}
+
+.hangeo {
+    position: relative;
+    text-align: left;
+    width: 500px;  /* 텍스트 길이에 맞게 조절되도록 */    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; /* <-- 왼쪽 정렬로 바꿈 */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0px;
+}
+
+.hangeo-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.hangeo p {
+    text-align: left;
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.img-down {
+    margin-top: 5px;
+    width: auto;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.img-down.rotated {
+    transform: rotate(180deg);
+}
+
+.accordion-detail {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 23px;
+    max-width: 400px;
+    animation: fadeIn 0.5s ease;
+    background: rgba(0, 0, 0, 0.4); /* 선택사항 */
+}
+
+.accordion-detail.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
