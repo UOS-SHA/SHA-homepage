@@ -1,0 +1,87 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API",
+    "description": "api",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/recruit/": {
+      "post": {
+        "description": "동아리 지원",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "any"
+                  },
+                  "major": {
+                    "type": "string",
+                    "example": "any"
+                  },
+                  "studentId": {
+                    "type": "string",
+                    "example": "any"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "example": "any"
+                  },
+                  "expect": {
+                    "type": "string",
+                    "example": "any"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "example": "any"
+                  },
+                  "sites": {
+                    "type": "string",
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "in": "header",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
