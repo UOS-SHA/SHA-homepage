@@ -4,6 +4,8 @@ import Home from './page/Home';
 import Member from './page/Member';
 import Study from './page/Study';
 import Recruit from './page/Recruit';
+import StudyDetail from './page/StudyDetail';
+import StudyCategory from './page/StudyCategory';
 
 
 function App(){
@@ -14,6 +16,8 @@ function App(){
         <Route path="/members" element={<Member />} />
         <Route path="/study" element={<Study />} />
         <Route path="/recruit" element={<Recruit />} />
+        <Route path="/study/:semesterId" element={<StudyDetail />} />
+        <Route path="/study/:semesterId/:category" element={<StudyCategory />} />
       </Routes>
     </Router>
   )
