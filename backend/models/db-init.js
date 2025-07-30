@@ -10,7 +10,7 @@ async function ensureDBExists() {
 
     try {
         await connection.query(`CREATE DATABASE IF NOT EXISTS \`${config.database}\``);
-        console.log('데이터베이스가 생성되었거나 이미 존재함');
+        console.log('데이터베이스가 생성되었거나 이미 존재합니다');
     } catch(err) {
         console.error('DB 생성 중 오류 발생:', err);
         process.exit(1);
