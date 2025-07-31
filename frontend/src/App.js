@@ -10,7 +10,7 @@ import StudyCategory from './page/StudyCategory';
 
 function App(){
   return (
-    <Router>
+    <Router basename="/SHA-homepage">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/members" element={<Member />} />

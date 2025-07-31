@@ -82,7 +82,7 @@ const Recruit = () => {
   return (
     <div className="wholearea">
       <div className="top-bar">
-        <img src="/sha-logo.png" alt="Logo" className="logobox" />
+        <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
         <div className="nav-content">
           <div className="menu">
             <NavLink
@@ -191,7 +191,7 @@ const Recruit = () => {
 
                 {links.length < 5 && (
                   <div className="input3-add-button" onClick={handleAddLink}>
-                    <img src='/plus.png' alt="플러스이미지" className="plus" />
+                    <img src={`${process.env.PUBLIC_URL}/plus.png`} alt="플러스이미지" className="plus" />
                   </div>
                 )}
               </div>

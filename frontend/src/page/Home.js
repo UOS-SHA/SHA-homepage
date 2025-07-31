@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <div className="wholearea">
       <div className="top-bar">
-        <img src="/sha-logo.png" alt="Logo" className="logobox" />
+        <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
         <div className="nav-content">
           <div className="menu">
             <NavLink
@@ -69,18 +69,18 @@ const Home = () => {
       </div>
       <div className="home-container">
         <div className="video-box">
-          <video src="/homeanimation.mp4" autoPlay muted loop playsInline />
+          <video src={`${process.env.PUBLIC_URL}/homeanimation.mp4`} autoPlay muted loop playsInline />
         </div>
       </div>
       <div className="mouse">
-        <img src="/mouse.png" alt="scroll" />
+        <img src={`${process.env.PUBLIC_URL}/mouse.png`} alt="scroll" />
       </div>
       <div className="SHA">
         <div className="circle"></div>
         <div className="homelogo-box">
-          <img src="/sha-logo.png" alt="logo" className="logo-box2" />
-          <img src="/word-SHA.png" alt="word"className="word-SHA" />
-          <img src="/UOS-Hacking-club.png" alt="word" className="UOS-Hacking-club" />
+          <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="logo" className="logo-box2" />
+          <img src={`${process.env.PUBLIC_URL}/word-SHA.png`} alt="word"className="word-SHA" />
+          <img src={`${process.env.PUBLIC_URL}/UOS-Hacking-club.png`} alt="word" className="UOS-Hacking-club" />
         </div>
         <div className="word-box2">
           서울시립대 컴퓨터과학부 보안 소모임 SHA는 보안에 관심 있는 학생들이 함께 학습하고 성장하는 소모임입니다. <br />
@@ -102,7 +102,7 @@ const Home = () => {
         <div className="bottom-fade"></div>
         <div className="homeline1" />
         <div className="studylogo-box">
-          <img className="studylogo" src="/studylogo.png" alt="스터디 로고" />
+          <img className="studylogo" src={`${process.env.PUBLIC_URL}/studylogo.png`} alt="스터디 로고" />
         </div>
         <div className="home-wordbox">
           <div className="word-study">

@@ -11,7 +11,7 @@ const AccordionItem = ({ title, detail }) => {
         {detail && (
           <img
             className={`img-down ${isOpen ? 'rotated' : ''}`}
-            src="/down.png"
+            src={`${process.env.PUBLIC_URL}/down.png`}
             alt="down"
             onClick={() => setIsOpen(!isOpen)}
           />

@@ -47,7 +47,7 @@ const StudyCategory = () => {
   return (
     <div className="wholearea">
       <div className="top-bar">
-        <img src="/sha-logo.png" alt="Logo" className="logobox" />
+        <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
         <div className="nav-content">
           <div className="menu">
             <NavLink
@@ -100,7 +100,7 @@ const StudyCategory = () => {
                 <p>{content.description}</p>
               </div>
               <div className="cate-back-button" onClick={() => navigate(-1)}>
-                    <img src="/back.png" alt="back" className="cate-back" />
+                    <img src={`${process.env.PUBLIC_URL}/back.png`} alt="back" className="cate-back" />
               </div>
             </div>
         </div>
