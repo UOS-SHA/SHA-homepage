@@ -340,3 +340,72 @@ html, body {
     line-height: normal;
     z-index: 999;
 }
+
+.popup-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.popup-content {
+    height: 280px;
+    width: 450px;
+    padding: 30px 40px;
+    border-radius: 12px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #A1A1A1;
+    background: #1F1F1F;
+    position: relative;
+}
+
+.close {
+    background-color: #1F1F1F;
+    position: absolute;
+    right: 23px;
+    top: 15px;
+    width: 25px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    cursor: pointer
+}
+
+.real-close {
+    background-color: transparent;
+    width: 32px;
+    height: auto;
+}
+
+.check-icon {
+    position: absolute;
+    left: 210px;
+    top: 25%;
+    width: 120px;
+    height: auto;
+}
+
+.real-check {
+    width: 120px;
+    height: auto;
+}
+
+.word-OK {
+    position: absolute;
+    bottom: 70px;
+    left: 140px;
+    color: #FFF;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
