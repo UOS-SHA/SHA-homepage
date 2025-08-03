@@ -6,11 +6,12 @@ import Study from './page/Study';
 import Recruit from './page/Recruit';
 import StudyDetail from './page/StudyDetail';
 import StudyCategory from './page/StudyCategory';
+import Admin from './page/Admin';
 
 
 function App(){
   return (
-    <Router>
+    <Router basename="/SHA-homepage">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/members" element={<Member />} />
@@ -18,6 +19,7 @@ function App(){
         <Route path="/recruit" element={<Recruit />} />
         <Route path="/study/:semesterId" element={<StudyDetail />} />
         <Route path="/study/:semesterId/:category" element={<StudyCategory />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>
   )

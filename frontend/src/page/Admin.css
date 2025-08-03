@@ -1,0 +1,112 @@
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-box {
+    width: 700px;
+    height: 450px;
+    border-radius: 15px;
+    background: #1F1F1F;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.logo-login {
+    margin-top: 13px;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-logo {
+    width: 85px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.real-logo {
+    width: 80px;
+    height: auto;
+}
+
+.word-LOGIN {
+    color: #FFF;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+}
+
+.id {
+    width: 375px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #A1A1A1;
+    background: rgba(255, 255, 255, 0.10);
+    color: #8F8F8F;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 550;
+    line-height: normal;
+    padding-left: 14px;
+}
+
+.pw {
+    width: 375px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #A1A1A1;
+    background: rgba(255, 255, 255, 0.10);
+    color: #8F8F8F;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 550;
+    line-height: normal;
+    padding-left: 14px;
+
+}
+
+.login {
+    margin-top: 6px;
+    width: 394px;
+    height: 48px;
+    border-radius: 10px;
+    background: #5DFFC6;
+    color: #060606;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.login:hover {
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}

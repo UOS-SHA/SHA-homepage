@@ -7,6 +7,7 @@ import './Recruit.css';
 
 const Recruit = () => {
   const [links, setLinks] = useState(['']);
+  const [showComplete, setShowComplete] = useState(false); //지원완료 팝업창
 
   const handleLinkChange = (index, value) => {
     const newLinks = [...links];
@@ -63,7 +64,10 @@ const Recruit = () => {
     try {
       const response = await axios.post(serverUrl, allData);
       console.log('서버 응답: ', response.data);
-      alert('지원서가 정상으로 제출되었습니다.');
+      // alert('지원서가 정상으로 제출되었습니다.');
+
+      setShowComplete(true);
+
       setFormData({
         name: '',
         major: '',
@@ -82,7 +86,7 @@ const Recruit = () => {
   return (
     <div className="wholearea">
       <div className="top-bar">
-        <img src="/sha-logo.png" alt="Logo" className="logobox" />
+        <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
         <div className="nav-content">
           <div className="menu">
             <NavLink
@@ -191,7 +195,7 @@ const Recruit = () => {
 
                 {links.length < 5 && (
                   <div className="input3-add-button" onClick={handleAddLink}>
-                    <img src='/plus.png' alt="플러스이미지" className="plus" />
+                    <img src={`${process.env.PUBLIC_URL}/plus.png`} alt="플러스이미지" className="plus" />
                   </div>
                 )}
               </div>
@@ -205,6 +209,20 @@ const Recruit = () => {
           </div>
         </div>
       </div>
+      {showComplete && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <button className="close" onClick={() => setShowComplete(false)}>
+              <img className="real-close" src={`${process.env.PUBLIC_URL}/close.png`} alt="close" />
+            </button>
+            <div className="check-icon">
+              <img className="real-check" src={`${process.env.PUBLIC_URL}/check.png`} alt="check" />
+            </div>
+            <div className="word-OK">가입 신청이 완료되었습니다.</div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

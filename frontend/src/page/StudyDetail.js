@@ -24,7 +24,7 @@ const StudyDetail = () => {
    return (
       <div className="wholearea">
         <div className="top-bar">
-          <img src="/sha-logo.png" alt="Logo" className="logobox" />
+          <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
           <div className="nav-content">
             <div className="menu">
               <NavLink
@@ -81,7 +81,7 @@ const StudyDetail = () => {
                   <p>지금, 새로운 도전과 배움의 시작에 함께하세요!</p>
                   </div>
                   <div className="back-button" onClick={() => navigate(-1)}>
-                    <img src="/back.png" alt="back" className="back" />
+                    <img src={`${process.env.PUBLIC_URL}/back.png`} alt="back" className="back" />
                   </div>
               </div>
           </div>
