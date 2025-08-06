@@ -1,7 +1,7 @@
 {
   "name": "sha-homepage",
   "version": "0.1.0",
-  "homepage": "https://sha-homepage-ctxy9xd5z-minjoos-projects-5393fe04.vercel.app",
+  "homepage": "https://sha-homepage.vercel.app/",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
