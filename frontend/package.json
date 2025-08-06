@@ -1,7 +1,6 @@
 {
   "name": "sha-homepage",
   "version": "0.1.0",
-  "homepage": "/SHA-homepage",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
