@@ -1,10 +1,11 @@
 const { StudySemester, StudyCategory, StudyWeek } = require('../models');
 
 exports.getSemester = async (req, res) => {
+    
     try {
 
         const semesterData = await StudySemester.findAll({
-            attributes: ['name'],
+            attributes: ['id', 'name'],
         })
 
         return res.json(semesterData);
@@ -31,7 +32,7 @@ exports.getCategory = async (req, res) => {
 
         const categoryData = await StudyCategory.findAll({
             where: { semesterId: semesterInstance.id},
-            attributes: ['name'],
+            attributes: ['id', 'name', 'url'],
         });
 
         return res.json(categoryData);
