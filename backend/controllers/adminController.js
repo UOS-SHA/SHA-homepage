@@ -1,5 +1,5 @@
 const { Join, PersonalSite } = require('../models');
-
+const jwt = require('jsonwebtoken');
 
 exports.login = async (req, res) => {
 
@@ -12,7 +12,13 @@ exports.login = async (req, res) => {
         const isAdmin = (username===adminId && password === adminPw);
 
         if (isAdmin) {
-            res.status(200).json({ message: '로그인 성공', isAdmin: isAdmin });
+            const token = jwt.sign(
+                { isAdmin: true },
+                process.env.JWT_SECRET,
+                { expiresIn: '1h' }
+            );
+
+            res.status(200).json({ message: '로그인 성공', isAdmin: isAdmin }, token);
         } else {
             res.status(401).json({ message: '아이디 또는 비밀번호가 틀렸습니다' });
         }
