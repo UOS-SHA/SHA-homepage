@@ -2,7 +2,6 @@ const { Join, PersonalSite } = require('../models');
 
 exports.application = async (req, res) => {
 
-    const t = await sequelize.transaction();
 
     try {
         const {name, major, studentId, phone, expect, comment, sites} = req.body;
@@ -25,11 +24,10 @@ exports.application = async (req, res) => {
             await PersonalSite.bulkCreate(siteData);
         }
 
-        await t.commit();
 
         res.status(201).json({message: '지원서 제출 완료'});
     } catch (err) {
-        await t.rollback();
+        console.error('에러: ', err);
         res.status(500).json({ message: '서버 에러 발생'})
     }
     

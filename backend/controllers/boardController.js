@@ -13,6 +13,7 @@ exports.createSemester = async (req, res) => {
 
 
     } catch(err) {
+        console.error("에러: ", err);
         res.status(500).json({ message: '학기 생성 실패', error: err.message });
     }
 }
@@ -43,6 +44,7 @@ exports.createCategory = async (req, res) => {
 
 
     } catch(err) {
+        console.error("에러: ", err);
         res.status(500).json({ message: '카테고리 생성 실패', error: err.message});
         
     }
@@ -88,6 +90,7 @@ exports.createWeek = async (req, res) => {
 
 
     } catch(err) {
+        console.error("에러: ", err);
         res.status(500).json({ message: '주차 생성 실패', error: err.message});        
     }
 }
@@ -109,6 +112,7 @@ exports.updateSemester = async (req, res) => {
         res.status(200).json({ message: "학기 이름이 수정되었습니다" });
 
     } catch(err) {
+        console.error("에러: ", err);
         res.status(500).json({ message: "서버 에러" });
     }
 }
@@ -133,6 +137,7 @@ exports.updateCategory = async (req, res) => {
         res.status(200).json({ message: '수정 성공'});
 
     } catch(err) {
+        console.error("에러: ", err);
         res.status(500).json({ message: "서버 에러" });
     }
 }
@@ -161,6 +166,7 @@ exports.updateWeek = async (req, res) => {
         res.status(200).json({ message: '수정 성공' });
 
     } catch(err) {
+        console.error("에러: ", err);
         res.status(500).json({ message: "서버 에러" });
     }
 }
@@ -181,6 +187,7 @@ exports.deleteSemester = async (req, res) => {
 
 
     } catch(err) {
+        console.error("에러: ", err);
         res.status(500).json({ message: "서버 에러" });
     }
 }
@@ -200,6 +207,7 @@ exports.deleteCategory = async (req, res) => {
             res.status(404).json({ message: '오류' });
 
     } catch(err) {
+        console.error("에러: ", err);
         res.status(500).json({ message: "서버 에러" });
     }
 }
@@ -219,6 +227,7 @@ exports.deleteWeek = async (req, res) => {
             res.status(404).json({ message: '오류' });
 
     } catch(err) {
+        console.error("에러: ", err);
         res.status(500).json({ message: "서버 에러" });
     }
 }
