@@ -12,10 +12,6 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true
         },
-      url: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
     }, {
       timestamps: true
   });

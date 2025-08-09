@@ -33,7 +33,7 @@ exports.getCategory = async (req, res) => {
 
         const categoryData = await StudyCategory.findAll({
             where: { semesterId: semesterInstance.id},
-            attributes: ['id', 'name', 'url'],
+            attributes: ['id', 'name'],
         });
 
         return res.json(categoryData);
@@ -75,7 +75,7 @@ exports.getWeek = async (req, res) => {
             include: [
                 {
                     model: StudyCategory,
-                    attributes: ['name', 'url']
+                    attributes: ['name']
                 }
             ]
         });
