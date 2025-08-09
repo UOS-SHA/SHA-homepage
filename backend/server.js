@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 8080;
         await db.sequelize.sync();
       }
   
-      app.listen(PORT, () => {
+      app.listen(PORT, '0.0.0.0', () => {
         console.log(`서버 ${PORT}에서 실행 중`);
       });
     } catch (err) {
