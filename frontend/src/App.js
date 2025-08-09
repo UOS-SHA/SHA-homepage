@@ -7,6 +7,7 @@ import Recruit from './page/Recruit';
 import StudyDetail from './page/StudyDetail';
 import StudyCategory from './page/StudyCategory';
 import Admin from './page/Admin';
+import AdminBoard from './page/AdminBoard';
 
 
 function App(){
@@ -20,6 +21,7 @@ function App(){
         <Route path="/study/:semesterId" element={<StudyDetail />} />
         <Route path="/study/:semesterId/:category" element={<StudyCategory />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/board" element={<AdminBoard />} />
       </Routes>
     </Router>
   )

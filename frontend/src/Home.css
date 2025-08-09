@@ -76,6 +76,14 @@ body::-webkit-scrollbar {
     
 }
 
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+}
+
 .logobox {
     width: 64px;
     height: 44.34px;

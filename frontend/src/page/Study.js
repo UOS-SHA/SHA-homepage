@@ -18,7 +18,9 @@ const Study = () => {
   return (
     <div className="wholearea">
       <div className="top-bar">
-        <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
+        <Link to="/" className="logo-wrapper">
+          <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
+        </Link>
         <div className="nav-content">
           <div className="menu">
             <NavLink

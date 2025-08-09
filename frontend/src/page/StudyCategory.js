@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Recruit.css';
 import './StudyCategory.css';
+import AccordionLink from './AccordionLink';
 
 const StudyCategory = () => {
   const { semesterId, category } = useParams();
@@ -24,17 +25,20 @@ const StudyCategory = () => {
   web: {
     title: 'Web',
     description: `2025-1학기에서 다룬 내용을 바탕으로,
-    다양한 웹 취약점과 익스플로잇 기법을 심화 학습하였습니다.`
+    다양한 웹 취약점과 익스플로잇 기법을 심화 학습하였습니다.`,
+    link: 'https://notion.link1'
   },
   reversing: {
     title: 'Reversing',
-    description: `2025-1학기의 기초 내용을 확장하여, 
-    리버스 엔지니어링에서 활용되는 핵심 분석 기법들을 실습 중심으로 학습하였습니다.`
+    description: `2025-1학기의 기초 내용을 확장하여,
+    리버스 엔지니어링에서 활용되는 핵심 분석 기법들을 실습 중심으로 학습하였습니다.`,
+    link: 'https://notion.link2'
   },
   system: {
     title: 'Pwnable',
-    description: `2025-1학기의 기초 내용을 확장하여, 
-    리버스 엔지니어링에서 활용되는 핵심 분석 기법들을 실습 중심으로 학습하였습니다.`
+    description: `2025-1학기의 기초 내용을 확장하여,
+    리버스 엔지니어링에서 활용되는 핵심 분석 기법들을 실습 중심으로 학습하였습니다.`,
+    link: 'https://notion.link3'
   }
 };
 
@@ -42,6 +46,12 @@ const StudyCategory = () => {
     title: 'Unknown Category',
     description: '해당 카테고리에 대한 정보가 없습니다.'
   };
+
+  const achievementlist = [
+    {detail: 'https://notion.link1'},
+    {detail: 'https://notion.link2'},
+    {detail: 'https://notion.link3'}
+  ]
 
 
   return (
@@ -94,10 +104,18 @@ const StudyCategory = () => {
       </div>
       <div className="recruit-container">
         <div className="JoinUs">
-            <div className="word-box">
+            <div className="cate-word-box">
               <div className="title">{content.title}</div>
-              <div className="info">
-                <p>{content.description}</p>
+              <div className="cate-info">
+                {content.description.split('\n').map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </div>
+              <div className="pt-link">
+                <AccordionLink detail={content.link} />
               </div>
               <div className="cate-back-button" onClick={() => navigate(-1)}>
                     <img src={`${process.env.PUBLIC_URL}/back.png`} alt="back" className="cate-back" />
@@ -165,7 +183,6 @@ const StudyCategory = () => {
                       <div className="word-juje">주제</div>
                       <div className="word-sangse">상세</div>
                     </div>
-                    <div className="word-pt">발표 자료</div>
                   </div>
                   <div className="weekinfo-info">
                     <div className="juje-sangse2">
@@ -174,7 +191,6 @@ const StudyCategory = () => {
                       FLASK pin debugger exploit<br/>
                       Python dirty Arbitrary File Write(AFW)</div>
                     </div>
-                    <div className="pt">https://notion.link</div>
                   </div>
                 </div>
               </div>
@@ -190,7 +206,6 @@ const StudyCategory = () => {
                       <div className="word-juje">주제</div>
                       <div className="word-sangse">상세</div>
                     </div>
-                    <div className="word-pt">발표 자료</div>
                   </div>
                   <div className="weekinfo-info">
                     <div className="juje-sangse2">
@@ -199,7 +214,6 @@ const StudyCategory = () => {
                       FLASK pin debugger exploit<br/>
                       Python dirty Arbitrary File Write(AFW)</div>
                     </div>
-                    <div className="pt">https://notion.link</div>
                   </div>
                 </div>
               </div>
@@ -215,7 +229,6 @@ const StudyCategory = () => {
                       <div className="word-juje">주제</div>
                       <div className="word-sangse">상세</div>
                     </div>
-                    <div className="word-pt">발표 자료</div>
                   </div>
                   <div className="weekinfo-info">
                     <div className="juje-sangse2">
@@ -224,7 +237,6 @@ const StudyCategory = () => {
                       FLASK pin debugger exploit<br/>
                       Python dirty Arbitrary File Write(AFW)</div>
                     </div>
-                    <div className="pt">https://notion.link</div>
                   </div>
                 </div>
               </div>
@@ -240,7 +252,6 @@ const StudyCategory = () => {
                       <div className="word-juje">주제</div>
                       <div className="word-sangse">상세</div>
                     </div>
-                    <div className="word-pt">발표 자료</div>
                   </div>
                   <div className="weekinfo-info">
                     <div className="juje-sangse2">
@@ -249,7 +260,6 @@ const StudyCategory = () => {
                       FLASK pin debugger exploit<br/>
                       Python dirty Arbitrary File Write(AFW)</div>
                     </div>
-                    <div className="pt">https://notion.link</div>
                   </div>
                 </div>
               </div>
@@ -265,7 +275,6 @@ const StudyCategory = () => {
                       <div className="word-juje">주제</div>
                       <div className="word-sangse">상세</div>
                     </div>
-                    <div className="word-pt">발표 자료</div>
                   </div>
                   <div className="weekinfo-info">
                     <div className="juje-sangse2">
@@ -274,7 +283,6 @@ const StudyCategory = () => {
                       FLASK pin debugger exploit<br/>
                       Python dirty Arbitrary File Write(AFW)</div>
                     </div>
-                    <div className="pt">https://notion.link</div>
                   </div>
                 </div>
               </div>
@@ -290,7 +298,6 @@ const StudyCategory = () => {
                       <div className="word-juje">주제</div>
                       <div className="word-sangse">상세</div>
                     </div>
-                    <div className="word-pt">발표 자료</div>
                   </div>
                   <div className="weekinfo-info">
                     <div className="juje-sangse2">
@@ -299,7 +306,6 @@ const StudyCategory = () => {
                       FLASK pin debugger exploit<br/>
                       Python dirty Arbitrary File Write(AFW)</div>
                     </div>
-                    <div className="pt">https://notion.link</div>
                   </div>
                 </div>
               </div>
