@@ -18,6 +18,7 @@ module.exports = (req, res, next) => {
             return res.status(403).json({ message: '관리자 권한이 없습니다' });
         }
     } catch (err) {
+        console.error('에러: ', err);
         return res.status(401).json({ message: '유효하지 않은 토큰입니다' });
     }
 };
