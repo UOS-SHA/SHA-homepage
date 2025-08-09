@@ -10,7 +10,14 @@ const PORT = process.env.PORT || 8080;
 (async () => {
     try {
       await ensureDatabaseExists();
-      await db.sequelize.sync(); 
+
+      if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development') {
+        await db.sequelize.sync({ force: true }).then(() => {
+          console.log('DB가 초기화되었습니다.');
+        });
+      } else {
+        await db.sequelize.sync();
+      }
   
       app.listen(PORT, () => {
         console.log(`서버 ${PORT}에서 실행 중`);

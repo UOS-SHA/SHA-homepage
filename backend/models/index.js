@@ -25,11 +25,24 @@ db.StudyWeek = require('./studyWeek')(sequelize, Sequelize);
 db.Join.hasMany(db.PersonalSite, { foreignKey: 'joinId', sourceKey: 'id'});
 db.PersonalSite.belongsTo(db.Join, { foreignKey: 'joinId', targetKey: 'id'});
 
-db.StudySemester.hasMany(db.StudyCategory, { foreignKey: 'semesterId', sourceKey: 'id'});
+db.StudySemester.hasMany(db.StudyCategory, { 
+  foreignKey: 'semesterId', 
+  sourceKey: 'id',
+  onDelete: 'CASCADE',
+  hooks: true
+});
 db.StudyCategory.belongsTo(db.StudySemester, { foreignKey: 'semesterId', targetKey: 'id'});
 
-db.StudyCategory.hasMany(db.StudyWeek, { foreignKey: 'categoryId', sourceKey: 'id'});
+db.StudyCategory.hasMany(db.StudyWeek, { 
+  foreignKey: 'categoryId', 
+  sourceKey: 'id', 
+  onDelete: 'CASCADE',
+  hooks: true
+});
 db.StudyWeek.belongsTo(db.StudyCategory, { foreignKey: 'categoryId', targetKey: 'id'});
+
+
+
 
 
 
