@@ -1,16 +1,18 @@
 const { StudySemester, StudyCategory, StudyWeek } = require('../models');
 
 exports.getSemester = async (req, res) => {
+    
     try {
 
         const semesterData = await StudySemester.findAll({
-            attributes: ['name'],
+            attributes: ['id', 'name'],
         })
 
         return res.json(semesterData);
 
 
     } catch (err) {
+        console.error("에러: ", err);
         res.status(500).json({ message: '서버 에러 발생'});
     }
 };
@@ -31,7 +33,7 @@ exports.getCategory = async (req, res) => {
 
         const categoryData = await StudyCategory.findAll({
             where: { semesterId: semesterInstance.id},
-            attributes: ['name'],
+            attributes: ['id', 'name'],
         });
 
         return res.json(categoryData);
@@ -39,6 +41,7 @@ exports.getCategory = async (req, res) => {
         
 
     } catch (err) {
+        console.error("에러: ", err);
         res.status(500).json({ message: '서버 에러 발생'});
     }
 };
@@ -66,14 +69,13 @@ exports.getWeek = async (req, res) => {
 
         const weekData = await StudyWeek.findAll({
             where: {
-                semesterId: semesterInstance.id,
                 categoryId: categoryInstance.id
             },
             attributes: ['weekNum', 'title', 'description'],
             include: [
                 {
                     model: StudyCategory,
-                    attributes: ['name', 'url']
+                    attributes: ['name']
                 }
             ]
         });
@@ -81,6 +83,7 @@ exports.getWeek = async (req, res) => {
         return res.json(weekData);
 
     } catch (err) {
+        console.error('에러: ', err);  // 나중에 지울거
         res.status(500).json({ message: '서버 에러 발생'});
     }
 };

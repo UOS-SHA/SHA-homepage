@@ -17,7 +17,6 @@ module.exports = (sequelize, DataTypes)=> {
         studentId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            unique: true
         },
         phone: {
             type: DataTypes.STRING,
@@ -29,9 +28,11 @@ module.exports = (sequelize, DataTypes)=> {
         comment: {
             type: DataTypes.TEXT,
             allowNull: true
-        }
+        },
     }, {
-        timestamps: true
+        timestamps: true,
+        createdAt: 'submitTime',
+        updatedAt: false,
     });
 
 

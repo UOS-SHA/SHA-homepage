@@ -1,6 +1,8 @@
 const { Join, PersonalSite } = require('../models');
 
 exports.application = async (req, res) => {
+
+
     try {
         const {name, major, studentId, phone, expect, comment, sites} = req.body;
     
@@ -10,7 +12,7 @@ exports.application = async (req, res) => {
             studentId,
             phone,
             expect,
-            comment
+            comment,
         });
 
 
@@ -19,12 +21,13 @@ exports.application = async (req, res) => {
                 url,
                 joinId: application.id
             }));
-
             await PersonalSite.bulkCreate(siteData);
         }
 
+
         res.status(201).json({message: '지원서 제출 완료'});
     } catch (err) {
+        console.error('에러: ', err);
         res.status(500).json({ message: '서버 에러 발생'})
     }
     
