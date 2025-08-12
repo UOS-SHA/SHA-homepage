@@ -9,32 +9,42 @@ import './Recruit.css';
 import './StudyCategory.css';
 import AccordionLink from './AccordionLink';
 
+
+
+
 const StudyCategory = () => {
   const { semesterId, category } = useParams();
   const navigate = useNavigate();
   const [weeks, setWeeks] = useState([]);
 
   useEffect(() => {
-    //백엔드 주차별 데이터 리스트, url 수정해야함
-    axios.get(`/api/study/${semesterId}/${category}`)
-      .then(res => setWeeks(res.data))
-      .catch(err => console.error(err));
+    axios
+      .get(`http://localhost:8080/study/${semesterId}/${category}`)
+      .then((res) => {
+        setWeeks(res.data || []); // ✅ 백엔드 데이터 그대로 반영
+      })
+      .catch((err) => {
+        console.error(err);
+        setWeeks([]);
+      });
   }, [semesterId, category]);
-  
+
+  //일단 카테고리 설명은 프론트에서 하드코딩
+  //추후에 백엔드로 확장
   const categoryContent = {
-  web: {
+  Web: {
     title: 'Web',
     description: `2025-1학기에서 다룬 내용을 바탕으로,
     다양한 웹 취약점과 익스플로잇 기법을 심화 학습하였습니다.`,
     link: 'https://notion.link1'
   },
-  reversing: {
+  Reversing: {
     title: 'Reversing',
     description: `2025-1학기의 기초 내용을 확장하여,
     리버스 엔지니어링에서 활용되는 핵심 분석 기법들을 실습 중심으로 학습하였습니다.`,
     link: 'https://notion.link2'
   },
-  system: {
+  System: {
     title: 'Pwnable',
     description: `2025-1학기의 기초 내용을 확장하여,
     리버스 엔지니어링에서 활용되는 핵심 분석 기법들을 실습 중심으로 학습하였습니다.`,
@@ -47,11 +57,6 @@ const StudyCategory = () => {
     description: '해당 카테고리에 대한 정보가 없습니다.'
   };
 
-  const achievementlist = [
-    {detail: 'https://notion.link1'},
-    {detail: 'https://notion.link2'},
-    {detail: 'https://notion.link3'}
-  ]
 
 
   return (
@@ -114,12 +119,9 @@ const StudyCategory = () => {
                   </React.Fragment>
                 ))}
               </div>
-              <div className="pt-link">
-                <AccordionLink detail={content.link} />
-              </div>
-              <div className="cate-back-button" onClick={() => navigate(-1)}>
+            </div>
+            <div className="cate-back-button" onClick={() => navigate(-1)}>
                     <img src={`${process.env.PUBLIC_URL}/back.png`} alt="back" className="cate-back" />
-              </div>
             </div>
         </div>
         <div className="line"></div>
@@ -127,15 +129,13 @@ const StudyCategory = () => {
             <div className="fillout">
               <div className="word-weeklyplan">WEEKLY PLAN</div>
             </div>
+            <div className="line2"></div>
             <div className="scroll-box">
-              {/*백엔드 연결할 때~
-                  근데 연결이 잘 될지 모르겠음.. 스타일이 좀 깨질 것 같아서
-                  나중에 백엔드 연결되면 그거 보고 다시 맞춰야 할듯
-              {weeks.map((weekData, index) => (
-                <React.Fragment key={weekData.weekNumber}>
+              {weeks.map((week) => (
+                <React.Fragment key={week.weekNum}>
                   <div className="week-box">
                     <div className="week">
-                      <p>{weekData.weekNumber}주차</p>
+                      <p>{week.weekNum}주차</p>
                     </div>
                     <div className="week-line"></div>
                     <div className="weekinfo-box">
@@ -144,13 +144,12 @@ const StudyCategory = () => {
                           <div className="word-juje">주제</div>
                           <div className="word-sangse">상세</div>
                         </div>
-                        <div className="word-pt">발표 자료</div>
                       </div>
                       <div className="weekinfo-info">
                         <div className="juje-sangse2">
-                          <div className="juje">{weekData.topic}</div>
+                          <div className="juje">{week.title}</div>
                           <div className="sangse">
-                            {weekData.description.split('\n').map((line, i) => (
+                            {week.description.split('\n').map((line, i) => (
                               <React.Fragment key={i}>
                                 {line}
                                 <br />
@@ -158,157 +157,12 @@ const StudyCategory = () => {
                             ))}
                           </div>
                         </div>
-                        <div className="pt">
-                          <a href={weekData.presentationUrl} target="_blank" rel="noopener noreferrer">
-                            {weekData.presentationUrl}
-                          </a>
-                        </div>
                       </div>
                     </div>
                   </div>
-                  {index < weeks.length - 1 && <div className="week-line3"></div>}
+                  <div className="study-line3"></div>
                 </React.Fragment>
               ))}
-              */}
-
-              {/* 밑에는 스타일 맞추려고 하드코딩.. */}
-              <div className="week-box">
-                <div className="week">
-                  <p>1주차</p> {/*나중에 데이터 받기 */}
-                </div>
-                <div className="week-line"></div>
-                <div className="weekinfo-box">
-                  <div className="weekinfo-label">
-                    <div className="juje-sangse">
-                      <div className="word-juje">주제</div>
-                      <div className="word-sangse">상세</div>
-                    </div>
-                  </div>
-                  <div className="weekinfo-info">
-                    <div className="juje-sangse2">
-                      <div className="juje">FLASK 관련 취약점</div>
-                      <div className="sangse">What is FLASK?<br />
-                      FLASK pin debugger exploit<br/>
-                      Python dirty Arbitrary File Write(AFW)</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="week-line3"></div>
-              <div className="week-box">
-                <div className="week">
-                  <p>2주차</p> {/*나중에 데이터 받기 */}
-                </div>
-                <div className="week-line"></div>
-                <div className="weekinfo-box">
-                  <div className="weekinfo-label">
-                    <div className="juje-sangse">
-                      <div className="word-juje">주제</div>
-                      <div className="word-sangse">상세</div>
-                    </div>
-                  </div>
-                  <div className="weekinfo-info">
-                    <div className="juje-sangse2">
-                      <div className="juje">FLASK 관련 취약점</div>
-                      <div className="sangse">What is FLASK?<br />
-                      FLASK pin debugger exploit<br/>
-                      Python dirty Arbitrary File Write(AFW)</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="week-line3"></div>
-              <div className="week-box">
-                <div className="week">
-                  <p>3주차</p> {/*나중에 데이터 받기 */}
-                </div>
-                <div className="week-line"></div>
-                <div className="weekinfo-box">
-                  <div className="weekinfo-label">
-                    <div className="juje-sangse">
-                      <div className="word-juje">주제</div>
-                      <div className="word-sangse">상세</div>
-                    </div>
-                  </div>
-                  <div className="weekinfo-info">
-                    <div className="juje-sangse2">
-                      <div className="juje">FLASK 관련 취약점</div>
-                      <div className="sangse">What is FLASK?<br />
-                      FLASK pin debugger exploit<br/>
-                      Python dirty Arbitrary File Write(AFW)</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="week-line3"></div>
-              <div className="week-box">
-                <div className="week">
-                  <p>4주차</p> {/*나중에 데이터 받기 */}
-                </div>
-                <div className="week-line"></div>
-                <div className="weekinfo-box">
-                  <div className="weekinfo-label">
-                    <div className="juje-sangse">
-                      <div className="word-juje">주제</div>
-                      <div className="word-sangse">상세</div>
-                    </div>
-                  </div>
-                  <div className="weekinfo-info">
-                    <div className="juje-sangse2">
-                      <div className="juje">FLASK 관련 취약점</div>
-                      <div className="sangse">What is FLASK?<br />
-                      FLASK pin debugger exploit<br/>
-                      Python dirty Arbitrary File Write(AFW)</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="week-line3"></div>
-              <div className="week-box">
-                <div className="week">
-                  <p>5주차</p> {/*나중에 데이터 받기 */}
-                </div>
-                <div className="week-line"></div>
-                <div className="weekinfo-box">
-                  <div className="weekinfo-label">
-                    <div className="juje-sangse">
-                      <div className="word-juje">주제</div>
-                      <div className="word-sangse">상세</div>
-                    </div>
-                  </div>
-                  <div className="weekinfo-info">
-                    <div className="juje-sangse2">
-                      <div className="juje">FLASK 관련 취약점</div>
-                      <div className="sangse">What is FLASK?<br />
-                      FLASK pin debugger exploit<br/>
-                      Python dirty Arbitrary File Write(AFW)</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="week-line3"></div>
-              <div className="week-box">
-                <div className="week">
-                  <p>6주차</p> {/*나중에 데이터 받기 */}
-                </div>
-                <div className="week-line"></div>
-                <div className="weekinfo-box">
-                  <div className="weekinfo-label">
-                    <div className="juje-sangse">
-                      <div className="word-juje">주제</div>
-                      <div className="word-sangse">상세</div>
-                    </div>
-                  </div>
-                  <div className="weekinfo-info">
-                    <div className="juje-sangse2">
-                      <div className="juje">FLASK 관련 취약점</div>
-                      <div className="sangse">What is FLASK?<br />
-                      FLASK pin debugger exploit<br/>
-                      Python dirty Arbitrary File Write(AFW)</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
         </div>
       </div>

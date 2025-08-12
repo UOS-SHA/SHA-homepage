@@ -26,7 +26,7 @@ const Admin = () => {
             return;
         }
 
-        //임시 로그인
+        /*
         const tempId= 'admin';
         const tempPw= '1234';
 
@@ -36,15 +36,18 @@ const Admin = () => {
             navigate('/admin/board');
             return;
         }
+        */
         
         try {
-            const response = await axios.post('/api/login', {
-                id,
-                pw
+            const response = await axios.post('http://localhost:8080/admin', {
+                username: id,
+                password: pw
             });
 
-            if (response.data.success) {
+            if (response.data.isAdmin) {
+                localStorage.setItem('adminToken', response.data.token);
                 alert('로그인 성공');
+                setError('');
                 navigate('/admin/board');
             } else {
                 setError(response.data.message || '아이디 또는 비밀번호가 틀렸습니다.');

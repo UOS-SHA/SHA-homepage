@@ -1,34 +1,39 @@
 import React from 'react';
 import { useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
-import {NavLink, useLocation } from 'react-router-dom';
+import {NavLink, useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './Recruit.css';
 import './Study.css';
 import './AdminBoard.css';
 
 
-//todo: 일단은 프론트엔드 스타일 맞추기, 버튼 기능 구현
-//todo2: 백엔드랑 연결하는 코드 짜기
 
 const AdminBoard = () => {
-  //나중에 백엔드에서 받아오는 코드로 수정
-  const [semesters, setSemesters] = useState([
-    {id: '2025-1', label: '2025-1 여름방학'},
-    {id: '2025-2', label: '2025-2 겨울방학'},
-    {id: '2026-1', label: '2026-1 여름방학'},
-  ]);
+  const token = localStorage.getItem('adminToken');
+
+  //다음 경로
+  const adminlocation= useLocation();
 
   //나중에 백에서 받아오는 코드로 수정
   const [info, setInfo] = useState(
-    'SHA는 정보보안의 다양한 분야에 대한 스터디를 운영하였습니다.\n'+
+    'SHA는 정보보안의 다양한 분야에 대한 스터디를 운영하였습니다.'+
     '시스템 해킹, 웹 해킹, 리버싱 등을 주제로 이론 학습과 실습을 병행하며, 보안에 대한 이해도를 심화시켰습니다. 또한 CTF 문제 풀이와 발표 중심의 세션을 통해 팀원 간의 지식 공유와 협업 역량을 강화하였습니다.\n'+
     '\n지금, 새로운 도전과 배움의 시작에 함께하세요!');
 
 
+  const [semesters, setSemesters] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editSemesters, setEditSemesters] = useState([]);
   const [editInfo, setEditInfo] = useState('');
+
+  // 초기 학기 데이터 로딩
+  useEffect(() => {
+    axios.get('http://localhost:8080/study')
+      .then(res => setSemesters(res.data))
+      .catch(console.error);
+  }, []);
+
 
   //수정 시작
   const handleEdit = () => {
@@ -37,38 +42,64 @@ const AdminBoard = () => {
     setIsEditing(true);
   };
 
-  const handleSemesterChange = (index, newLabel) => {
+  const handleSemesterChange = (index, newName) => {
     const updated = [...editSemesters];
-    updated[index].label= newLabel;
+    updated[index].name= newName;
     setEditSemesters(updated);
   };
 
-  //학기 추가
   const handleAddSemester = () => {
-    const newId = `new-${Date.now()}`;
     setEditSemesters([
-      ...editSemesters, {id: newId, label: '새 학기명 입력'},
+      ...editSemesters,
+      { id: null, name: '새 학기명 입력' } // id=null인 새 학기로 처리
     ]);
   };
 
-  //저장
-  const handleSave = () => {
-    setSemesters(editSemesters);
-    setInfo(editInfo);
+   const handleSave = async () => {
+  try {
+    // 새 학기들 POST
+    for (const newSemester of editSemesters.filter(s => !s.id)) {
+      const res = await axios.post(`http://localhost:8080/admin/board/`, { name: newSemester.name },
+        {headers: {Authorization: `Bearer ${token}`}}
+      );
+      console.log('POST 응답:', res.data);
+      newSemester.id = res.data.id;  // 서버에서 생성한 ID 반영
+    }
+
+    // 기존 학기들 PATCH
+    await Promise.all(
+      editSemesters
+        .filter(s => s.id)
+        .map(s => {
+          const original = semesters.find(orig => orig.id === s.id);
+          if (original && original.name !== s.name) {
+            return axios.patch(`http://localhost:8080/admin/board/`, { id: s.id, name: s.name },
+              {headers: {Authorization: `Bearer ${token}`}} 
+            );
+          }
+          return Promise.resolve();
+        })
+    );
+
+    // 저장 후 서버에서 최신 데이터 다시 받아오기
+    const refreshed = await axios.get('http://localhost:8080/study');
+    console.log('GET /study 응답:', refreshed.data);
+
+    setSemesters(refreshed.data);
+
     setIsEditing(false);
-    // 나중에 여기에 백엔드로 저장 요청 보내야함
-  };
+    alert('저장 완료!');
+  } catch (err) {
+    console.error(err);
+    alert('저장 중 오류가 발생했습니다.');
+  }
+};
 
 
   const location = useLocation();
   const isStudyActive = location.pathname.startsWith('/admin/board');
   const isRecruitActive = location.pathname.startsWith('/admin/users');
 
-  useEffect(() => {
-    axios.get('/api/study/semester') //백엔드 학기리스트, url 수정해야함
-      .then(res => setSemesters(res.data))
-      .catch(err => console.error(err));
-  }, []);
   
   return (
     <div className="wholearea">
@@ -90,7 +121,7 @@ const AdminBoard = () => {
           </div>
           <div className="menu">
             <NavLink
-              to="/recruit"
+              to="/admin/users"
               className={({ isActive }) =>
                 isRecruitActive ? "nav-link active-link" : "nav-link"
               }
@@ -106,13 +137,20 @@ const AdminBoard = () => {
                 <div className="title">STUDY LOG</div>
                 <div className="info">
                   {isEditing ? (
-                    <textArea 
+                    <textarea className="modi-info"
                       value={editInfo}
                       onChange={(e) => setEditInfo(e.target.value)} 
                     />
                     ): (
-                      <p>{info}</p>
-                  )}
+                      <div>
+                        {info.split('\n').map((line, idx) => (
+                          <React.Fragment key={idx}>
+                            {line}
+                            <br />
+                          </React.Fragment>
+                        ))}
+                      </div>
+                    )}
                 </div>
             </div>
         </div>
@@ -121,54 +159,32 @@ const AdminBoard = () => {
             <div className="study-fillout"></div>
             <div className="study-line2"></div>
             <div className="scroll-box">
-              {/*백엔드 연결할 때!!
-              {semesters.map((semester, index) => (
-                <React.Fragment key={semester.id}>
-                  <Link to={`/study/${semester.id}`} className="semester">
-                    <div className="semester-label">{semester.label}</div>
-                  </Link>
-                  {index < semesters.length - 1 && <div className="study-line3"></div>}
-                </React.Fragment>
-              ))}
-              */}
-              {/*스타일 맞추려고 하드코딩 
-              <Link to="/study/2025-1" className="semester">
-                <div className="semester-label">2025-1 여름방학</div> {/*나중에 백에서 불러온 데이터 넣기
-              </Link>
-              <div className="study-line3"></div>
-              <Link to="/study/2025-2" className="semester">
-                <div className="semester-label">2025-2 겨울방학</div> {/*나중에 백에서 불러온 데이터 넣기
-              </Link>
-              <div className="study-line3"></div>
-              <Link to="/study/2026-1" className="semester">
-                <div className="semester-label">2026-1 여름방학</div> {/*나중에 백에서 불러온 데이터 넣기
-              </Link>
-              <div className="study-line3"></div>
-              */}
                 {(isEditing ? editSemesters : semesters).map((semester, idx, arr) => {
-                  console.log("render", idx, semester.label);
-
+                  let label = semester.name;
+                  if (semester.name.endsWith('-1')) {
+                    label += ' 여름학기';
+                  } else if (semester.name.endsWith('-2')) {
+                    label += ' 겨울학기';
+                  }
                   return (
-                    <React.Fragment key={semester.id}>
+                    <React.Fragment key={semester.id ?? `new-${idx}`}>
                       {idx > 0 && (
                         <>
                           <div className="study-line3" />
-                          {console.log("line before", semester.label)}
                         </>
                       )}
-
                       {isEditing ? (
                         <div className="semester">
                           <input
                             type="text"
-                            value={semester.label}
+                            value={semester.name}
                             onChange={(e) => handleSemesterChange(idx, e.target.value)}
-                            className="semester-label"
+                            className="modi-semester-label"
                           />
                         </div>
                       ) : (
-                        <Link to={`/study/${semester.id}`} className="semester">
-                          <div className="semester-label">{semester.label}</div>
+                        <Link to={`${adminlocation.pathname}/${semester.name}`} className="semester">
+                          <div className="semester-label">{label}</div>
                         </Link>
                       )}
                     </React.Fragment>

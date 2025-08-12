@@ -32,7 +32,7 @@
     width: 100%;
     color: #FFF;
     font-family: Pretendard;
-    font-size: 28px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -41,6 +41,7 @@
 .semester:hover {
   cursor: pointer;
   transition: background 0.2s ease;
+  background-color: #2C2C2C;
 }
  
 

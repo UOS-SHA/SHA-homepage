@@ -8,7 +8,9 @@ import StudyDetail from './page/StudyDetail';
 import StudyCategory from './page/StudyCategory';
 import Admin from './page/Admin';
 import AdminBoard from './page/AdminBoard';
-
+import AdminCate from './page/AdminCate';
+import AdminWeek from './page/AdminWeek';
+import AdminUsers from './page/AdminUsers';
 
 function App(){
   return (
@@ -22,6 +24,9 @@ function App(){
         <Route path="/study/:semesterId/:category" element={<StudyCategory />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/board" element={<AdminBoard />} />
+        <Route path="/admin/board/:semesterId" element={<AdminCate />} />
+        <Route path="/admin/board/:semesterId/:category" element={<AdminWeek />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
       </Routes>
     </Router>
   )

@@ -1,8 +1,11 @@
 .back-button {
+    position: absolute;
+    left: 50px;
+    bottom: 100px;
     width: 80px;
     height: 80px;
     margin-left: -20px;
-    margin-top: 80px;
+    margin-top: 222px;
 }
 
 .back-button:hover {
@@ -10,6 +13,6 @@
 }
 
 .back {
-    width: 80px;
+    width: 70px;
     height: auto;
 }

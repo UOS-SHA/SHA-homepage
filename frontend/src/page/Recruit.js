@@ -64,7 +64,7 @@ const Recruit = () => {
     try {
       const response = await axios.post(serverUrl, allData);
       console.log('서버 응답: ', response.data);
-      // alert('지원서가 정상으로 제출되었습니다.');
+      alert('지원서가 정상으로 제출되었습니다.');
 
       setShowComplete(true);
 
@@ -211,7 +211,7 @@ const Recruit = () => {
           </div>
         </div>
       </div>
-      {showComplete && (
+      {/*{showComplete && (
         <div className="popup-overlay">
           <div className="popup-content">
             <button className="close" onClick={() => setShowComplete(false)}>
@@ -224,6 +224,7 @@ const Recruit = () => {
           </div>
         </div>
       )}
+        */}
 
     </div>
   );

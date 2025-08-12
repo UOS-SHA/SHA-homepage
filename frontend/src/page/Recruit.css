@@ -2,7 +2,7 @@ html, body {
   background-color: black;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 .recruit-container {
@@ -20,20 +20,19 @@ html, body {
 }
 
 .word-box {
-    margin-left: 95px;
-    margin-top: 100px; 
+    margin-left: 60px;
+    margin-top: 90px; 
     position: fixed;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    background-color: black;
+    gap: 20px;
 }
 
 .title {
     width: 440px;
     color: #FFF;
     font-family: Pretendard;
-    font-size: 48px;
+    font-size: 43px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -41,13 +40,13 @@ html, body {
 
 
 .info {
-    width: 440px;
+    width: 380px;
     color: #FFF;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 14.5px;
     font-style: normal;
     font-weight: 400;
-    line-height: 32px; /* 177.778% */
+    line-height: 28px; /* 177.778% */
 }
 
 .line {
@@ -80,7 +79,7 @@ html, body {
 
 .fillout p {
     margin-top: 90px;
-    margin-left: 10px;
+    margin-left: 25px;
     font-size: 14px;
     color: white;
 }
@@ -199,7 +198,7 @@ html, body {
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: normal;
+    line-height: 26px;
 }
 
 .input-box2 {
@@ -366,7 +365,7 @@ html, body {
 .close {
     background-color: #1F1F1F;
     position: absolute;
-    right: 23px;
+    right: 18px;
     top: 15px;
     width: 25px;
     height: auto;
@@ -380,20 +379,20 @@ html, body {
 
 .real-close {
     background-color: transparent;
-    width: 32px;
+    width: 25px;
     height: auto;
 }
 
 .check-icon {
     position: absolute;
-    left: 210px;
-    top: 25%;
+    left: 205px;
+    top: 27%;
     width: 120px;
     height: auto;
 }
 
 .real-check {
-    width: 120px;
+    width: 100px;
     height: auto;
 }
 
@@ -406,6 +405,6 @@ html, body {
     font-family: Pretendard;
     font-size: 23px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     line-height: normal;
 }
