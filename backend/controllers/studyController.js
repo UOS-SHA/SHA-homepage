@@ -33,7 +33,7 @@ exports.getCategory = async (req, res) => {
 
         const categoryData = await StudyCategory.findAll({
             where: { semesterId: semesterInstance.id},
-            attributes: ['id', 'name'],
+            attributes: ['id', 'name', 'comment'],
         });
 
         return res.json(categoryData);
