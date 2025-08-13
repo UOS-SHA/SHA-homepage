@@ -22,7 +22,7 @@ exports.createCategory = async (req, res) => {
 
     try {
         const { semester } = req.params;
-        const { name, url } = req.body;
+        const { name, comment } = req.body;
 
         const semesterEntry = await StudySemester.findOne({
             where: { name: semester }
@@ -36,7 +36,7 @@ exports.createCategory = async (req, res) => {
 
         await StudyCategory.create({
             name,
-            url,
+            comment,
             semesterId: semesterEntry.id
         });
 
@@ -120,11 +120,11 @@ exports.updateSemester = async (req, res) => {
 exports.updateCategory = async (req, res) => {
 
     try {
-        const { id, name, url } = req.body;
+        const { id, name, comment } = req.body;
 
         const updateFields = {};
         if (name !== undefined) updateFields.name = name;
-        if (url !== undefined) updateFields.url = url;
+        if (comment !== undefined) updateFields.comment = comment;
 
         const [updatedCount] = await StudyCategory.update(updateFields, {
             where: { id }

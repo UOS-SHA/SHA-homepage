@@ -12,6 +12,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true
         },
+      comment: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+        unique: false
+      },
     }, {
       timestamps: true
   });
