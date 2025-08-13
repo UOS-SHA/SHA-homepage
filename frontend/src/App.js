@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './page/Home';
 import Member from './page/Member';
 import Study from './page/Study';
@@ -12,9 +12,9 @@ import AdminCate from './page/AdminCate';
 import AdminWeek from './page/AdminWeek';
 import AdminUsers from './page/AdminUsers';
 
-function App(){
+function App() {
   return (
-    <Router basename="/SHA-homepage">
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/members" element={<Member />} />
