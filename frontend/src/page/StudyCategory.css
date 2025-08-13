@@ -1,6 +1,90 @@
+.cate-word-box {
+    position: relative;
+    margin-left: 60px;
+    margin-top: 90px; 
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cate-info {
+    width: 440px;
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px; /* 177.778% */
+}
+
+.img-right {
+    position: absolute;
+    top: -20px;
+    left: -5px;
+    margin-top: 5px;
+    width: auto;
+    height: 35px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    transform: rotate(-90deg);
+}
+
+.img-right.rotated {
+    transform: rotate(-180deg);
+}
+
+.accordion-link {
+    position: relative; /* 기준점이 되어야 함 */
+    display: inline-block;
+}
+
+.accordion-detail-link {
+    position: absolute;
+    top: -8px;
+    left: 40px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 23px;
+    max-width: 400px;
+    animation: fadeIn 0.8s ease;
+    background: rgba(0, 0, 0, 0.4); /* 선택사항 */
+}
+
+.accordion-detail-link.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+.pt-link {
+    position: absolute;
+    left: 0px;
+    top: 190px;
+    width: 440px;
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px; /* 177.778% */
+}
+
 .word-weeklyplan {
     margin-top: 80px;
-    margin-left: 30px;
+    margin-left: 25px;
     color: rgba(255, 255, 255, 0.77);
     font-family: Pretendard;
     font-size: 14px;
@@ -19,7 +103,7 @@
 .week p {
     color: #FFF;
     font-family: Pretendard;
-    font-size: 26px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -50,6 +134,7 @@
 }
 
 .weekinfo-box {
+    position: relative;
     display: flex;
     flex-direction: row;
     gap: 30px;
@@ -58,10 +143,12 @@
 }
 
 .weekinfo-label {
-    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 30px;
     margin-left: 150px;
     width: 80px;
-    height: 230px;
+    height: 180px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -72,7 +159,7 @@
     margin-top: 0;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
 }
 
 .word-juje {
@@ -109,12 +196,14 @@
     height: 180px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 27px;
 }
 
 .juje-sangse2 {
-    margin-top: 0;
+    position: absolute;
+    top: 55px;
+    left: 300px;
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -147,11 +236,15 @@
     line-height: normal;
 }
 
+
 .cate-back-button {
+    position: absolute;
+    left: 50px;
+    bottom: 100px;
     width: 80px;
     height: 80px;
     margin-left: -20px;
-    margin-top: 191px;
+    margin-top: 225px;
 }
 
 .cate-back-button:hover {
@@ -159,6 +252,8 @@
 }
 
 .cate-back {
-    width: 80px;
+    width: 70px;
     height: auto;
 }
+
+

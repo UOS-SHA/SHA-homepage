@@ -22,7 +22,9 @@ const Home = () => {
   return (
     <div className="wholearea">
       <div className="top-bar">
-        <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
+        <Link to="/" className="logo-wrapper">
+          <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
+        </Link>
         <div className="nav-content">
           <div className="menu">
             <NavLink
@@ -69,7 +71,7 @@ const Home = () => {
       </div>
       <div className="home-container">
         <div className="video-box">
-          <video src={`${process.env.PUBLIC_URL}/homeanimation.mp4`} autoPlay muted loop playsInline />
+          <video src={`${process.env.PUBLIC_URL}/homeanimation.mp4`} preload="auto" autoPlay muted loop playsInline />
         </div>
       </div>
       <div className="mouse">

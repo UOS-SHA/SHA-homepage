@@ -9,6 +9,8 @@ import './Study.css';
 import './StudyDetail.css';
 import { useParams } from 'react-router-dom';
 
+
+
 const StudyDetail = () => {
   const { semesterId } = useParams();
   const navigate = useNavigate();
@@ -16,9 +18,18 @@ const StudyDetail = () => {
 
   useEffect(() => { 
     //백엔드 학기당 카테고리 리스트, url 수정해야함
-    axios.get(`/api/study/${semesterId}/categories`)
-      .then(res => setCategories(res.data))
-      .catch(err => console.error(err));
+    axios.get(`http://localhost:8080/study/${semesterId}`)
+      .then(res => {
+        if (res.data && res.data.length > 0) {
+          setCategories(res.data);
+        } else {
+          setCategories([]);
+        }
+      })
+      .catch(err => {
+        console.error('카테고리 불러오기 실패', err);
+        setCategories([]);
+      });
   }, [semesterId]);
 
    return (
@@ -74,34 +85,32 @@ const StudyDetail = () => {
               <div className="word-box">
                   <div className="title">STUDY LOG</div>
                   <div className="info">
-                    <p>SHA는 정보보안의 다양한 분야에 대한 스터디를 운영하였습니다. <br />
+                    <p>SHA는 정보보안의 다양한 분야에 대한 스터디를 운영하였습니다.
                       시스템 해킹, 웹 해킹, 리버싱 등을 주제로 이론 학습과 실습을 병행하며, 보안에 대한 이해도를 심화시켰습니다. 
                       또한 CTF 문제 풀이와 발표 중심의 세션을 통해 팀원 간의 지식 공유와 협업 역량을 강화하였습니다. </p>
   
                   <p>지금, 새로운 도전과 배움의 시작에 함께하세요!</p>
                   </div>
-                  <div className="back-button" onClick={() => navigate(-1)}>
+              </div>
+              <div className="back-button" onClick={() => navigate(-1)}>
                     <img src={`${process.env.PUBLIC_URL}/back.png`} alt="back" className="back" />
                   </div>
-              </div>
           </div>
           <div className="line"></div>
           <div className="study-sheet">
               <div className="study-fillout"></div>
               <div className="study-line2"></div>
               <div className="scroll-box">
-                {/*백엔드 연결할 때!! 아래는 스타일 보려고 }
                 {categories.map((category, index) => (
                   <React.Fragment key={category.id}>
-                    <Link to={`/study/${semesterId}/${category.id}`} className="semester">
-                      <div className="semester-label">{category.label}</div>
+                    <Link to={`/study/${semesterId}/${category.name}`} className="semester">
+                      <div className="semester-label">{category.name}</div>
                     </Link>
                     {index < categories.length - 1 && <div className="study-line3"></div>}
                   </React.Fragment>
                 ))}
-                  */}
 
-                {/* 스타일 맞추려고 하드코딩 */}
+                {/* 스타일 맞추려고 하드코딩 
                 <Link to={`/study/${semesterId}/web`} className="semester">
                   <div className="semester-label">Web</div> 
                 </Link>
@@ -114,7 +123,7 @@ const StudyDetail = () => {
                   <div className="semester-label">System pwnable</div> 
                 </Link>
                 <div className="study-line3"></div>
-  
+                */}
               </div>
           </div>
         </div>

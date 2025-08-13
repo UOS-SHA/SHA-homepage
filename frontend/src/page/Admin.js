@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import AccordionItem from './AccordionItem';
 import axios from 'axios';
 import './Admin.css';
+import AdminBoard from './AdminBoard.js';
 
 
 
@@ -13,6 +15,7 @@ const Admin = () => {
     const [id, setId]= useState('');
     const [pw, setPw] = useState('');
     const [error, setError]= useState('');
+    const navigate = useNavigate();
 
 
     //todo: 로그인 성공 시 토큰 생성 및 저장 처리하기
@@ -23,25 +26,29 @@ const Admin = () => {
             return;
         }
 
-        //임시 로그인
+        /*
         const tempId= 'admin';
         const tempPw= '1234';
 
         if (id === tempId && pw === tempPw) {
             alert('임시 로그인 성공~');
             setError('');
+            navigate('/admin/board');
             return;
         }
+        */
         
         try {
-            const response = await axios.post('/api/login', {
-                id,
-                pw
+            const response = await axios.post('http://localhost:8080/admin', {
+                username: id,
+                password: pw
             });
 
-            if (response.data.success) {
+            if (response.data.isAdmin) {
+                localStorage.setItem('adminToken', response.data.token);
                 alert('로그인 성공');
-                // 추후에 페이지 이동 넣기
+                setError('');
+                navigate('/admin/board');
             } else {
                 setError(response.data.message || '아이디 또는 비밀번호가 틀렸습니다.');
             }

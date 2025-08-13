@@ -1,22 +1,16 @@
 const { StudySemester, StudyCategory, StudyWeek } = require('../models');
 
 exports.createSemester = async (req, res) => {
-
     try {
         const { name } = req.body;
-
-        await StudySemester.create({ name });
-
-        
-        res.status(201).json({ message: '학기 생성 완료' });
-
-
-
-    } catch(err) {
+        const newSemester = await StudySemester.create({ name }); // 생성된 객체 받기
+        res.status(201).json(newSemester); // id 포함 응답
+    } catch (err) {
         console.error("에러: ", err);
         res.status(500).json({ message: '학기 생성 실패', error: err.message });
     }
-}
+};
+
 
 exports.createCategory = async (req, res) => {
 
