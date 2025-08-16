@@ -8,6 +8,8 @@ import './Member.css';
 import '../Home.css';
 
 const Member = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+    
  
   return (
     <div className="wholearea">
@@ -58,7 +60,229 @@ const Member = () => {
             </NavLink>
           </div>
         </div>
+        <div className="mobile-menu" onClick={() => setIsMenuOpen(true)}>
+          <img src={`${process.env.PUBLIC_URL}/menubar.png`} alt="menubar" className="menubar" />
+        </div>
+        {isMenuOpen && (
+          <div className="mobile-menu-content">
+            <button className="close-btn" onClick={() => setIsMenuOpen(false)}>
+              <img src={`${process.env.PUBLIC_URL}/close2.png`} alt="close" className="close-icon" />
+            </button>
+            <div className="mobile-nav-content">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+                }
+                end
+              >
+                HOME
+              </NavLink>
+              <NavLink
+                to="/members"
+                className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+                }
+              >
+                MEMBER
+              </NavLink>
+              <NavLink
+                to="/study"
+                className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+                }
+              >
+                STUDY
+              </NavLink>
+              <NavLink
+                to="/recruit"
+                className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+                }
+              >
+                RECRUIT
+              </NavLink>
+            </div>
+          </div>
+        )}        
       </div>
+      {/*모바일 버전*/}
+      <div className="mobile-recruit-container">
+        <div className="mobile-JoinUs">
+          <div className="mobile-word-box">
+            <div className="mobile-title">ABOUT US</div>
+            <div className="mobile-info">
+                <p>같은 목표를 향해 함께 나아가는 SHA의 팀원들을 소개합니다.
+                SHA는 시스템 해킹, 웹 해킹, 리버싱, 포렌식 등 다양한 분야에 관심 있는 팀원들이 모여, 
+                    CTF 대회와 보안 프로젝트를 통해 함께 실력을 키워가고 있습니다. 
+                    각자의 관심사는 다르지만, 서로의 전문성이 모여 더 나은 결과를 만들어내기 위해 협력합니다.
+                    팀원 모두가 학습자이자 기여자로서, 함께 배우고 성장하는 보안 커뮤니티를 만들어가고 있습니다.</p>
+            </div>
+          </div>
+        </div>
+        <div className="mobile-recruit-sheet">
+          <div className="mobile-fillout">
+            <p>INDIVIDUAL PROFILES</p>
+          </div>
+          <div className="mobile-line2"></div>
+          <div className="mobile-profile-scroll-box">
+            <div className="mobile-profile-container">
+                <div className="mobile-profile-box">
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과20</div>
+                            <div className="mobile-profile-name">이성민</div>
+                        </div>  
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 이성민입니다."
+                        </div>
+                    </div>
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과20</div>
+                            <div className="mobile-profile-name">이성민</div>
+                        </div>  
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 이성민입니다."
+                        </div>
+                    </div>
+                </div>
+                <div className="mobile-profile-box">
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과20</div>
+                            <div className="mobile-profile-name">이성민</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 이성민입니다."
+                        </div>
+                    </div>
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과20</div>
+                            <div className="mobile-profile-name">이성민</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 이성민입니다."
+                        </div>
+                    </div>
+                </div>
+                <div className="mobile-profile-box">
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과20</div>
+                            <div className="mobile-profile-name">이성민</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 이성민입니다."
+                        </div>
+                    </div>
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과20</div>
+                            <div className="mobile-profile-name">이성민</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 이성민입니다."
+                        </div>
+                    </div>
+                </div>
+                <div className="mobile-profile-box">
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과20</div>
+                            <div className="mobile-profile-name">이성민</div>
+                        </div>  
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 이성민입니다."
+                        </div>
+                    </div>
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과20</div>
+                            <div className="mobile-profile-name">이성민</div>
+                        </div>  
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 이성민입니다."
+                        </div>
+                    </div>
+                </div>
+                <div className="mobile-profile-box">
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과20</div>
+                            <div className="mobile-profile-name">이성민</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 이성민입니다."
+                        </div>
+                    </div>
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과20</div>
+                            <div className="mobile-profile-name">이성민</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 이성민입니다."
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/*컴퓨터 버전*/}
       <div className="recruit-container">
         <div className="JoinUs">
           <div className="word-box">
@@ -83,8 +307,8 @@ const Member = () => {
                 <div className="profile-box">
                     <div className="individual">
                         <div className="name-major">
-                            <div className="profile-major">컴과24</div>
-                            <div className="profile-name">김민주</div>
+                            <div className="profile-major">컴과20</div>
+                            <div className="profile-name">이성민</div>
                         </div> 
                         <div className="insta-git">
                             <div className="insta">
@@ -95,18 +319,110 @@ const Member = () => {
                             </div>
                         </div> 
                         <div className="position-link">
-                            <div className="position">관심분야: web, crypto</div>
+                            <div className="position">관심분야: crypto</div>
                             <div className="profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="individual-line"></div> 
                         <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 김민주입니다."
+                            개발자 이성민입니다."
+                        </div>
+                    </div>
+                    <div className="individual">
+                        <div className="name-major">
+                            <div className="profile-major">컴과25</div>
+                            <div className="profile-name">안서진</div>
+                        </div> 
+                        <div className="insta-git">
+                            <div className="insta">
+                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
+                            </div>
+                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
+                            </div>
+                        </div> 
+                        <div className="position-link">
+                            <div className="position">관심분야: web, system, reversing</div>
+                            <div className="profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="individual-line"></div> 
+                        <div className="hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 안서진입니다."
+                        </div>
+                    </div>
+                </div>
+                <div className="profile-box">
+                    <div className="individual">
+                        <div className="name-major">
+                            <div className="profile-major">컴과25</div>
+                            <div className="profile-name">이윤성</div>
+                        </div> 
+                        <div className="insta-git">
+                            <div className="insta">
+                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
+                            </div>
+                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
+                            </div>
+                        </div> 
+                        <div className="position-link">
+                            <div className="position">관심분야: web, system, reversing</div>
+                            <div className="profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="individual-line"></div> 
+                        <div className="hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 이윤성입니다."
+                        </div>
+                    </div>
+                    <div className="individual">
+                        <div className="name-major">
+                            <div className="profile-major">컴과20</div>
+                            <div className="profile-name">오유찬</div>
+                        </div> 
+                        <div className="insta-git">
+                            <div className="insta">
+                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
+                            </div>
+                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
+                            </div>
+                        </div> 
+                        <div className="position-link">
+                            <div className="position">관심분야: web</div>
+                            <div className="profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="individual-line"></div> 
+                        <div className="hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 오유찬입니다."
+                        </div>
+                    </div>
+                </div>
+                <div className="profile-box">
+                    <div className="individual">
+                        <div className="name-major">
+                            <div className="profile-major">전전컴21</div>
+                            <div className="profile-name">한건우</div>
+                        </div> 
+                        <div className="insta-git">
+                            <div className="insta">
+                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
+                            </div>
+                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
+                            </div>
+                        </div> 
+                        <div className="position-link">
+                            <div className="position">관심분야: web, system, reversing, crypto</div>
+                            <div className="profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="individual-line"></div> 
+                        <div className="hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 한건우입니다."
                         </div>
                     </div>
                     <div className="individual">
                         <div className="name-major">
                             <div className="profile-major">컴과24</div>
-                            <div className="profile-name">김민주</div>
+                            <div className="profile-name">성수현</div>
                         </div> 
                         <div className="insta-git">
                             <div className="insta">
@@ -117,12 +433,58 @@ const Member = () => {
                             </div>
                         </div> 
                         <div className="position-link">
-                            <div className="position">관심분야: web, crypto</div>
+                            <div className="position">관심분야: web</div>
                             <div className="profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="individual-line"></div> 
                         <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 김민주입니다."
+                            개발자 성수현입니다."
+                        </div>
+                    </div>
+                </div>
+                <div className="profile-box">
+                    <div className="individual">
+                        <div className="name-major">
+                            <div className="profile-major">기계24</div>
+                            <div className="profile-name">김민찬</div>
+                        </div> 
+                        <div className="insta-git">
+                            <div className="insta">
+                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
+                            </div>
+                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
+                            </div>
+                        </div> 
+                        <div className="position-link">
+                            <div className="position">관심분야: system</div>
+                            <div className="profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="individual-line"></div> 
+                        <div className="hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 김민찬입니다."
+                        </div>
+                    </div>
+                    <div className="individual">
+                        <div className="name-major">
+                            <div className="profile-major">전전컴25</div>
+                            <div className="profile-name">조현재</div>
+                        </div> 
+                        <div className="insta-git">
+                            <div className="insta">
+                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
+                            </div>
+                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
+                            </div>
+                        </div> 
+                        <div className="position-link">
+                            <div className="position">관심분야: web</div>
+                            <div className="profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="individual-line"></div> 
+                        <div className="hanmadi">"경험으로 나아가는, <br/> 
+                            개발자 조현재입니다."
                         </div>
                     </div>
                 </div>
@@ -130,7 +492,7 @@ const Member = () => {
                     <div className="individual">
                         <div className="name-major">
                             <div className="profile-major">컴과24</div>
-                            <div className="profile-name">김민주</div>
+                            <div className="profile-name">김주현</div>
                         </div> 
                         <div className="insta-git">
                             <div className="insta">
@@ -141,18 +503,18 @@ const Member = () => {
                             </div>
                         </div> 
                         <div className="position-link">
-                            <div className="position">관심분야: web, crypto</div>
+                            <div className="position">관심분야: web, system, reversing</div>
                             <div className="profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="individual-line"></div> 
                         <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 김민주입니다."
+                            개발자 김주현입니다."
                         </div>
                     </div>
                     <div className="individual">
                         <div className="name-major">
-                            <div className="profile-major">컴과24</div>
-                            <div className="profile-name">김민주</div>
+                            <div className="profile-major">건축25</div>
+                            <div className="profile-name">김윤지</div>
                         </div> 
                         <div className="insta-git">
                             <div className="insta">
@@ -163,150 +525,12 @@ const Member = () => {
                             </div>
                         </div> 
                         <div className="position-link">
-                            <div className="position">관심분야: web, crypto</div>
+                            <div className="position">관심분야: web</div>
                             <div className="profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="individual-line"></div> 
                         <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 김민주입니다."
-                        </div>
-                    </div>
-                </div>
-                <div className="profile-box">
-                    <div className="individual">
-                        <div className="name-major">
-                            <div className="profile-major">컴과24</div>
-                            <div className="profile-name">김민주</div>
-                        </div> 
-                        <div className="insta-git">
-                            <div className="insta">
-                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
-                            </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
-                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
-                            </div>
-                        </div> 
-                        <div className="position-link">
-                            <div className="position">관심분야: web, crypto</div>
-                            <div className="profile-link">https://github.com/minnjuuu</div>
-                        </div> 
-                        <div className="individual-line"></div> 
-                        <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 김민주입니다."
-                        </div>
-                    </div>
-                    <div className="individual">
-                        <div className="name-major">
-                            <div className="profile-major">컴과24</div>
-                            <div className="profile-name">김민주</div>
-                        </div> 
-                        <div className="insta-git">
-                            <div className="insta">
-                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
-                            </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
-                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
-                            </div>
-                        </div> 
-                        <div className="position-link">
-                            <div className="position">관심분야: web, crypto</div>
-                            <div className="profile-link">https://github.com/minnjuuu</div>
-                        </div> 
-                        <div className="individual-line"></div> 
-                        <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 김민주입니다."
-                        </div>
-                    </div>
-                </div>
-                <div className="profile-box">
-                    <div className="individual">
-                        <div className="name-major">
-                            <div className="profile-major">컴과24</div>
-                            <div className="profile-name">김민주</div>
-                        </div> 
-                        <div className="insta-git">
-                            <div className="insta">
-                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
-                            </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
-                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
-                            </div>
-                        </div> 
-                        <div className="position-link">
-                            <div className="position">관심분야: web, crypto</div>
-                            <div className="profile-link">https://github.com/minnjuuu</div>
-                        </div> 
-                        <div className="individual-line"></div> 
-                        <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 김민주입니다."
-                        </div>
-                    </div>
-                    <div className="individual">
-                        <div className="name-major">
-                            <div className="profile-major">컴과24</div>
-                            <div className="profile-name">김민주</div>
-                        </div> 
-                        <div className="insta-git">
-                            <div className="insta">
-                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
-                            </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
-                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
-                            </div>
-                        </div> 
-                        <div className="position-link">
-                            <div className="position">관심분야: web, crypto</div>
-                            <div className="profile-link">https://github.com/minnjuuu</div>
-                        </div> 
-                        <div className="individual-line"></div> 
-                        <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 김민주입니다."
-                        </div>
-                    </div>
-                </div>
-                <div className="profile-box">
-                    <div className="individual">
-                        <div className="name-major">
-                            <div className="profile-major">컴과24</div>
-                            <div className="profile-name">김민주</div>
-                        </div> 
-                        <div className="insta-git">
-                            <div className="insta">
-                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
-                            </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
-                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
-                            </div>
-                        </div> 
-                        <div className="position-link">
-                            <div className="position">관심분야: web, crypto</div>
-                            <div className="profile-link">https://github.com/minnjuuu</div>
-                        </div> 
-                        <div className="individual-line"></div> 
-                        <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 김민주입니다."
-                        </div>
-                    </div>
-                    <div className="individual">
-                        <div className="name-major">
-                            <div className="profile-major">컴과24</div>
-                            <div className="profile-name">김민주</div>
-                        </div> 
-                        <div className="insta-git">
-                            <div className="insta">
-                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
-                            </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
-                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
-                            </div>
-                        </div> 
-                        <div className="position-link">
-                            <div className="position">관심분야: web, crypto</div>
-                            <div className="profile-link">https://github.com/minnjuuu</div>
-                        </div> 
-                        <div className="individual-line"></div> 
-                        <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 김민주입니다."
+                            개발자 김윤지입니다."
                         </div>
                     </div>
                 </div>

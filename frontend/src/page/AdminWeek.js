@@ -13,6 +13,7 @@ import AccordionLink from './AccordionLink';
 import Study from './Study';
 
 const AdminWeek = () => {
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const token = localStorage.getItem('adminToken');
 
   const { semesterId, category } = useParams();
@@ -25,36 +26,9 @@ const AdminWeek = () => {
   const isRecruitActive = location.pathname.startsWith('/admin/users');
 
 
-
-  const categoryContent = {
-  Web: {
-    title: 'Web',
-    description: `2025-1학기에서 다룬 내용을 바탕으로,
-    다양한 웹 취약점과 익스플로잇 기법을 심화 학습하였습니다.`,
-    link: 'https://notion.link1'
-  },
-  Reversing: {
-    title: 'Reversing',
-    description: `2025-1학기의 기초 내용을 확장하여,
-    리버스 엔지니어링에서 활용되는 핵심 분석 기법들을 실습 중심으로 학습하였습니다.`,
-    link: 'https://notion.link2'
-  },
-  System: {
-    title: 'Pwnable',
-    description: `2025-1학기의 기초 내용을 확장하여,
-    리버스 엔지니어링에서 활용되는 핵심 분석 기법들을 실습 중심으로 학습하였습니다.`,
-    link: 'https://notion.link3'
-  }
-};
-
-  // 현재 선택된 카테고리 content 가져오기
-  const content = categoryContent[category] || {
-    title: 'Unknown Category',
-    description: '해당 카테고리에 대한 정보가 없습니다.',
-  };
-
-  const [categoryDesc, setCategoryDesc] = useState(content.description);
-  const [editableDesc, setEditableDesc] = useState(content.description);
+  const [categoryId, setCategoryId] = useState(null);
+  const [categoryComment, setCategoryComment] = useState('');
+  const [editableComment, setEditableComment] = useState('');
 
   //수정 여부
   const [isEditing, setIsEditing] = useState(false);
@@ -65,17 +39,31 @@ const AdminWeek = () => {
 
   const handleEdit = () => {
     setEditableWeeks([...weeks]);
+    setEditableComment(categoryComment);
     setIsEditing(true);
   };
 
   const handleSave = async () => {
-  try {
+
+     if (!categoryId) {
+    alert('카테고리 정보를 불러오는 중입니다. 잠시 후 다시 시도해주세요.');
+    return;
+  }
+    try {
+
+    await axios.patch(
+        `${SERVER_URL}/admin/board/${semesterId}`,
+        { id: categoryId,
+          comment: editableComment},
+        { headers: { Authorization: `Bearer ${token}` } }
+    );
+
     const newWeeks = editableWeeks.filter(w => !w.id);
     const existingWeeks = editableWeeks.filter(w => w.id);
 
     for (let w of newWeeks) {
       const res = await axios.post(
-        `http://localhost:8080/admin/board/${semesterId}/${category}`,
+        `${SERVER_URL}/admin/board/${semesterId}/${category}`,
         {
           StudyCategory: {name: category},
           weekNum: w.weekNum,
@@ -91,7 +79,7 @@ const AdminWeek = () => {
 
     for (let w of existingWeeks) {
       await axios.patch(
-        `http://localhost:8080/admin/board/${semesterId}/${category}`,
+        `${SERVER_URL}/admin/board/${semesterId}/${category}`,
         {
           StudyCategory: {name: category},
           weekNum: w.weekNum,
@@ -116,7 +104,7 @@ const AdminWeek = () => {
 
 
 
-  // 주차별 내용 변경 핸들러 (index별 주제/상세 수정)
+  // 주차별 내용 변경 (index별 주제/상세 수정)
   const handleWeekChange = (index, field, value) => {
     const updated = [...editableWeeks];
     updated[index] = {
@@ -128,14 +116,25 @@ const AdminWeek = () => {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/study/${semesterId}/${category}`)
-      .then(res => {
-        console.log('받은 데이터:', res.data);
-        setWeeks(res.data || []);
-        setEditableWeeks(res.data || []);
-      })
-      .catch(console.error);
-  }, [semesterId, category]);
+
+  axios.get(`${SERVER_URL}/study/${semesterId}/${category}`, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(res => {
+      const data = res.data;
+
+      if (data.category) {
+        setCategoryId(data.category.id);
+        setCategoryComment(data.category.comment || '');
+        setEditableComment(data.category.comment || '');
+      }
+
+      setWeeks(data.weeks || []);
+      setEditableWeeks(data.weeks || []);
+    })
+    .catch(console.error);
+}, [semesterId, category]);
+
   
 
   //팝업
@@ -199,16 +198,16 @@ const AdminWeek = () => {
       <div className="recruit-container">
         <div className="JoinUs">
             <div className="cate-word-box">
-              <div className="title">{content.title}</div>
+              <div className="title">{category}</div>
               {isEditing ? (
                 <textarea
                   className="cate-info-input"
-                  value={editableDesc}
-                  onChange={(e) => setEditableDesc(e.target.value)}
+                  value={editableComment}
+                  onChange={(e) => setEditableComment(e.target.value)}
                 />
               ) : (
                 <div className="cate-info">
-                  {content.description.split('\n').map((line, index) => (
+                  {categoryComment.split('\n').map((line, index) => (
                     <React.Fragment key={index}>
                       {line}
                       <br />

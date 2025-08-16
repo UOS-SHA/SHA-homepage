@@ -1,6 +1,18 @@
 .users-container {
     margin-top: 88px;
+    max-height: calc(100vh - 88px);
+    overflow: auto;
+
+    /* 스크롤바 안 보이게 */
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+
 }
+
+.users-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
 
 .users-index {
     background-color: black;
@@ -11,6 +23,7 @@
     gap: 50px;
     justify-content: center;
     align-items: center;
+
 }
 
 .number1 {

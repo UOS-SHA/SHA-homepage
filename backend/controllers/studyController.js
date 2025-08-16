@@ -33,7 +33,7 @@ exports.getCategory = async (req, res) => {
 
         const categoryData = await StudyCategory.findAll({
             where: { semesterId: semesterInstance.id},
-            attributes: ['id', 'name', 'comment'],
+            attributes: ['id', 'name'],
         });
 
         return res.json(categoryData);
@@ -72,15 +72,16 @@ exports.getWeek = async (req, res) => {
                 categoryId: categoryInstance.id
             },
             attributes: ['weekNum', 'title', 'description'],
-            include: [
-                {
-                    model: StudyCategory,
-                    attributes: ['name']
-                }
-            ]
         });
 
-        return res.json(weekData);
+        return res.json({
+            category: {
+                id: categoryInstance.id,
+                name: categoryInstance.name,
+                comment: categoryInstance.comment || ''
+            },
+            weeks: weekData || []
+        });
 
     } catch (err) {
         console.error('에러: ', err);  // 나중에 지울거

@@ -13,6 +13,7 @@ import './AdminUsers.css';
 //todo2: 백엔드랑 연결하는 코드 짜기
 
 const AdminUsers = () => {
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const [userList, setUserList] = useState([]);
 
   const location = useLocation();
@@ -41,7 +42,7 @@ const AdminUsers = () => {
           alert('누구세요?');
           return;
         }
-        const res = await axios.get('http://localhost:8080/admin/users/',
+        const res = await axios.get(`${SERVER_URL}/admin/users/`,
           {headers: {
             Authorization: `Bearer ${token}`,
           }}

@@ -17,6 +17,179 @@
     display: none;
 }
 
+@media (max-width: 768px) {
+
+
+    .mobile-profile-scroll-box {
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        margin-top: 0;
+        padding-bottom: 60px;
+    }
+
+    .mobile-profile-container {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        overflow-y: hidden; 
+        overflow-x: hidden;
+    }
+
+    .mobile-profile-box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    overflow-y: hidden; 
+    overflow-x: hidden;
+}
+
+.mobile-individual {
+    position: relative;
+    width: 160px;
+    height: 165px;
+    border-radius: 10.59px;
+border: 0.5px solid #646464;
+background: #080808;
+box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
+}
+
+.mobile-name-major {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    width: 80%;
+    height: auto;
+}
+
+.mobile-profile-major {
+    width: 60px;
+    height: 25px;
+    border-radius: 8px;
+    background: #282828;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px;
+    margin-left: 3px;
+}
+
+.mobile-profile-name {
+    margin-top: 13px;
+    margin-left: 50px;
+    color: white;
+    text-align: left;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 50px;
+}
+
+.mobile-insta-git {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+}
+
+.mobile-insta {
+    width: 20px;
+    height: auto;
+}
+
+.mobile-git {
+    margin-top: -5px;
+    width: 30px;
+    height: auto;
+}
+
+.mobile-individual .instalogo {
+    width: 20px;
+    height: auto;
+}
+
+.mobile-individual .gitlogo {
+    width: 30px;
+    height: auto;
+}
+
+.mobile-position-link {
+    position: absolute;
+    bottom: 10px;
+    left: 16px;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.mobile-position {
+    color: #5DFFC6;
+    text-align: left;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15px;
+}
+
+.mobile-profile-link {
+    color: #5DFFC6;
+    text-align: right;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.mobile-individual .mobile-individual-line {
+    position: absolute;
+    left: 15px;
+    top: 105px;
+    width: 80%;
+    height: 0.7px;
+    background: linear-gradient(90deg, rgba(32, 32, 32, 0.13) 0%, #FFF 50%, rgba(31, 31, 31, 0.29) 100%);
+}
+
+.hanmadi {
+    position: absolute;
+    left: 58px;
+    top: 196px;
+    width: 200px;
+    height: 50px;
+    color: #5DFFC6;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 30px; /* 153.222% */
+}
+
+
+}
+
 .profile-container {
     width: 700px;
     height: 100%;

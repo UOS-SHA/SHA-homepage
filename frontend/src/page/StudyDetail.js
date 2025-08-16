@@ -12,13 +12,15 @@ import { useParams } from 'react-router-dom';
 
 
 const StudyDetail = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const { semesterId } = useParams();
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
 
   useEffect(() => { 
-    //백엔드 학기당 카테고리 리스트, url 수정해야함
-    axios.get(`http://localhost:8080/study/${semesterId}`)
+    axios.get(`${SERVER_URL}/study/${semesterId}`)
       .then(res => {
         if (res.data && res.data.length > 0) {
           setCategories(res.data);
@@ -35,7 +37,9 @@ const StudyDetail = () => {
    return (
       <div className="wholearea">
         <div className="top-bar">
-          <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
+          <Link to="/" className="logo-wrapper">
+            <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
+          </Link>
           <div className="nav-content">
             <div className="menu">
               <NavLink
@@ -79,7 +83,87 @@ const StudyDetail = () => {
               </NavLink>
             </div>
           </div>
+          <div className="mobile-menu" onClick={() => setIsMenuOpen(true)}>
+            <img src={`${process.env.PUBLIC_URL}/menubar.png`} alt="menubar" className="menubar" />
+          </div>
+          {isMenuOpen && (
+            <div className="mobile-menu-content">
+              <button className="close-btn" onClick={() => setIsMenuOpen(false)}>
+                <img src={`${process.env.PUBLIC_URL}/close2.png`} alt="close" className="close-icon" />
+              </button>
+              <div className="mobile-nav-content">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                  isActive ? "nav-link active-link" : "nav-link"
+                  }
+                  end
+                >
+                  HOME
+                </NavLink>
+                <NavLink
+                  to="/members"
+                  className={({ isActive }) =>
+                  isActive ? "nav-link active-link" : "nav-link"
+                  }
+                >
+                  MEMBER
+                </NavLink>
+                <NavLink
+                  to="/study"
+                  className={({ isActive }) =>
+                  isActive ? "nav-link active-link" : "nav-link"
+                  }
+                >
+                  STUDY
+                </NavLink>
+                <NavLink
+                  to="/recruit"
+                  className={({ isActive }) =>
+                  isActive ? "nav-link active-link" : "nav-link"
+                  }
+                >
+                  RECRUIT
+                </NavLink>
+              </div>
+            </div>
+          )}                          
         </div>
+        {/*모바일 버전 */}
+        <div className="mobile-recruit-container">
+          <div className="mobile-JoinUs">
+              <div className="mobile-word-box">
+                  <div className="mobile-title">STUDY LOG</div>
+                  <div className="mobile-info">
+                    <p>SHA는 정보보안의 다양한 분야에 대한 스터디를 운영하였습니다.
+                      시스템 해킹, 웹 해킹, 리버싱 등을 주제로 이론 학습과 실습을 병행하며, 보안에 대한 이해도를 심화시켰습니다. 
+                      또한 CTF 문제 풀이와 발표 중심의 세션을 통해 팀원 간의 지식 공유와 협업 역량을 강화하였습니다. </p>
+  
+                  <p>지금, 새로운 도전과 배움의 시작에 함께하세요!</p>
+                  </div>
+              </div>
+              <div className="mobile-back-button" onClick={() => navigate(-1)}>
+                    <img src={`${process.env.PUBLIC_URL}/back.png`} alt="back" className="back" />
+                  </div>
+          </div>
+          <div className="mobile-line"></div>
+          <div className="mobile-study-sheet">
+              <div className="mobile-study-fillout"></div>
+              <div className="mobile-study-line2"></div>
+              <div className="mobile-scroll-box">
+                {categories.map((category, index) => (
+                  <React.Fragment key={category.id}>
+                    <Link to={`/study/${semesterId}/${category.name}`} className="mobile-semester">
+                      <div className="mobile-semester-label">{category.name}</div>
+                    </Link>
+                    {index < categories.length - 1 && <div className="mobile-study-line3"></div>}
+                  </React.Fragment>
+                ))}
+              </div>
+          </div>
+        </div>
+
+        {/*컴퓨터 버전*/}
         <div className="recruit-container">
           <div className="JoinUs">
               <div className="word-box">
