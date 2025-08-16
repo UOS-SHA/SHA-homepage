@@ -127,7 +127,7 @@ const Home = () => {
           <video src={`${process.env.PUBLIC_URL}/homeanimation.mp4`} preload="auto" autoPlay muted loop playsInline />
         </div>
         <div className="video-box-mobile">
-          <video src={`${process.env.PUBLIC_URL}/mobileanimation.mp4`} preload="auto" autoPlay muted loop playsInline />
+          <video className="mobile-animation" src={`${process.env.PUBLIC_URL}/mobileanimation.webm`} preload="auto" autoPlay muted loop playsInline />
         </div>
       </div>
       <div className="mobile-section">
