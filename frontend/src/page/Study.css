@@ -60,3 +60,66 @@
     background-color: #A1A1A1;
 
 }
+
+@media (max-width: 768px) {
+    .mobile-study-sheet {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-study-fillout {
+    width: 100%;
+    height: 80px;
+    z-index: 800;
+    pointer-events: none;  /* ← 클릭 차단 안 함 */
+}
+
+.mobile-semester {
+    background-color: black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    flex-shrink: 0;
+    height: 100px;
+    overflow-x: hidden;
+    text-decoration: none;
+}
+
+.mobile-semester-label{
+    margin-left: 20px;
+    width: 100%;
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.mobile-semester:hover {
+  cursor: pointer;
+  transition: background 0.2s ease;
+  background-color: #2C2C2C;
+}
+ 
+
+
+.mobile-study-line2 {
+    width: 100%;
+    height: 0.5px;
+    background-color: #A1A1A1;
+}
+
+.mobile-study-line3 {
+    width: 100%;
+    height: 0.7px;
+    background-color: #A1A1A1;
+    z-index: 999;
+}
+
+
+}

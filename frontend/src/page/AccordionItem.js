@@ -23,6 +23,26 @@ const AccordionItem = ({ title, detail }) => {
           {detail}
         </div>
       )}
+
+      <div className="mobile-hangeo">
+        <div className="mobile-hangeo-title">
+          <div className="mobile-real-title">{title}</div>
+          {detail && (
+            <img
+              className={`img-down ${isOpen ? 'rotated' : ''}`}
+              src={`${process.env.PUBLIC_URL}/down.png`}
+              alt="down"
+              onClick={() => setIsOpen(!isOpen)}
+            />
+          )}
+        </div>
+
+        {isOpen && (
+          <div className={`mobile-accordion-detail ${isOpen ? 'show' : ''}`}>
+            {detail}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

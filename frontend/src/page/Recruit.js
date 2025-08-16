@@ -6,6 +6,8 @@ import axios from 'axios';
 import './Recruit.css';
 
 const Recruit = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   const [links, setLinks] = useState(['']);
   const [showComplete, setShowComplete] = useState(false); //지원완료 팝업창
 
@@ -59,7 +61,8 @@ const Recruit = () => {
 
     console.log('전송할 데이터: ', allData);
 
-    const serverUrl = 'http://localhost:8080/recruit';
+    const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+    const serverUrl = `${SERVER_URL}/recruit`;
 
     try {
       const response = await axios.post(serverUrl, allData);
@@ -132,7 +135,130 @@ const Recruit = () => {
             </NavLink>
           </div>
         </div>
+        <div className="mobile-menu" onClick={() => setIsMenuOpen(true)}>
+          <img src={`${process.env.PUBLIC_URL}/menubar.png`} alt="menubar" className="menubar" />
+        </div>
+        {isMenuOpen && (
+          <div className="mobile-menu-content">
+            <button className="close-btn" onClick={() => setIsMenuOpen(false)}>
+              <img src={`${process.env.PUBLIC_URL}/close2.png`} alt="close" className="close-icon" />
+            </button>
+            <div className="mobile-nav-content">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+                }
+                end
+              >
+                HOME
+              </NavLink>
+              <NavLink
+                to="/members"
+                className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+                }
+              >
+                MEMBER
+              </NavLink>
+              <NavLink
+                to="/study"
+                className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+                }
+              >
+                STUDY
+              </NavLink>
+              <NavLink
+                to="/recruit"
+                className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+                }
+              >
+                RECRUIT
+              </NavLink>
+            </div>
+          </div>
+        )}
       </div>
+      {/*모바일 버전 */}
+      <div className="mobile-recruit-container">
+        <div className="mobile-JoinUs">
+          <div className="mobile-word-box">
+            <div className="mobile-title">JOIN US</div>
+            <div className="mobile-info">
+              <p>정보보안에 관심 있는 모든 분들을 환영합니다. <br />
+                함께 배우고 고민하며 성장하는 정보 보안 소모임 SHA에서 여러분의 열정을 펼쳐보세요.
+                다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다. <br />
+                지금, 새로운 도전과 배움의 시작에 함께하세요!</p></div>
+          </div>
+        </div>
+        <div className="mobile-recruit-sheet">
+          <div className="mobile-fillout">
+            <p>Fill out the form to become a member</p>
+          </div>
+          <div className="mobile-line2"></div>
+          <div className="mobile-scroll-box">
+            <div className="mobile-info-box">
+              <div className="mobile-label-box">
+                <div className="mobile-name">이름</div>
+                <div className="mobile-name">학과</div>
+                <div className="mobile-name">학번</div>
+                <div className="mobile-name">전화번호</div>
+              </div>
+              <div className="mobile-input-box">
+                <input className="mobile-input" type="text" value={formData.name}
+                  onChange={(e) => handleInputChange('name', e.target.value)} />
+                <input className="mobile-input" type="text" value={formData.major}
+                  onChange={(e) => handleInputChange('major', e.target.value)} />
+                <input className="mobile-input" type="text" value={formData.studentId}
+                  onChange={(e) => handleInputChange('studentId', e.target.value)} />
+                <input className="mobile-input" type="text" value={formData.phone}
+                  onChange={(e) => handleInputChange('phone', e.target.value)} />
+              </div>
+            </div>
+            <div className="mobile-line3"></div>
+            <div className="mobile-writing-box">
+              <div className="mobile-label-box2">
+                <div className="mobile-name2">소모임에 기대하는 바</div>
+                <div className="mobile-name2">다짐 한마디</div>
+              </div>
+              <div className="mobile-input-box2">
+                <textarea className="mobile-input2" value={formData.expectation}
+                  onChange={(e) => handleInputChange('expectation', e.target.value)} />
+                <textarea className="mobile-input2" value={formData.promise}
+                  onChange={(e) => handleInputChange('promise', e.target.value)} />
+              </div>
+            </div>
+            <div className="mobile-line4"></div>
+            <div className="mobile-link-box">
+              <div className="mobile-label-box3">
+                <div className="mobile-name3">개인 사이트</div>
+              </div>
+              <div className="mobile-input-box3">
+                {links.map((link, idx) => (
+                  <input key={idx} className="mobile-input3" value={link} onChange={(e) =>
+                    handleLinkChange(idx, e.target.value)
+                  } />
+                ))}
+
+                {links.length < 5 && (
+                  <div className="mobile-input3-add-button" onClick={handleAddLink}>
+                    <img src={`${process.env.PUBLIC_URL}/plus.png`} alt="플러스이미지" className="plus" />
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="mobile-line5"></div>
+            <div className="mobile-jiwon-box">
+              <button className="mobile-jiwon" onClick={handleSubmit}>
+                지원하기
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/*컴퓨터 버전 */}
       <div className="recruit-container">
         <div className="JoinUs">
           <div className="word-box">
@@ -140,8 +266,7 @@ const Recruit = () => {
             <div className="info">
               <p>정보보안에 관심 있는 모든 분들을 환영합니다. <br />
                 함께 배우고 고민하며 성장하는 정보 보안 소모임 SHA에서 여러분의 열정을 펼쳐보세요.
-                다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다. </p>
-
+                다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다.</p>
               <p>지금, 새로운 도전과 배움의 시작에 함께하세요!</p></div>
           </div>
         </div>

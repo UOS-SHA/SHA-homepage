@@ -18,7 +18,6 @@ body::-webkit-scrollbar {
 }
 
 .home-container {
-    min-width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,17 +27,19 @@ body::-webkit-scrollbar {
 
 .video-box {
     display: flex;
+    justify-content: center;
     width: 100%;
-    max-width: 1200px;
     margin: 50px auto; 
     overflow: hidden;
+    overflow-y: auto;
     border-radius: 16px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     margin-bottom: 20px;
 }
 
 .video-box video {
-    width: 100%;
+    margin-top: 10px;
+    width: 85%;
     height: auto;
     display: block;
     object-fit: cover;
@@ -57,6 +58,362 @@ body::-webkit-scrollbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        overflow: visible;
+        min-width: unset;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .top-bar {
+        width: 100%;
+        height: 60px;
+        transform: none;
+    }
+
+
+}
+
+.mobile-menu {
+    display: none !important
+}
+
+.mobile-menu-content {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    html, body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  overflow-x: visible;
+  overflow-y: visible; /* 세로 스크롤은 유지 */
+  scrollbar-width: none; /* Firefox */
+}
+    .top-bar .mobile-menu {
+        display: block !important;
+    }
+
+    .mobile-menu .menubar {
+        width: 40px;
+        height: auto;
+        margin-right: 10px;
+    }
+
+    .top-bar .nav-content {
+        display: none;
+    }
+
+    .top-bar .logo-wrapper {
+        margin-left: 20px;
+        width: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .top-bar .logo-wrapper .logobox {
+        margin-left: 0;
+        width: 43px;
+        height: auto;
+    }
+
+    .mobile-menu-content {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #222;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 100px;
+        right: 25px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+    }
+
+    .close-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mobile-nav-content {
+        margin-top: 170px;
+        width: 100%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 45px;
+        padding-left: 25px;
+    }
+
+    .mobile-nav-content .nav-link {
+        color: #D0D0D0;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    }
+
+    .mobile-nav-content .active-link {
+    color: #5DFFC6;
+    font-family: Pretendard;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    }
+
+    .SHA {
+        display: none;
+    }
+
+    .mobile-section {
+        margin-top: 10px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-section .mobile-jiwon {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        width: 150px;
+        height: 48px;
+        border-radius: 10px;
+        background: #5DFFC6;
+        text-decoration: none;
+        color: #060606;
+        font-family: Pretendard;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+
+    }
+
+    .mobile-section .mobile-jiwon p {
+        padding-left: 2px;
+    }
+
+    .mobile-section .jiwondown {
+        margin-left: 5px;
+        margin-top: 3px;
+        width: 8.5px;
+        height: auto;
+    }
+
+    .video-box {
+        display: none !important
+    }
+
+    .video-box-mobile {
+        display: flex !important;
+        justify-content: center;
+        width: 100%;
+        max-width: 1200px;
+        margin: 50px auto; 
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .activities {
+        display: none !important
+    }
+
+    .mobile-activities {
+        position: relative;
+        overflow: visible;
+        margin-top: 220px;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        align-items: center;
+        width: 100%;
+        height: 1800px;
+    }
+
+    .mobile-activities-box {
+        margin-top: 50px;
+    }
+
+    .mobile-activities .mobile-word-ACTIVITIES {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 88px;
+        z-index: 100;
+        padding-left: 30px;
+        width: 100%;
+        height: 50px;
+        color: #FFF;
+        font-family: Pretendard;
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-align: left;
+    }
+
+    .mobile-activities .mobile-home-wordbox {
+        margin-top: -40px;
+        background-color: black;
+        width: 100%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-activities .mobile-studylogo-box {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        width: 100%;
+    }
+
+
+    .mobile-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background-color: white;
+        box-shadow: 0px 0px 25.81px 25.81px rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-activities .mobile-studylogo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .mobile-activities .mobile-studylogo2 {
+        margin-left: -3px;
+        margin-top: -3px;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+    }
+
+    .mobile-activities .mobile-words {
+        margin-top: -40px;
+    text-align: center;   
+    color: #FFF;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px; /* 175% */
+    }
+
+    .mobile-word-study {
+        height: 90px;
+        color: #FFF;
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 16.5px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    .mobile-tag-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;   
+    }
+
+    .mobile-tag {
+    border-radius: 10px;
+    width: 100px;
+    border: 1px solid #5DFFC6;
+    display: flex;
+    justify-content: center;
+    }
+
+    .mobile-tag p{
+    color: #5DFFC6;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 10px; /* 175% */
+    }
+
+    .mobile-tag2 {
+    border-radius: 10px;
+    width: 135px;
+    border: 1px solid #5DFFC6;
+    display: flex;
+    justify-content: center;
+    }
+
+    .mobile-tag2 p{
+    color: #5DFFC6;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 10px; /* 175% */
+    }
+
+
+  
+
+
+}
+
+.mobile-section {
+    display: none;
+}
+
+.video-box-mobile {
+    display: none;
+}
+
+.mobile-activities {
+    display: none;
+}
+
+.mobile-achievements {
+    display: none;
 }
     
 
@@ -442,6 +799,198 @@ body::-webkit-scrollbar {
     line-height: normal;
 }
 
+@media (max-width: 768px) {
+
+    .word-ACHIEVEMENTS {
+        padding-left: 20px;
+
+        margin-left: 0;
+        position: sticky;
+        top: 88px;
+        background-color: black;
+        z-index: 10;
+        width: 100%;
+        height: auto;
+        color: #FFF;
+        font-family: Pretendard;
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-align: left;
+    }
+
+    .achievements {
+        display: none !important;  
+    }
+
+    .mobile-achievements {
+
+        margin-top: 100px;
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+        height: 1800px;
+        gap: 120px;
+    }
+
+
+    .mobile-achieve-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    }
+
+    .mobile-date-box {
+    margin-top: 13px;
+    width: 80px;
+    height: 1020px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 200px;
+    }
+
+    .mobile-date {
+    color: rgba(255, 255, 255, 0.60);
+    text-align: right;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 470;
+    line-height: 35px; /* 175% */
+    }
+
+    .mobile-line-box {
+        margin-top: 45px;
+        position: relative;
+    width: 30px;
+    height: 1000px;
+    }
+
+    .mobile-achieve-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 1179px;
+    background-color: white;
+    }
+
+    .mobile-bizz-box {
+    position: absolute;
+    left: 50%; /* 선과 같은 x축에 배치 */
+    top: 0;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 217px;
+    }
+
+    .mobile-achieve-bizz {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #FFF;
+    filter: drop-shadow(0 0 25.806px rgba(255, 255, 255, 0.10));
+    box-shadow: 0px 0px 25.81px 25.81px rgba(255, 255, 255, 0.1);
+    }
+
+    .hangeo-box {
+        display: none !important;
+    }
+
+    .mobile-hangeo-box {
+    margin-top: 40px;
+    width: 100px;
+    height: 1250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;  /* 왼쪽으로 정렬되게 함 */    
+    gap: 205px;
+}
+
+.hangeo .hangeo-title {
+    display: none;
+}
+
+.hangeo .mobile-hangeo {
+    position: relative;
+    text-align: left;
+    width: 500px;  /* 텍스트 길이에 맞게 조절되도록 */    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; /* <-- 왼쪽 정렬로 바꿈 */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0px;
+}
+
+.hangeo .mobile-hangeo-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.hangeo .mobile-real-title {
+    text-align: left;
+    color: white;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.mobile-hangeo-box .img-down {
+    margin-top: 5px;
+    width: auto;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.img-down.rotated {
+    transform: rotate(180deg);
+}
+
+.hangeo .mobile-accordion-detail {
+    width: 240px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    max-width: 300px;
+    animation: fadeIn 0.5s ease;
+    background: rgba(0, 0, 0, 0.4); /* 선택사항 */
+
+
+}
+
+.accordion-detail {
+    display: none;
+}
+
+
+}
+
+.mobile-hangeo {
+    display: none;
+}
+
+.mobile-hangeo-title {
+    display: none;
+}
+
 .achieve-box {
     position: relative;
     background-color: black;
@@ -548,7 +1097,7 @@ body::-webkit-scrollbar {
 
 .hangeo p {
     text-align: left;
-    color: #FFF;
+    color: white;
     font-family: Pretendard;
     font-size: 20px;
     font-style: normal;
@@ -597,37 +1146,3 @@ body::-webkit-scrollbar {
     }
 }
 
-@media (max-width: 1200px) {
-    .home-container {
-        min-width: unset;
-        width: 100%;
-        padding: 0 10px;
-    }
-
-    .top-bar {
-        width: 100%;
-        height: 60px;
-        transform: none;
-    }
-
-    .nav-content {
-        gap: 20px;
-        margin-right: 60px;
-    }
-
-    .logo-wrapper {
-        margin-left: 20px;
-    }
-
-    .nav-link {
-        font-size: 14px;
-    }
-
-    .logobox {
-        width: 60px;
-    }
-
-
-
-
-}

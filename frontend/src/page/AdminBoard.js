@@ -10,12 +10,14 @@ import './AdminBoard.css';
 
 
 const AdminBoard = () => {
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const token = localStorage.getItem('adminToken');
 
   //다음 경로
   const adminlocation= useLocation();
 
   //나중에 백에서 받아오는 코드로 수정
+  //백엔드에 db가 없음. 보류
   const [info, setInfo] = useState(
     'SHA는 정보보안의 다양한 분야에 대한 스터디를 운영하였습니다.'+
     '시스템 해킹, 웹 해킹, 리버싱 등을 주제로 이론 학습과 실습을 병행하며, 보안에 대한 이해도를 심화시켰습니다. 또한 CTF 문제 풀이와 발표 중심의 세션을 통해 팀원 간의 지식 공유와 협업 역량을 강화하였습니다.\n'+
@@ -29,7 +31,7 @@ const AdminBoard = () => {
 
   // 초기 학기 데이터 로딩
   useEffect(() => {
-    axios.get('http://localhost:8080/study')
+    axios.get(`${SERVER_URL}/study`)
       .then(res => setSemesters(res.data))
       .catch(console.error);
   }, []);
@@ -59,7 +61,7 @@ const AdminBoard = () => {
   try {
     // 새 학기들 POST
     for (const newSemester of editSemesters.filter(s => !s.id)) {
-      const res = await axios.post(`http://localhost:8080/admin/board/`, { name: newSemester.name },
+      const res = await axios.post(`${SERVER_URL}/admin/board/`, { name: newSemester.name },
         {headers: {Authorization: `Bearer ${token}`}}
       );
       console.log('POST 응답:', res.data);
@@ -73,7 +75,7 @@ const AdminBoard = () => {
         .map(s => {
           const original = semesters.find(orig => orig.id === s.id);
           if (original && original.name !== s.name) {
-            return axios.patch(`http://localhost:8080/admin/board/`, { id: s.id, name: s.name },
+            return axios.patch(`${SERVER_URL}/admin/board/`, { id: s.id, name: s.name },
               {headers: {Authorization: `Bearer ${token}`}} 
             );
           }
@@ -82,7 +84,7 @@ const AdminBoard = () => {
     );
 
     // 저장 후 서버에서 최신 데이터 다시 받아오기
-    const refreshed = await axios.get('http://localhost:8080/study');
+    const refreshed = await axios.get(`${SERVER_URL}/study`);
     console.log('GET /study 응답:', refreshed.data);
 
     setSemesters(refreshed.data);
