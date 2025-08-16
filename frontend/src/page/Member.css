@@ -44,6 +44,8 @@
     }
 
     .mobile-profile-box {
+        padding-top: 5px;
+        padding-bottom: 5px;
     width: 100%;
     height: auto;
     display: flex;
