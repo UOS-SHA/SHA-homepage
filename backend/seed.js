@@ -6,6 +6,11 @@ async function seed() {
     await sequelize.authenticate();
     console.log('DB 연결 성공');
 
+    
+  // 모델 정의와 실제 DB 스키마 동기화 (컬럼 자동 추가/수정)
+  await sequelize.sync({ alter: true });
+  console.log('DB 스키마 동기화 완료');
+
     // 특정 테이블 데이터만 초기화
     // StudyWeek -> StudyCategory -> StudySemester 순서로 삭제 (외래 키 관계 때문)
     console.log('시드할 테이블 데이터 초기화 중...');
@@ -26,14 +31,20 @@ async function seed() {
 
     const webCategory = await StudyCategory.create({
       name: 'web',
+      comment: `2025-1학기에서 다룬 내용을 바탕으로,
+    다양한 웹 취약점과 익스플로잇 기법을 심화 학습하였습니다.`,
       semesterId: semester2025_1.id,
     });
     const reversingCategory = await StudyCategory.create({
       name: 'reversing',
+      comment: `2025-1학기의 기초 내용을 확장하여,
+    리버스 엔지니어링에서 활용되는 핵심 분석 기법들을 실습 중심으로 학습하였습니다.`,
       semesterId: semester2025_1.id,
     });
     const systemCategory = await StudyCategory.create({
       name: 'system',
+      comment: `2025-1학기의 기초 내용을 확장하여,
+    리버스 엔지니어링에서 활용되는 핵심 분석 기법들을 실습 중심으로 학습하였습니다.`,
       semesterId: semester2025_1.id,
     });
 
