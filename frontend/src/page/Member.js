@@ -142,11 +142,11 @@ const Member = () => {
                     </div>
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
-                            <div className="mobile-profile-major">컴과20</div>
-                            <div className="mobile-profile-name">이성민</div>
+                            <div className="mobile-profile-major">컴과25</div>
+                            <div className="mobile-profile-name">안서진</div>
                         </div>  
                         <div className="mobile-position-link">
-                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-position">관심분야: web,system,reversing</div>
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
@@ -156,11 +156,11 @@ const Member = () => {
                 <div className="mobile-profile-box">
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
-                            <div className="mobile-profile-major">컴과20</div>
-                            <div className="mobile-profile-name">이성민</div>
+                            <div className="mobile-profile-major">컴과25</div>
+                            <div className="mobile-profile-name">이윤성</div>
                         </div> 
                         <div className="mobile-position-link">
-                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-position">관심분야: web,reversing</div>
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
@@ -169,36 +169,10 @@ const Member = () => {
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
                             <div className="mobile-profile-major">컴과20</div>
-                            <div className="mobile-profile-name">이성민</div>
+                            <div className="mobile-profile-name">오유찬</div>
                         </div> 
                         <div className="mobile-position-link">
-                            <div className="mobile-position">관심분야: crypto</div>
-                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
-                        </div> 
-                        <div className="mobile-individual-line"></div> 
-                        
-                    </div>
-                </div>
-                <div className="mobile-profile-box">
-                    <div className="mobile-individual">
-                        <div className="mobile-name-major">
-                            <div className="mobile-profile-major">컴과20</div>
-                            <div className="mobile-profile-name">이성민</div>
-                        </div> 
-                        <div className="mobile-position-link">
-                            <div className="mobile-position">관심분야: crypto</div>
-                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
-                        </div> 
-                        <div className="mobile-individual-line"></div> 
-                        
-                    </div>
-                    <div className="mobile-individual">
-                        <div className="mobile-name-major">
-                            <div className="mobile-profile-major">컴과20</div>
-                            <div className="mobile-profile-name">이성민</div>
-                        </div> 
-                        <div className="mobile-position-link">
-                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-position">관심분야: web</div>
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
@@ -208,11 +182,37 @@ const Member = () => {
                 <div className="mobile-profile-box">
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
-                            <div className="mobile-profile-major">컴과20</div>
-                            <div className="mobile-profile-name">이성민</div>
+                            <div className="mobile-profile-major">전전컴21</div>
+                            <div className="mobile-profile-name">한건우</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: system,reversing</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        
+                    </div>
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과24</div>
+                            <div className="mobile-profile-name">성수현</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: web, cloud</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        
+                    </div>
+                </div>
+                <div className="mobile-profile-box">
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">기계20</div>
+                            <div className="mobile-profile-name">김민찬</div>
                         </div>  
                         <div className="mobile-position-link">
-                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-position">관심분야: system</div>
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
@@ -220,11 +220,11 @@ const Member = () => {
                     </div>
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
-                            <div className="mobile-profile-major">컴과20</div>
-                            <div className="mobile-profile-name">이성민</div>
+                            <div className="mobile-profile-major">전전컴25</div>
+                            <div className="mobile-profile-name">조현재</div>
                         </div>  
                         <div className="mobile-position-link">
-                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-position">관심분야: web</div>
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
@@ -234,11 +234,11 @@ const Member = () => {
                 <div className="mobile-profile-box">
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
-                            <div className="mobile-profile-major">컴과20</div>
-                            <div className="mobile-profile-name">이성민</div>
+                            <div className="mobile-profile-major">컴과24</div>
+                            <div className="mobile-profile-name">김주현</div>
                         </div> 
                         <div className="mobile-position-link">
-                            <div className="mobile-position">관심분야: crypto</div>
+                            <div className="mobile-position">관심분야: web</div>
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
@@ -246,8 +246,8 @@ const Member = () => {
                     </div>
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
-                            <div className="mobile-profile-major">컴과20</div>
-                            <div className="mobile-profile-name">이성민</div>
+                            <div className="mobile-profile-major">컴과25</div>
+                            <div className="mobile-profile-name">류재현</div>
                         </div> 
                         <div className="mobile-position-link">
                             <div className="mobile-position">관심분야: crypto</div>
@@ -257,6 +257,59 @@ const Member = () => {
                        
                     </div>
                 </div>
+                                <div className="mobile-profile-box">
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">건축25</div>
+                            <div className="mobile-profile-name">김윤지</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: web</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        
+                    </div>
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">수학23</div>
+                            <div className="mobile-profile-name">김재승</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: system,reversing</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                       
+                    </div>
+                </div>
+                <div className="mobile-profile-box">
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과21</div>
+                            <div className="mobile-profile-name">이규형</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: web</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        
+                    </div>
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과21</div>
+                            <div className="mobile-profile-name">최원영</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: web</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                       
+                    </div>
+                </div>
+
             </div>
           </div>
         </div>
