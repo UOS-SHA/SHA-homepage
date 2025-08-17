@@ -1,4 +1,4 @@
-html, body {
+.html, body {
   background-color: black;
   margin: 0;
   padding: 0;
@@ -7,9 +7,16 @@ html, body {
   scrollbar-width: none; /* Firefox */
 }
 
-body::-webkit-scrollbar {
+.body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
+
+.body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
+    'Noto Sans KR', 'Malgun Gothic', sans-serif;
+}
+
 
 
 .wholearea {
@@ -317,7 +324,6 @@ body::-webkit-scrollbar {
     .mobile-activities .mobile-studylogo {
         width: 50px;
         height: 50px;
-        border-radius: 50%;
     }
 
     .mobile-activities .mobile-studylogo2 {
@@ -349,6 +355,12 @@ body::-webkit-scrollbar {
         font-style: normal;
         font-weight: 500;
         line-height: normal;
+    }
+
+    .mobile-animation {
+        width: 100%;
+        height: auto;
+        background-color: transparent;
     }
 
     .mobile-tag-box {

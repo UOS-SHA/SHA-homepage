@@ -138,9 +138,7 @@ const Member = () => {
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
-                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 이성민입니다."
-                        </div>
+                        
                     </div>
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
@@ -152,9 +150,7 @@ const Member = () => {
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
-                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 이성민입니다."
-                        </div>
+                        
                     </div>
                 </div>
                 <div className="mobile-profile-box">
@@ -168,9 +164,7 @@ const Member = () => {
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
-                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 이성민입니다."
-                        </div>
+                        
                     </div>
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
@@ -182,9 +176,7 @@ const Member = () => {
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
-                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 이성민입니다."
-                        </div>
+                        
                     </div>
                 </div>
                 <div className="mobile-profile-box">
@@ -198,9 +190,7 @@ const Member = () => {
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
-                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 이성민입니다."
-                        </div>
+                        
                     </div>
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
@@ -212,9 +202,7 @@ const Member = () => {
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
-                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 이성민입니다."
-                        </div>
+                        
                     </div>
                 </div>
                 <div className="mobile-profile-box">
@@ -228,9 +216,7 @@ const Member = () => {
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
-                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 이성민입니다."
-                        </div>
+                      
                     </div>
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
@@ -242,9 +228,7 @@ const Member = () => {
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
-                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 이성민입니다."
-                        </div>
+                        
                     </div>
                 </div>
                 <div className="mobile-profile-box">
@@ -258,9 +242,7 @@ const Member = () => {
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
-                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 이성민입니다."
-                        </div>
+                        
                     </div>
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
@@ -272,9 +254,7 @@ const Member = () => {
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="mobile-individual-line"></div> 
-                        <div className="mobile-hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 이성민입니다."
-                        </div>
+                       
                     </div>
                 </div>
             </div>
