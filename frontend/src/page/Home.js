@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {useState} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
 import AccordionItem from './AccordionItem';
@@ -25,6 +25,25 @@ const achievementlist=[
 //패드기준을 해야할까....
 
 const Home = () => {
+  const videoRef = useRef(null);
+  
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            // 자동 재생 성공
+          })
+          .catch((error) => {
+            console.log("iOS autoplay blocked:", error);
+          });
+      }
+    }
+  }, []);
+
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -127,7 +146,7 @@ const Home = () => {
           <video src={`${process.env.PUBLIC_URL}/homeanimation.mp4`} preload="auto" autoPlay muted loop playsInline />
         </div>
         <div className="video-box-mobile">
-          <video className="mobile-animation" src={`${process.env.PUBLIC_URL}/mobileanimation_fixed.mp4`} preload="auto" autoPlay muted loop playsInline webkit-playsinline />
+          <video ref={videoRef} className="mobile-animation" src={`${process.env.PUBLIC_URL}/mobileanimation_ios720.mp4`} preload="auto" autoPlay muted loop playsInline webkit-playsinline />
         </div>
       </div>
       <div className="mobile-section">
