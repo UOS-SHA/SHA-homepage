@@ -1,4 +1,4 @@
-html, body {
+.html, body {
   background-color: black;
   margin: 0;
   padding: 0;
@@ -7,9 +7,16 @@ html, body {
   scrollbar-width: none; /* Firefox */
 }
 
-body::-webkit-scrollbar {
+.body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
+
+.body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
+    'Noto Sans KR', 'Malgun Gothic', sans-serif;
+}
+
 
 
 .wholearea {

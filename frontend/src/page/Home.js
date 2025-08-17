@@ -13,10 +13,10 @@ const achievementlist=[
   {title: 'CCA 가입', 
     detail: 'CCA는 teamh4c와 BoB총동문회가 파트너십을 맺고 교류하고 있는전국사이버보안동아리연합회입니다.'},
   {title: 'SHA 밤샘해킹 진행'},
-  {title: 'Hacksium in Busan 본선 진출',
-    detail: '이성민(팀 이름 : ,,,,,)'},
+  {title: 'Hacksium in Busan 최종 7위',
+    detail: '이성민'},
   {title: 'Best of the Best 14기 합격', 
-    detail: '한건우(디지털포렌식 트랙)'},
+    detail: '한건우'},
 ];
 
 
@@ -127,7 +127,7 @@ const Home = () => {
           <video src={`${process.env.PUBLIC_URL}/homeanimation.mp4`} preload="auto" autoPlay muted loop playsInline />
         </div>
         <div className="video-box-mobile">
-          <video className="mobile-animation" src={`${process.env.PUBLIC_URL}/mobileanimation.mp4`} preload="auto" autoPlay muted loop playsInline />
+          <video className="mobile-animation" src={`${process.env.PUBLIC_URL}/mobileanimation.mp4`} preload="auto" autoPlay muted loop playsInline webkit-playsinline />
         </div>
       </div>
       <div className="mobile-section">
@@ -289,7 +289,7 @@ const Home = () => {
             <div className="mobile-date">.06</div>
             <div className="mobile-date">2025.02</div>
             <div className="mobile-date">.05</div>
-            <div className="mobile-date">.06</div>
+            <div className="mobile-date">.07</div>
           </div>
           <div className="mobile-line-box">
             <div className="mobile-achieve-line" />
