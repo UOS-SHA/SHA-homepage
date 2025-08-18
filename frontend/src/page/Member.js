@@ -130,35 +130,9 @@ const Member = () => {
                 <div className="mobile-profile-box">
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
-                            <div className="mobile-profile-major">컴과20</div>
-                            <div className="mobile-profile-name">이성민</div>
+                            <div className="mobile-profile-major">컴과24</div>
+                            <div className="mobile-profile-name">김민주</div>
                         </div>  
-                        <div className="mobile-position-link">
-                            <div className="mobile-position">관심분야: crypto</div>
-                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
-                        </div> 
-                        <div className="mobile-individual-line"></div> 
-                        
-                    </div>
-                    <div className="mobile-individual">
-                        <div className="mobile-name-major">
-                            <div className="mobile-profile-major">컴과25</div>
-                            <div className="mobile-profile-name">안서진</div>
-                        </div>  
-                        <div className="mobile-position-link">
-                            <div className="mobile-position">관심분야: web,system,reversing</div>
-                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
-                        </div> 
-                        <div className="mobile-individual-line"></div> 
-                        
-                    </div>
-                </div>
-                <div className="mobile-profile-box">
-                    <div className="mobile-individual">
-                        <div className="mobile-name-major">
-                            <div className="mobile-profile-major">컴과25</div>
-                            <div className="mobile-profile-name">이윤성</div>
-                        </div> 
                         <div className="mobile-position-link">
                             <div className="mobile-position">관심분야: web,reversing</div>
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
@@ -168,9 +142,9 @@ const Member = () => {
                     </div>
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
-                            <div className="mobile-profile-major">컴과20</div>
-                            <div className="mobile-profile-name">오유찬</div>
-                        </div> 
+                            <div className="mobile-profile-major">컴과24</div>
+                            <div className="mobile-profile-name">김주현</div>
+                        </div>  
                         <div className="mobile-position-link">
                             <div className="mobile-position">관심분야: web</div>
                             <div className="mobile-profile-link">https://github.com/minnjuuu</div>
@@ -179,6 +153,35 @@ const Member = () => {
                         
                     </div>
                 </div>
+                <div className="mobile-profile-box">
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과24</div>
+                            <div className="mobile-profile-name">성수현</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: web</div>
+                            <div className="mobile-profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        
+                    </div>
+                    
+                    <div className="mobile-individual">
+                        <div className="mobile-name-major">
+                            <div className="mobile-profile-major">컴과30</div>
+                            <div className="mobile-profile-name">홍길동</div>
+                        </div> 
+                        <div className="mobile-position-link">
+                            <div className="mobile-position">관심분야: robbing</div>
+                            <div className="mobile-profile-link">https://github.com/gildong</div>
+                        </div> 
+                        <div className="mobile-individual-line"></div> 
+                        
+                    </div>
+                    
+                </div>
+                {/*
                 <div className="mobile-profile-box">
                     <div className="mobile-individual">
                         <div className="mobile-name-major">
@@ -309,7 +312,7 @@ const Member = () => {
                        
                     </div>
                 </div>
-
+                */}
             </div>
           </div>
         </div>
@@ -340,82 +343,35 @@ const Member = () => {
                 <div className="profile-box">
                     <div className="individual">
                         <div className="name-major">
-                            <div className="profile-major">컴과20</div>
-                            <div className="profile-name">이성민</div>
+                            <div className="profile-major">컴과24</div>
+                            <div className="profile-name">김민주</div>
                         </div> 
                         <div className="insta-git">
                             <div className="insta">
                                 <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
                             </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                            <div className="git">
                                 <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
                             </div>
                         </div> 
                         <div className="position-link">
-                            <div className="position">관심분야: crypto</div>
+                            <div className="position">관심분야: web, reversing</div>
                             <div className="profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="individual-line"></div> 
-                        <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 이성민입니다."
+                        <div className="hanmadi">"1활동 1배고파"
                         </div>
                     </div>
                     <div className="individual">
                         <div className="name-major">
-                            <div className="profile-major">컴과25</div>
-                            <div className="profile-name">안서진</div>
+                            <div className="profile-major">컴과24</div>
+                            <div className="profile-name">김주현</div>
                         </div> 
                         <div className="insta-git">
                             <div className="insta">
                                 <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
                             </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
-                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
-                            </div>
-                        </div> 
-                        <div className="position-link">
-                            <div className="position">관심분야: web, system, reversing</div>
-                            <div className="profile-link">https://github.com/minnjuuu</div>
-                        </div> 
-                        <div className="individual-line"></div> 
-                        <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 안서진입니다."
-                        </div>
-                    </div>
-                </div>
-                <div className="profile-box">
-                    <div className="individual">
-                        <div className="name-major">
-                            <div className="profile-major">컴과25</div>
-                            <div className="profile-name">이윤성</div>
-                        </div> 
-                        <div className="insta-git">
-                            <div className="insta">
-                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
-                            </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
-                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
-                            </div>
-                        </div> 
-                        <div className="position-link">
-                            <div className="position">관심분야: web, system, reversing</div>
-                            <div className="profile-link">https://github.com/minnjuuu</div>
-                        </div> 
-                        <div className="individual-line"></div> 
-                        <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 이윤성입니다."
-                        </div>
-                    </div>
-                    <div className="individual">
-                        <div className="name-major">
-                            <div className="profile-major">컴과20</div>
-                            <div className="profile-name">오유찬</div>
-                        </div> 
-                        <div className="insta-git">
-                            <div className="insta">
-                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
-                            </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                            <div className="git">
                                 <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
                             </div>
                         </div> 
@@ -424,11 +380,57 @@ const Member = () => {
                             <div className="profile-link">https://github.com/minnjuuu</div>
                         </div> 
                         <div className="individual-line"></div> 
-                        <div className="hanmadi">"경험으로 나아가는, <br/> 
-                            개발자 오유찬입니다."
+                        <div className="hanmadi">"귀여운 주현이"
                         </div>
                     </div>
                 </div>
+                <div className="profile-box">
+                    <div className="individual">
+                        <div className="name-major">
+                            <div className="profile-major">컴과24</div>
+                            <div className="profile-name">성수현</div>
+                        </div> 
+                        <div className="insta-git">
+                            <div className="insta">
+                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
+                            </div>
+                            <div className="git">
+                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
+                            </div>
+                        </div> 
+                        <div className="position-link">
+                            <div className="position">관심분야: web</div>
+                            <div className="profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="individual-line"></div> 
+                        <div className="hanmadi">"열심히 하겠습니다."
+                        </div>
+                    </div>
+                    
+                    <div className="individual">
+                        <div className="name-major">
+                            <div className="profile-major">컴과24</div>
+                            <div className="profile-name">홍길동</div>
+                        </div> 
+                        <div className="insta-git">
+                            <div className="insta">
+                                <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
+                            </div>
+                            <div className="git"> 
+                                <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
+                            </div>
+                        </div> 
+                        <div className="position-link">
+                            <div className="position">관심분야: web</div>
+                            <div className="profile-link">https://github.com/minnjuuu</div>
+                        </div> 
+                        <div className="individual-line"></div> 
+                        <div className="hanmadi">"비율 맞추려고 넣었어요."
+                        </div>
+                    </div>
+                    
+                </div>
+                {/*
                 <div className="profile-box">
                     <div className="individual">
                         <div className="name-major">
@@ -439,7 +441,7 @@ const Member = () => {
                             <div className="insta">
                                 <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
                             </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                            <div className="git"> 
                                 <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
                             </div>
                         </div> 
@@ -461,7 +463,7 @@ const Member = () => {
                             <div className="insta">
                                 <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
                             </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                            <div className="git">
                                 <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
                             </div>
                         </div> 
@@ -485,7 +487,7 @@ const Member = () => {
                             <div className="insta">
                                 <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
                             </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                            <div className="git">
                                 <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
                             </div>
                         </div> 
@@ -507,7 +509,7 @@ const Member = () => {
                             <div className="insta">
                                 <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
                             </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                            <div className="git">
                                 <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
                             </div>
                         </div> 
@@ -531,7 +533,7 @@ const Member = () => {
                             <div className="insta">
                                 <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
                             </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                            <div className="git"> 
                                 <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
                             </div>
                         </div> 
@@ -553,7 +555,7 @@ const Member = () => {
                             <div className="insta">
                                 <img src={`${process.env.PUBLIC_URL}/insta.png`} alt="insta" className="instalogo"></img>
                             </div>
-                            <div className="git"> {/*git 로고가 export가 안돼서 insta 넣음 */}
+                            <div className="git">
                                 <img src={`${process.env.PUBLIC_URL}/git.png`} alt="git" className="gitlogo"></img>
                             </div>
                         </div> 
@@ -567,6 +569,7 @@ const Member = () => {
                         </div>
                     </div>
                 </div>
+                */}
             </div>
           </div>
         </div>
