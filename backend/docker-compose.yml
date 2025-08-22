@@ -13,6 +13,7 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+    restart: always
 
   db:
     image: mysql:8
@@ -29,4 +30,5 @@ services:
       - mysql_data:/var/lib/mysql
 
 volumes:
+
   mysql_data:
