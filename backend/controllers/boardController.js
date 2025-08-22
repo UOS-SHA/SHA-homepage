@@ -3,9 +3,15 @@ const { StudySemester, StudyCategory, StudyWeek } = require('../models');
 exports.createSemester = async (req, res) => {
     try {
         const { name } = req.body;
-        const newSemester = await StudySemester.create({ name }); // 생성된 객체 받기
-        res.status(201).json(newSemester); // id 포함 응답
-    } catch (err) {
+
+        const newSemester = await StudySemester.create({ name });
+
+        
+        res.status(201).json({ newSemester });
+
+
+
+    } catch(err) {
         console.error("에러: ", err);
         res.status(500).json({ message: '학기 생성 실패', error: err.message });
     }
@@ -28,13 +34,13 @@ exports.createCategory = async (req, res) => {
             });
         }
 
-        await StudyCategory.create({
+        const newCategory = await StudyCategory.create({
             name,
             comment,
             semesterId: semesterEntry.id
         });
 
-        res.status(201).json({ message: '카테고리 생성 완료'});
+        res.status(201).json({ newCategory });
 
 
     } catch(err) {
@@ -73,14 +79,14 @@ exports.createWeek = async (req, res) => {
             });
         }
 
-        await StudyWeek.create({
+        const newWeek = await StudyWeek.create({
             weekNum,
             title,
             description,
             categoryId: categoryEntry.id
         });
 
-        res.status(201).json({ message: '주차 생성 완료' })
+        res.status(201).json({ newWeek })
 
 
     } catch(err) {
