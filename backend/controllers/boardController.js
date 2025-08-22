@@ -5,10 +5,10 @@ exports.createSemester = async (req, res) => {
     try {
         const { name } = req.body;
 
-        await StudySemester.create({ name });
+        const newSemester = await StudySemester.create({ name });
 
         
-        res.status(201).json({ message: '학기 생성 완료' });
+        res.status(201).json({ newSemester });
 
 
 
@@ -34,13 +34,13 @@ exports.createCategory = async (req, res) => {
             });
         }
 
-        await StudyCategory.create({
+        const newCategory = await StudyCategory.create({
             name,
             comment,
             semesterId: semesterEntry.id
         });
 
-        res.status(201).json({ message: '카테고리 생성 완료'});
+        res.status(201).json({ newCategory });
 
 
     } catch(err) {
@@ -79,14 +79,14 @@ exports.createWeek = async (req, res) => {
             });
         }
 
-        await StudyWeek.create({
+        const newWeek = await StudyWeek.create({
             weekNum,
             title,
             description,
             categoryId: categoryEntry.id
         });
 
-        res.status(201).json({ message: '주차 생성 완료' })
+        res.status(201).json({ newWeek })
 
 
     } catch(err) {
