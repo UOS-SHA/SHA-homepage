@@ -48,6 +48,8 @@ async function seed() {
       semesterId: semester2025_1.id,
     });
 
+    /*
+
     // 3. 주차별 내용 bulkCreate
     await StudyWeek.bulkCreate([
       // web
@@ -146,6 +148,8 @@ Space Alone 6,7`,
         categoryId: systemCategory.id,
       },
     ]);
+
+    */
 
     console.log('초기 데이터 삽입 완료');
     process.exit(0);
