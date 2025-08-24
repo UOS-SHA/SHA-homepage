@@ -491,9 +491,30 @@ body {
     pointer-events: none;
 }
 
-.mouse img {
+.mouse-img {
     width: 40PX;
     height: auto;
+}
+
+.clickhere-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.clickhere-img {
+    width: 45pX;
+    height: auto;
+    animation: bounce 1s infinite;
+}
+
+.clickhere-text {
+  margin-top: 6px;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  animation: blink 1s infinite;
 }
 
 .SHA {
@@ -731,6 +752,8 @@ width: calc(750px + 750px * 1);  height: 1px;
     line-height: normal;
 }
 
+
+
 .homeline3 {
     position: absolute;
     left: calc(560px); /* special-bizz 위치 기준 */
@@ -770,8 +793,8 @@ width: calc(750px + 750px * 1);  height: 1px;
 
 
 .studylogo {
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
 
 }
 

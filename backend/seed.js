@@ -31,20 +31,22 @@ async function seed() {
 
     const webCategory = await StudyCategory.create({
       name: 'web',
-      comment: `2025-1학기에서 다룬 내용을 바탕으로,
-    다양한 웹 취약점과 익스플로잇 기법을 심화 학습하였습니다.`,
+      comment: `Web 스터디는 웹 서비스에 존재하는 다양한 보안 이슈를 주제로 진행됩니다. 
+        매주 팀원이 번갈아가며 취약점을 조사하고 발표하며, 실습과 토론을 통해 이해를 넓혀갑니다.
+        이를 통해 웹 보안의 기본 원리부터 최신 동향까지 폭넓게 탐구하며, 함께 배우고 성장하는 시간을 만들어 갑니다.`,
       semesterId: semester2025_1.id,
     });
     const reversingCategory = await StudyCategory.create({
       name: 'reversing',
-      comment: `2025-1학기의 기초 내용을 확장하여,
-    리버스 엔지니어링에서 활용되는 핵심 분석 기법들을 실습 중심으로 학습하였습니다.`,
+      comment: `Reversing 스터디는 매주 한 명의 진행자가 주제를 정리하고 발표하는 방식으로 진행됩니다.
+        다양한 프로그램과 파일을 분석하며 동작 원리를 배우고, 실습을 통해 직접 확인하면서 리버싱에 대한 이해를 쌓아가는 시간입니다.`,
       semesterId: semester2025_1.id,
     });
     const systemCategory = await StudyCategory.create({
       name: 'system',
-      comment: `2025-1학기의 기초 내용을 확장하여,
-    리버스 엔지니어링에서 활용되는 핵심 분석 기법들을 실습 중심으로 학습하였습니다.`,
+      comment: `Pwnable 스터디는 팀원들이 번갈아가며 주제를 조사하고 발표하는 방식으로 진행되었습니다.
+        모두 처음 접하는 내용이었지만, 서로 의견을 공유하고 토론하며 이해를 넓히고 소통의 장을 만들어갔습니다.  
+        셸코드, 버퍼 오버플로, 힙 문제 등 다양한 주제를 함께 학습하며 실습을 통해 직접 확인했습니다.`,
       semesterId: semester2025_1.id,
     });
 
