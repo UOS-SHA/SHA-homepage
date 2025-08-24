@@ -68,6 +68,9 @@ const Home = () => {
   };
   */
 
+  const [isHoverActivities, setIsHoverActivities] = useState(false);
+
+
 
   const prevItem = () => {
     if (isRotating) return;
@@ -217,9 +220,24 @@ const Home = () => {
       </div>
       {!isMenuOpen && (
         <div className="mouse">
-          <img src={`${process.env.PUBLIC_URL}/mouse.png`} alt="scroll" />
+          {isHoverActivities ? (
+            <div className="clickhere-container">
+              <img
+                src={`${process.env.PUBLIC_URL}/clickhere.gif`}
+                alt="click here"
+                className="clickhere-img"
+              />
+              <p className="clickhere-text">Click Anywhere</p>
+            </div>
+          ) : ( 
+            <img
+              src={`${process.env.PUBLIC_URL}/mouse.png`}
+              alt="scroll"
+              className="mouse-img"
+            />
+          )}
         </div>
-    )}
+      )}
       <div className="SHA">
         <div className="circle"></div>
         <div className="homelogo-box">
@@ -233,25 +251,15 @@ const Home = () => {
           함께 고민하고 부딪히며 성장할 여러분을 언제나 환영합니다!
         </div>
       </div>
-      <div className="activities" onClick={prevItem}
-        /*onMouseMove={handleMouseMove}
-        style={{cursor: 'none', position: 'relative'}} */
+      <div className="activities" 
+        onMouseEnter={() => setIsHoverActivities(true)}
+        onMouseLeave={() => setIsHoverActivities(false)}
+        onClick={prevItem}
       >
-        {/*<img
-          className="activities-click"
-          src={`${process.env.PUBLIC_URL}/sha-logo.png`}
-          alt="cursor"
-          style={{
-          position: 'fixed',
-          left: mousePos.x,
-          top: mousePos.y,
-          pointerEvents: 'none',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 9999,
-          }}
-        />
-        */}
         <div className="word-ACTIVITIES">ACTIVITIES</div>
+        {/*<div className="click-anywhere">
+          CLICK ANYWHERE
+        </div> 조만간 삭제 예정*/}
         <div className="top-fade"></div>
         <div className="circle-wrapper" style={{transform: `rotate(${angle}deg)`, transition: 'transform 0.8s ease'}}>
           <div className={`bizz0 ${current === 0 ? "special-bizz" : ""}`}></div>
@@ -265,20 +273,22 @@ const Home = () => {
           <div className="homeline-60" />
           <div className="homeline-120" />
         </div>
-        <div className="homeline3" style={{ opacity: 1, 
-            transition: showContent ? 'opacity 0.7s ease' : 'opacitiy 0.3s ease ', 
-            transform: showContent ? 'rotate(-14deg) scaleX(1)' : 'rotate(-14deg) scaleX(0)' }} />
-        <div className="homeline4" style={{ opacity: 1, 
-            transition: showContent ? 'opacity 0.7s ease' : 'opacitiy 0.3s ease ', 
-            transform: showContent ? 'rotate(14deg) scaleX(1)' : 'rotate(14deg) scaleX(0)' }}/>
+        <div className="homeline3" style={{ opacity: showContent ? 1 : 0,
+            transform: showContent ? 'rotate(-14deg) scaleX(1)' : 'rotate(-14deg) scaleX(0)' ,
+            transition: 'opacity 0.1s ease, transform 0.7s ease' }}/>
+        <div className="homeline4" style={{ opacity: showContent ? 1 : 0, 
+            transform: showContent ? 'rotate(14deg) scaleX(1)' : 'rotate(14deg) scaleX(0)',
+            transition: 'opacity 0.1s ease, transform 0.7s ease'}}/>
         <div className="bottom-fade"></div>
         <div className="homeline1" />
         <div className="studylogo-box"
-            style={{ opacity: showContent ? 1 : 0, transition: 'opacity 0.4s ease' }}>
+            style={{ opacity: showContent ? 1 : 0,
+            transition:  'opacity 0.8s ease'  }}>
           <img className="studylogo" src={item.logo} alt="스터디 로고" />
         </div>
         <div className="home-wordbox"
-            style={{ opacity: showContent ? 1 : 0, transition: 'opacity 0.4s ease' }}>
+            style={{ opacity: showContent ? 1 : 0,
+            transition:  'opacity 0.8s ease' }}>
           <div className="word-study">
             <p>{item.title}</p>
           </div>
@@ -290,7 +300,7 @@ const Home = () => {
               </span>
             ))}
           </div>
-          {current === 1 ? (  // 3번째 아이템일 때
+          {current === 1 ? ( 
             item.tags && item.tags.length > 0 && (
             <div className="tag-box">
               {item.tags.map((tag, i) => (
