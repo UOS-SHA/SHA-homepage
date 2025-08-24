@@ -568,11 +568,16 @@ body {
 }
 
 .activities {
+    cursor: pointer;
     margin-top: 180px;
-    background-color: black;
     height: 1600px;
     overflow: visible;
     position: relative;
+}
+
+.activities-click {
+    width: 32px;
+    height: auto;
 }
 
 .circle-wrapper {
@@ -583,6 +588,10 @@ body {
     position: absolute;
     left: -950px;  /* 1500px * 0.65 = 975px, 음수 방향으로 픽셀 고정 */
     background-color: transparent;
+
+    /*추가*/
+    transform-origin: 750px 750px;
+    transition: transform 0.8s ease-in-out;
 
 }
 
@@ -599,7 +608,7 @@ body {
 
 .bottom-fade {
     position: absolute;
-    bottom: 3%;
+    bottom: 0;
     left: 0;
     width: 1500px;
     height: 200px;
@@ -622,43 +631,52 @@ body {
     overflow: visible;
 }
 
-
-.bizz1 {
-    position: absolute;
-    left: calc(750px + 750px * 0.7071);
-    top: calc(750px - 750px * 0.7071);
-    transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #9B9B9B;
-    z-index: 100;
+/* 공통 스타일 */
+.bizz0, .bizz60, .bizz120, .bizz180, .bizz240, .bizz300 {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #9B9B9B;
+  z-index: 100;
 }
 
-.bizz2 {
-    position: absolute;
-    left: calc(750px + 750px * 0.7071);
-    top: calc(750px + 750px * 0.7071);
-    transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #9B9B9B;
-    z-index: 100;
-}
-
-
+/* 0도 자리 강조 */
 .special-bizz {
-    position: absolute;
-    left: calc(750px + 750px );
-    top: calc(750px);
-    transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    border-radius: 50%;
-    z-index: 100;
-    box-shadow: 0px 0px 25.81px 25.81px rgba(255, 255, 255, 0.1);
+  background-color: white !important;
+  box-shadow: 0px 0px 25px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* 좌표 (750,750)을 중심으로 반지름 750px 기준 */
+.bizz0 {
+  left: calc(750px + 750px);
+  top: 750px;
+}
+
+.bizz60 {
+  left: calc(750px + 750px * 0.5);
+  top: calc(750px - 750px * 0.866); /* cos60=0.5, sin60=0.866 */
+}
+
+.bizz120 {
+  left: calc(750px - 750px * 0.5);
+  top: calc(750px - 750px * 0.866);
+}
+
+.bizz180 {
+  left: 0px;
+  top: 750px;
+}
+
+.bizz240 {
+  left: calc(750px - 750px * 0.5);
+  top: calc(750px + 750px * 0.866);
+}
+
+.bizz300 {
+  left: calc(750px + 750px * 0.5);
+  top: calc(750px + 750px * 0.866);
 }
 
 
@@ -673,6 +691,31 @@ body {
     z-index: 100;
 
 }
+
+.homeline-60 {
+    position: absolute;
+  left: 50%;
+  top: 50%;
+width: calc(750px + 750px * 1);  height: 1px;
+  border-top: 1px dotted #E0E0E0;
+  transform-origin: center center;
+  z-index: 50;
+    transform: translate(-50%, -50%) rotate(60deg);  /* 수직 */
+
+}
+
+.homeline-120 {
+    position: absolute;
+  left: 50%;
+  top: 50%;
+width: calc(750px + 750px * 1);  height: 1px;
+  border-top: 1px dotted #E0E0E0;
+  transform-origin: center center;
+  z-index: 50;
+    transform: translate(-50%, -50%) rotate(120deg);  /* 수직 */
+
+}
+
 
 .word-ACTIVITIES {
     position: absolute;
@@ -690,9 +733,9 @@ body {
 
 .homeline3 {
     position: absolute;
-    left: calc(750px + 750px); /* special-bizz 위치 기준 */
+    left: calc(560px); /* special-bizz 위치 기준 */
     top: 750px;
-    width: 520px;
+    width: 500px;
     height: 1px;
     border-top: 1px dotted #E0E0E0;
     transform-origin: left center;
@@ -702,9 +745,9 @@ body {
 
 .homeline4 {
     position: absolute;
-    left: calc(750px + 750px); /* special-bizz 위치 기준 */
+    left: calc(560px); /* special-bizz 위치 기준 */
     top: 750px;
-    width: 520px;
+    width: 500px;
     height: 1px;
     border-top: 1px dotted #E0E0E0;
     transform-origin: left center;
@@ -727,9 +770,8 @@ body {
 
 
 .studylogo {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
+    width: 140px;
+    height: 140px;
 
 }
 
@@ -793,7 +835,24 @@ body {
 .tag p{
     color: #5DFFC6;
     font-family: Pretendard;
-    font-size: 15px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 10px; /* 175% */
+}
+
+.tag2 {
+    border-radius: 10px;
+    width: 153px;
+    border: 1px solid #5DFFC6;
+    display: flex;
+    justify-content: center;
+}
+
+.tag2 p{
+    color: #5DFFC6;
+    font-family: Pretendard;
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: 10px; /* 175% */

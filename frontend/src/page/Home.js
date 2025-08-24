@@ -19,6 +19,34 @@ const achievementlist=[
     detail: '한건우'},
 ];
 
+const items = [
+    {
+      logo: `${process.env.PUBLIC_URL}/studylogo.png`,
+      title: "스터디",
+      desc: `SHA의 핵심 활동 중 하나로 보안 분야별 스터디입니다.
+          보안이 처음이어도, 함께 공부하면서 성장할 수 있도록 커리큘럼과
+          피드백을 제공합니다. 구성원들이 돌아가며 발표 및 실습을
+          주도하며, 서로에게 배우는 문화를 지향합니다.`,
+      tags: ["#입문자도 환영", "#발표 중심 학습"],
+    },
+    {
+      logo: `${process.env.PUBLIC_URL}/reward.png`,
+      title: "대회/공모전 참가",
+      desc: `실전에서 실력을 검증받고 싶다면 SHA에서 기회를 
+      가질 수 있습니다. hacktheon, hacksium, codegate 등 
+      다양한 해킹 대회에 참가합니다.`,
+      tags: ["#국내외 CTF 대회 참여"],
+    },
+    {
+      logo: `${process.env.PUBLIC_URL}/click.png`,
+      title: "해킹/개발 프로젝트",
+      desc: `SHA는 실질적인 결과물 중심의 활동을 중요하게 생각하며, 
+        이를 위해 자체 개발 프로젝트와  
+        해킹 실습 환경 구축 프로젝트를 함께 진행합니다.`,
+    },
+  ];
+
+
 
 //mobile 붙은 영역 : 모바일에서 보이는 부분
 //mobile 안 붙은 영역 : 컴퓨터 
@@ -26,6 +54,38 @@ const achievementlist=[
 
 const Home = () => {
   const videoRef = useRef(null);
+  const [current, setCurrent] = useState(0);
+
+  const [angle, setAngle] = useState(0);
+  const [showContent, setShowContent] = useState(true);
+  const [isRotating, setIsRotating] = useState(false); // 클릭 방지
+
+  /*
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    setMousePos({ x: e.clientX, y: e.clientY });
+  };
+  */
+
+
+  const prevItem = () => {
+    if (isRotating) return;
+    setIsRotating(true);
+    setShowContent(false);
+
+    setAngle(prev => prev + 60);
+
+    setTimeout(() => {
+      setCurrent(prev => (prev - 1 + items.length) % items.length);
+      setShowContent(true);
+      setIsRotating(false);
+    }, 800);
+  };
+
+
+  const item = items[current];
+ 
   
   useEffect(() => {
     const video = videoRef.current;
@@ -173,37 +233,84 @@ const Home = () => {
           함께 고민하고 부딪히며 성장할 여러분을 언제나 환영합니다!
         </div>
       </div>
-      <div className="activities">
+      <div className="activities" onClick={prevItem}
+        /*onMouseMove={handleMouseMove}
+        style={{cursor: 'none', position: 'relative'}} */
+      >
+        {/*<img
+          className="activities-click"
+          src={`${process.env.PUBLIC_URL}/sha-logo.png`}
+          alt="cursor"
+          style={{
+          position: 'fixed',
+          left: mousePos.x,
+          top: mousePos.y,
+          pointerEvents: 'none',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 9999,
+          }}
+        />
+        */}
         <div className="word-ACTIVITIES">ACTIVITIES</div>
         <div className="top-fade"></div>
-        <div className="circle-wrapper">
-          <div className="bizz1"></div>
-          <div className="bizz2"></div>
-          <div className="special-bizz"></div>
-          <div className="homeline2" />
-          <div className="homeline3" />
-          <div className="homeline4" />
+        <div className="circle-wrapper" style={{transform: `rotate(${angle}deg)`, transition: 'transform 0.8s ease'}}>
+          <div className={`bizz0 ${current === 0 ? "special-bizz" : ""}`}></div>
+          <div className={`bizz60 ${current === 2 ? "special-bizz" : ""}`}></div>
+          <div className={`bizz120 ${current === 1 ? "special-bizz" : ""}`}></div>
+          <div className={`bizz180 ${current === 0 ? "special-bizz" : ""}`}></div>
+          <div className={`bizz240 ${current === 2 ? "special-bizz" : ""}`}></div>
+          <div className={`bizz300 ${current === 1 ? "special-bizz" : ""}`}></div>
+        
+          <div className="homeline2" />  {/*0도-180도*/}
+          <div className="homeline-60" />
+          <div className="homeline-120" />
         </div>
+        <div className="homeline3" style={{ opacity: 1, 
+            transition: showContent ? 'opacity 0.7s ease' : 'opacitiy 0.3s ease ', 
+            transform: showContent ? 'rotate(-14deg) scaleX(1)' : 'rotate(-14deg) scaleX(0)' }} />
+        <div className="homeline4" style={{ opacity: 1, 
+            transition: showContent ? 'opacity 0.7s ease' : 'opacitiy 0.3s ease ', 
+            transform: showContent ? 'rotate(14deg) scaleX(1)' : 'rotate(14deg) scaleX(0)' }}/>
         <div className="bottom-fade"></div>
         <div className="homeline1" />
-        <div className="studylogo-box">
-          <img className="studylogo" src={`${process.env.PUBLIC_URL}/studylogo.png`} alt="스터디 로고" />
+        <div className="studylogo-box"
+            style={{ opacity: showContent ? 1 : 0, transition: 'opacity 0.4s ease' }}>
+          <img className="studylogo" src={item.logo} alt="스터디 로고" />
         </div>
-        <div className="home-wordbox">
+        <div className="home-wordbox"
+            style={{ opacity: showContent ? 1 : 0, transition: 'opacity 0.4s ease' }}>
           <div className="word-study">
-            <p>스터디</p>
+            <p>{item.title}</p>
           </div>
-          <div className="words">SHA의 핵심 활동 중 하나로 보안 분야별 스터디입니다. <br />
-          보안이 처음이어도, 함께 공부하면서 성장할 수 있도록 커리큘럼과 <br /> 피드백을 제공합니다. 구성원들이 돌아가며 발표 및 실습을 <br/>
-          주도하며, 서로에게 배우는 문화를 지향합니다.</div>
-          <div className="tag-box">
-            <div className="tag">
-              <p>#입문자도 환영</p>
-            </div>
-            <div className="tag">
-              <p>#발표 중심 학습</p>
-            </div>
+          <div className="words">
+            {item.desc.split('\n').map((line, i) => (
+              <span key={i}>
+                {line}
+                <br />
+              </span>
+            ))}
           </div>
+          {current === 1 ? (  // 3번째 아이템일 때
+            item.tags && item.tags.length > 0 && (
+            <div className="tag-box">
+              {item.tags.map((tag, i) => (
+                <div className="tag2" key={i}>
+                  <p>{tag}</p>
+                </div>
+              ))}
+            </div>
+          )
+        ) : (
+          item.tags && item.tags.length > 0 && (
+            <div className="tag-box">
+              {item.tags.map((tag, i) => (
+                <div className="tag" key={i}>
+                  <p>{tag}</p>
+                </div>
+              ))}
+            </div>
+          )
+        )}
         </div>
       </div>
       <div className="mobile-activities">

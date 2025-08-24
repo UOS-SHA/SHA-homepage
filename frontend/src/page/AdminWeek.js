@@ -44,54 +44,57 @@ const AdminWeek = () => {
   };
 
   const handleSave = async () => {
-
-     if (!categoryId) {
+    if (!categoryId) {
     alert('카테고리 정보를 불러오는 중입니다. 잠시 후 다시 시도해주세요.');
     return;
-  }
+    }
+
     try {
+      // 1) 카테고리 코멘트 수정
+      if (editableComment !== categoryComment) {
+        await axios.patch(
+          `${SERVER_URL}/admin/board/${semesterId}`,
+          { id: categoryId, comment: editableComment },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        setCategoryComment(editableComment);
+      }
 
-    await axios.patch(
-        `${SERVER_URL}/admin/board/${semesterId}`,
-        { id: categoryId,
-          comment: editableComment},
-        { headers: { Authorization: `Bearer ${token}` } }
-    );
+      const newWeeks = editableWeeks.filter(w => !w.id);
+      for (let w of newWeeks) {
+        const res = await axios.post(
+          `${SERVER_URL}/admin/board/${semesterId}/${category}`,
+          {
+            StudyCategory: { name: category },
+            weekNum: w.weekNum,
+            title: w.title,
+            description: w.description,
+          },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        w.id = res.data.id;
+      }
 
-    const newWeeks = editableWeeks.filter(w => !w.id);
-    const existingWeeks = editableWeeks.filter(w => w.id);
+      // 기존 주차 중 내용이 바뀐 것만 PATCH
+      const updatedWeeks = editableWeeks.filter(w => {
+        if (!w.id) return false; // 새 주차는 이미 POST
+        const orig = weeks.find(week => week.id === w.id);
+        return orig && (orig.title !== w.title || orig.description !== w.description || orig.weekNum !== w.weekNum);
+      });
 
-    for (let w of newWeeks) {
-      const res = await axios.post(
-        `${SERVER_URL}/admin/board/${semesterId}/${category}`,
-        {
-          StudyCategory: {name: category},
-          weekNum: w.weekNum,
-          title: w.title,
-          description: w.description,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      w.id = res.data.id;
-    }
-
-    for (let w of existingWeeks) {
-      await axios.patch(
-        `${SERVER_URL}/admin/board/${semesterId}/${category}`,
-        {
-          StudyCategory: {name: category},
-          weekNum: w.weekNum,
-          title: w.title,
-          description: w.description,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-    }
-
+      for (let w of updatedWeeks) {
+        await axios.patch(
+          `${SERVER_URL}/admin/board/${semesterId}/${category}`,
+          {
+            StudyCategory: { name: category },
+            weekNum: w.weekNum,
+            title: w.title,
+            description: w.description,
+          },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+      }
+      
     setWeeks([...editableWeeks]);
     setIsEditing(false);
     alert('저장 완료!');
@@ -156,6 +159,10 @@ const AdminWeek = () => {
 
   // 팝업에서 추가하기 눌렀을 때
   const handleConfirmAdd = () => {
+    if (editableWeeks.some(w => w.weekNum === newWeek.weekNum)) {
+      alert(`${newWeek.weekNum}주차는 이미 존재합니다.`);
+      return;
+    }
     const newEntry = { ...newWeek, id: null }; // id 없으면 신규라고 판단
     setEditableWeeks([...editableWeeks, newEntry]);
     setShowPopup(false);
