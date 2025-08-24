@@ -25,10 +25,25 @@ node server.js
 ## 서버 사용 방법
 ssh {username}@{ip}
 
+
+
+
+
+
 ## db접속 방법
 docker-compose.yml 위치에서 
--> docker exec -it mysql-db bash
-mysql -u {username} -p
+
+
+
+
+
+-> docker exec -it mysql-db bash 
+
+
+
+
+
+mysql -u {username} -p --default-character-set=utf8mb4
 
 
 
