@@ -12,8 +12,8 @@ const Member = () => {
   const members = [
     { major: "컴과24", name: "김민주", interests: "web, crypto", github: "https://github.com/minnjuuu", insta: "/insta.png", git: "/git.png", comment: "1활동 1배고파" },
     { major: "기계24", name: "김민찬", interests: "system", github: "https://github.com/minnjuuu", insta: "/insta.png", git: "/git.png", comment: "pwn의 현재이자 미래" },
-    { major: "수학23", name: "김재승", interests: "system, crpyto", github: "https://github.com/minnjuuu", insta: "/insta.png", git: "/git.png", comment: " " },
-    { major: "컴과24", name: "김주현", interests: "web", github: "https://github.com/minnjuuu", insta: "/insta.png", git: "/git.png", comment: "가나디 닮은꼴" },
+    { major: "수학23", name: "김재승", interests: "system, crpyto", github: "https://github.com/minnjuuu", insta: "/insta.png", git: "/git.png", comment: "코카콜라 러버" },
+    { major: "컴과24", name: "김주현", interests: "web", github: "https://github.com/minnjuuu", insta: "/insta.png", git: "/git.png", comment: "^_^" },
     { major: "컴과25", name: "류재현", interests: "crypto", github: "https://github.com/minnjuuu", insta: "/insta.png", git: "/git.png", comment: "뚱땅뚱땅 키보드말고\n 컴퓨터 키보드" },
     { major: "컴과24", name: "성수현", interests: "web", github: "https://github.com/minnjuuu", insta: "/insta.png", git: "/git.png", comment: "보안소모임 화이팅!" },
     { major: "컴과19", name: "신희용", interests: "web", github: "https://github.com/minnjuuu", insta: "/insta.png", git: "/git.png", comment: "Pache punch" },
