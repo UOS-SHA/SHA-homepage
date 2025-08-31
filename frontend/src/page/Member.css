@@ -187,6 +187,7 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
     font-style: normal;
     font-weight: 450;
     line-height: 30px; /* 153.222% */
+    white-space: pre-line;
 }
 
 
@@ -333,7 +334,7 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
 
 .hanmadi {
     position: absolute;
-    left: 58px;
+    left: 53px;
     top: 196px;
     width: 200px;
     height: 50px;
