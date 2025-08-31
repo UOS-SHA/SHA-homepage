@@ -34,7 +34,7 @@ exports.joinList = async (req, res) => {
     try {
 
         const joins = await Join.findAll({
-            attributes: ['name', 'major', 'studentId', 'phone', 'expect', 'comment', 'submitTime'],
+            attributes: ['id', 'name', 'major', 'studentId', 'phone', 'expect', 'comment', 'submitTime'],
             include: [
                 {
                     model: PersonalSite,
