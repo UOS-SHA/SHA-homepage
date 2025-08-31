@@ -48,6 +48,7 @@ const items = [
 
 
 
+
 //mobile 붙은 코드 : 모바일에서 보이는 부분
 //mobile 안 붙은 코드 : 컴퓨터 
 //패드기준을 해야할까....
@@ -59,7 +60,6 @@ const Home = () => {
   const [angle, setAngle] = useState(0);
   const [showContent, setShowContent] = useState(true);
   const [isRotating, setIsRotating] = useState(false); // 클릭 방지
-
   const [isHoverActivities, setIsHoverActivities] = useState(false);
 
 
