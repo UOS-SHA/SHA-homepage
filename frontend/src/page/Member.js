@@ -159,10 +159,20 @@ const Member = () => {
                         <div className="mobile-profile-major">{member.major}</div>
                         <div className="mobile-profile-name">{member.name}</div>
                       </div>
+                      <div className="mobile-hanmadi">
+                          {(`"${member.comment}"`).split("\n").map((line, index) => (
+                            <span key={index}>
+                              {line}
+                              <br />
+                            </span>
+                          ))}
+                      </div>
+                      {/*
                       <div className="mobile-position-link">
                         <div className="mobile-position">관심분야: {member.interests}</div>
                         <div className="mobile-profile-link">{member.github}</div>
                       </div>
+                      */}
                       <div className="mobile-individual-line"></div>
                     </div>
                   ))}
@@ -214,7 +224,7 @@ const Member = () => {
                         </div>
                         <div className="position-link">
                           <div className="position">관심분야: {member.interests}</div>
-                          <div className="profile-link">{member.github}</div>
+                          {/*<div className="profile-link">{member.github}</div>*/}
                         </div>
                         <div className="individual-line"></div>
                         <div className="hanmadi">
