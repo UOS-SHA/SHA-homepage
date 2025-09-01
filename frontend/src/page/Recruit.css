@@ -530,6 +530,7 @@ line-height: normal;
 }
 
 .input {
+    padding-left: 10px;
     width: 320px;
     height: 40px;
     border-radius: 10px;
@@ -591,6 +592,8 @@ line-height: normal;
 }
 
 .input2 {
+    padding-left: 10px;
+    padding-top: 8px;
     width: 550px;
     height: 140px;
     border-radius: 10px;
@@ -659,6 +662,7 @@ line-height: normal;
 }
 
 .input3 {
+    padding-left: 10px;
     width: 550px;
     height: 40px;
     border-radius: 10px;
