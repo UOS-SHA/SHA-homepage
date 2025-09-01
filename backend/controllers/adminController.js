@@ -38,7 +38,9 @@ exports.joinList = async (req, res) => {
             include: [
                 {
                     model: PersonalSite,
+                    as: 'personalSite',
                     attributes: ['url'],
+                    requried: false
                 },
             ],
         });

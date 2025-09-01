@@ -47,6 +47,9 @@ const AdminUsers = () => {
             Authorization: `Bearer ${token}`,
           }}
         );
+
+        console.log("📌 서버에서 받은 데이터:", res.data);  // 👈 여기 추가
+
         setUserList(res.data);
       } catch (err) {
         console.error('유저 목록 불러오기 실패: ', err);
@@ -127,10 +130,18 @@ const AdminUsers = () => {
             </div>
             <div className="usermodal-block">
               <div className="usermodal-label">개인 사이트</div>{" "}
-              {selectedUser.PersonalSite?.url ? (
-                <a className="usermodal-info" href={selectedUser.PersonalSite.url} target="_blank" rel="noopener noreferrer">
-                  {selectedUser.PersonalSite.url}
-                </a>
+              {selectedUser.PersonalSites?.length>0 ? (
+                selectedUser.PersonalSites.map((site, idx) => (
+                  <a 
+                    key={idx}
+                    className="usermodal-info"
+                    href={site.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {site.url}
+                  </a>
+                ))
               ): (
                 <span className="modal-info"></span>
               )}
