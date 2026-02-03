@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { createCategory, createSemester, createWeek, updateWeek, updateCategory, updateSemester, deleteWeek, deleteCategory, deleteSemester } = require('../controllers/boardController');
-const { login, joinList } = require('../controllers/adminController');
+const { login, joinList, members, updateMember, deleteMember } = require('../controllers/adminController');
 const isAdmin = require('../middlewares/isAdmin');
 
 router.post('/', login);
@@ -9,6 +9,9 @@ router.post('/', login);
 router.use(isAdmin);
 
 router.get('/users/', joinList);
+router.get('/members/', members);
+router.patch('/members/:id', updateMember);
+router.delete('/members/:id', deleteMember);
 
 router.post('/board/:semester/:category', createWeek);
 router.post('/board/:semester', createCategory);

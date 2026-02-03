@@ -4,15 +4,21 @@ exports.application = async (req, res) => {
 
 
     try {
-        const {name, major, studentId, phone, expect, comment, sites} = req.body;
+        const {name, major, studentId, interests, interestEtc, team, selfIntro, seminarAvailable, phone, expect, comment, sites} = req.body;
     
         const application = await Join.create({
             name,
             major, 
             studentId,
+            interests,
+            interestEtc,
+            team,
+            selfIntro,
+            seminarAvailable,
             phone,
             expect,
             comment,
+            semester: '2026-1'
         });
 
 
