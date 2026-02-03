@@ -3,6 +3,7 @@ const router = express.Router();
 const { createCategory, createSemester, createWeek, updateWeek, updateCategory, updateSemester, deleteWeek, deleteCategory, deleteSemester } = require('../controllers/boardController');
 const { login, joinList, members, updateMember, deleteMember } = require('../controllers/adminController');
 const isAdmin = require('../middlewares/isAdmin');
+const { downloadJoin } = require('../controllers/adminController');
 
 router.post('/', login);
 
@@ -25,6 +26,7 @@ router.delete('/board/:semester/:category/:id', deleteWeek);
 router.delete('/board/:semester/:id', deleteCategory);
 router.delete('/board/:id', deleteSemester);
 
+router.get('/recruit/download', downloadJoin);
 
 
 

@@ -119,7 +119,7 @@ exports.deleteMember = async(req, res) => {
     try {
         const { id } = req.params;
 
-        const memer = await Member.findByPk(id);
+        const member = await Member.findByPk(id);
         if (!member) {
             return res.status(404).json({ message: '멤버를 찾을 수 없습니다' });
         }
@@ -136,8 +136,100 @@ exports.deleteMember = async(req, res) => {
 
 exports.downloadJoin = async (req, res) => {
     try {
-        const joins = await Join.findAll({
-            order: [['submitTime', 'ASC']]
+      const joins = await Join.findAll({
+        attributes: [
+          'name',
+          'major',
+          'studentId',
+          'interests',
+          'interestEtc',
+          'team',
+          'selfIntro',
+          'seminarAvailable',
+          'phone',
+          'expect',
+          'comment',
+          'submitTime'
+        ], 
+        include: [
+            {
+                model: PersonalSite,
+                attributes: ['url']
+            }
+        ],
+        order: [['submitTime', 'DESC']]
+      });
+  
+      const workbook = new ExcelJS.Workbook();
+      const worksheet = workbook.addWorksheet('Recruit List');
+  
+      worksheet.addRow([`총 지원자 수: ${joins.length}명`]);
+      worksheet.addRow([]);
+
+      worksheet.columns = [
+        { header: '이름', key: 'name', width: 15 },
+        { header: '학과', key: 'major', width: 15 },
+        { header: '학번', key: 'studentId', width: 15 },
+        { header: '관심분야', key: 'interests', width: 20 },
+        { header: '기타 관심분야', key: 'interestEtc', width: 20 },
+        { header: '팀 선택', key: 'team', width: 15 },
+        { header: '한줄 소개', key: 'selfIntro', width: 30 },
+        { header: '세미나 참여 가능', key: 'seminarAvailable', width: 15 },
+        { header: '전화번호', key: 'phone', width: 15 },
+        { header: '기대하는 바', key: 'expect', width: 30 },
+        { header: '각오 한마디', key: 'comment', width: 20 },
+        { header: '개인 사이트', key: 'personalSites', width: 40 },
+        { header: '제출 시간', key: 'submitTime', width: 20 }
+      ];
+  
+      worksheet.getRow(3).font = { bold: true };
+
+      worksheet.getRow(3).eachCell(cell => {
+        cell.fill = {
+          type: 'pattern',
+          pattern: 'solid',
+          fgColor: { argb: 'FFEFEFEF' }
+        };
+      });
+
+      joins.forEach(join => {
+
+        const sites = join.PersonalSites
+          ? join.PersonalSites.map(site => site.url).join('\n')
+          : '';
+  
+        const row = worksheet.addRow({
+          ...join.toJSON(),
+          personalSites: sites,
+          submitTime: new Date(join.submitTime).toLocaleString('ko-KR', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+          })
         });
+
+        row.getCell('personalSites').alignment = { wrapText: true };
+        row.getCell('selfIntro').alignment = { wrapText: true };
+        row.getCell('expect').alignment = { wrapText: true };
+      });
+  
+      res.setHeader(
+        'Content-Disposition',
+        'attachment; filename=recruit_list.xlsx'
+      );
+      res.setHeader(
+        'Content-Type',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+      );
+  
+      await workbook.xlsx.write(res);
+      res.end();
+  
+    } catch (err) {
+      console.error('엑셀 다운로드 에러:', err);
+      res.status(500).json({ message: '엑셀 다운로드 실패' });
     }
-}
+  };
+  

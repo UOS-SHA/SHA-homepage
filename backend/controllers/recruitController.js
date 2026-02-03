@@ -18,7 +18,6 @@ exports.application = async (req, res) => {
             phone,
             expect,
             comment,
-            semester: '2026-1'
         });
 
 

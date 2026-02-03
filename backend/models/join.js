@@ -55,11 +55,6 @@ module.exports = (sequelize, DataTypes)=> {
             type: DataTypes.TEXT,
             allowNull: true
         },
-        semester: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            comment: '2026-1'
-        },
         
     }, {
         timestamps: true,
