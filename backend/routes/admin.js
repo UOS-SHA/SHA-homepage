@@ -10,6 +10,8 @@ router.post('/', login);
 router.use(isAdmin);
 
 router.get('/users/', joinList);
+router.get('/users/export', downloadJoin);
+
 router.get('/members/', members);
 router.patch('/members/:id', updateMember);
 router.delete('/members/:id', deleteMember);
@@ -26,7 +28,6 @@ router.delete('/board/:semester/:category/:id', deleteWeek);
 router.delete('/board/:semester/:id', deleteCategory);
 router.delete('/board/:id', deleteSemester);
 
-router.get('/recruit/download', downloadJoin);
 
 
 
