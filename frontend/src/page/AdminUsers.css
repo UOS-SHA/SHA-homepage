@@ -1,0 +1,313 @@
+.users-container {
+    margin-top: 88px;
+    max-height: calc(100vh - 88px);
+    overflow: auto;
+
+    /* 스크롤바 안 보이게 */
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+
+}
+
+.users-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+
+.users-index {
+    background-color: black;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.number1 {
+    width: 50px;
+color: white;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;}
+
+.admin-username1{
+    width: 140px;
+    color: white;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+}
+
+.admin-major1 {
+    width: 130px;
+    color: white;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+.admin-studentnum1 {
+    width: 150px;
+    color: white;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+
+}
+
+.admin-phone1 {
+    width: 170px;
+    color: white;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+}
+
+.admin-interests1 {
+    width: 170px;
+    color: white;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+}
+
+
+.admin-team1 {
+    width: 170px;
+    color: white;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+}
+
+.admin-seminar1 {
+    width: 170px;
+    color: white;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+}
+
+.admin-comment1 {
+    width: 140px;
+color: #FFF;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+.admin-date1 {
+    width: 100px;
+color: #FFF;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+.admin-line {
+    width: 100%;
+    height: 13px;
+    border-top: 1px solid #A1A1A1;
+    background-color: black;
+}
+
+.users-box1 {
+    background-color: #4F4F4F;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.number {
+    margin-left: -50px;
+    width: 30px;
+color: white;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+    text-align: center;
+}
+
+.admin-username{
+    margin-left: 0px;
+    margin-right: -20px;
+    width: 90px;
+    color: white;
+    font-size: 16px;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+    text-align: center;
+
+
+}
+
+.admin-major {
+    margin-left: 20px;
+    width: 163px;
+    color: white;
+    font-size: 16px;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+    text-align: center;
+
+
+
+}
+
+.admin-studentnum {
+    margin-left: 5px;
+    width: 70px;
+    color: white;
+    font-size: 16px;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+    text-align: center;
+
+
+}
+
+.admin-phone {
+    margin-left: 40px;
+    width: 170px;
+    color: white;
+    font-size: 16px;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+    text-align: center;
+
+
+}
+
+.admin-comment {
+    margin-left: -10px;
+    width: 140px;
+    font-size: 16px;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
+
+.admin-comment p {
+    cursor: pointer;
+    color: #5DFFC6;
+    text-decoration: underline;
+}
+
+.admin-date {
+
+    width: 100px;
+color: white;
+    font-size: 16px;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-align: center;
+    text-align: center;
+
+}
+
+.users-box2 {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.usermodal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.usermodal-content {
+    height: 280px;
+    width: 480px;
+    padding: 30px 40px;
+    border-radius: 12px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #A1A1A1;
+    background: #1F1F1F;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+}
+
+.usermodal-content::-webkit-scrollbar {
+    display: none;
+}
+
+.usermodal-content {
+    scrollbar-width: none;
+}
+
+.usermodal-block {
+    padding-left: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+.usermodal-label {
+    color: #FFF;
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.usermodal-info {
+    color: #FFF;
+font-family: Pretendard;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}

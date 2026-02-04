@@ -1,0 +1,362 @@
+.profile-scroll-box {
+    width: 60%;
+    height: auto;
+    margin-left: 0;
+    margin-top: 120.7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    scrollbar-width: none; /* Firefox */
+    overscroll-behavior-y: none;    /* 수직 탄력 스크롤 완전 제거 */
+    scroll-behavior: smooth;        /* 선택사항: 스크롤 부드럽게 */
+}
+
+.profile-scroll-box::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+
+    .mobile-profile-scroll-box {
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        margin-top: 0;
+        padding-bottom: 60px;
+    }
+
+    .mobile-profile-container {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        overflow-y: hidden; 
+        overflow-x: hidden;
+    }
+
+    .mobile-profile-box {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    overflow-y: hidden; 
+    overflow-x: hidden;
+}
+
+.mobile-individual {
+    position: relative;
+    width: 160px;
+    height: 165px;
+    border-radius: 10.59px;
+border: 0.5px solid #646464;
+background: #080808;
+box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
+}
+
+.mobile-name-major {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    width: 80%;
+    height: auto;
+}
+
+.mobile-profile-major {
+    width: 60px;
+    height: 25px;
+    border-radius: 8px;
+    background: #282828;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px;
+    margin-left: 3px;
+}
+
+.mobile-profile-name {
+    margin-top: 13px;
+    margin-left: 50px;
+    color: white;
+    text-align: left;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 50px;
+}
+
+.mobile-insta-git {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+}
+
+.mobile-insta {
+    width: 20px;
+    height: auto;
+}
+
+.mobile-git {
+    margin-top: -5px;
+    width: 30px;
+    height: auto;
+}
+
+.mobile-individual .instalogo {
+    width: 20px;
+    height: auto;
+}
+
+.mobile-individual .gitlogo {
+    width: 30px;
+    height: auto;
+}
+
+.mobile-position-link {
+    position: absolute;
+    bottom: 10px;
+    left: 16px;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.mobile-position {
+    color: #5DFFC6;
+    text-align: left;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15px;
+}
+
+.mobile-profile-link {
+    color: #5DFFC6;
+    text-align: right;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.mobile-individual .mobile-individual-line {
+    position: absolute;
+    left: 15px;
+    top: 105px;
+    width: 80%;
+    height: 0.7px;
+    background: linear-gradient(90deg, rgba(32, 32, 32, 0.13) 0%, #FFF 50%, rgba(31, 31, 31, 0.29) 100%);
+}
+
+.mobile-individual .mobile-hanmadi {
+    position: absolute;
+    left: -18.5px;
+    bottom: -3px;
+    width: 200px;
+    height: 50px;
+    color: #5DFFC6;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 153.222% */
+    white-space: pre-line;
+}
+
+
+}
+
+.profile-container {
+    padding-top: 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    overflow-y: hidden; 
+    overflow-x: hidden;
+}
+
+.profile-box {
+    width: 800px;
+    height: 380px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 65px;
+    overflow-y: hidden; 
+    overflow-x: hidden;
+}
+
+.individual {
+    position: relative;
+    width: 300px;
+    height: 290px;
+    border-radius: 24px;
+    border: 1px solid #FFF;
+    background: #080808;
+    box-shadow: 0 4px 37px 7px rgba(255, 255, 255, 0.32);
+}
+
+.img_crown {
+    position: absolute;
+    top: 10px;
+    left: 35px;
+    width: 25px;
+    height: 25px;
+}
+
+.crown {
+    width: 23px;
+    height: 23px;
+}
+
+.name-major {
+    position: absolute;
+    top: 45px;
+    left: 30px;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.profile-major {
+    color: #FFF;
+    text-align: left;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 4px;
+    margin-left: 3px;
+}
+
+.profile-name {
+    color: #FFF;
+    text-align: left;
+    font-family: Inter;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 50px;
+}
+
+.insta-git {
+    position: absolute;
+    top: 50px;
+    right: 25px;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+}
+
+.insta {
+    width: 30px;
+    height: auto;
+}
+
+.git {
+    margin-top: -5px;
+    width: 40px;
+    height: auto;
+}
+
+.instalogo {
+    width: 25px;
+    height: auto;
+}
+
+.gitlogo {
+    width: 35.5px;
+    height: auto;
+}
+
+.position-link {
+    position: absolute;
+    bottom: 140px;
+    width: 290px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    right: 5px;
+}
+
+.position {
+    color: #FFF;
+    text-align: right;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    width: 280px;
+}
+
+.profile-link {
+    color: #FFF;
+    text-align: right;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.individual-line {
+    position: absolute;
+    left: 58px;
+    top: 173px;
+    width: 200px;
+    height: 0.7px;
+    background: linear-gradient(90deg, rgba(32, 32, 32, 0.13) 0%, #FFF 50%, rgba(31, 31, 31, 0.29) 100%);
+}
+
+.hanmadi {
+    position: absolute;
+    left: 53px;
+    top: 196px;
+    width: 200px;
+    height: 50px;
+    color: #5DFFC6;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 30px; /* 153.222% */
+}

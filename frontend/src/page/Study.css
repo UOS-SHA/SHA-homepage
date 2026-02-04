@@ -1,0 +1,125 @@
+.study-sheet {
+    margin-top: 88px;
+    padding-left: 600.6px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.study-fillout {
+    position: fixed;
+    width: 100%;
+    height: 120px;
+    background-color: black;
+    z-index: 800;
+    pointer-events: none;  /* ← 클릭 차단 안 함 */
+}
+
+.semester {
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    flex-shrink: 0;
+    height: 195px;
+    overflow-x: hidden;
+}
+
+.semester-label{
+    margin-left: 130px;
+    width: 100%;
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.semester:hover {
+  cursor: pointer;
+  transition: background 0.2s ease;
+  background-color: #2C2C2C;
+}
+ 
+
+
+.study-line2 {
+    position: fixed;
+    margin-top: 120px;
+    width: 100%;
+    height: 0.5px;
+    background-color: #A1A1A1;
+}
+
+.study-line3 {
+    width: 100%;
+    height: 0.7px;
+    background-color: #A1A1A1;
+
+}
+
+@media (max-width: 768px) {
+    .mobile-study-sheet {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-study-fillout {
+    width: 100%;
+    height: 80px;
+    z-index: 800;
+    pointer-events: none;  /* ← 클릭 차단 안 함 */
+}
+
+.mobile-semester {
+    background-color: black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    flex-shrink: 0;
+    height: 100px;
+    overflow-x: hidden;
+    text-decoration: none;
+}
+
+.mobile-semester-label{
+    margin-left: 20px;
+    width: 100%;
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.mobile-semester:hover {
+  cursor: pointer;
+  transition: background 0.2s ease;
+  background-color: #2C2C2C;
+}
+ 
+
+
+.mobile-study-line2 {
+    width: 100%;
+    height: 0.5px;
+    background-color: #A1A1A1;
+}
+
+.mobile-study-line3 {
+    width: 100%;
+    height: 0.7px;
+    background-color: #A1A1A1;
+    z-index: 990;
+}
+
+
+}
