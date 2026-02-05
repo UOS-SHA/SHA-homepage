@@ -7,6 +7,9 @@ import './Recruit.css';
 import './Member.css';
 import '../Home.css';
 
+//admin이랑 연결스
+//멤버 정보 받아오기, 지위에 따라서 이미지 달라야 함! 확인!
+
 const Member = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const members = [
@@ -210,17 +213,13 @@ const Member = () => {
                   <div className="profile-box" key={idx}>
                     {pair.map((member, i) => (
                       <div className="individual" key={i}>
+                        {/*수정: 지위가 회장이면 yellow_crown, 지위가 부회장이면 grey_crown으로 이미지 설정*/} 
+                        <div className="img_crown">
+                          <img src={`${process.env.PUBLIC_URL}/yellow_crown.png`} alt="Logo" className="crown" />
+                        </div>
                         <div className="name-major">
                           <div className="profile-major">{member.major}</div>
                           <div className="profile-name">{member.name}</div>
-                        </div>
-                        <div className="insta-git">
-                          <div className="insta">
-                            <img src={process.env.PUBLIC_URL + member.insta} alt="insta" className="instalogo" />
-                          </div>
-                          <div className="git">
-                           <img src={process.env.PUBLIC_URL + member.git} alt="git" className="gitlogo" />
-                          </div>
                         </div>
                         <div className="position-link">
                           <div className="position">관심분야: {member.interests}</div>

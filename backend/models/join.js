@@ -26,22 +26,22 @@ module.exports = (sequelize, DataTypes)=> {
 
         interestEtc: {
             type: DataTypes.STRING(100),
-            allowNUll: true
+            allowNull: true
         },
 
         team: {
             type: DataTypes.ENUM('A', 'B', 'C'),
-            allowNUll: false
+            allowNull: false
         },
 
         selfIntro: {
             type: DataTypes.STRING(100),
-            allowNUll: false
+            allowNull: false
         },
 
         seminarAvailable: {
             type: DataTypes.BOOLEAN,
-            allowNUll: false
+            allowNull: false
         },
 
         phone: {
@@ -60,6 +60,7 @@ module.exports = (sequelize, DataTypes)=> {
         timestamps: true,
         createdAt: 'submitTime',
         updatedAt: false,
+        tableName: 'joins'
     });
 
 

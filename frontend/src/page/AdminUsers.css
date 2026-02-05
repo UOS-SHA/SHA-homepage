@@ -51,8 +51,6 @@ font-family: Pretendard;
 font-style: normal;
 font-weight: 500;
 line-height: normal;
-
-
 }
 
 .admin-studentnum1 {
@@ -67,6 +65,37 @@ line-height: normal;
 }
 
 .admin-phone1 {
+    width: 170px;
+    color: white;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+}
+
+.admin-interests1 {
+    width: 170px;
+    color: white;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+}
+
+
+.admin-team1 {
+    width: 170px;
+    color: white;
+font-family: Pretendard;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+}
+
+.admin-seminar1 {
     width: 170px;
     color: white;
 font-family: Pretendard;

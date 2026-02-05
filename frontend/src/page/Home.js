@@ -6,18 +6,45 @@ import AccordionItem from './AccordionItem';
 import '../Home.css';
 
 
-const achievementlist=[
-  {title: '컴퓨터과학부 보안 소모임 SHA 창설'},
-  {title: 'HSPACE 클럽 가입', 
-    detail: 'HSPACE는 ‘해커스페이스(Hacker Space)’의 약자로, 정보보호 관련 활동을 위한 공간과 자원을 지원하는 커뮤니티입니다. 스터디, 세미나, CTF 대회 개최 등을 위한 공간 대여를 지원하고, 대학 보안 동아리와의 연합 활동을 통해 다양한 협력과 성장을 돕습니다.'},
-  {title: 'CCA 가입', 
-    detail: 'CCA는 teamh4c와 BoB총동문회가 파트너십을 맺고 교류하고 있는전국사이버보안동아리연합회입니다.'},
-  {title: 'SHA 밤샘해킹 진행'},
-  {title: 'Hacksium in Busan 최종 7위',
-    detail: '이성민'},
-  {title: 'Best of the Best 14기 합격', 
-    detail: '한건우'},
+
+
+const achievementData = {
+  0: {
+    title: "2025 2학기",
+    items: [
+      { title: "유플러스 시큐리티 해커톤 FINAL", detail: "상세 내용을 여기에 적으세요." },
+      { title: "2025 오토핵 FINAL 부산광역시장상", detail: "자동차 보안 관련 해커톤 우승" },
+      // ... 나머지도 동일한 형식으로
+    ],
+  },
+  1: {
+    title: "2025 1학기",
+    items: [
+      { title: "CCA 가입", detail: "CCA는 teamh4c와 BoB총동문회가 파트너십을 맺고 교류하고 있는 전국사이버보안동아리연합회입니다." },
+      { title: "SHA 밤샘해킹 진행", detail: "무박 2일간 진행된 교내 보안 워크숍" },
+      { title: "Hacksium in Busan 최종 7위", detail: "이성민" },
+      { title: "Best of the Best 14기 합격", detail: "한건우" },
+      { title: "해킹 캠프 1위", detail: "해킹 캠프 성적 우수자 선정" }
+    ],
+  },
+  2: {
+    title: "2024 1학기",
+    items: [
+      { title: "컴퓨터과학부 보안 소모임 SHA 창설", detail: "보안에 관심 있는 학생들을 위한 소모임 기획 및 설립" },
+      { title: "HSPACE 클럽 가입", detail: "HSPACE는 '" },
+    ],
+  }
+};
+
+// 기존 achievementData 아래에 추가
+const achievementlist = [
+  { title: "CCA 가입", detail: "전국사이버보안동아리연합회 교류" },
+  { title: "SHA 밤샘해킹", detail: "교내 보안 워크숍 진행" },
+  { title: "Hacksium 7위", detail: "부산 해킹대회 본선 진출" },
+  { title: "BoB 14기 합격", detail: "차세대 보안 리더 양성 프로그램" },
+  { title: "해킹 캠프 1위", detail: "성적 우수자 선정" }
 ];
+
 
 const items = [
     {
@@ -49,6 +76,7 @@ const items = [
 
 
 
+
 //mobile 붙은 코드 : 모바일에서 보이는 부분
 //mobile 안 붙은 코드 : 컴퓨터 
 //패드기준을 해야할까....
@@ -63,6 +91,22 @@ const Home = () => {
   const [isHoverActivities, setIsHoverActivities] = useState(false);
 
 
+ // 1. 상태를 배열로 변경
+const [expandedIndices, setExpandedIndices] = useState([]);
+
+// 학기가 바뀔 때 초기화
+useEffect(() => {
+  setExpandedIndices([]);
+}, [current]);
+
+// 2. 토글 함수 생성 (가독성을 위해 분리)
+const toggleExpand = (idx) => {
+  setExpandedIndices(prev => 
+    prev.includes(idx) 
+      ? prev.filter(i => i !== idx) // 이미 있으면 제거 (닫기)
+      : [...prev, idx]              // 없으면 추가 (열기)
+  );
+};
 
   const prevItem = () => {
     if (isRotating) return;
@@ -265,10 +309,10 @@ const Home = () => {
           <div className="homeline-60" />
           <div className="homeline-120" />
         </div>
-        <div className="homeline3" style={{ opacity: showContent ? 1 : 0,
+        <div className="homeline3 left-side" style={{ opacity: showContent ? 1 : 0,
             transform: showContent ? 'rotate(-14deg) scaleX(1)' : 'rotate(-14deg) scaleX(0)' ,
             transition: 'opacity 0.1s ease, transform 0.7s ease' }}/>
-        <div className="homeline4" style={{ opacity: showContent ? 1 : 0, 
+        <div className="homeline4 left-side" style={{ opacity: showContent ? 1 : 0, 
             transform: showContent ? 'rotate(14deg) scaleX(1)' : 'rotate(14deg) scaleX(0)',
             transition: 'opacity 0.1s ease, transform 0.7s ease'}}/>
         <div className="bottom-fade"></div>
@@ -376,6 +420,90 @@ const Home = () => {
           </div>
         </div>
       </div>
+      
+      /*-- achievements 수정 --*/
+      <div className="achievements-test" 
+        onMouseEnter={() => setIsHoverActivities(true)}
+        onMouseLeave={() => setIsHoverActivities(false)}
+        onClick={prevItem}
+      >
+        <div className="word-ACHIEVEMENTS-2">ACHIEVEMENTS</div>
+        {/*<div className="click-anywhere">
+          CLICK ANYWHERE
+        </div> 조만간 삭제 예정*/}
+        <div className="top-fade-2"></div>
+        <div className="circle-wrapper-2" style={{transform: `rotate(-${angle}deg)`, transition: 'transform 0.8s ease'}}>
+          <div className={`bizz0 ${current === 0 ? "special-bizz" : ""}`}>
+            <div className="bizz-text" style={{ transform: `rotate(${angle}deg) translateX(-60px)` }}>2025 2학기</div>
+          </div>
+          <div className={`bizz60 ${current === 1 ? "special-bizz" : ""}`}>
+            <div className="bizz-text" style={{ transform: `rotate(${angle}deg) translateX(-60px)` }}>2025 1학기</div>
+          </div>
+          <div className={`bizz120 ${current === 2 ? "special-bizz" : ""}`}>
+            <div className="bizz-text" style={{ transform: `rotate(${angle}deg) translateX(-60px)` }}>2024 1학기</div>
+          </div>
+          <div className={`bizz180 ${current === 0 ? "special-bizz" : ""}`}>
+            <div className="bizz-text" style={{ transform: `rotate(${angle}deg) translateX(-60px)` }} >2025 2학기</div>
+          </div>
+          <div className={`bizz240 ${current === 1 ? "special-bizz" : ""}`}>
+            <div className="bizz-text" style={{ transform: `rotate(${angle}deg) translateX(-60px)` }}>2025 1학기</div>
+          </div>
+          <div className={`bizz300 ${current === 2 ? "special-bizz" : ""}`}>
+            <div className="bizz-text" style={{ transform: `rotate(${angle}deg) translateX(-60px)` }}>2024 1학기</div>
+          </div>
+        
+          <div className="homeline2" />  {/*0도-180도*/}
+          <div className="homeline-60" />
+          <div className="homeline-120" />
+        </div>
+        <div className="bottom-fade-2"></div>
+        <div className="homeline1-2" />
+        <div className="home-wordbox"
+            style={{ opacity: showContent ? 1 : 0,
+            transition:  'opacity 0.8s ease' }}>
+        </div>
+        <div className={`info-side-panel ${showContent ? 'active' : ''}`}>
+          <div className="info-header">
+            <span className="year-tag">TIMELINE</span>
+            <h2>{achievementData[current]?.title}</h2>
+          </div>
+  
+          <ul className="info-list">
+            {achievementData[current]?.items.map((item, idx) => {
+              const isExpanded = expandedIndices.includes(idx);
+    
+              return (
+                <li key={idx} className="info-item-container">
+                  <div 
+                    className={`info-item ${isExpanded ? 'selected' : ''}`}
+                    onClick={(e) => {
+                      e.stopPropagation(); 
+                      toggleExpand(idx);
+                    }}
+                  >
+                    <span className="dot"></span>
+                    <span className="item-title">{item.title}</span>
+                  </div>
+        
+                  {/* 부드러운 전이를 위한 래퍼 (항상 렌더링됨) */}
+                  <div className={`info-detail-wrapper ${isExpanded ? 'open' : ''}`}>
+                    <div className="info-detail-inner">
+                      {item.detail && (
+                        <div className="info-detail">
+                          <p>{item.detail}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+
+      /*-- achievments 구버전 --*/
+      {/*
       <div className="achievements">
         <div className="word-ACHIEVEMENTS">
           ACHIEVEMENTS
@@ -407,6 +535,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      */}
       <div className="mobile-achievements">
         <div className="word-ACHIEVEMENTS">
           ACHIEVEMENTS

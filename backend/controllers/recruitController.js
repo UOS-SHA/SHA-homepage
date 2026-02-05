@@ -4,6 +4,8 @@ exports.application = async (req, res) => {
 
 
     try {
+
+        console.log('📌 프론트에서 받은 데이터:', req.body);
         const {name, major, studentId, interests, interestEtc, team, selfIntro, seminarAvailable, phone, expect, comment, sites} = req.body;
     
         const application = await Join.create({
@@ -18,8 +20,9 @@ exports.application = async (req, res) => {
             phone,
             expect,
             comment,
-        });
+        }, {logging: console.log});
 
+        console.log('✅ 생성된 ID:', application.id);
 
         if (sites && Array.isArray(sites)) {
             const siteData = sites.map(url => ({

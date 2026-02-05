@@ -95,27 +95,59 @@ const AdminUsers = () => {
           <div className="admin-major1">학과</div>
           <div className="admin-studentnum1">학번</div>
           <div className="admin-phone1">전화번호</div>
+          <div className="admin-interests1">관심분야</div>
+          <div className="admin-team1">팀</div>
+          <div className="admin-seminar">세미나</div>
           <div className="admin-comment1">코멘트</div>
           <div className="admin-date1">날짜</div>
         </div>
         <div className="admin-line"></div>
-        {userList.map((user, idx) => (
-          <div 
-            key={idx} 
-            className={idx % 2 === 0 ? "users-box1" : "users-box2"}
-          >
-            <div className="number">{idx + 1}</div>
-            <div className="admin-username">{user.name}</div>
-            <div className="admin-major">{user.major}</div>
-            <div className="admin-studentnum">{user.studentId}</div>
-            <div className="admin-phone">{user.phone}</div>
-            <div className="admin-comment" onClick={() => handleOpenModal(user)}>
-              <p>상세보기</p></div>
-            <div className="admin-date">
-              <p>{user.submitTime}</p>
+        {userList.map((user, idx) => {
+          // 1. 관심분야 처리: 배열일 수도, 문자열된 JSON일 수도 있음
+          let displayInterests = '없음';
+          try {
+            if (user.interests) {
+              if (Array.isArray(user.interests)) {
+                displayInterests = user.interests.join(', ');
+              } else if (typeof user.interests === 'string') {
+                // 만약 "[ "Web" ]" 처럼 문자열로 오면 파싱 시도
+                const parsed = JSON.parse(user.interests);
+                displayInterests = Array.isArray(parsed) ? parsed.join(', ') : parsed;
+              }
+            }
+          } catch (e) {
+            displayInterests = user.interests; // 파싱 실패 시 원본이라도 출력
+          }
+
+          return (
+            <div key={idx} className={idx % 2 === 0 ? "users-box1" : "users-box2"}>
+              <div className="number">{idx + 1}</div>
+              <div className="admin-username">{user.name}</div>
+              <div className="admin-major">{user.major}</div>
+              <div className="admin-studentnum">{user.studentId}</div>
+              <div className="admin-phone">{user.phone}</div>
+      
+              {/* 관심분야 출력 */}
+              <div className="admin-major">{displayInterests}</div>
+      
+              {/* 팀 출력: 대문자/소문자 모두 대응 */}
+              <div className="admin-major">{user.team || user.Team || '미정'}</div>
+      
+              {/* 세미나 출력: true/false/1/0/문자열 모두 대응 */}
+              <div className="admin-major">
+                {(user.seminarAvailable === true || user.seminarAvailable === 1 || user.seminarAvailable === 'true') 
+                  ? "가능" : "불가능"}
+              </div>
+
+              <div className="admin-comment" onClick={() => handleOpenModal(user)}>
+                <p>상세보기</p>
+              </div>
+              <div className="admin-date">
+                <p>{user.submitTime}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          );  
+        })}
       </div>
       {isUserModalOpen && selectedUser && (
         <div className="usermodal-overlay">
