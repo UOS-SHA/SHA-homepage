@@ -16,6 +16,7 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.Join = require('./join')(sequelize, Sequelize);
+db.Member = require('./member')(sequelize, Sequelize);
 db.PersonalSite = require('./personal_sites')(sequelize, Sequelize);
 db.StudySemester = require('./studySemester')(sequelize, Sequelize);
 db.StudyCategory = require('./studyCategory')(sequelize, Sequelize);

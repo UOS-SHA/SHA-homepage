@@ -12,7 +12,7 @@ import AdminBoard from './AdminBoard.js';
 
 const Admin = () => {
 
-    const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+    const SERVER_URL =process.env.REACT_APP_SERVER_URL;
     const [id, setId]= useState('');
     const [pw, setPw] = useState('');
     const [error, setError]= useState('');
@@ -35,7 +35,6 @@ const Admin = () => {
 
             if (response.data.isAdmin) {
                 localStorage.setItem('adminToken', response.data.token);
-                alert('로그인 성공');
                 setError('');
                 navigate('/admin/board');
             } else {

@@ -6,8 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-y: scroll; /* 세로 스크롤은 유지 */
-    overflow-x: hidden;
+
     scrollbar-width: none; /* Firefox */
     overscroll-behavior-y: none;    /* 수직 탄력 스크롤 완전 제거 */
     scroll-behavior: smooth;        /* 선택사항: 스크롤 부드럽게 */
@@ -57,6 +56,8 @@
     overflow-x: hidden;
 }
 
+
+
 .mobile-individual {
     position: relative;
     width: 160px;
@@ -65,6 +66,20 @@
 border: 0.5px solid #646464;
 background: #080808;
 box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
+}
+
+.mobile-img-crown {
+    position: absolute;
+    top: 38px;
+    left: 108px;
+    width: 18px;
+    height: 18px;
+}
+
+.mobile-crown {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
 }
 
 .mobile-name-major {
@@ -228,6 +243,19 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
     box-shadow: 0 4px 37px 7px rgba(255, 255, 255, 0.32);
 }
 
+.img_crown {
+    position: absolute;
+    top: 10px;
+    left: 35px;
+    width: 25px;
+    height: 25px;
+}
+
+.crown {
+    width: 23px;
+    height: 23px;
+}
+
 .name-major {
     position: absolute;
     top: 45px;
@@ -295,12 +323,13 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
 .position-link {
     position: absolute;
     bottom: 140px;
-    right: 25px;
-    width: auto;
+    width: 290px;
     height: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 0;
+    right: 5px;
 }
 
 .position {
@@ -311,6 +340,7 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
+    width: 280px;
 }
 
 .profile-link {

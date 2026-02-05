@@ -30,11 +30,35 @@ const Recruit = () => {
     phone: '',
     expectation: '',
     promise: '',
+    interests: [],
+    interestEtc: '',
+    team: '',
+    selfIntro: '',
+    seminarAvailable: ''
   });
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }))
   };
+
+
+  const handleCheckboxChange = (field, value) => {
+  setFormData(prev => {
+    // 단일 선택 필드(team, seminar)인 경우 문자열로 저장
+    if (field === 'team' || field === 'seminarAvailable') {
+      return { ...prev, [field]: value };
+    }
+    
+    // 다중 선택 필드(interests)인 경우 배열로 관리
+    const currentValues = prev[field] || [];
+    const newValues = currentValues.includes(value)
+      ? currentValues.filter(i => i !== value)
+      : [...currentValues, value];
+    
+    return { ...prev, [field]: newValues };
+  });
+};
+
 
   const handleSubmit = async () => {
 
@@ -54,9 +78,14 @@ const Recruit = () => {
       major: formData.major,
       studentId: parseInt(formData.studentId),
       phone: formData.phone,
+      interests: JSON.stringify(formData.interests),
+      interestEtc: formData.interestEtc || '',
+      team: formData.team.toUpperCase(),
+      selfIntro: (formData.selfIntro || '').substring(0, 100),      
+      seminarAvailable: formData.seminarAvailable === '가능' ? true : false,
       expect: formData.expectation,
       comment: formData.promise,
-      sites: links,
+      sites: links.filter(link => link !== ''),
     };
 
     console.log('전송할 데이터: ', allData);
@@ -78,6 +107,11 @@ const Recruit = () => {
         phone: '',
         expectation: '',
         promise: '',
+        interests: [],
+        interestEtc: '',
+        team: '',
+        selfIntro: '',
+        seminarAvailable: ''
       });
       setLinks(['']);
     } catch (error) {
@@ -302,10 +336,45 @@ const Recruit = () => {
             <div className="line3"></div>
             <div className="writing-box">
               <div className="label-box2">
-                <div className="name2">소모임에 <br /> 기대하는 바</div>
+                <div className="name2">관심분야</div>
+                <div className="name2">팀 선택</div>
+                <div className="name2">4주 세미나 참여 여부</div>
+                <div className="name2">본인 한 줄 소개</div>                
+                <div className="name2-1">소모임에 <br /> 기대하는 바</div>
                 <div className="name2">다짐 한마디</div>
               </div>
               <div className="input-box2">
+                {/* 관심분야 */}
+                <div className="checkbox-group">
+                  {['Web', 'system', 'reversing', 'forensic', 'crypto'].map(f => (
+                    <label key={f}>
+                      <input type="checkbox" checked={formData.interests.includes(f)} 
+                        onChange={() => handleCheckboxChange('interests', f)} /> {f}
+                    </label>
+                  ))}
+                </div>
+
+                {/* 팀 선택 */}
+                <div className="checkbox-group">
+                  {['A', 'B', 'C'].map(f => (
+                    <label key={f}>
+                      <input type="radio" name="team" checked={formData.team === f} 
+                        onChange={() => handleInputChange('team', f)} /> {f}
+                    </label>
+                  ))}
+                </div>
+
+                {/* 세미나 참여 */}
+                <div className="checkbox-group">
+                  {['가능', '불가능'].map(f => (
+                    <label key={f}>
+                      <input type="radio" name="seminar" checked={formData.seminarAvailable === f} 
+                        onChange={() => handleInputChange('seminarAvailable', f)} /> {f}
+                      </label>
+                  ))}
+                </div>
+                <textarea className="input2-1" value={formData.selfIntro}
+                  onChange={(e) => handleInputChange('selfIntro', e.target.value)} />
                 <textarea className="input2" value={formData.expectation}
                   onChange={(e) => handleInputChange('expectation', e.target.value)} />
                 <textarea className="input2" value={formData.promise}

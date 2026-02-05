@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 const recruitRouter = require('./routes/recruit');
 const studyRouter = require('./routes/study');
 const adminRouter = require('./routes/admin');
+const memberRouter = require('./routes/members');
 
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
@@ -27,6 +28,8 @@ app.get('/', (req, res) => {
 app.use('/recruit', recruitRouter);
 app.use('/study', studyRouter);
 app.use('/admin', adminRouter);
+app.use('/members', memberRouter);
+
 
 
 
