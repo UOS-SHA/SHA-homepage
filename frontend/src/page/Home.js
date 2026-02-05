@@ -12,12 +12,12 @@ const achievementData = {
   0: {
     title: "2025 2학기",
     items: [
-      { title: "2025 유플러스 시큐리티 해커톤 FINAL", detail: "이규형" },
-      { title: "2025 AUTOHACK(자동차 해킹/방어 경진대회) 부산광역시장상", detail: "이규형, 이성민" },
-      { title: "2025 LISA-thon:Mobility Competition 우수상", detail: "이규형, 이성민" },
-      { title: "화이트햇 2025 2등", detail: "정현수" },      
-      { title: "2025 교내 모의 해킹 대회 Runa CTF 개최", detail: "김민주, 이규형, 이성민" },
-      { title: "2025 Blackhat mea FINAL", detail: "김민주, 김재승, 이규형, 이성민" }
+      { title: "2025 유플러스 시큐리티 해커톤 FINAL", detail: "미래 사이버보안 전문가 발굴 및 기술역량 강화를 위해 LG유플러스에서 주관한 대회입니다." },
+      { title: "2025 AUTOHACK 부산광역시장상", detail: "국민대학교 미래자동차사업단이 주관하고 교육부와 한국연구재단, 부산광역시 등이 공동 주관하는 자동차 보안 경진대회입니다." },
+      { title: "2025 LISA-thon:Mobility Competition 우수상", detail: "LISA(순천향대학교 정보보호학과 시스템보안연구실)에서 주관한 실제 차량 기반 자동차 사이버 보안 경진대회입니다." },
+      { title: "화이트햇 2025 2등", detail: "사이버보안 영재 발굴 및 사이버 전문인력 능력 향상을 목적을 국방부, 사이버작전사령부에서 주최한 대회입니다." },      
+      { title: "2025 교내 모의 해킹 대회 Runa CTF 개최", detail: "서울시립대학교 비교과 프로그램 나비스트 프로그램에서 교내 모의 해킹 대회를 주최하였습니다." },
+      { title: "2025 Blackhat mea FINAL", detail: "Saudi Federation for Cybersecurity, Programming & Drones(SAFCSP)가 주관하는 중동/아프리가 Black Hat 행사에서 열리는 세계 대회입니다." }
       // ... 나머지도 동일한 형식으로
     ],
   },
@@ -25,9 +25,9 @@ const achievementData = {
     title: "2025 1학기",
     items: [
       { title: "CCA 가입", detail: "CCA는 teamh4c와 BoB총동문회가 파트너십을 맺고 교류하고 있는 전국사이버보안동아리연합회입니다." },
-      { title: "2025 HACKSIUM 부산 FINAL", detail: "이성민" },
-      { title: "Best of the Best 14기 합격", detail: "한건우" },
-      { title: "32회 해킹 캠프 2위", detail: "안서진" }
+      { title: "2025 HACKSIUM 부산 FINAL", detail: "부산정보산업진흥원에서 주관한 동남권 특화산업(스마트해양, 스마트공장, 스마트시티) 기반 침해사고 방어 시나리오를 주제로 한 사이버 보안 실전형 해킹 방어 대회입니다." },
+      { title: "Best of the Best 14기 합격", detail: "차세대 보안리더 양성 프로그램 BoB 14기 디지털 포렌식 트랙에 1명 합격하였습니다." },
+      { title: "3회 해킹 캠프 2위", detail: "POC SECURITY가 주관하는 국내 중·고·대학생을 대상으로 진행한 비영리 캠프입니다" }
     ],
   },
   2: {
