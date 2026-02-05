@@ -15,6 +15,7 @@ const achievementData = {
       { title: "2025 유플러스 시큐리티 해커톤 FINAL", detail: "이규형" },
       { title: "2025 AUTOHACK(자동차 해킹/방어 경진대회) 부산광역시장상", detail: "이규형, 이성민" },
       { title: "2025 LISA-thon:Mobility Competition 우수상", detail: "이규형, 이성민" },
+      { title: "화이트햇 2025 2등", detail: "정현수" },      
       { title: "2025 교내 모의 해킹 대회 Runa CTF 개최", detail: "김민주, 이규형, 이성민" },
       { title: "2025 Blackhat mea FINAL", detail: "김민주, 김재승, 이규형, 이성민" }
       // ... 나머지도 동일한 형식으로
@@ -24,7 +25,6 @@ const achievementData = {
     title: "2025 1학기",
     items: [
       { title: "CCA 가입", detail: "CCA는 teamh4c와 BoB총동문회가 파트너십을 맺고 교류하고 있는 전국사이버보안동아리연합회입니다." },
-      { title: "SHA 밤샘해킹 진행", detail: "무박 2일간 진행된 교내 보안 워크숍" },
       { title: "2025 HACKSIUM 부산 FINAL", detail: "이성민" },
       { title: "Best of the Best 14기 합격", detail: "한건우" },
       { title: "32회 해킹 캠프 2위", detail: "안서진" }
@@ -63,7 +63,7 @@ const items = [
       logo: `${process.env.PUBLIC_URL}/reward.png`,
       title: "대회/공모전 참가",
       desc: `실전에서 실력을 검증받고 싶다면 SHA에서 기회를 
-      가질 수 있습니다. hacktheon, hacksium, codegate 등 
+      가질 수 있습니다. hacktheon, cce, codegate 등 
       다양한 해킹 대회에 참가합니다.`,
       tags: ["#국내외 CTF 대회 참여"],
     },
