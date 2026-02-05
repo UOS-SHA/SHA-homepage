@@ -12,8 +12,11 @@ const achievementData = {
   0: {
     title: "2025 2학기",
     items: [
-      { title: "유플러스 시큐리티 해커톤 FINAL", detail: "상세 내용을 여기에 적으세요." },
-      { title: "2025 오토핵 FINAL 부산광역시장상", detail: "자동차 보안 관련 해커톤 우승" },
+      { title: "2025 유플러스 시큐리티 해커톤 FINAL", detail: "이규형" },
+      { title: "2025 AUTOHACK(자동차 해킹/방어 경진대회) 부산광역시장상", detail: "이규형, 이성민" },
+      { title: "2025 LISA-thon:Mobility Competition 우수상", detail: "이규형, 이성민" },
+      { title: "2025 교내 모의 해킹 대회 Runa CTF 개최", detail: "김민주, 이규형, 이성민" },
+      { title: "2025 Blackhat mea FINAL", detail: "김민주, 김재승, 이규형, 이성민" }
       // ... 나머지도 동일한 형식으로
     ],
   },
@@ -22,16 +25,16 @@ const achievementData = {
     items: [
       { title: "CCA 가입", detail: "CCA는 teamh4c와 BoB총동문회가 파트너십을 맺고 교류하고 있는 전국사이버보안동아리연합회입니다." },
       { title: "SHA 밤샘해킹 진행", detail: "무박 2일간 진행된 교내 보안 워크숍" },
-      { title: "Hacksium in Busan 최종 7위", detail: "이성민" },
+      { title: "2025 HACKSIUM 부산 FINAL", detail: "이성민" },
       { title: "Best of the Best 14기 합격", detail: "한건우" },
-      { title: "해킹 캠프 1위", detail: "해킹 캠프 성적 우수자 선정" }
+      { title: "32회 해킹 캠프 2위", detail: "안서진" }
     ],
   },
   2: {
     title: "2024 1학기",
     items: [
       { title: "컴퓨터과학부 보안 소모임 SHA 창설", detail: "보안에 관심 있는 학생들을 위한 소모임 기획 및 설립" },
-      { title: "HSPACE 클럽 가입", detail: "HSPACE는 '" },
+      { title: "HSPACE 클럽 가입", detail: "HSPACE는 정보보호 관련 활동을 위한 공간과 자원을 지원하는 커뮤니티입니다. " },
     ],
   }
 };
@@ -42,7 +45,7 @@ const achievementlist = [
   { title: "SHA 밤샘해킹", detail: "교내 보안 워크숍 진행" },
   { title: "Hacksium 7위", detail: "부산 해킹대회 본선 진출" },
   { title: "BoB 14기 합격", detail: "차세대 보안 리더 양성 프로그램" },
-  { title: "해킹 캠프 1위", detail: "성적 우수자 선정" }
+  { title: "해킹 캠프 2위", detail: "안서진" }
 ];
 
 
