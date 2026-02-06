@@ -23,7 +23,7 @@ const Member = () => {
     { major: "컴과19", name: "신희용", interests: "web3", comment: "Pache punch" },
     { major: "컴과25", name: "안서진", interests: "reversing, system", comment: "닉네임일까요 아닐까요" },
     { major: "컴과21", name: "이규형", interests: "web", comment: "못하는 거 없음" },
-    { major: "컴과20", name: "이성민", interests: "reversing, crypto", comment: "oh no~" },
+    { major: "컴과20", name: "이성민", interests: "reversing, crypto", comment: "ㅇㄴ" },
     { major: "컴과25", name: "이윤성", interests: "web, reversing", comment: "rev의 미래이자\n 디자인 천재" },
     { major: "전전컴25", name: "조현재", interests: "web", comment: "web goat of goat" },
     { major: "컴과21", name: "최원영", interests: "web", comment: "나보다 일찍 일어나는\n 사람 나와" },

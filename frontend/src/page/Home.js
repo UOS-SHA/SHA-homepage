@@ -27,7 +27,7 @@ const achievementData = {
       { title: "CCA 가입", detail: "CCA는 teamh4c와 BoB총동문회가 파트너십을 맺고 교류하고 있는 전국사이버보안동아리연합회입니다." },
       { title: "2025 HACKSIUM 부산 FINAL", detail: "부산정보산업진흥원에서 주관한 동남권 특화산업(스마트해양, 스마트공장, 스마트시티) 기반 침해사고 방어 시나리오를 주제로 한 사이버 보안 실전형 해킹 방어 대회입니다." },
       { title: "Best of the Best 14기 합격", detail: "차세대 보안리더 양성 프로그램 BoB 14기 디지털 포렌식 트랙에 1명 합격하였습니다." },
-      { title: "3회 해킹 캠프 2위", detail: "POC SECURITY가 주관하는 국내 중·고·대학생을 대상으로 진행한 비영리 캠프입니다" }
+      { title: "31회 해킹 캠프 2위", detail: "POC SECURITY가 주관하는 국내 중·고·대학생을 대상으로 진행한 비영리 캠프입니다" }
     ],
   },
   2: {
