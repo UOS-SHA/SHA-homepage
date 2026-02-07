@@ -232,6 +232,7 @@ const Recruit = () => {
         </div>
         <div className="mobile-recruit-sheet">
           <div className="mobile-fillout">
+            <p className="not-apply">ο(=•ω＜=)ρ⌒☆지금은 지원기간이 아닙니다.</p>
             <p>Fill out the form to become a member</p>
           </div>
           <div className="mobile-line2"></div>
@@ -257,10 +258,47 @@ const Recruit = () => {
             <div className="mobile-line3"></div>
             <div className="mobile-writing-box">
               <div className="mobile-label-box2">
-                <div className="mobile-name2">소모임에 기대하는 바</div>
+                <div className="mobile-name2"
+                  style={{paddingBottom: 28}}>관심분야</div>
+                <div className="mobile-name2">팀 선택</div>
+                <div className="mobile-name2">세미나 참여</div>
+                <div className="mobile-name2" style={{paddingBottom: 30}}>본인 소개</div>
+                <div className="mobile-name2" style={{paddingBottom: 48}}>소모임에 기대하는 바</div>
                 <div className="mobile-name2">다짐 한마디</div>
               </div>
               <div className="mobile-input-box2">
+                {/* 관심분야 (체크박스) */}
+                <div className="mobile-checkbox-group" style={{marginTop: 20}}>
+                  {['Web', 'system', 'reversing', 'forensic', 'crypto'].map(f => (
+                    <label key={f} className="mobile-check-label">
+                      <input type="checkbox" checked={formData.interests.includes(f)} 
+                        onChange={() => handleCheckboxChange('interests', f)} /> {f}
+                    </label>
+                  ))}
+                </div>
+                {/* 팀 선택 (라디오) */}
+                <div className="mobile-radio-group">
+                  {['A', 'B', 'C'].map(f => (
+                    <label key={f} className="mobile-check-label">
+                      <input type="radio" name="mobile-team" checked={formData.team === f} 
+                        onChange={() => handleInputChange('team', f)} /> {f}
+                    </label>
+                  ))}
+                </div>
+
+                {/* 세미나 참여 (라디오) */}
+                <div className="mobile-radio-group">
+                  {['가능', '불가능'].map(f => (
+                    <label key={f} className="mobile-check-label">
+                      <input type="radio" name="mobile-seminar" checked={formData.seminarAvailable === f} 
+                        onChange={() => handleInputChange('seminarAvailable', f)} /> {f}
+                    </label>
+                  ))}
+                </div>
+                
+                {/* 텍스트 영역들 */}
+                <textarea className="mobile-input-short" placeholder="본인을 한 줄로 소개해주세요"
+                  value={formData.selfIntro} onChange={(e) => handleInputChange('selfIntro', e.target.value)} />
                 <textarea className="mobile-input2" value={formData.expectation}
                   onChange={(e) => handleInputChange('expectation', e.target.value)} />
                 <textarea className="mobile-input2" value={formData.promise}
@@ -311,6 +349,7 @@ const Recruit = () => {
         <div className="line"></div>
         <div className="recruit-sheet">
           <div className="fillout">
+            <p className="not-apply">ο(=•ω＜=)ρ⌒☆지금은 지원기간이 아닙니다.</p>
             <p>Fill out the form to become a member</p>
           </div>
           <div className="line2"></div>
