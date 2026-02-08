@@ -115,17 +115,18 @@ html, body {
 /* 모바일 대응 */
 @media (max-width: 768px) {
   .recruit-closed-overlay {
-    top: 40px; /* 모바일 top-bar 높이에 맞춤 */
+    top: 60px; /* 모바일 top-bar 높이에 맞춤 */
     height: calc(100vh - 60px);
     padding: 20px;
     display: flex; 
     justify-content: center;
     align-items: center;
     width: 90%;
+    z-index: 90;
   }
 
   .closed-content {
-    background-color: red;
+    margin-top: -60px;
     padding: 30px 20px;
     width: 350px;
     /* 모바일에서 너무 길어 보이지 않게 높이 조절 */
