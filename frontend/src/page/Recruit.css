@@ -122,7 +122,8 @@ html, body {
     justify-content: center;
     align-items: center;
     width: 90%;
-    z-index: 90;
+    z-index: 999;
+    background-color: black;
   }
 
   .closed-content {
