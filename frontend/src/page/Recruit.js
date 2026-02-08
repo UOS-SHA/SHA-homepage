@@ -7,7 +7,7 @@ import './Recruit.css';
 
 const Recruit = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+  const isRecruitOpen = false; //true/false 로 제어 
   const [links, setLinks] = useState(['']);
   const [showComplete, setShowComplete] = useState(false); //지원완료 팝업창
 
@@ -226,8 +226,11 @@ const Recruit = () => {
                 다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다. <br />
                 지금, 새로운 도전과 배움의 시작에 함께하세요! <br />
                 
-                <br /> 문의사항: 김민주 010-9878-8749
-                </p></div>
+                <br /> 문의사항: 
+                <br/>회장 조재희 010-2397-4021
+                <br/>부회장 박정빈 010-5969-7249  
+              </p>
+            </div>
           </div>
         </div>
         <div className="mobile-recruit-sheet">
@@ -236,7 +239,15 @@ const Recruit = () => {
             <p>Fill out the form to become a member</p>
           </div>
           <div className="mobile-line2"></div>
-          <div className="mobile-scroll-box">
+          <div className="mobile-form-wrapper">
+  {!isRecruitOpen && (
+    <div className="form-closed-overlay">
+      <div className="form-closed-text">Recruit 기간 : 2/23 (월) ~  3/8(일)</div>
+    </div>
+  )}
+
+
+          <div className={`mobile-scroll-box ${!isRecruitOpen ? "form-disabled" : ""}`}>
             <div className="mobile-info-box">
               <div className="mobile-label-box">
                 <div className="mobile-name">이름</div>
@@ -331,6 +342,7 @@ const Recruit = () => {
               </button>
             </div>
           </div>
+          </div>
         </div>
       </div>
       {/*컴퓨터 버전 */}
@@ -339,115 +351,136 @@ const Recruit = () => {
           <div className="word-box">
             <div className="title">JOIN US</div>
             <div className="info">
-              <p>정보보안에 관심 있는 모든 분들을 환영합니다. <br />
+              <p>
+                정보보안에 관심 있는 모든 분들을 환영합니다. <br />
                 함께 배우고 고민하며 성장하는 정보 보안 소모임 SHA에서 여러분의 열정을 펼쳐보세요.
-                다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다.<br/>
-              지금, 새로운 도전과 배움의 시작에 함께하세요! <br />
-                <br />문의사항: 김민주 010-9878-8749</p></div>
+                다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다.<br />
+                지금, 새로운 도전과 배움의 시작에 함께하세요! <br /><br />
+                문의사항: <br />
+                회장 조재희 010-2397-4021 <br />
+                부회장 박정빈 010-5969-7249
+              </p>
+            </div>
           </div>
         </div>
+
         <div className="line"></div>
+
         <div className="recruit-sheet">
           <div className="fillout">
             <p className="not-apply">ο(=•ω＜=)ρ⌒☆지금은 지원기간이 아닙니다.</p>
             <p>Fill out the form to become a member</p>
           </div>
+
           <div className="line2"></div>
-          <div className="scroll-box">
-            <div className="info-box">
-              <div className="label-box">
-                <div className="name">이름</div>
-                <div className="name">학과</div>
-                <div className="name">학번</div>
-                <div className="name">전화번호</div>
+
+          <div className="form-wrapper">
+            {!isRecruitOpen && (
+              <div className="form-closed-overlay">
+                <div className="form-closed-text">Recruit 기간 : 2/23 (월) ~ 3/8(일)</div>
               </div>
-              <div className="input-box">
-                <input className="input" type="text" value={formData.name}
-                  onChange={(e) => handleInputChange('name', e.target.value)} />
-                <input className="input" type="text" value={formData.major}
-                  onChange={(e) => handleInputChange('major', e.target.value)} />
-                <input className="input" type="text" value={formData.studentId}
-                  onChange={(e) => handleInputChange('studentId', e.target.value)} />
-                <input className="input" type="text" value={formData.phone}
-                  onChange={(e) => handleInputChange('phone', e.target.value)} />
+            )}
+
+            <div className={`scroll-box ${!isRecruitOpen ? "form-disabled" : ""}`}>
+              <div className="info-box">
+                <div className="label-box">
+                  <div className="name">이름</div>
+                  <div className="name">학과</div>
+                  <div className="name">학번</div>
+                  <div className="name">전화번호</div>
+                </div>
+                <div className="input-box">
+                  <input className="input" type="text" value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)} />
+                  <input className="input" type="text" value={formData.major}
+                    onChange={(e) => handleInputChange('major', e.target.value)} />
+                  <input className="input" type="text" value={formData.studentId}
+                    onChange={(e) => handleInputChange('studentId', e.target.value)} />
+                  <input className="input" type="text" value={formData.phone}
+                    onChange={(e) => handleInputChange('phone', e.target.value)} />
+                </div>
               </div>
-            </div>
-            <div className="line3"></div>
-            <div className="writing-box">
-              <div className="label-box2">
-                <div className="name2">관심분야</div>
-                <div className="name2">팀 선택</div>
-                <div className="name2">4주 세미나 참여 여부</div>
-                <div className="name2">본인 한 줄 소개</div>                
-                <div className="name2-1">소모임에 <br /> 기대하는 바</div>
-                <div className="name2">다짐 한마디</div>
-              </div>
-              <div className="input-box2">
-                {/* 관심분야 */}
-                <div className="checkbox-group">
-                  {['Web', 'system', 'reversing', 'forensic', 'crypto'].map(f => (
-                    <label key={f}>
-                      <input type="checkbox" checked={formData.interests.includes(f)} 
-                        onChange={() => handleCheckboxChange('interests', f)} /> {f}
-                    </label>
-                  ))}
+
+              <div className="line3"></div>
+
+              <div className="writing-box">
+                <div className="label-box2">
+                  <div className="name2">관심분야</div>
+                  <div className="name2">팀 선택</div>
+                  <div className="name2">4주 세미나 참여 여부</div>
+                  <div className="name2">본인 한 줄 소개</div>
+                  <div className="name2-1">소모임에 <br /> 기대하는 바</div>
+                  <div className="name2">다짐 한마디</div>
                 </div>
 
-                {/* 팀 선택 */}
-                <div className="checkbox-group">
-                  {['A', 'B', 'C'].map(f => (
-                    <label key={f}>
-                      <input type="radio" name="team" checked={formData.team === f} 
-                        onChange={() => handleInputChange('team', f)} /> {f}
-                    </label>
-                  ))}
-                </div>
-
-                {/* 세미나 참여 */}
-                <div className="checkbox-group">
-                  {['가능', '불가능'].map(f => (
-                    <label key={f}>
-                      <input type="radio" name="seminar" checked={formData.seminarAvailable === f} 
-                        onChange={() => handleInputChange('seminarAvailable', f)} /> {f}
+                <div className="input-box2">
+                  <div className="checkbox-group">
+                    {['Web', 'system', 'reversing', 'forensic', 'crypto'].map(f => (
+                      <label key={f}>
+                        <input type="checkbox" checked={formData.interests.includes(f)}
+                          onChange={() => handleCheckboxChange('interests', f)} /> {f}
                       </label>
-                  ))}
-                </div>
-                <textarea className="input2-1" value={formData.selfIntro}
-                  onChange={(e) => handleInputChange('selfIntro', e.target.value)} />
-                <textarea className="input2" value={formData.expectation}
-                  onChange={(e) => handleInputChange('expectation', e.target.value)} />
-                <textarea className="input2" value={formData.promise}
-                  onChange={(e) => handleInputChange('promise', e.target.value)} />
-              </div>
-            </div>
-            <div className="line4"></div>
-            <div className="link-box">
-              <div className="label-box3">
-                <div className="name3">개인 사이트</div>
-              </div>
-              <div className="input-box3">
-                {links.map((link, idx) => (
-                  <input key={idx} className="input3" value={link} onChange={(e) =>
-                    handleLinkChange(idx, e.target.value)
-                  } />
-                ))}
-
-                {links.length < 5 && (
-                  <div className="input3-add-button" onClick={handleAddLink}>
-                    <img src={`${process.env.PUBLIC_URL}/plus.png`} alt="플러스이미지" className="plus" />
+                    ))}
                   </div>
-                )}
+
+                  <div className="checkbox-group">
+                    {['A', 'B', 'C'].map(f => (
+                      <label key={f}>
+                        <input type="radio" name="team" checked={formData.team === f}
+                          onChange={() => handleInputChange('team', f)} /> {f}
+                      </label>
+                    ))}
+                  </div>
+
+                  <div className="checkbox-group">
+                    {['가능', '불가능'].map(f => (
+                      <label key={f}>
+                        <input type="radio" name="seminar" checked={formData.seminarAvailable === f}
+                          onChange={() => handleInputChange('seminarAvailable', f)} /> {f}
+                      </label>
+                    ))}
+                  </div>
+
+                  <textarea className="input2-1" value={formData.selfIntro}
+                    onChange={(e) => handleInputChange('selfIntro', e.target.value)} />
+                  <textarea className="input2" value={formData.expectation}
+                    onChange={(e) => handleInputChange('expectation', e.target.value)} />
+                  <textarea className="input2" value={formData.promise}
+                    onChange={(e) => handleInputChange('promise', e.target.value)} />
+                </div>
               </div>
-            </div>
-            <div className="line5"></div>
-            <div className="jiwon-box">
-              <button className="jiwon" onClick={handleSubmit}>
-                지원하기
-              </button>
+
+              <div className="line4"></div>
+
+              <div className="link-box">
+                <div className="label-box3">
+                  <div className="name3">개인 사이트</div>
+                </div>
+                <div className="input-box3">
+                  {links.map((link, idx) => (
+                    <input key={idx} className="input3" value={link} onChange={(e) =>
+                      handleLinkChange(idx, e.target.value)
+                    } />
+                  ))}
+
+                  {links.length < 5 && (
+                    <div className="input3-add-button" onClick={handleAddLink}>
+                      <img src={`${process.env.PUBLIC_URL}/plus.png`} alt="플러스이미지" className="plus" />
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="line5"></div>
+
+              <div className="jiwon-box">
+                <button className="jiwon" onClick={handleSubmit}>지원하기</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      
       {/*{showComplete && (
         <div className="popup-overlay">
           <div className="popup-content">
