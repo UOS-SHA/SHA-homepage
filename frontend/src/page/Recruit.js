@@ -4,12 +4,53 @@ import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import './Recruit.css';
+import './FAQ.css'; 
 
 const Recruit = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const [links, setLinks] = useState(['']);
   const [showComplete, setShowComplete] = useState(false); //지원완료 팝업창
+
+  const [isFaqOpen, setIsFaqOpen] = useState(false);
+  const [activeFaq, setActiveFaq] = useState(null); // 어떤 질문이 열려있는지 저장
+
+  const toggleFaq = (index) => {
+    setActiveFaq(activeFaq === index ? null : index);
+  };
+
+
+
+
+  const faqData = [
+    {
+      category: "1. 가입 및 자격 요건",
+      questions: [
+        { q: "코딩을 아예 못하는 초보자도 지원할 수 있나요?", a: "네, 열정만 있다면 충분히 가능합니다! SHA는 실력보다 배우고자 하는 의지를 중요하게 생각합니다. 기초부터 차근차근 함께 공부할 수 있는 스터디 커리큘럼이 준비되어 있으니 걱정 말고 지원해 주세요." },
+        { q: "컴퓨터공학과 학생만 지원 가능한가요?", a: "아니요, 정보보안에 관심이 있는 서울시립대학교 학생이라면 전공에 상관없이 누구나 지원 가능합니다. 다양한 전공의 시너지를 환영합니다!" },
+        { q: "선발 과정은 어떻게 되나요?", a: "서류 심사 후 간단한 면접이 진행될 예정입니다. 면접은 지원자의 실력을 테스트하기보다는 소모임 활동에 대한 열정과 성실함을 확인하는 자리이니 편안한 마음으로 임해주시면 됩니다." }
+      ]
+    },
+    {
+      category: "2. 활동 및 스터디 관련",
+      questions: [
+        { q: "구체적으로 어떤 공부/프로젝트를 하나요?", a: "웹/시스템 해킹 기초부터 디지털 포렌식, 암호학 스터디를 진행합니다. 최근에는 실제 대회(CTF) 참여를 위한 팀 빌딩과 AI 보안 기술 연구 프로젝트도 함께 병행하고 있습니다." },
+        { q: "시험 기간에도 활동을 하나요?", a: "부원들의 학업을 위해 시험 기간 2주 전부터는 모든 공식 활동을 중단(휴강)합니다. 공부에 집중하신 후 시험이 끝나면 다시 즐겁게 활동을 재개합니다." }
+      ]
+    },
+    {
+      category: "3. 운영 및 회비",
+      questions: [
+        { q: "회비는 얼마이고 어디에 사용되나요?", a: "학기당 일정 금액의 회비를 걷으며, 이는 스터디 공간 대관료, 웹 서버 운영비, 스터디 간식비 및 소모임 행사비로 투명하게 사용됩니다. 상세 내역은 항상 공유됩니다." }
+      ]
+    },
+    {
+      category: "4. 친목 및 분위기",
+      questions: [
+        { q: "팀 프로젝트 외에 다른 행사도 있나요?", a: "네! 연 1회 이상의 MT, 정기 회식, 그리고 가벼운 번개 모임을 통해 부원들 간의 친목을 도모합니다. 기술 공유뿐만 아니라 즐거운 대학 생활을 함께 만드는 것을 지향합니다." }
+      ]
+    }
+  ];
 
   const handleLinkChange = (index, value) => {
     const newLinks = [...links];
@@ -237,6 +278,7 @@ const Recruit = () => {
             </div>
           </div>
         </div>
+        
         <div className="mobile-JoinUs">
           <div className="mobile-word-box">
             <div className="mobile-title">JOIN US</div>
@@ -374,6 +416,7 @@ const Recruit = () => {
             </div>
           </div>
         </div>
+        
         <div className="JoinUs">
           <div className="word-box">
             <div className="title">JOIN US</div>
@@ -384,7 +427,50 @@ const Recruit = () => {
               지금, 새로운 도전과 배움의 시작에 함께하세요! <br />
                 <br />문의사항: 조재희 010-2397-4021</p></div>
           </div>
+          <div className="faq-floating-btn" onClick={() => setIsFaqOpen(true)}>
+            <p>FAQ 자주 묻는 질문</p>
+          </div>
         </div>
+        {/* FAQ 모달 */}
+          {isFaqOpen && (
+            <div className="faq-overlay" onClick={() => setIsFaqOpen(false)}>
+              <div className="faq-modal" onClick={(e) => e.stopPropagation()}>
+                <div className="faq-header">
+                  <h2>FAQ</h2>
+                  <button className="faq-close-btn" onClick={() => setIsFaqOpen(false)}>
+                    <img src={`${process.env.PUBLIC_URL}/close2.png`} alt="close" />
+                  </button>
+                </div>
+            
+                <div className="faq-scroll-area">
+                  {faqData.map((section, sIdx) => (
+                    <div key={sIdx} className="faq-section">
+                      <h3 className="faq-category">{section.category}</h3>
+                      {section.questions.map((item, qIdx) => {
+                        const uniqueIdx = `${sIdx}-${qIdx}`;
+                        const isOpen = activeFaq === uniqueIdx;
+                        return (
+                          <div key={qIdx} className={`faq-item ${isOpen ? 'open' : ''}`}>
+                            <div className="faq-question" onClick={() => toggleFaq(uniqueIdx)}>
+                              <span>Q. {item.q}</span>
+                              <img 
+                                src={`${process.env.PUBLIC_URL}/right.png`} 
+                                className={`faq-arrow ${isOpen ? 'rotated' : ''}`} 
+                                alt="arrow" 
+                              />
+                            </div>
+                            <div className="faq-answer">
+                              <p>{item.a}</p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         <div className="line"></div>
         <div className="recruit-sheet">
           <div className="fillout">
