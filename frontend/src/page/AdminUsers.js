@@ -19,6 +19,7 @@ const AdminUsers = () => {
   const location = useLocation();
   const isStudyActive = location.pathname.startsWith('/admin/board');
   const isRecruitActive = location.pathname.startsWith('/admin/users');
+  const isMemberActive = location.pathname.startsWith('/admin/member');
 
 
   const [selectedUser, setSelectedUser] = useState(null);
@@ -86,6 +87,16 @@ const AdminUsers = () => {
               RECRUIT
             </NavLink>
           </div>
+          <div className="menu">
+            <NavLink
+              to="/admin/member"
+              className={({ isActive }) =>
+                isMemberActive ? "nav-link active-link" : "nav-link"
+              }
+            >
+              MEMBER
+            </NavLink>
+          </div>
         </div>
       </div>
       <div className="users-container">
@@ -97,7 +108,7 @@ const AdminUsers = () => {
           <div className="admin-phone1">전화번호</div>
           <div className="admin-interests1">관심분야</div>
           <div className="admin-team1">팀</div>
-          <div className="admin-seminar">세미나</div>
+          <div className="admin-seminar1">세미나</div>
           <div className="admin-comment1">코멘트</div>
           <div className="admin-date1">날짜</div>
         </div>

@@ -1,0 +1,53 @@
+/* 인덱스 라인 내부 그리드 정렬 (예시 비율) */
+.users-index {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #111; /* 배경색은 기존 디자인에 맞춰 조절 */
+  border-radius: 8px 8px 0 0;
+}
+
+/* 추가 버튼을 감싸는 헤더 영역 */
+.admin-actions-header {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* 인덱스 라인용 추가 버튼 */
+.add-btn-inline {
+  background-color: #5DFFC6;
+  color: #000;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-btn-inline:hover {
+  background-color: #4edba8;
+}
+
+/* 멤버 리스트 내 버튼들 */
+.admin-btns {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.edit-mini-btn, .delete-mini-btn {
+  padding: 4px 8px;
+  font-size: 11px;
+  border-radius: 3px;
+  border: 1px solid #555;
+  background: transparent;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.edit-mini-btn:hover { background: #333; color: #5DFFC6; }
+.delete-mini-btn:hover { background: #333; color: #ff5d5d; }

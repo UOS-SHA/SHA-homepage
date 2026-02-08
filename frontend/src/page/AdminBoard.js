@@ -101,6 +101,7 @@ const AdminBoard = () => {
   const location = useLocation();
   const isStudyActive = location.pathname.startsWith('/admin/board');
   const isRecruitActive = location.pathname.startsWith('/admin/users');
+  const isMemberActive = location.pathname.startsWith('/admin/member');
 
   
   return (
@@ -129,6 +130,16 @@ const AdminBoard = () => {
               }
             >
               RECRUIT
+            </NavLink>
+          </div>
+          <div className="menu">
+            <NavLink
+              to="/admin/member"
+              className={({ isActive }) =>
+                isMemberActive ? "nav-link active-link" : "nav-link"
+              }
+            >
+              MEMBER
             </NavLink>
           </div>
         </div>

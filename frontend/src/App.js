@@ -11,6 +11,7 @@ import AdminBoard from './page/AdminBoard';
 import AdminCate from './page/AdminCate';
 import AdminWeek from './page/AdminWeek';
 import AdminUsers from './page/AdminUsers';
+import AdminMember from './page/AdminMember';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/admin/board/:semesterId" element={<AdminCate />} />
         <Route path="/admin/board/:semesterId/:category" element={<AdminWeek />} />
         <Route path="/admin/users" element={<AdminUsers />} />
+        <Route path="/admin/member" element={<AdminMember />} />
       </Routes>
     </Router>
   )
