@@ -1163,6 +1163,7 @@ width: calc(750px + 750px * 1);  height: 1px;
         display: none !important;  
     }
 
+    /*
     .mobile-achievements {
 
         margin-top: 100px;
@@ -1171,8 +1172,121 @@ width: calc(750px + 750px * 1);  height: 1px;
         width: 100%;
         height: 1800px;
         gap: 120px;
-    }
+    }*/
 
+    .mobile-word-ACHIEVEMENTS {
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 10px;
+    position: relative;
+    top: 0; /* 스틱키 해제 혹은 조정 */
+  }
+
+  /* 학기 선택 탭 */
+  .mobile-semester-tabs {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+  }
+  .mobile-semester-tabs::-webkit-scrollbar { display: none; }
+
+  .tab-btn {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #888;
+    padding: 8px 18px;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .tab-btn.active {
+    background: #5DFFC6;
+    color: #000;
+    border-color: #5DFFC6;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(93, 255, 198, 0.3);
+  }
+
+  /* 카드 스타일 */
+  .mobile-achievement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .achievement-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    transition: transform 0.2s ease;
+    animation: slideUp 0.5s ease forwards;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .card-dot {
+    width: 8px;
+    height: 8px;
+    background: #5DFFC6;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px #5DFFC6;
+  }
+
+  .card-title {
+    margin: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .card-body {
+    margin-top: 12px;
+    padding-left: 20px;
+    border-left: 1px solid rgba(93, 255, 198, 0.3);
+  }
+
+  .mobile-bottom-fade {
+    width: 100%;
+    height: 150px;
+  }
+
+  .card-detail {
+    margin: 0;
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+    .mobile-achievements {
+    display: flex !important;
+    flex-direction: column;
+    padding: 0 20px;
+    margin-top: 100px;
+    height: auto; /* 고정 높이 해제 */
+    gap: 30px;
+    padding-bottom: 100px;
+  }
+
+  
 
     .mobile-achieve-box {
     width: 100%;
@@ -1180,6 +1294,8 @@ width: calc(750px + 750px * 1);  height: 1px;
     flex-direction: row;
 
     }
+
+    
 
     .mobile-date-box {
     margin-top: 13px;

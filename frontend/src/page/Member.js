@@ -259,7 +259,7 @@ const Member = () => {
                             <img
                               src={`${process.env.PUBLIC_URL}/grey_crown.png`}
                               alt="부회장"
-                              className="crown"
+                              className="crown2"
                             />
                           )}
                         </div>

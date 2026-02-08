@@ -504,6 +504,41 @@ const toggleExpand = (idx) => {
           </ul>
         </div>
       </div>
+      {/* -- Mobile Achievements 개편 -- */}
+      <div className="mobile-achievements">
+        <div className="mobile-word-ACHIEVEMENTS">ACHIEVEMENTS</div>
+  
+        {/* 학기 선택 탭 */}
+        <div className="mobile-semester-tabs">
+          {Object.keys(achievementData).map((key) => (
+            <button 
+              key={key} 
+              className={`tab-btn ${current === parseInt(key) ? 'active' : ''}`}
+              onClick={() => setCurrent(parseInt(key))}
+            >
+              {achievementData[key].title}
+            </button>
+          ))}
+        </div>
+
+        {/* 카드 리스트 영역 */}
+        <div className="mobile-achievement-list">
+          {achievementData[current]?.items.map((item, idx) => (
+            <div key={idx} className="achievement-card">
+              <div className="card-header">
+                <span className="card-dot"></span>
+                <h3 className="card-title">{item.title}</h3>
+              </div>
+              {item.detail && (
+                <div className="card-body">
+                  <p className="card-detail">{item.detail}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="mobile-bottom-fade"></div>
+      </div>
 
       /*-- achievments 구버전 --*/
       {/*
@@ -538,7 +573,6 @@ const toggleExpand = (idx) => {
           </div>
         </div>
       </div>
-      */}
       <div className="mobile-achievements">
         <div className="word-ACHIEVEMENTS">
           ACHIEVEMENTS
@@ -576,6 +610,7 @@ const toggleExpand = (idx) => {
           </div>
         </div>
       </div>
+      */}
       <div className="bottom-bar"></div>
     </div>
   );

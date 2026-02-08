@@ -198,7 +198,7 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
     color: #5DFFC6;
     text-align: center;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 13px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px; /* 153.222% */
@@ -254,6 +254,12 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
 .crown {
     width: 23px;
     height: 23px;
+}
+
+.crown2 {
+    padding-top: 5px;
+    width: 20px;
+    height: 13px;
 }
 
 .name-major {

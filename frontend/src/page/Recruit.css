@@ -98,6 +98,15 @@ letter-spacing: -0.145px;
     line-height: normal;
     }
 
+    .mobile-fillout .not-apply {
+        position: absolute;
+        margin-top: 30px;
+        padding-left: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        color: red;
+    }
+
     .mobile-line2 {
     width: 100%;
     height: 0.5px;
@@ -193,17 +202,20 @@ line-height: normal;
 
     .mobile-writing-box {
         position: relative;
-    background-color: black;
-    height: 350px;
+    height: auto !important; /* 내용이 많아졌으므로 높이 자동 조절 */
     display: flex;
     flex-direction: row;
     width: 100%;
     flex-shrink: 0;
     overflow-x: hidden;
     overflow-y: hidden;
+    padding-top: 20px;
+    padding-bottom: 30px;
 }
 
+/*
 .mobile-label-box2{
+
     position: absolute;
     left: 25%;
     transform : translateX(-50%);
@@ -216,8 +228,25 @@ line-height: normal;
     justify-content: center;
     gap: 115px;
 }
+*/
+
+.mobile-label-box2 {
+        position: static; /* 절대 좌표 해제 */
+        transform: none;
+        width: 145px;
+        height: auto;
+        padding-left: 10px;
+        margin-left: 1px;
+        display: flex;
+        flex-direction: column;
+        gap: 0; /* 내부 간격은 개별 요소에서 조절 */
+    }
 
 .mobile-name2 {
+    height: 40px; /* 입력창 높이와 맞춰서 가독성 확보 */
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
     color: #545454;
 font-family: Pretendard;
 font-size: 13px;
@@ -226,6 +255,7 @@ font-weight: 500;
 line-height: normal;
 }
 
+/*
 .mobile-input-box2 {
     position: absolute;
     left: 50%;
@@ -239,10 +269,57 @@ line-height: normal;
     justify-content: center;
     gap: 50px;
 }
+    */
+
+    .mobile-input-box2 {
+        position: static;
+        transform: none;
+        width: 100%;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* 체크박스 & 라디오 그룹 */
+    .mobile-checkbox-group, .mobile-radio-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        background: #1a1a1a;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .mobile-check-label {
+        color: #D0D0D0;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-right: 5px;
+    }
+
+    /* 입력창 스타일 보정 */
+    .mobile-input-short {
+        width: 250px;
+        height: 40px;
+        background: #222;
+        border: 0.5px solid #545454;
+        border-radius: 5px;
+        color: hsl(0, 0%, 82%);
+        padding: 10px;
+        font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    }
+
 
 .mobile-input2 {
-    padding-left: 10px;
-    width: 320px;
+    padding: 10px;
+    width: 250px;
     height: 80px;
     border-radius: 5px;
     border: 0.5px solid #545454;
@@ -255,6 +332,7 @@ line-height: normal;
     font-weight: 400;
     line-height: normal;
 }
+    
 
     .mobile-line4 {
     width: 100%;
@@ -444,12 +522,13 @@ line-height: normal;
 }
 
 .fillout {
+    background-color: black;
     position: fixed;
     width: 100%;
     height: 120px;
-    background-color: black;
     z-index: 800;
     pointer-events: none;  /* ← 클릭 차단 안 함 */
+    
 }
 
 .fillout p {
@@ -457,6 +536,15 @@ line-height: normal;
     margin-left: 25px;
     font-size: 14px;
     color: white;
+}
+
+.fillout .not-apply {
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    color: red;
 }
 
 .line2 {
