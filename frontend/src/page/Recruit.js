@@ -217,6 +217,26 @@ const Recruit = () => {
       </div>
       {/*모바일 버전 */}
       <div className="mobile-recruit-container">
+        {/* 지원 기간 안내 섹션 - PC/모바일 공용 */}
+        <div className="recruit-closed-overlay">
+          <div className="closed-content">
+            <div className="closed-icon">
+              <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="closed-logo-anim" />
+            </div>
+            <h2 className="closed-title">지금은 모집 기간이 아닙니다</h2>
+            <p className="closed-desc">
+              SHA에 관심을 가져주셔서 감사합니다. <br />
+              Recruit 기간: <strong>2/23(월)~3/8(일)</strong>
+            </p>
+            <div className="closed-actions">
+              <Link to="/" className="btn-back-home">홈으로 가기</Link>
+              <Link to="/study" className="btn-view-activity">활동 구경하기</Link>
+            </div>
+            <div className="contact-info">
+              문의: 조재희 010-2397-4021
+            </div>
+          </div>
+        </div>
         <div className="mobile-JoinUs">
           <div className="mobile-word-box">
             <div className="mobile-title">JOIN US</div>
@@ -226,16 +246,12 @@ const Recruit = () => {
                 다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다. <br />
                 지금, 새로운 도전과 배움의 시작에 함께하세요! <br />
                 
-                <br /> 문의사항: 
-                <br/>회장 조재희 010-2397-4021
-                <br/>부회장 박정빈 010-5969-7249  
-              </p>
-            </div>
+                <br /> 문의사항: 조재희 010-2397-4021
+                </p></div>
           </div>
         </div>
         <div className="mobile-recruit-sheet">
           <div className="mobile-fillout">
-            <p className="not-apply">ο(=•ω＜=)ρ⌒☆지금은 지원기간이 아닙니다.</p>
             <p>Fill out the form to become a member</p>
           </div>
           <div className="mobile-line2"></div>
@@ -347,6 +363,26 @@ const Recruit = () => {
       </div>
       {/*컴퓨터 버전 */}
       <div className="recruit-container">
+        {/* 지원 기간이 아닐 때 보여줄 오버레이 */}
+        <div className="recruit-closed-overlay">
+          <div className="closed-content">
+            <div className="closed-icon">
+              <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="closed-logo-anim" />
+            </div>
+            <h2 className="closed-title">현재는 지원 기간이 아닙니다</h2>
+            <p className="closed-desc">
+              SHA에 관심을 가져주셔서 감사합니다. <br />
+              Recruit 기간: <strong>2/23(월)~3/8(일)</strong>
+            </p>
+            <div className="closed-actions">
+              <Link to="/" className="btn-back-home">홈으로 돌아가기</Link>
+              <Link to="/study" className="btn-view-activity">활동 내용 구경하기</Link>
+            </div>
+            <div className="contact-info">
+              문의: 조재희 010-2397-4021
+            </div>
+          </div>
+        </div>
         <div className="JoinUs">
           <div className="word-box">
             <div className="title">JOIN US</div>
@@ -354,13 +390,9 @@ const Recruit = () => {
               <p>
                 정보보안에 관심 있는 모든 분들을 환영합니다. <br />
                 함께 배우고 고민하며 성장하는 정보 보안 소모임 SHA에서 여러분의 열정을 펼쳐보세요.
-                다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다.<br />
-                지금, 새로운 도전과 배움의 시작에 함께하세요! <br /><br />
-                문의사항: <br />
-                회장 조재희 010-2397-4021 <br />
-                부회장 박정빈 010-5969-7249
-              </p>
-            </div>
+                다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다.<br/>
+              지금, 새로운 도전과 배움의 시작에 함께하세요! <br />
+                <br />문의사항: 조재희 010-2397-4021</p></div>
           </div>
         </div>
 
@@ -368,7 +400,6 @@ const Recruit = () => {
 
         <div className="recruit-sheet">
           <div className="fillout">
-            <p className="not-apply">ο(=•ω＜=)ρ⌒☆지금은 지원기간이 아닙니다.</p>
             <p>Fill out the form to become a member</p>
           </div>
 
