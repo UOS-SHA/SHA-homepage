@@ -6,6 +6,7 @@ exports.getSemester = async (req, res) => {
 
         const semesterData = await StudySemester.findAll({
             attributes: ['id', 'name'],
+            order: [['id','name']],
         })
 
         return res.json(semesterData);
