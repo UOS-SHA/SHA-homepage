@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import './Recruit.css';
-import './FAQ.css'; 
+import './FAQ.css';
 
 const Recruit = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   const [links, setLinks] = useState(['']);
   const [showComplete, setShowComplete] = useState(false); //지원완료 팝업창
 
@@ -84,21 +84,21 @@ const Recruit = () => {
 
 
   const handleCheckboxChange = (field, value) => {
-  setFormData(prev => {
-    // 단일 선택 필드(team, seminar)인 경우 문자열로 저장
-    if (field === 'team' || field === 'seminarAvailable') {
-      return { ...prev, [field]: value };
-    }
-    
-    // 다중 선택 필드(interests)인 경우 배열로 관리
-    const currentValues = prev[field] || [];
-    const newValues = currentValues.includes(value)
-      ? currentValues.filter(i => i !== value)
-      : [...currentValues, value];
-    
-    return { ...prev, [field]: newValues };
-  });
-};
+    setFormData(prev => {
+      // 단일 선택 필드(team, seminar)인 경우 문자열로 저장
+      if (field === 'team' || field === 'seminarAvailable') {
+        return { ...prev, [field]: value };
+      }
+
+      // 다중 선택 필드(interests)인 경우 배열로 관리
+      const currentValues = prev[field] || [];
+      const newValues = currentValues.includes(value)
+        ? currentValues.filter(i => i !== value)
+        : [...currentValues, value];
+
+      return { ...prev, [field]: newValues };
+    });
+  };
 
 
   const handleSubmit = async () => {
@@ -122,7 +122,7 @@ const Recruit = () => {
       interests: formData.interests,
       interestEtc: formData.interestEtc || '',
       team: formData.team.toUpperCase(),
-      selfIntro: (formData.selfIntro || '').substring(0, 100),      
+      selfIntro: (formData.selfIntro || '').substring(0, 100),
       seminarAvailable: formData.seminarAvailable === '가능' ? true : false,
       expect: formData.expectation,
       comment: formData.promise,
@@ -222,7 +222,7 @@ const Recruit = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
+                  isActive ? "nav-link active-link" : "nav-link"
                 }
                 end
               >
@@ -231,7 +231,7 @@ const Recruit = () => {
               <NavLink
                 to="/members"
                 className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
+                  isActive ? "nav-link active-link" : "nav-link"
                 }
               >
                 MEMBER
@@ -239,7 +239,7 @@ const Recruit = () => {
               <NavLink
                 to="/study"
                 className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
+                  isActive ? "nav-link active-link" : "nav-link"
                 }
               >
                 STUDY
@@ -247,7 +247,7 @@ const Recruit = () => {
               <NavLink
                 to="/recruit"
                 className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
+                  isActive ? "nav-link active-link" : "nav-link"
                 }
               >
                 RECRUIT
@@ -279,7 +279,7 @@ const Recruit = () => {
           </div>
         </div>
         */}
-        
+
         <div className="mobile-JoinUs">
           <div className="mobile-word-box">
             <div className="mobile-title">JOIN US</div>
@@ -288,11 +288,59 @@ const Recruit = () => {
                 함께 배우고 고민하며 성장하는 정보 보안 소모임 SHA에서 여러분의 열정을 펼쳐보세요.
                 다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다. <br />
                 지금, 새로운 도전과 배움의 시작에 함께하세요! <br />
-                
+
                 <br /> 문의사항: 조재희 010-2397-4021
-                </p></div>
+              </p></div>
           </div>
+
+          {/* 추가: 모바일 FAQ 플로팅 버튼 */}
+          <div className="mobile-faq-btn" onClick={() => setIsFaqOpen(true)}>
+            <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="FAQ" className="mobile-faq-icon" />
+            <span>FAQ</span>
+          </div>
+
         </div>
+        {/* FAQ 모달 */}
+        {isFaqOpen && (
+          <div className="faq-overlay" onClick={() => setIsFaqOpen(false)}>
+            <div className="faq-modal" onClick={(e) => e.stopPropagation()}>
+              <div className="faq-header">
+                <h2>FAQ</h2>
+                <button className="faq-close-btn" onClick={() => setIsFaqOpen(false)}>
+                  <img src={`${process.env.PUBLIC_URL}/close2.png`} alt="close" />
+                </button>
+              </div>
+
+              <div className="faq-scroll-area">
+                {faqData.map((section, sIdx) => (
+                  <div key={sIdx} className="faq-section">
+                    <h3 className="faq-category">{section.category}</h3>
+                    {section.questions.map((item, qIdx) => {
+                      const uniqueIdx = `${sIdx}-${qIdx}`;
+                      const isOpen = activeFaq === uniqueIdx;
+                      return (
+                        <div key={qIdx} className={`faq-item ${isOpen ? 'open' : ''}`}>
+                          <div className="faq-question" onClick={() => toggleFaq(uniqueIdx)}>
+                            <span>Q. {item.q}</span>
+                            <img
+                              src={`${process.env.PUBLIC_URL}/right.png`}
+                              className={`faq-arrow ${isOpen ? 'rotated' : ''}`}
+                              alt="arrow"
+                            />
+                          </div>
+                          <div className="faq-answer">
+                            <p>{item.a}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="mobile-recruit-sheet">
           <div className="mobile-fillout">
             <p>Fill out the form to become a member</p>
@@ -319,53 +367,73 @@ const Recruit = () => {
             </div>
             <div className="mobile-line3"></div>
             <div className="mobile-writing-box">
-              <div className="mobile-label-box2">
-                <div className="mobile-name2"
-                  style={{paddingBottom: 28}}>관심분야</div>
-                <div className="mobile-name2">팀 선택</div>
-                <div className="mobile-name2">세미나 참여</div>
-                <div className="mobile-name2" style={{paddingBottom: 30}}>본인 소개</div>
-                <div className="mobile-name2" style={{paddingBottom: 48}}>소모임에 기대하는 바</div>
-                <div className="mobile-name2">다짐 한마디</div>
-              </div>
-              <div className="mobile-input-box2">
-                {/* 관심분야 (체크박스) */}
-                <div className="mobile-checkbox-group" style={{marginTop: 20}}>
+              {/* 항목 1: 관심분야 */}
+              <div className="mobile-recruit-row">
+                <div className="mobile-name2">관심분야</div>
+                <div className="mobile-checkbox-group">
                   {['Web', 'system', 'reversing', 'forensic', 'crypto'].map(f => (
                     <label key={f} className="mobile-check-label">
-                      <input type="checkbox" checked={formData.interests.includes(f)} 
-                        onChange={() => handleCheckboxChange('interests', f)} /> 
-                        <span className="custom-checkbox"></span>{f}
+                      <input type="checkbox" checked={formData.interests.includes(f)}
+                        onChange={() => handleCheckboxChange('interests', f)} />
+                      <span className="custom-checkbox"></span>{f}
                     </label>
                   ))}
                 </div>
-                {/* 팀 선택 (라디오) */}
+              </div>
+
+              {/* 항목 2: 팀 선택 */}
+              <div className="mobile-recruit-row">
+                <div className="mobile-name2">팀 선택</div>
                 <div className="mobile-radio-group">
                   {['A', 'B', 'C'].map(f => (
                     <label key={f} className="mobile-check-label">
-                      <input type="radio" name="mobile-team" checked={formData.team === f} 
-                        onChange={() => handleInputChange('team', f)} /> 
-                        <span className="custom-radio"></span> {f}
+                      <input type="radio" name="mobile-team" checked={formData.team === f}
+                        onChange={() => handleInputChange('team', f)} />
+                      <span className="custom-radio"></span> {f}
                     </label>
                   ))}
                 </div>
+                {/* 모바일 팀 설명 */}
+                {formData.team === 'A' && <p className="mobile-desc color-green">A팀: 웹 해킹 기초 및 보안 원리 학습</p>}
+                {formData.team === 'B' && <p className="mobile-desc color-green">B팀: 시스템 취약점 분석 및 리버싱 연구</p>}
+                {formData.team === 'C' && <p className="mobile-desc color-green">C팀: 디지털 포렌식 및 암호 알고리즘 분석</p>}
+              </div>
 
-                {/* 세미나 참여 (라디오) */}
+              {/* 항목 3: 세미나 참여 */}
+              <div className="mobile-recruit-row">
+                <div className="mobile-name2">세미나 참여</div>
                 <div className="mobile-radio-group">
                   {['가능', '불가능'].map(f => (
                     <label key={f} className="mobile-check-label">
-                      <input type="radio" name="mobile-seminar" checked={formData.seminarAvailable === f} 
-                        onChange={() => handleInputChange('seminarAvailable', f)} /> 
-                        <span className="custom-radio"></span> {f}
+                      <input type="radio" name="mobile-seminar" checked={formData.seminarAvailable === f}
+                        onChange={() => handleInputChange('seminarAvailable', f)} />
+                      <span className="custom-radio"></span> {f}
                     </label>
                   ))}
                 </div>
-                
-                {/* 텍스트 영역들 */}
+                {/* 모바일 세미나 설명 */}
+                {/*{formData.seminarAvailable === '가능' && <p className="mobile-desc color-green">이후 스터디에서 다룰 내용의 기초를 익히는 세미나로, 참여를 권장드립니다.</p>} */}
+                {formData.seminarAvailable === '불가능' && <p className="mobile-desc color-green">이후 스터디에서 다룰 내용의 기초를 익히는 세미나로, 참여를 권장드립니다.</p>}
+              </div>
+
+              {/* 항목 4: 본인 소개 */}
+              <div className="mobile-recruit-row">
+                <div className="mobile-name2">본인 소개</div>
                 <textarea className="mobile-input-short" placeholder="본인을 한 줄로 소개해주세요"
                   value={formData.selfIntro} onChange={(e) => handleInputChange('selfIntro', e.target.value)} />
+                <p className="mobile-desc">홈페이지 멤버 탭 프로필에 들어갈 한 줄 소개를 작성해 주세요.</p>
+              </div>
+
+              {/* 항목 5: 기대하는 바 */}
+              <div className="mobile-recruit-row">
+                <div className="mobile-name2">소모임에 기대하는 바</div>
                 <textarea className="mobile-input2" value={formData.expectation}
                   onChange={(e) => handleInputChange('expectation', e.target.value)} />
+              </div>
+
+              {/* 항목 6: 다짐 */}
+              <div className="mobile-recruit-row">
+                <div className="mobile-name2">다짐 한마디</div>
                 <textarea className="mobile-input2" value={formData.promise}
                   onChange={(e) => handleInputChange('promise', e.target.value)} />
               </div>
@@ -421,15 +489,15 @@ const Recruit = () => {
           </div>
         </div>
         */}
-        
+
         <div className="JoinUs">
           <div className="word-box">
             <div className="title">JOIN US</div>
             <div className="info">
               <p>정보보안에 관심 있는 모든 분들을 환영합니다. <br />
                 함께 배우고 고민하며 성장하는 정보 보안 소모임 SHA에서 여러분의 열정을 펼쳐보세요.
-                다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다.<br/>
-              지금, 새로운 도전과 배움의 시작에 함께하세요! <br />
+                다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다.<br />
+                지금, 새로운 도전과 배움의 시작에 함께하세요! <br />
                 <br />문의사항: 조재희 010-2397-4021</p></div>
           </div>
           <div className="faq-floating-btn" onClick={() => setIsFaqOpen(true)}>
@@ -437,45 +505,45 @@ const Recruit = () => {
           </div>
         </div>
         {/* FAQ 모달 */}
-          {isFaqOpen && (
-            <div className="faq-overlay" onClick={() => setIsFaqOpen(false)}>
-              <div className="faq-modal" onClick={(e) => e.stopPropagation()}>
-                <div className="faq-header">
-                  <h2>FAQ</h2>
-                  <button className="faq-close-btn" onClick={() => setIsFaqOpen(false)}>
-                    <img src={`${process.env.PUBLIC_URL}/close2.png`} alt="close" />
-                  </button>
-                </div>
-            
-                <div className="faq-scroll-area">
-                  {faqData.map((section, sIdx) => (
-                    <div key={sIdx} className="faq-section">
-                      <h3 className="faq-category">{section.category}</h3>
-                      {section.questions.map((item, qIdx) => {
-                        const uniqueIdx = `${sIdx}-${qIdx}`;
-                        const isOpen = activeFaq === uniqueIdx;
-                        return (
-                          <div key={qIdx} className={`faq-item ${isOpen ? 'open' : ''}`}>
-                            <div className="faq-question" onClick={() => toggleFaq(uniqueIdx)}>
-                              <span>Q. {item.q}</span>
-                              <img 
-                                src={`${process.env.PUBLIC_URL}/right.png`} 
-                                className={`faq-arrow ${isOpen ? 'rotated' : ''}`} 
-                                alt="arrow" 
-                              />
-                            </div>
-                            <div className="faq-answer">
-                              <p>{item.a}</p>
-                            </div>
+        {isFaqOpen && (
+          <div className="faq-overlay" onClick={() => setIsFaqOpen(false)}>
+            <div className="faq-modal" onClick={(e) => e.stopPropagation()}>
+              <div className="faq-header">
+                <h2>FAQ</h2>
+                <button className="faq-close-btn" onClick={() => setIsFaqOpen(false)}>
+                  <img src={`${process.env.PUBLIC_URL}/close2.png`} alt="close" />
+                </button>
+              </div>
+
+              <div className="faq-scroll-area">
+                {faqData.map((section, sIdx) => (
+                  <div key={sIdx} className="faq-section">
+                    <h3 className="faq-category">{section.category}</h3>
+                    {section.questions.map((item, qIdx) => {
+                      const uniqueIdx = `${sIdx}-${qIdx}`;
+                      const isOpen = activeFaq === uniqueIdx;
+                      return (
+                        <div key={qIdx} className={`faq-item ${isOpen ? 'open' : ''}`}>
+                          <div className="faq-question" onClick={() => toggleFaq(uniqueIdx)}>
+                            <span>Q. {item.q}</span>
+                            <img
+                              src={`${process.env.PUBLIC_URL}/right.png`}
+                              className={`faq-arrow ${isOpen ? 'rotated' : ''}`}
+                              alt="arrow"
+                            />
                           </div>
-                        );
-                      })}
-                    </div>
-                  ))}
-                </div>
+                          <div className="faq-answer">
+                            <p>{item.a}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
               </div>
             </div>
-          )}
+          </div>
+        )}
         <div className="line"></div>
         <div className="recruit-sheet">
           <div className="fillout">
@@ -503,51 +571,79 @@ const Recruit = () => {
             </div>
             <div className="line3"></div>
             <div className="writing-box">
-              <div className="label-box2">
-                <div className="name2">관심분야</div>
-                <div className="name2">팀 선택</div>
-                <div className="name2">4주 세미나 참여 여부</div>
-                <div className="name2">본인 한 줄 소개</div>                
-                <div className="name2-1">소모임에 <br /> 기대하는 바</div>
-                <div className="name2">다짐 한마디</div>
-              </div>
-              <div className="input-box2">
-                {/* 관심분야 */}
+              {/* 항목 1: 관심분야 */}
+              <div className="recruit-row">
+                <label className="name2">관심분야</label>
                 <div className="checkbox-group">
                   {['Web', 'system', 'reversing', 'forensic', 'crypto'].map(f => (
                     <label key={f}>
-                      <input type="checkbox" checked={formData.interests.includes(f)} 
-                        onChange={() => handleCheckboxChange('interests', f)} /> 
-                        <span className="custom-checkbox"></span> {f}
+                      <input type="checkbox" checked={formData.interests.includes(f)}
+                        onChange={() => handleCheckboxChange('interests', f)} />
+                      <span className="custom-checkbox"></span> {f}
                     </label>
                   ))}
                 </div>
+              </div>
 
-                {/* 팀 선택 */}
-                <div className="checkbox-group">
-                  {['A', 'B', 'C'].map(f => (
-                    <label key={f}>
-                      <input type="radio" name="team" checked={formData.team === f} 
-                        onChange={() => handleInputChange('team', f)} /> 
-                        <span className="custom-radio"></span> {f}
-                    </label>
-                  ))}
-                </div>
-
-                {/* 세미나 참여 */}
-                <div className="checkbox-group">
-                  {['가능', '불가능'].map(f => (
-                    <label key={f}>
-                      <input type="radio" name="seminar" checked={formData.seminarAvailable === f} 
-                        onChange={() => handleInputChange('seminarAvailable', f)} /> 
+              {/* 항목 2: 팀 선택 */}
+              <div className="recruit-row">
+                <label className="name2" style={{ justifyContent: 'flex-start' }}>팀 선택</label>
+                <div className="input-with-desc">
+                  <div className="checkbox-group" >
+                    {['A', 'B', 'C'].map(f => (
+                      <label key={f}>
+                        <input type="radio" name="team" checked={formData.team === f}
+                          onChange={() => handleInputChange('team', f)} />
                         <span className="custom-radio"></span> {f}
                       </label>
-                  ))}
+                    ))}
+                  </div>
+                  {/* 팀 선택에 따른 동적 문구 */}
+                  {formData.team === 'A' && <p className="recruit-desc"  >A팀: 웹 해킹 및 보안 기초를 심도 있게 학습합니다.</p>}
+                  {formData.team === 'B' && <p className="recruit-desc">B팀: 시스템 해킹 및 리버싱을 중심으로 연구합니다.</p>}
+                  {formData.team === 'C' && <p className="recruit-desc">C팀: 포렌식 및 암호학 스터디를 진행합니다.</p>}
                 </div>
-                <textarea className="input2-1" value={formData.selfIntro}
-                  onChange={(e) => handleInputChange('selfIntro', e.target.value)} />
+              </div>
+
+              {/* 항목 3: 세미나 참여 */}
+              <div className="recruit-row">
+                <label className="name2">4주 세미나 참여 여부</label>
+                <div className="input-with-desc">
+                  <div className="checkbox-group">
+                    {['가능', '불가능'].map(f => (
+                      <label key={f}>
+                        <input type="radio" name="seminar" checked={formData.seminarAvailable === f}
+                          onChange={() => handleInputChange('seminarAvailable', f)} />
+                        <span className="custom-radio"></span> {f}
+                      </label>
+                    ))}
+                  </div>
+                  {/* 세미나 참여 여부에 따른 동적 문구 */}
+                  {formData.seminarAvailable === '가능' && <p className="recruit-desc">이후 스터디에서 다룰 내용의 기초를 익히는 세미나로, 참여를 권장드립니다.</p>}
+                  {formData.seminarAvailable === '불가능' && <p className="recruit-desc">이후 스터디에서 다룰 내용의 기초를 익히는 세미나로, 참여를 권장드립니다.</p>}
+                </div>
+              </div>
+
+              {/* 항목 4: 본인 소개 */}
+              <div className="recruit-row-vertical">
+                <label className="name2">본인 한 줄 소개</label>
+                <div className="input-with-desc">
+                  <textarea className="input2-1" value={formData.selfIntro}
+                    onChange={(e) => handleInputChange('selfIntro', e.target.value)} />
+                  <p className="recruit-desc">홈페이지 멤버 탭 프로필에 들어갈 한 줄 소개를 작성해주세요</p>
+                </div>
+              </div>
+
+              {/* 항목 5: 기대하는 바 (여러 줄) */}
+              <div className="recruit-row-vertical">
+                <label className="name2-1">소모임에 <br /> 기대하는 바</label>
                 <textarea className="input2" value={formData.expectation}
                   onChange={(e) => handleInputChange('expectation', e.target.value)} />
+              </div>
+
+              {/* 항목 6: 다짐 (여러 줄) */}
+              <div className="recruit-row-vertical">
+                <label className="name2">다짐 한마디</label>
                 <textarea className="input2" value={formData.promise}
                   onChange={(e) => handleInputChange('promise', e.target.value)} />
               </div>

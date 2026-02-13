@@ -3,7 +3,8 @@ const { Member } = require('../models');
 exports.getMembers = async (req, res) => {
     try {
         const members = await Member.findAll({
-            attributes: ['name', 'majorAndId', 'interests', 'selfIntro']
+            attributes: ['id', 'name', 'majorAndId', 'interests', 'selfIntro'],
+            order: [['createdAt', 'DESC']]
         });
 
         res.status(200).json(members);
