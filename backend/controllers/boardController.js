@@ -7,7 +7,7 @@ exports.createSemester = async (req, res) => {
         const newSemester = await StudySemester.create({ name });
 
         
-        res.status(201).json({ newSemester });
+        res.status(201).json(newSemester);
 
 
 
@@ -40,7 +40,7 @@ exports.createCategory = async (req, res) => {
             semesterId: semesterEntry.id
         });
 
-        res.status(201).json({ newCategory });
+        res.status(201).json(newCategory);
 
 
     } catch(err) {
@@ -86,7 +86,7 @@ exports.createWeek = async (req, res) => {
             categoryId: categoryEntry.id
         });
 
-        res.status(201).json({ newWeek })
+        res.status(201).json(newWeek)
 
 
     } catch(err) {

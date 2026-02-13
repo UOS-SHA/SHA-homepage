@@ -15,7 +15,7 @@ const achievementData = {
       { title: "2025 유플러스 시큐리티 해커톤 FINAL", detail: "미래 사이버보안 전문가 발굴 및 기술역량 강화를 위해 LG유플러스에서 주관한 대회입니다." },
       { title: "2025 AUTOHACK 부산광역시장상", detail: "국민대학교 미래자동차사업단이 주관하고 교육부와 한국연구재단, 부산광역시 등이 공동 주관하는 자동차 보안 경진대회입니다." },
       { title: "2025 LISA-thon:Mobility Competition 우수상", detail: "LISA(순천향대학교 정보보호학과 시스템보안연구실)에서 주관한 실제 차량 기반 자동차 사이버 보안 경진대회입니다." },
-      { title: "화이트햇 2025 2등", detail: "사이버보안 영재 발굴 및 사이버 전문인력 능력 향상을 목적을 국방부, 사이버작전사령부에서 주최한 대회입니다." },      
+      { title: "화이트햇 2025 1등 국방부장관상", detail: "사이버보안 영재 발굴 및 사이버 전문인력 능력 향상을 목적을 국방부, 사이버작전사령부에서 주최한 대회입니다." },      
       { title: "2025 교내 모의 해킹 대회 Runa CTF 개최", detail: "서울시립대학교 비교과 프로그램 나비스트 프로그램에서 교내 모의 해킹 대회를 주최하였습니다." },
       { title: "2025 Blackhat mea FINAL", detail: "Saudi Federation for Cybersecurity, Programming & Drones(SAFCSP)가 주관하는 중동/아프리가 Black Hat 행사에서 열리는 세계 대회입니다." }
       // ... 나머지도 동일한 형식으로

@@ -14,7 +14,7 @@ const Member = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const members = [
     { major: "컴과25", name: "조재희", interests: "web", comment: "갓벽 그 자체 회장" },
-    { major: "컴과22", name: "박정빈", interests: "web, reversing, system, crypto, forensic", comment: "올라운더 부회장" },
+    { major: "컴과22", name: "박정빈", interests: "web, reversing, system, crypto, forensic", comment: "올라운더 희망" },
     { major: "기계24", name: "김민찬", interests: "system", comment: "교환학생 중임." },
     { major: "수학23", name: "김재승", interests: "system, crypto", comment: "코카콜라 러버" },
     { major: "컴과24", name: "김주현", interests: "web", comment: "^_^" },
@@ -32,6 +32,7 @@ const Member = () => {
     { major: "컴과22", name: "인해", interests: "web", comment: "Mac book 소유자" },
     { major: "국관24", name: "어진원", interests: "web", comment: "web의 숨은 인재" },
     { major: "컴과20", name: "장성우", interests: "web, reversing", comment: "잘 부탁드립니다!" },
+    { major: "컴과21", name: "권상우", interests: "reversing", comment: "잘 부탁드립니다!" },
     { major: "컴과21", name: "정창규", interests: "crypto", comment: "신입 인사박습니다!\n잘 부탁드립니다!" },
     
     
