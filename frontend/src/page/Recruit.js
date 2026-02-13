@@ -7,6 +7,7 @@ import './Recruit.css';
 import './FAQ.css';
 
 const Recruit = () => {
+  const [isRecruitOpen, setIsRecruitOpen] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [links, setLinks] = useState(['']);
@@ -659,12 +660,12 @@ const Recruit = () => {
                 <textarea className="input2" value={formData.promise}
                   onChange={(e) => handleInputChange('promise', e.target.value)} />
               </div>
+            </div>
+            <div className="line4"></div>
 
-              <div className="line4"></div>
-
-              <div className="link-box">
+            <div className="link-box">
                 <div className="label-box3">
-                  <div className="name3">개인 사이트</div>
+                  <div className="name3" style={{width: 90}}>개인 사이트</div>
                 </div>
                 <div className="input-box3">
                   {links.map((link, idx) => (
@@ -679,13 +680,12 @@ const Recruit = () => {
                     </div>
                   )}
                 </div>
-              </div>
+            </div>
 
-              <div className="line5"></div>
+            <div className="line5"></div>
 
-              <div className="jiwon-box">
+            <div className="jiwon-box">
                 <button className="jiwon" onClick={handleSubmit}>지원하기</button>
-              </div>
             </div>
           </div>
         </div>
