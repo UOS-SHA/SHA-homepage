@@ -59,8 +59,7 @@ module.exports = (sequelize, DataTypes)=> {
     }, {
         timestamps: true,
         createdAt: 'submitTime',
-        updatedAt: false,
-        tableName: 'joins'
+        updatedAt: false
     });
 
 

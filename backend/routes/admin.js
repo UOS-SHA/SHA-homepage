@@ -12,7 +12,7 @@ router.use(isAdmin);
 router.get('/users/', joinList);
 router.get('/users/export', downloadJoin);
 
-router.get('/members/', members);
+router.post('/members/', members);
 router.patch('/members/:id', updateMember);
 router.delete('/members/:id', deleteMember);
 
