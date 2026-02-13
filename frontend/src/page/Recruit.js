@@ -346,7 +346,15 @@ const Recruit = () => {
             <p>Fill out the form to become a member</p>
           </div>
           <div className="mobile-line2"></div>
-          <div className="mobile-scroll-box">
+          <div className="mobile-form-wrapper">
+  {!isRecruitOpen && (
+    <div className="form-closed-overlay">
+      <div className="form-closed-text">Recruit 기간 : 2/23 (월) ~  3/8(일)</div>
+    </div>
+  )}
+
+
+          <div className={`mobile-scroll-box ${!isRecruitOpen ? "form-disabled" : ""}`}>
             <div className="mobile-info-box">
               <div className="mobile-label-box">
                 <div className="mobile-name">이름</div>
@@ -464,6 +472,7 @@ const Recruit = () => {
               </button>
             </div>
           </div>
+          </div>
         </div>
       </div>
       {/*컴퓨터 버전 */}
@@ -494,7 +503,8 @@ const Recruit = () => {
           <div className="word-box">
             <div className="title">JOIN US</div>
             <div className="info">
-              <p>정보보안에 관심 있는 모든 분들을 환영합니다. <br />
+              <p>
+                정보보안에 관심 있는 모든 분들을 환영합니다. <br />
                 함께 배우고 고민하며 성장하는 정보 보안 소모임 SHA에서 여러분의 열정을 펼쳐보세요.
                 다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다.<br />
                 지금, 새로운 도전과 배움의 시작에 함께하세요! <br />
@@ -545,10 +555,12 @@ const Recruit = () => {
           </div>
         )}
         <div className="line"></div>
+
         <div className="recruit-sheet">
           <div className="fillout">
             <p>Fill out the form to become a member</p>
           </div>
+
           <div className="line2"></div>
           <div className="scroll-box">
             <div className="info-box">
@@ -647,35 +659,38 @@ const Recruit = () => {
                 <textarea className="input2" value={formData.promise}
                   onChange={(e) => handleInputChange('promise', e.target.value)} />
               </div>
-            </div>
-            <div className="line4"></div>
-            <div className="link-box">
-              <div className="label-box3">
-                <div className="name3">개인 사이트</div>
-              </div>
-              <div className="input-box3">
-                {links.map((link, idx) => (
-                  <input key={idx} className="input3" value={link} onChange={(e) =>
-                    handleLinkChange(idx, e.target.value)
-                  } />
-                ))}
 
-                {links.length < 5 && (
-                  <div className="input3-add-button" onClick={handleAddLink}>
-                    <img src={`${process.env.PUBLIC_URL}/plus.png`} alt="플러스이미지" className="plus" />
-                  </div>
-                )}
+              <div className="line4"></div>
+
+              <div className="link-box">
+                <div className="label-box3">
+                  <div className="name3">개인 사이트</div>
+                </div>
+                <div className="input-box3">
+                  {links.map((link, idx) => (
+                    <input key={idx} className="input3" value={link} onChange={(e) =>
+                      handleLinkChange(idx, e.target.value)
+                    } />
+                  ))}
+
+                  {links.length < 5 && (
+                    <div className="input3-add-button" onClick={handleAddLink}>
+                      <img src={`${process.env.PUBLIC_URL}/plus.png`} alt="플러스이미지" className="plus" />
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-            <div className="line5"></div>
-            <div className="jiwon-box">
-              <button className="jiwon" onClick={handleSubmit}>
-                지원하기
-              </button>
+
+              <div className="line5"></div>
+
+              <div className="jiwon-box">
+                <button className="jiwon" onClick={handleSubmit}>지원하기</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      
       {/*{showComplete && (
         <div className="popup-overlay">
           <div className="popup-content">
