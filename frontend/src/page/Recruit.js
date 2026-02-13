@@ -119,7 +119,7 @@ const Recruit = () => {
       major: formData.major,
       studentId: parseInt(formData.studentId),
       phone: formData.phone,
-      interests: JSON.stringify(formData.interests),
+      interests: formData.interests,
       interestEtc: formData.interestEtc || '',
       team: formData.team.toUpperCase(),
       selfIntro: (formData.selfIntro || '').substring(0, 100),      
@@ -258,7 +258,7 @@ const Recruit = () => {
       </div>
       {/*모바일 버전 */}
       <div className="mobile-recruit-container">
-        {/* 지원 기간 안내 섹션 - PC/모바일 공용 */}
+        {/* 지원 기간 안내 섹션 - PC/모바일 공용 
         <div className="recruit-closed-overlay">
           <div className="closed-content">
             <div className="closed-icon">
@@ -278,6 +278,7 @@ const Recruit = () => {
             </div>
           </div>
         </div>
+        */}
         
         <div className="mobile-JoinUs">
           <div className="mobile-word-box">
@@ -333,7 +334,8 @@ const Recruit = () => {
                   {['Web', 'system', 'reversing', 'forensic', 'crypto'].map(f => (
                     <label key={f} className="mobile-check-label">
                       <input type="checkbox" checked={formData.interests.includes(f)} 
-                        onChange={() => handleCheckboxChange('interests', f)} /> {f}
+                        onChange={() => handleCheckboxChange('interests', f)} /> 
+                        <span className="custom-checkbox"></span>{f}
                     </label>
                   ))}
                 </div>
@@ -342,7 +344,8 @@ const Recruit = () => {
                   {['A', 'B', 'C'].map(f => (
                     <label key={f} className="mobile-check-label">
                       <input type="radio" name="mobile-team" checked={formData.team === f} 
-                        onChange={() => handleInputChange('team', f)} /> {f}
+                        onChange={() => handleInputChange('team', f)} /> 
+                        <span className="custom-radio"></span> {f}
                     </label>
                   ))}
                 </div>
@@ -352,7 +355,8 @@ const Recruit = () => {
                   {['가능', '불가능'].map(f => (
                     <label key={f} className="mobile-check-label">
                       <input type="radio" name="mobile-seminar" checked={formData.seminarAvailable === f} 
-                        onChange={() => handleInputChange('seminarAvailable', f)} /> {f}
+                        onChange={() => handleInputChange('seminarAvailable', f)} /> 
+                        <span className="custom-radio"></span> {f}
                     </label>
                   ))}
                 </div>
@@ -396,7 +400,7 @@ const Recruit = () => {
       </div>
       {/*컴퓨터 버전 */}
       <div className="recruit-container">
-        {/* 지원 기간이 아닐 때 보여줄 오버레이 */}
+        {/* 지원 기간이 아닐 때 보여줄 오버레이 
         <div className="recruit-closed-overlay">
           <div className="closed-content">
             <div className="closed-icon">
@@ -416,6 +420,7 @@ const Recruit = () => {
             </div>
           </div>
         </div>
+        */}
         
         <div className="JoinUs">
           <div className="word-box">
@@ -512,7 +517,8 @@ const Recruit = () => {
                   {['Web', 'system', 'reversing', 'forensic', 'crypto'].map(f => (
                     <label key={f}>
                       <input type="checkbox" checked={formData.interests.includes(f)} 
-                        onChange={() => handleCheckboxChange('interests', f)} /> {f}
+                        onChange={() => handleCheckboxChange('interests', f)} /> 
+                        <span className="custom-checkbox"></span> {f}
                     </label>
                   ))}
                 </div>
@@ -522,7 +528,8 @@ const Recruit = () => {
                   {['A', 'B', 'C'].map(f => (
                     <label key={f}>
                       <input type="radio" name="team" checked={formData.team === f} 
-                        onChange={() => handleInputChange('team', f)} /> {f}
+                        onChange={() => handleInputChange('team', f)} /> 
+                        <span className="custom-radio"></span> {f}
                     </label>
                   ))}
                 </div>
@@ -532,7 +539,8 @@ const Recruit = () => {
                   {['가능', '불가능'].map(f => (
                     <label key={f}>
                       <input type="radio" name="seminar" checked={formData.seminarAvailable === f} 
-                        onChange={() => handleInputChange('seminarAvailable', f)} /> {f}
+                        onChange={() => handleInputChange('seminarAvailable', f)} /> 
+                        <span className="custom-radio"></span> {f}
                       </label>
                   ))}
                 </div>
