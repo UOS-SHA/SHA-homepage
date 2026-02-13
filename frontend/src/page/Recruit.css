@@ -955,10 +955,11 @@ line-height: normal;
 
 
 .checkbox-group {
+    width: 550px;
   display: flex;
-  gap: 15px;
+  flex-wrap: wrap; /* 핵심: 공간이 부족하면 다음 줄로 넘김 */
+  gap: 25px 20px; /* 행 간격 15px, 열 간격 20px */
   align-items: center;
-  color: white;
 }
 
 .checkbox-group label {
@@ -1302,3 +1303,31 @@ input[type="radio"]:checked + .custom-radio::after {
 }
 
 
+.etc-input {
+  width: 250px;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background: transparent;
+  color: white; /* 배경색에 맞춰 조절 */
+  padding: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+.etc-input:focus {
+  border-bottom: 2px solid #5DFFC6; /* 포인트 컬러 */
+}
+
+/* 모바일 버전 */
+.mobile-etc-input {
+  width: 90%;
+  margin-top: 5px;
+  height: 35px;
+  border: 1px solid #444;
+  background: #222;
+  color: white;
+  padding: 0 10px;
+  border-radius: 4px;
+  font-size: 13px;
+}
