@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes)=> {
-    const Join = sequelize.define("Join", {
+    const Join = sequelize.define("join", {
         id: {
             type: DataTypes.INTEGER(10),
             allowNull: false,
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes)=> {
         },
 
         team: {
-            type: DataTypes.ENUM('A', 'B', 'C', 'LATER'),
+            type: DataTypes.ENUM('A', 'B', 'C', '추후선택'),
             allowNull: false
         },
 
@@ -57,6 +57,8 @@ module.exports = (sequelize, DataTypes)=> {
         },
         
     }, {
+        tableName: 'joins',
+        freezeTableName: true,
         timestamps: true,
         createdAt: 'submitTime',
         updatedAt: false
