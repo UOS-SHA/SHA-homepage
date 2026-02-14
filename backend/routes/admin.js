@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { createCategory, createSemester, createWeek, updateWeek, updateCategory, updateSemester, deleteWeek, deleteCategory, deleteSemester } = require('../controllers/boardController');
 const { login, joinList, members, updateMember, deleteMember } = require('../controllers/adminController');
+const { admingetMembers } = require('../controllers/memberController');
 const isAdmin = require('../middlewares/isAdmin');
 const { downloadJoin } = require('../controllers/adminController');
 
@@ -12,6 +13,7 @@ router.use(isAdmin);
 router.get('/users/', joinList);
 router.get('/users/export', downloadJoin);
 
+router.get('/members/', admingetMembers);
 router.post('/members/', members);
 router.patch('/members/:id', updateMember);
 router.delete('/members/:id', deleteMember);

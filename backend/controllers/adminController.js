@@ -69,7 +69,7 @@ exports.joinList = async (req, res) => {
     }
 }
 
-exports.members = async (req, res) => {
+exports.createMembers = async (req, res) => {
     try {
         const { name, majorAndId, interests, selfIntro } = req.body;
 
