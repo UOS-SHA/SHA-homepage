@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes)=> {
         },
 
         team: {
-            type: DataTypes.ENUM('A', 'B', 'C'),
+            type: DataTypes.ENUM('A', 'B', 'C', 'LATER'),
             allowNull: false
         },
 

@@ -45,14 +45,14 @@ const AdminMember = () => {
     major: '',
     studentId: '',
     interests: '',
-    comment: ''
+    selfIntro: ''
   });
 
   // 데이터 불러오기
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const res = await axios.get(`${SERVER_URL}/admin/users/`, {
+      const res = await axios.get(`${SERVER_URL}/members/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUserList(res.data);
@@ -66,20 +66,23 @@ const AdminMember = () => {
   // 모달 열기 (추가 모드)
   const openAddModal = () => {
     setModalMode('add');
-    setTargetMember({ id: null, name: '', major: '', studentId: '', interests: '', comment: '' });
+    setTargetMember({ id: null, name: '', major: '', studentId: '', interests: '', selfIntro: '' });
     setIsModalOpen(true);
   };
 
   // 모달 열기 (수정 모드)
   const openEditModal = (user) => {
     setModalMode('edit');
+    // 백엔드의 majorAndId ("학과 / 학번")를 다시 분리
+    const [major, studentId] = user.majorAndId ? user.majorAndId.split(' / ') : ['', ''];
+    
     setTargetMember({
       id: user.id,
       name: user.name,
-      major: user.major,
-      studentId: user.studentId,
-      interests: Array.isArray(user.interests) ? user.interests.join(', ') : user.interests,
-      comment: user.comment || ''
+      major: major || '',
+      studentId: studentId || '',
+      interests: user.interests,
+      selfIntro: user.selfIntro || ''
     });
     setIsModalOpen(true);
   };
@@ -87,31 +90,44 @@ const AdminMember = () => {
   // 멤버 추가/수정 처리
   const handleAction = async () => {
     const token = localStorage.getItem('adminToken');
+    
+    // 백엔드가 기대하는 데이터 구조로 가공
+    const payload = {
+      name: targetMember.name,
+      majorAndId: `${targetMember.major} / ${targetMember.studentId}`,
+      interests: targetMember.interests,
+      selfIntro: targetMember.selfIntro
+    };
+
     try {
       if (modalMode === 'add') {
-        await axios.post(`${SERVER_URL}/admin/users/add`, targetMember, {
+        // 라우터: router.get('/members/', members); (백엔드 코드상 POST 처리됨)
+        await axios.post(`${SERVER_URL}/admin/members/`, payload, {
           headers: { Authorization: `Bearer ${token}` }
         });
         alert('멤버가 추가되었습니다.');
       } else {
-        await axios.put(`${SERVER_URL}/admin/users/edit/${targetMember.id}`, targetMember, {
+        // 라우터: router.patch('/members/:id', updateMember);
+        await axios.patch(`${SERVER_URL}/admin/members/${targetMember.id}`, payload, {
           headers: { Authorization: `Bearer ${token}` }
         });
         alert('멤버 정보가 수정되었습니다.');
       }
       setIsModalOpen(false);
-      fetchUsers(); // 목록 새로고침
+      fetchUsers();
     } catch (err) {
-      alert('처리에 실패했습니다.');
+      console.error(err);
+      alert(err.response?.data?.message || '처리에 실패했습니다.');
     }
   };
 
-  // 멤버 삭제 처리
+ // 멤버 삭제 처리
   const handleDelete = async (id) => {
     if (!window.confirm("정말로 이 멤버를 삭제하시겠습니까?")) return;
     const token = localStorage.getItem('adminToken');
     try {
-      await axios.delete(`${SERVER_URL}/admin/users/delete/${id}`, {
+      // 라우터: router.delete('/members/:id', deleteMember);
+      await axios.delete(`${SERVER_URL}/admin/members/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('삭제되었습니다.');
@@ -175,41 +191,19 @@ const AdminMember = () => {
           </div>
         </div>
         <div className="admin-line"></div>
-        {userList.map((user, idx) => {
-          // 1. 관심분야 처리: 배열일 수도, 문자열된 JSON일 수도 있음
-          let displayInterests = '없음';
-          try {
-            if (user.interests) {
-              if (Array.isArray(user.interests)) {
-                displayInterests = user.interests.join(', ');
-              } else if (typeof user.interests === 'string') {
-                // 만약 "[ "Web" ]" 처럼 문자열로 오면 파싱 시도
-                const parsed = JSON.parse(user.interests);
-                displayInterests = Array.isArray(parsed) ? parsed.join(', ') : parsed;
-              }
-            }
-          } catch (e) {
-            displayInterests = user.interests; // 파싱 실패 시 원본이라도 출력
-          }
-
-          return (
-            <div key={idx} className={idx % 2 === 0 ? "users-box1" : "users-box2"}>
-              <div className="number">{idx + 1}</div>
-              <div className="admin-username">{user.name}</div>
-              <div className="admin-major">{user.major}</div>
-              <div className="admin-studentnum">{user.studentId}</div>
-      
-              {/* 관심분야 출력 */}
-              <div className="admin-major">{displayInterests}</div>
-              {/* 한마디 출력 */}
-              <div className="admin-major">{user.comment}</div>
-              <div className="admin-btns">
-                <button className="edit-mini-btn" onClick={() => openEditModal(user)}>수정</button>
-                <button className="delete-mini-btn" onClick={() => handleDelete(user.id)}>삭제</button>
-              </div>
+        {userList.map((user, idx) => (
+          <div key={idx} className={idx % 2 === 0 ? "users-box1" : "users-box2"}>
+            <div className="number">{idx + 1}</div>
+            <div className="admin-username">{user.name}</div>
+            <div className="admin-major">{user.majorAndId}</div>
+            <div className="admin-major">{user.interests}</div>
+            <div className="admin-major">{user.selfIntro}</div>
+            <div className="admin-btns">
+              <button className="edit-mini-btn" onClick={() => openEditModal(user)}>수정</button>
+              <button className="delete-mini-btn" onClick={() => handleDelete(user.id)}>삭제</button>
             </div>
-          );  
-        })}
+          </div>
+        ))}
       </div>
       {/* 추가/수정 공용 모달 */}
       {isModalOpen && (
@@ -230,8 +224,8 @@ const AdminMember = () => {
               <input type="text" placeholder="관심분야 (쉼표로 구분)" value={targetMember.interests} 
                 onChange={(e) => setTargetMember({...targetMember, interests: e.target.value})} />
               
-              <textarea placeholder="한마디" value={targetMember.comment} 
-                onChange={(e) => setTargetMember({...targetMember, comment: e.target.value})} />
+              <textarea placeholder="한마디" value={targetMember.selfIntro} 
+                onChange={(e) => setTargetMember({...targetMember, selfIntro: e.target.value})} />
             </div>
 
             <div className="modal-btns">

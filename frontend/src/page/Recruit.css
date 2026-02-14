@@ -231,6 +231,52 @@ html, body {
         gap: 5px;
     }
 
+    /* 모바일 FAQ 플로팅 버튼 */
+    .mobile-faq-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #5DFFC6;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 15px rgba(93, 255, 198, 0.4);
+        z-index: 1000; /* 지원서 입력창보다 위에 뜨도록 */
+        cursor: pointer;
+        animation: bounce 2s infinite; /* 시선을 끌기 위한 애니메이션 */
+    }
+
+    .mobile-faq-icon {
+        width: 25px;
+        height: auto;
+        margin-bottom: 2px;
+    }
+
+    .mobile-faq-btn span {
+        color: #000;
+        font-size: 10px;
+        font-weight: 800;
+        font-family: Pretendard;
+    }
+
+    /* 버튼 통통 튀는 효과 */
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+    }
+
+    /* 모바일 FAQ 모달 높이 조정 (모바일 화면에 꽉 차게) */
+    .faq-modal {
+        width: 90% !important;
+        height: 80vh !important;
+        margin-top: 50px;
+    }
+
     .mobile-title {
         position: sticky;
         top: 88px;
@@ -382,100 +428,100 @@ line-height: normal;
     border-top: 1px dotted #A1A1A1; /* 수평 점선 */
     }
 
-    .mobile-writing-box {
-        position: relative;
-    height: auto !important; /* 내용이 많아졌으므로 높이 자동 조절 */
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    flex-shrink: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    padding-top: 20px;
-    padding-bottom: 30px;
-}
-
-/*
-.mobile-label-box2{
-
-    position: absolute;
-    left: 25%;
-    transform : translateX(-50%);
-    top: 8%;
-    padding-left: 10px;
-    width: 150px;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 115px;
-}
-*/
-
-.mobile-label-box2 {
-        position: static; /* 절대 좌표 해제 */
-        transform: none;
-        width: 145px;
-        height: auto;
-        padding-left: 10px;
-        margin-left: 1px;
+   .mobile-writing-box {
+        margin-top: 10px;
+        margin-bottom: 25px;
         display: flex;
         flex-direction: column;
-        gap: 0; /* 내부 간격은 개별 요소에서 조절 */
-    }
-
-.mobile-name2 {
-    height: 40px; /* 입력창 높이와 맞춰서 가독성 확보 */
-        display: flex;
-        align-items: center;
-        margin-top: 15px;
-    color: #545454;
-font-family: Pretendard;
-font-size: 13px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-}
-
-/*
-.mobile-input-box2 {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 22%;
-    background-color: transparent;
-    width: auto;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 50px;
-}
-    */
-
-    .mobile-input-box2 {
-        position: static;
-        transform: none;
         width: 100%;
-        padding: 0 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+        padding: 20px;
+        gap: 35px; /* 항목 사이의 간격 */
+        box-sizing: border-box;
     }
 
-    /* 체크박스 & 라디오 그룹 */
-    .mobile-checkbox-group, .mobile-radio-group {
+    /* 라벨과 인풋 한 쌍 */
+    .mobile-recruit-row {
+        display: flex;
+        flex-direction: column;
+        gap: 12px; /* 라벨과 인풋 사이의 간격 */
+        width: 100%;
+    }
+
+    .mobile-desc {
+        font-size: 11px; /* 모바일은 조금 더 작게 */
+        color: #999;
+        margin-top: 5px;
+        margin-left: 2px;
+        line-height: 1.4;
+        word-break: keep-all; /* 단어가 잘리지 않게 */
+        animation: mobileFadeIn 0.3s ease;
+    }
+    /* 모바일 애니메이션 */
+    @keyframes mobileFadeIn {
+        from { opacity: 0; transform: translateY(-3px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+
+    .mobile-name2 {
+        color: #545454;
+        font-family: Pretendard;
+        font-size: 13px;
+        font-weight: 500;
+        /* 기존의 고정 padding이나 margin-top은 제거해주세요 */
+    }
+
+    /* 입력창 너비 최적화 */
+    .mobile-input-short, 
+    .mobile-input2 {
+        width: 100% !important;
+        max-width: none;
+        box-sizing: border-box;
+    }
+
+    /* 체크박스/라디오 그룹 배경 및 정렬 */
+    .mobile-checkbox-group, 
+    .mobile-radio-group {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
         background: #1a1a1a;
-        padding: 10px;
+        padding: 12px;
         border-radius: 5px;
     }
 
+    /* 1. 기본 체크박스/라디오 숨기기 (모바일용 클래스 명시) */
+  .mobile-checkbox-group input[type="checkbox"],
+  .mobile-radio-group input[type="radio"] {
+    display: none !important;
+  }
+
+  /* 2. 모바일용 커스텀 박스 크기 및 스타일 조정 */
+  .mobile-check-label .custom-checkbox, 
+  .mobile-check-label .custom-radio {
+    width: 15px;  /* 모바일에 맞게 약간 조절 */
+    height: 15px;
+    border: 1px solid #545454;
+    background-color: #222; /* 배경색이 검정 계열인지 확인 */
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  /* 3. 체크되었을 때의 상태 (가장 중요: 우선순위 강제를 위해 클래스 중첩) */
+  .mobile-check-label input[type="checkbox"]:checked + .custom-checkbox,
+  .mobile-check-label input[type="radio"]:checked + .custom-radio {
+    background-color: #5DFFC6 !important;
+    border-color: #5DFFC6 !important;
+  }
+
+  
+
+
+
     .mobile-check-label {
-        color: #D0D0D0;
-        font-size: 13px;
+        color: #333;
+        font-size: 12px;
         display: flex;
         align-items: center;
         gap: 5px;
@@ -705,7 +751,7 @@ line-height: normal;
 
 .fillout {
     background-color: black;
-    z-index: 80; 
+    z-index: 100; 
     position: fixed;
     width: 100%;
     height: 120px;
@@ -809,15 +855,51 @@ line-height: normal;
 }
 
 .writing-box {
-    padding-top: 150px;
+    padding-top: 80px;
+    padding-left: 70px;
+    padding-bottom: 100px;
     background-color: black;
-    height: 600px;
+    height: auto !important;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 50px;
     width: 100%;
     flex-shrink: 0;
     overflow-x: hidden;
     overflow-y: hidden;
+}
+
+/* 가로 정렬용 행 */
+.recruit-row {
+    padding: 5px;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.recruit-row .name2 {
+    width: 160px; /* 라벨 너비 고정 */
+    margin-right: 20px;
+}
+
+/* 세로 정렬용 행 (자기소개 등 긴 글) */
+.recruit-row-vertical {
+    gap: 10px;
+    display: flex;
+    align-items: flex-start; /* 라벨은 위쪽에 고정 */
+}
+
+.recruit-row-vertical .name2, 
+.recruit-row-vertical .name2-1 {
+    width: 160px;
+    margin-right: 20px;
+}
+
+/* input-box2에 있던 gap을 제거했으므로 개별 스타일 유지 */
+.checkbox-group {
+    display: flex;
+    gap: 15px;
 }
 
 .label-box2{
@@ -863,13 +945,21 @@ line-height: normal;
     gap: 40px;
 }
 
+/* 기본 체크박스/라디오 숨기기 */
+.checkbox-group input[type="checkbox"],
+.checkbox-group input[type="radio"],
+.mobile-checkbox-group input[type="checkbox"],
+.mobile-radio-group input[type="radio"] {
+  display: none;
+}
+
+
 .checkbox-group {
+    width: 550px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+  flex-wrap: wrap; /* 핵심: 공간이 부족하면 다음 줄로 넘김 */
+  gap: 25px 20px; /* 행 간격 15px, 열 간격 20px */
   align-items: center;
-  color: white;
-  margin-bottom: 8px;
 }
 
 .checkbox-group label {
@@ -880,6 +970,81 @@ line-height: normal;
   font-size: 16px;
 }
 
+/* 박스 공통 스타일 */
+.custom-checkbox, .custom-radio {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ddd; /* 기본 테두리 색 */
+  border-radius: 1px;     /* 사각형 모양 (약간의 곡률) */
+  margin-right: 3px;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+  background-color: black;
+  cursor: pointer;
+  position: relative;
+}
+
+
+/* 체크되었을 때 박스 색깔 변경 */
+input[type="checkbox"]:checked + .custom-checkbox,
+input[type="radio"]:checked + .custom-radio {
+  background-color: #5DFFC6; /* 원하는 강조 색상 (예: 파란색) */
+  border-color: #5DFFC6;
+}
+
+/* 체크되었을 때 내부 체크 표시(V) 대신 깔끔하게 비워두거나 작은 점 추가 */
+input[type="checkbox"]:checked + .custom-checkbox::after,
+input[type="radio"]:checked + .custom-radio::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* 라벨 스타일 (정렬 맞추기) */
+.checkbox-group label, .mobile-check-label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 15px;
+  cursor: pointer;
+  font-size: 15px;
+  color: white;
+}
+
+
+/* 입력창과 설명을 묶어주는 컨테이너 */
+.input-with-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* 입력창과 문구 사이 간격 */
+    flex: 1;
+}
+
+/* 기본 설명 문구 스타일 */
+.recruit-desc {
+    padding-top: 5px;
+    font-size: 13px;
+    color: white; /* 눈에 너무 띄지 않는 회색 */
+    margin: 0;
+    font-family: Pretendard;
+    animation: fadeIn 0.3s ease-in-out; /* 부드럽게 나타나는 효과 */
+}
+
+/* 강조 색상들 */
+.color-green { color: #5DFFC6; }
+.color-red { color: #FF5D5D; }
+
+/* 애니메이션 정의 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 .input2 {
     padding-left: 10px;
@@ -923,8 +1088,8 @@ line-height: normal;
 }
 
 .link-box {
-    background-color: black;
-    padding: 40px 0;
+    background-color: blak;
+    padding-left: 0px;
     min-height: 200px;
     height: auto;
     display: flex;
@@ -937,6 +1102,7 @@ line-height: normal;
 
 
 .label-box3{
+    margin-top: 30px;
     background-color: black;
     margin-left: 70px;
     width: 80px;
@@ -948,6 +1114,7 @@ line-height: normal;
 
 
 .name3 {
+    margin-top: -35px;
     color: #FFF;
     font-family: Pretendard;
     font-size: 16px;
@@ -957,18 +1124,20 @@ line-height: normal;
 }
 
 .input-box3 {
-    background-color: black;
+    margin-bottom: 35px;
+    margin-top: 50px;
     margin-left: 80px;
-    width: 550px;
+    width: auto;
     min-height: 200px;
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px;
 }
 
 .input3 {
+    margin-left: 30px;
     padding-left: 10px;
     width: 550px;
     height: 40px;
@@ -980,7 +1149,9 @@ line-height: normal;
 }
 
 .input3-add-button {
-    width: 550px;
+        margin-left: 30px;
+
+    width: 560px;
     height: 40px;
     border-radius: 10px;
     border: 1px dotted #A1A1A1; /* 수평 점선 */
@@ -1132,3 +1303,31 @@ line-height: normal;
 }
 
 
+.etc-input {
+  width: 250px;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background: transparent;
+  color: white; /* 배경색에 맞춰 조절 */
+  padding: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+.etc-input:focus {
+  border-bottom: 2px solid #5DFFC6; /* 포인트 컬러 */
+}
+
+/* 모바일 버전 */
+.mobile-etc-input {
+  width: 90%;
+  margin-top: 5px;
+  height: 35px;
+  border: 1px solid #444;
+  background: #222;
+  color: white;
+  padding: 0 10px;
+  border-radius: 4px;
+  font-size: 13px;
+}
