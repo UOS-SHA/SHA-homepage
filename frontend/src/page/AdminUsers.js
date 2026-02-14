@@ -139,13 +139,13 @@ const AdminUsers = () => {
               <div className="admin-phone">{user.phone}</div>
       
               {/* 관심분야 출력 */}
-              <div className="admin-major">{displayInterests}</div>
+              <div className="admin-interests">{displayInterests}{user.interestEtc ? `, ${user.interestEtc}` : ''}</div>
       
               {/* 팀 출력: 대문자/소문자 모두 대응 */}
-              <div className="admin-major">{user.team || user.Team || '미정'}</div>
+              <div className="admin-team">{user.team || user.Team || '미정'}</div>
       
               {/* 세미나 출력: true/false/1/0/문자열 모두 대응 */}
-              <div className="admin-major">
+              <div className="admin-seminar">
                 {(user.seminarAvailable === true || user.seminarAvailable === 1 || user.seminarAvailable === 'true') 
                   ? "가능" : "불가능"}
               </div>
