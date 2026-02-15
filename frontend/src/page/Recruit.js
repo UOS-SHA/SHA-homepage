@@ -127,7 +127,7 @@ const Recruit = () => {
       phone: formData.phone,
       interests: formData.interests,
       interestEtc: formData.interestEtc || '',
-      team: formData.team.toUpperCase(),
+      team: formData.team === '추후선택' ? 'later' : formData.team.toUpperCase(),
       selfIntro: (formData.selfIntro || '').substring(0, 100),
       seminarAvailable: formData.seminarAvailable === '가능' ? true : false,
       expect: formData.expectation,
