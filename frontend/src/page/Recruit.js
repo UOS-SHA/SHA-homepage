@@ -440,9 +440,9 @@ const Recruit = () => {
                     ))}
                   </div>
                   {/* 모바일 팀 설명 */}
-                  {formData.team === 'A' && <p className="mobile-desc color-green">A팀: 웹 해킹 기초 및 보안 원리 학습</p>}
-                  {formData.team === 'B' && <p className="mobile-desc color-green">B팀: 시스템 취약점 분석 및 리버싱 연구</p>}
-                  {formData.team === 'C' && <p className="mobile-desc color-green">C팀: 디지털 포렌식 및 암호 알고리즘 분석</p>}
+                  {formData.team === 'A' && <p className="mobile-desc color-green">CTF TEAM: 자율 학습을 기반으로 CTF 참가 경험을 쌓는 팀</p>}
+                  {formData.team === 'B' && <p className="mobile-desc color-green">개발 TEAM: 목표 기반 프로젝트를 개발하며 실전 역량을 키우는 팀</p>}
+                  {formData.team === 'C' && <p className="mobile-desc color-green">학술 TEAM: 보안 관련 논문 및 자료를 공유하며 학술적 성장을 도모하는 팀</p>}
                 </div>
 
                 {/* 항목 3: 세미나 참여 */}
@@ -669,9 +669,9 @@ const Recruit = () => {
                     ))}
                   </div>
                   {/* 팀 선택에 따른 동적 문구 */}
-                  {formData.team === 'A' && <p className="recruit-desc"  >A팀: 웹 해킹 및 보안 기초를 심도 있게 학습합니다.</p>}
-                  {formData.team === 'B' && <p className="recruit-desc">B팀: 시스템 해킹 및 리버싱을 중심으로 연구합니다.</p>}
-                  {formData.team === 'C' && <p className="recruit-desc">C팀: 포렌식 및 암호학 스터디를 진행합니다.</p>}
+                  {formData.team === 'A' && <p className="recruit-desc"  >CTF TEAM: 자율 학습을 기반으로 CTF 참가 경험을 쌓는 팀</p>}
+                  {formData.team === 'B' && <p className="recruit-desc">개발 TEAM: 목표 기반 프로젝트를 개발하며 실전 역량을 키우는 팀</p>}
+                  {formData.team === 'C' && <p className="recruit-desc">학술 TEAM: 보안 관련 논문 및 자료를 공유하며 학술적 성장을 도모하는 팀</p>}
                 </div>
               </div>
 

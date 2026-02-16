@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
@@ -12,7 +11,9 @@ import '../Home.css';
 
 const Member = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const members = [
+
+
+  {/*const members = [
     { major: "컴과25", name: "조재희", interests: "web", comment: "갓벽 그 자체 회장" },
     { major: "컴과22", name: "박정빈", interests: "web, reversing, system, crypto, forensic", comment: "올라운더 희망" },
     { major: "기계24", name: "김민찬", interests: "system", comment: "교환학생 중임." },
@@ -37,20 +38,45 @@ const Member = () => {
     
     
     // 나중에 팀원 추가 가능
-  ];
+  ];*/}
+  const [members, setMembers] = useState([]);
+
+
+
+
+  useEffect(() => {
+    const fetchMembers = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/members`);
+
+        const mappedMembers = response.data.map(m => ({
+          major: m.majorAndId, 
+          name: m.name,
+          interests: m.interests,
+          comment: m.selfIntro 
+        }));
+
+        setMembers(mappedMembers);
+      } catch (err) {
+        console.error("멤버 데이터를 가져오는데 실패했습니다.", err);
+      }
+    };
+    fetchMembers();
+  }, []);
+
   const chunkArray = (arr, size) => {
     const result = [];
     for (let i = 0; i < arr.length; i += size) {
-        result.push(arr.slice(i, i + size));
+      result.push(arr.slice(i, i + size));
     }
     return result;
   };
- 
+
   return (
     <div className="wholearea">
       <div className="top-bar">
         <Link to="/" className="logo-wrapper">
-            <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
+          <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
         </Link>
         <div className="nav-content">
           <div className="menu">
@@ -107,7 +133,7 @@ const Member = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
+                  isActive ? "nav-link active-link" : "nav-link"
                 }
                 end
               >
@@ -116,7 +142,7 @@ const Member = () => {
               <NavLink
                 to="/members"
                 className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
+                  isActive ? "nav-link active-link" : "nav-link"
                 }
               >
                 MEMBER
@@ -124,7 +150,7 @@ const Member = () => {
               <NavLink
                 to="/study"
                 className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
+                  isActive ? "nav-link active-link" : "nav-link"
                 }
               >
                 STUDY
@@ -132,14 +158,14 @@ const Member = () => {
               <NavLink
                 to="/recruit"
                 className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
+                  isActive ? "nav-link active-link" : "nav-link"
                 }
               >
                 RECRUIT
               </NavLink>
             </div>
           </div>
-        )}        
+        )}
       </div>
       {/*모바일 버전*/}
       <div className="mobile-recruit-container">
@@ -147,11 +173,11 @@ const Member = () => {
           <div className="mobile-word-box">
             <div className="mobile-title">ABOUT US</div>
             <div className="mobile-info">
-                <p>같은 목표를 향해 함께 나아가는 SHA의 팀원들을 소개합니다.
-                SHA는 시스템 해킹, 웹 해킹, 리버싱, 포렌식 등 다양한 분야에 관심 있는 팀원들이 모여, 
-                    CTF 대회와 보안 프로젝트를 통해 함께 실력을 키워가고 있습니다. 
-                    각자의 관심사는 다르지만, 서로의 전문성이 모여 더 나은 결과를 만들어내기 위해 협력합니다.
-                    팀원 모두가 학습자이자 기여자로서, 함께 배우고 성장하는 보안 커뮤니티를 만들어가고 있습니다.</p>
+              <p>같은 목표를 향해 함께 나아가는 SHA의 팀원들을 소개합니다.
+                SHA는 시스템 해킹, 웹 해킹, 리버싱, 포렌식 등 다양한 분야에 관심 있는 팀원들이 모여,
+                CTF 대회와 보안 프로젝트를 통해 함께 실력을 키워가고 있습니다.
+                각자의 관심사는 다르지만, 서로의 전문성이 모여 더 나은 결과를 만들어내기 위해 협력합니다.
+                팀원 모두가 학습자이자 기여자로서, 함께 배우고 성장하는 보안 커뮤니티를 만들어가고 있습니다.</p>
             </div>
           </div>
         </div>
@@ -165,52 +191,52 @@ const Member = () => {
               {chunkArray(members, 2).map((pair, idx) => (
                 <div className="mobile-profile-box" key={idx}>
                   {pair.map((member, i) => {
-                      const globalIndex = idx * 2 + i;
+                    const globalIndex = idx * 2 + i;
 
-                      return (
-                        <div className="mobile-individual" key={i}>
+                    return (
+                      <div className="mobile-individual" key={i}>
 
                         <div className="mobile-img-crown">
-                        {globalIndex === 0 && (
-                          <img
-                            src={`${process.env.PUBLIC_URL}/yellow_crown.png`}
-                            alt="회장"
-                            className="mobile-crown"
-                          />
-                        )}
+                          {globalIndex === 0 && (
+                            <img
+                              src={`${process.env.PUBLIC_URL}/yellow_crown.png`}
+                              alt="회장"
+                              className="mobile-crown"
+                            />
+                          )}
 
-                        {globalIndex === 1 && (
-                          <img
-                            src={`${process.env.PUBLIC_URL}/grey_crown.png`}
-                            alt="부회장"
-                            className="mobile-crown"
-                          />
-                        )}
+                          {globalIndex === 1 && (
+                            <img
+                              src={`${process.env.PUBLIC_URL}/grey_crown.png`}
+                              alt="부회장"
+                              className="mobile-crown2"
+                            />
+                          )}
                         </div>
 
                         <div className="mobile-name-major">
-                        <div className="mobile-profile-major">{member.major}</div>
-                        <div className="mobile-profile-name">{member.name}</div>
+                          <div className="mobile-profile-major">{member.major}</div>
+                          <div className="mobile-profile-name">{member.name}</div>
                         </div>
 
-                      <div className="mobile-hanmadi">
+                        <div className="mobile-hanmadi">
                           {(`"${member.comment}"`).split("\n").map((line, index) => (
                             <span key={index}>
                               {line}
                               <br />
                             </span>
                           ))}
-                      </div>
-                      {/*
+                        </div>
+                        {/*
                       <div className="mobile-position-link">
                         <div className="mobile-position">관심분야: {member.interests}</div>
                         <div className="mobile-profile-link">{member.github}</div>
                       </div>
                       */}
-                      <div className="mobile-individual-line"></div>
-                    </div>
-                      );  
-                })}
+                        <div className="mobile-individual-line"></div>
+                      </div>
+                    );
+                  })}
                 </div>
               ))}
             </div>
@@ -224,11 +250,11 @@ const Member = () => {
           <div className="word-box">
             <div className="title">ABOUT US</div>
             <div className="info">
-                <p>같은 목표를 향해 함께 나아가는 SHA의 팀원들을 소개합니다.</p>
-                <p>SHA는 시스템 해킹, 웹 해킹, 리버싱, 포렌식 등 다양한 분야에 관심 있는 팀원들이 모여, 
-                    CTF 대회와 보안 프로젝트를 통해 함께 실력을 키워가고 있습니다. 
-                    각자의 관심사는 다르지만, 서로의 전문성이 모여 더 나은 결과를 만들어내기 위해 협력합니다. <br />
-                    팀원 모두가 학습자이자 기여자로서, 함께 배우고 성장하는 보안 커뮤니티를 만들어가고 있습니다.</p>
+              <p>같은 목표를 향해 함께 나아가는 SHA의 팀원들을 소개합니다.</p>
+              <p>SHA는 시스템 해킹, 웹 해킹, 리버싱, 포렌식 등 다양한 분야에 관심 있는 팀원들이 모여,
+                CTF 대회와 보안 프로젝트를 통해 함께 실력을 키워가고 있습니다.
+                각자의 관심사는 다르지만, 서로의 전문성이 모여 더 나은 결과를 만들어내기 위해 협력합니다. <br />
+                팀원 모두가 학습자이자 기여자로서, 함께 배우고 성장하는 보안 커뮤니티를 만들어가고 있습니다.</p>
             </div>
           </div>
         </div>
@@ -239,6 +265,7 @@ const Member = () => {
           </div>
           <div className="line2"></div>
           <div className="profile-scroll-box">
+            {/*}
             <div className="profile-container">
                 {chunkArray(members, 2).map((pair, idx) => (
                 <div className="profile-box" key={idx}>
@@ -290,6 +317,46 @@ const Member = () => {
                 </div>
               ))}
 
+            </div>
+            */}
+            <div className="profile-container">
+              {members.length > 0 ? (
+                chunkArray(members, 2).map((pair, idx) => (
+                  <div className="profile-box" key={idx}>
+                    {pair.map((member, i) => {
+                      const globalIndex = idx * 2 + i;
+                      return (
+                        <div className="individual" key={i}>
+                          {/* 왕관 로직 동일 */}
+                          <div className="img_crown">
+                            {globalIndex === 0 && <img src={`${process.env.PUBLIC_URL}/yellow_crown.png`} alt="회장" className="crown" />}
+                            {globalIndex === 1 && <img src={`${process.env.PUBLIC_URL}/grey_crown.png`} alt="부회장" className="crown2" />}
+                          </div>
+
+                          <div className="name-major">
+                            <div className="profile-major">{member.major}</div>
+                            <div className="profile-name">{member.name}</div>
+                          </div>
+
+                          <div className="position-link">
+                            <div className="position">관심분야: {member.interests}</div>
+                          </div>
+
+                          <div className="individual-line"></div>
+
+                          <div className="hanmadi">
+                            {member.comment?.split("\n").map((line, index) => (
+                              <span key={index}>{line}<br /></span>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))
+              ) : (
+                <p style={{ color: 'white' }}>ο(=•ω＜=)ρ⌒☆</p>
+              )}
             </div>
           </div>
         </div>

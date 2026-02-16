@@ -82,6 +82,13 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
     object-fit: contain;
 }
 
+.mobile-crown2 {
+    margin-bottom: -1px;
+    width: 15px;
+    height: 13px;
+    object-fit: contain;
+}
+
 .mobile-name-major {
     position: absolute;
     top: 10px;

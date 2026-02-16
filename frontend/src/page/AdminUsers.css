@@ -15,8 +15,7 @@
 
 
 .users-index {
-    margin-left: 35px;
-    width: 100%;
+    width: 97.25%;
     height: 50px;
     display: flex;
     flex-direction: row;
@@ -27,6 +26,7 @@
 }
 
 .number1 {
+    margin-left: 33px;
 display: flex;
 justify-content: center;
     width: 55px;
