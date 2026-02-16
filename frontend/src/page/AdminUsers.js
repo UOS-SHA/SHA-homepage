@@ -25,6 +25,20 @@ const AdminUsers = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
 
+  const getTeamLabel = (teamValue) => {
+    if (!teamValue) return '미정';
+
+    const normalized = String(teamValue).trim().toUpperCase();
+    const teamLabelMap = {
+      A: 'CTF팀',
+      B: '개발팀',
+      C: '학술팀',
+      LATER: '추후선택',
+    };
+
+    return teamLabelMap[normalized] || teamValue;
+  };
+
   const handleOpenModal = (user) => {
     setSelectedUser(user);
     setIsUserModalOpen(true);
@@ -142,7 +156,7 @@ const AdminUsers = () => {
               <div className="admin-interests">{displayInterests}{user.interestEtc ? `, ${user.interestEtc}` : ''}</div>
       
               {/* 팀 출력: 대문자/소문자 모두 대응 */}
-              <div className="admin-team">{user.team || user.Team || '미정'}</div>
+              <div className="admin-team">{getTeamLabel(user.team || user.Team)}</div>
       
               {/* 세미나 출력: true/false/1/0/문자열 모두 대응 */}
               <div className="admin-seminar">

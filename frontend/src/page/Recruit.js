@@ -68,7 +68,7 @@ const Recruit = () => {
       questions: [
         {
           q: "SHA 분위기는 어떤가요?",
-          a: "SHA는 주간 해킹, 개발팀 펜테스팅 활동 등 다양한 행사를 예정하고 있습니다. 기술적인 성장뿐만 아니라, 함께 즐거운 대학 생활을 만들어가는 분위기를 지향합니다."
+          a: "SHA는 자율적으로 공부하되 결과물을 함께 리뷰하고 공유하는 문화가 있습니다. 초보자가 질문하기 편하고, 선배/동료가 방향을 잡아주는 분위기를 지향합니다. 주간 해캥, 개발팀 펜테스팅 등 교류형 활동도 운영해 자연스럽게 친해질 수 있어요!"
         }
       ]
     }
@@ -142,6 +142,13 @@ const Recruit = () => {
     }
 
 
+    const teamMap = {
+      'CTF팀': 'A',
+      '개발팀': 'B',
+      '학술팀': 'C',
+      '추후선택': 'later',
+    };
+
     const allData = {
       name: formData.name,
       major: formData.major,
@@ -149,7 +156,7 @@ const Recruit = () => {
       phone: formData.phone,
       interests: formData.interests,
       interestEtc: formData.interestEtc || '',
-      team: formData.team === '추후선택' ? 'later' : formData.team.toUpperCase(),
+      team: teamMap[formData.team] || '',
       selfIntro: (formData.selfIntro || '').substring(0, 100),
       seminarAvailable: formData.seminarAvailable === '가능' ? true : false,
       expect: formData.expectation,
@@ -431,7 +438,7 @@ const Recruit = () => {
                 <div className="mobile-recruit-row">
                   <div className="mobile-name2">팀 선택</div>
                   <div className="mobile-radio-group">
-                    {['A', 'B', 'C', '추후선택'].map(f => (
+                    {['CTF팀', '개발팀', '학술팀', '추후선택'].map(f => (
                       <label key={f} className="mobile-check-label">
                         <input type="radio" name="mobile-team" checked={formData.team === f}
                           onChange={() => handleInputChange('team', f)} />
@@ -440,9 +447,9 @@ const Recruit = () => {
                     ))}
                   </div>
                   {/* 모바일 팀 설명 */}
-                  {formData.team === 'A' && <p className="mobile-desc color-green">CTF TEAM: 자율 학습을 기반으로 CTF 참가 경험을 쌓는 팀</p>}
-                  {formData.team === 'B' && <p className="mobile-desc color-green">개발 TEAM: 목표 기반 프로젝트를 개발하며 실전 역량을 키우는 팀</p>}
-                  {formData.team === 'C' && <p className="mobile-desc color-green">학술 TEAM: 보안 관련 논문 및 자료를 공유하며 학술적 성장을 도모하는 팀</p>}
+                  {formData.team === 'CTF팀' && <p className="mobile-desc color-green">CTF TEAM: 자율 학습을 기반으로 CTF 참가 경험을 쌓는 팀</p>}
+                  {formData.team === '개발팀' && <p className="mobile-desc color-green">개발 TEAM: 목표 기반 프로젝트를 개발하며 실전 역량을 키우는 팀</p>}
+                  {formData.team === '학술팀' && <p className="mobile-desc color-green">학술 TEAM: 보안 관련 논문 및 자료를 공유하며 학술적 성장을 도모하는 팀</p>}
                 </div>
 
                 {/* 항목 3: 세미나 참여 */}
@@ -660,7 +667,7 @@ const Recruit = () => {
                 <label className="name2" style={{ justifyContent: 'flex-start' }}>팀 선택</label>
                 <div className="input-with-desc">
                   <div className="checkbox-group" >
-                    {['A', 'B', 'C', '추후선택'].map(f => (
+                    {['CTF팀', '개발팀', '학술팀', '추후선택'].map(f => (
                       <label key={f}>
                         <input type="radio" name="team" checked={formData.team === f}
                           onChange={() => handleInputChange('team', f)} />
@@ -669,9 +676,9 @@ const Recruit = () => {
                     ))}
                   </div>
                   {/* 팀 선택에 따른 동적 문구 */}
-                  {formData.team === 'A' && <p className="recruit-desc"  >CTF TEAM: 자율 학습을 기반으로 CTF 참가 경험을 쌓는 팀</p>}
-                  {formData.team === 'B' && <p className="recruit-desc">개발 TEAM: 목표 기반 프로젝트를 개발하며 실전 역량을 키우는 팀</p>}
-                  {formData.team === 'C' && <p className="recruit-desc">학술 TEAM: 보안 관련 논문 및 자료를 공유하며 학술적 성장을 도모하는 팀</p>}
+                  {formData.team === 'CTF팀' && <p className="recruit-desc"  >CTF TEAM: 자율 학습을 기반으로 CTF 참가 경험을 쌓는 팀</p>}
+                  {formData.team === '개발팀' && <p className="recruit-desc">개발 TEAM: 목표 기반 프로젝트를 개발하며 실전 역량을 키우는 팀</p>}
+                  {formData.team === '학술팀' && <p className="recruit-desc">학술 TEAM: 보안 관련 논문 및 자료를 공유하며 학술적 성장을 도모하는 팀</p>}
                 </div>
               </div>
 
