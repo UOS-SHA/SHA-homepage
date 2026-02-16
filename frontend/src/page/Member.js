@@ -42,6 +42,9 @@ const Member = () => {
   const [members, setMembers] = useState([]);
 
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
 
   useEffect(() => {

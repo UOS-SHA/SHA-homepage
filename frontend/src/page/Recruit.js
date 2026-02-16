@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
@@ -19,7 +18,6 @@ const Recruit = () => {
   const toggleFaq = (index) => {
     setActiveFaq(activeFaq === index ? null : index);
   };
-
 
 
 
@@ -73,6 +71,10 @@ const Recruit = () => {
       ]
     }
   ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
 
   const handleLinkChange = (index, value) => {
@@ -178,6 +180,11 @@ const Recruit = () => {
       alert('지원서가 정상으로 제출되었습니다.');
 
       setShowComplete(true);
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // 부드럽게 올라가려면 'smooth', 즉시 올라가려면 'auto'
+      });
 
       setFormData({
         name: '',
@@ -462,7 +469,7 @@ const Recruit = () => {
 
                 {/* 항목 3: 세미나 참여 */}
                 <div className="mobile-recruit-row">
-                  <div className="mobile-name2">세미나 참여</div>
+                  <div className="mobile-name2">신규부원 5주 세미나</div>
                   <div className="mobile-radio-group">
                     {['가능', '불가능'].map(f => (
                       <label key={f} className="mobile-check-label">
@@ -502,7 +509,7 @@ const Recruit = () => {
               <div className="mobile-line4"></div>
               <div className="mobile-link-box">
                 <div className="mobile-label-box3">
-                  <div className="mobile-name3">개인 사이트</div>
+                  <div className="mobile-name3">기술블로그(선택)</div>
                 </div>
                 <div className="mobile-input-box3">
                   {links.map((link, idx) => (
@@ -700,7 +707,7 @@ const Recruit = () => {
 
               {/* 항목 3: 세미나 참여 */}
               <div className="recruit-row">
-                <label className="name2">4주 세미나 참여 여부</label>
+                <label className="name2">신규부원 5주 세미나</label>
                 <div className="input-with-desc">
                   <div className="checkbox-group">
                     {['가능', '불가능'].map(f => (
@@ -744,7 +751,7 @@ const Recruit = () => {
 
             <div className="link-box">
               <div className="label-box3">
-                <div className="name3" style={{ width: 90 }}>개인 사이트</div>
+                <div className="name3" style={{ width: '120px' }}>기술블로그 (선택)</div>
               </div>
               <div className="input-box3">
                 {links.map((link, idx) => (

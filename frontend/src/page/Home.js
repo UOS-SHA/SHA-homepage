@@ -102,6 +102,10 @@ useEffect(() => {
   setExpandedIndices([]);
 }, [current]);
 
+ useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 // 2. 토글 함수 생성 (가독성을 위해 분리)
 const toggleExpand = (idx) => {
   setExpandedIndices(prev => 
