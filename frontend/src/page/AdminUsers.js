@@ -9,8 +9,6 @@ import './AdminBoard.css';
 import './AdminUsers.css';
 
 
-//todo: 일단은 프론트엔드 스타일 맞추기, 버튼 기능 구현
-//todo2: 백엔드랑 연결하는 코드 짜기
 
 const AdminUsers = () => {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -24,6 +22,41 @@ const AdminUsers = () => {
 
   const [selectedUser, setSelectedUser] = useState(null);
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
+
+
+
+
+  // 엑셀 다운로드 함수 추가
+  const handleDownloadExcel = async () => {
+    try {
+      const token = localStorage.getItem('adminToken');
+      if (!token) {
+        alert('로그인이 필요합니다.');
+        return;
+      }
+
+      const response = await axios.get(`${SERVER_URL}/admin/users/export`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        responseType: 'blob', // 파일 다운로드를 위해 중요!
+      });
+
+      // 브라우저에서 다운로드를 실행하기 위한 링크 생성
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'recruit_list.xlsx'); // 다운로드될 파일명
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } catch (err) {
+      console.error('엑셀 다운로드 실패:', err);
+      alert('엑셀 파일을 다운로드하는 중 오류가 발생했습니다.');
+    }
+  };
+
+
 
   const getTeamLabel = (teamValue) => {
     if (!teamValue) return '미정';
@@ -174,6 +207,19 @@ const AdminUsers = () => {
           );  
         })}
       </div>
+      {/* 플로팅 엑셀 다운로드 버튼 */}
+      <button 
+        onClick={handleDownloadExcel}
+        className="excel-floating-btn"
+        title="엑셀 다운로드"
+      >
+        <img 
+          src={`${process.env.PUBLIC_URL}/sha-logo.png`} 
+          alt="Excel" 
+          className="excel-btn-icon" 
+        />
+        <span>EXCEL</span>
+      </button>
       {isUserModalOpen && selectedUser && (
         <div className="usermodal-overlay">
           <div className="usermodal-content" onClick={(e) => e.stopPropagation()}>

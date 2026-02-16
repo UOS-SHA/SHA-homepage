@@ -448,7 +448,8 @@ line-height: normal;
     }
 
     .mobile-desc {
-        font-size: 11px; /* 모바일은 조금 더 작게 */
+        margin-bottom: 0;
+        font-size: 12px; /* 모바일은 조금 더 작게 */
         color: #999;
         margin-top: 5px;
         margin-left: 2px;
@@ -896,10 +897,13 @@ line-height: normal;
     margin-right: 20px;
 }
 
-/* input-box2에 있던 gap을 제거했으므로 개별 스타일 유지 */
+/* 체크박스 그룹 레이아웃 */
 .checkbox-group {
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .label-box2{
@@ -953,6 +957,19 @@ line-height: normal;
   display: none;
 }
 
+/* 개별 체크박스 항목 */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+}
+
+.checkbox-text {
+    margin-left: 8px;
+    vertical-align: middle;
+}
 
 .checkbox-group {
     width: 550px;

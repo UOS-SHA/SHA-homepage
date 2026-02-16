@@ -96,7 +96,7 @@ const Recruit = () => {
     promise: '',
     interests: [],
     interestEtc: '',
-    team: '',
+    team: [],
     selfIntro: '',
     seminarAvailable: ''
   });
@@ -109,7 +109,7 @@ const Recruit = () => {
   const handleCheckboxChange = (field, value) => {
     setFormData(prev => {
       // 단일 선택 필드(team, seminar)인 경우 문자열로 저장
-      if (field === 'team' || field === 'seminarAvailable') {
+      if (field === 'seminarAvailable') {
         return { ...prev, [field]: value };
       }
 
@@ -131,8 +131,11 @@ const Recruit = () => {
 
   const handleSubmit = async () => {
 
-    if (!formData.name || !formData.major || !formData.studentId || !formData.phone) {
-      alert('이름, 학과, 학번, 전화번호는 필수입니다.');
+    if (!formData.name || !formData.major || !formData.studentId || !formData.phone
+      || !formData.team.length || !formData.seminarAvailable || !formData.selfIntro
+      || formData.interests.length === 0 || formData.expectation === '' || formData.promise === ''
+    ) {
+      alert('모든 항목을 입력해주세요.');
       return;
     }
 
@@ -156,7 +159,7 @@ const Recruit = () => {
       phone: formData.phone,
       interests: formData.interests,
       interestEtc: formData.interestEtc || '',
-      team: teamMap[formData.team] || '',
+      team: formData.team,
       selfIntro: (formData.selfIntro || '').substring(0, 100),
       seminarAvailable: formData.seminarAvailable === '가능' ? true : false,
       expect: formData.expectation,
@@ -434,22 +437,27 @@ const Recruit = () => {
                   </div>
                 </div>
 
-                {/* 항목 2: 팀 선택 */}
+                {/* 항목 2: 팀 선택 (수정됨) */}
                 <div className="mobile-recruit-row">
-                  <div className="mobile-name2">팀 선택</div>
-                  <div className="mobile-radio-group">
+                  <div className="mobile-name2">팀 선택 (복수 가능)</div>
+                  <div className="mobile-checkbox-group"> {/* 클래스명 통일 */}
                     {['CTF팀', '개발팀', '학술팀', '추후선택'].map(f => (
                       <label key={f} className="mobile-check-label">
-                        <input type="radio" name="mobile-team" checked={formData.team === f}
-                          onChange={() => handleInputChange('team', f)} />
-                        <span className="custom-radio"></span> {f}
+                        <input
+                          type="checkbox"
+                          checked={formData.team.includes(f)}
+                          onChange={() => handleCheckboxChange('team', f)}
+                        />
+                        <span className="custom-checkbox"></span> {f}
                       </label>
                     ))}
                   </div>
-                  {/* 모바일 팀 설명 */}
-                  {formData.team === 'CTF팀' && <p className="mobile-desc color-green">CTF TEAM: 자율 학습을 기반으로 CTF 참가 경험을 쌓는 팀</p>}
-                  {formData.team === '개발팀' && <p className="mobile-desc color-green">개발 TEAM: 목표 기반 프로젝트를 개발하며 실전 역량을 키우는 팀</p>}
-                  {formData.team === '학술팀' && <p className="mobile-desc color-green">학술 TEAM: 보안 관련 논문 및 자료를 공유하며 학술적 성장을 도모하는 팀</p>}
+                  {/* 모바일 팀 설명 컨테이너 추가 */}
+                  <div className="mobile-recruit-desc-container">
+                    {formData.team.includes('CTF팀') && <p className="mobile-desc color-green"><strong>CTF:</strong> 자율 학습 기반 CTF 참가 팀</p>}
+                    {formData.team.includes('개발팀') && <p className="mobile-desc color-green"><strong>개발:</strong> 목표 기반 프로젝트 개발 팀</p>}
+                    {formData.team.includes('학술팀') && <p className="mobile-desc color-green"><strong>학술:</strong> 보안 논문 및 자료 공유 팀</p>}
+                  </div>
                 </div>
 
                 {/* 항목 3: 세미나 참여 */}
@@ -555,7 +563,7 @@ const Recruit = () => {
                 지금, 새로운 도전과 배움의 시작에 함께하세요! <br />
                 <br />문의사항: 조재희 010-2397-4021</p></div>
           </div>
-          <div className="faq-floating-btn" style={{borderRadius: '50%'}} onClick={() => setIsFaqOpen(true)}>
+          <div className="faq-floating-btn" style={{ borderRadius: '50%' }} onClick={() => setIsFaqOpen(true)}>
             <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="FAQ" className="pc-faq-icon" />
             <p>FAQ</p>
           </div>
@@ -664,23 +672,31 @@ const Recruit = () => {
 
               {/* 항목 2: 팀 선택 */}
               <div className="recruit-row">
-                <label className="name2" style={{ justifyContent: 'flex-start' }}>팀 선택</label>
+                <label className="name2" style={{ justifyContent: 'flex-start' }}>팀 선택 (복수 가능)</label>
                 <div className="input-with-desc">
-                  <div className="checkbox-group" >
+                  <div className="checkbox-group">
                     {['CTF팀', '개발팀', '학술팀', '추후선택'].map(f => (
-                      <label key={f}>
-                        <input type="radio" name="team" checked={formData.team === f}
-                          onChange={() => handleInputChange('team', f)} />
-                        <span className="custom-radio"></span> {f}
+                      <label key={f} className="checkbox-label">
+                        <input
+                          type="checkbox"
+                          checked={formData.team.includes(f)}
+                          onChange={() => handleCheckboxChange('team', f)}
+                        />
+                        <span className="custom-checkbox"></span>
+                        <span className="checkbox-text">{f}</span>
                       </label>
                     ))}
                   </div>
-                  {/* 팀 선택에 따른 동적 문구 */}
-                  {formData.team === 'CTF팀' && <p className="recruit-desc"  >CTF TEAM: 자율 학습을 기반으로 CTF 참가 경험을 쌓는 팀</p>}
-                  {formData.team === '개발팀' && <p className="recruit-desc">개발 TEAM: 목표 기반 프로젝트를 개발하며 실전 역량을 키우는 팀</p>}
-                  {formData.team === '학술팀' && <p className="recruit-desc">학술 TEAM: 보안 관련 논문 및 자료를 공유하며 학술적 성장을 도모하는 팀</p>}
+
+                  {/* 팀 설명: 선택된 모든 팀의 설명이 순서대로 나오도록 수정 */}
+                  <div className="recruit-desc-container">
+                    {formData.team.includes('CTF팀') && <p className="recruit-desc"><strong>CTF TEAM:</strong> 자율 학습을 기반으로 CTF 참가 경험을 쌓는 팀</p>}
+                    {formData.team.includes('개발팀') && <p className="recruit-desc"><strong>개발 TEAM:</strong> 목표 기반 프로젝트를 개발하며 실전 역량을 키우는 팀</p>}
+                    {formData.team.includes('학술팀') && <p className="recruit-desc"><strong>학술 TEAM:</strong> 보안 관련 논문 및 자료를 공유하며 학술적 성장을 도모하는 팀</p>}
+                  </div>
                 </div>
               </div>
+
 
               {/* 항목 3: 세미나 참여 */}
               <div className="recruit-row">
@@ -696,7 +712,6 @@ const Recruit = () => {
                     ))}
                   </div>
                   {/* 세미나 참여 여부에 따른 동적 문구 */}
-                  {formData.seminarAvailable === '가능' && <p className="recruit-desc">이후 스터디에서 다룰 내용의 기초를 익히는 세미나로, 참여를 권장드립니다.</p>}
                   {formData.seminarAvailable === '불가능' && <p className="recruit-desc">이후 스터디에서 다룰 내용의 기초를 익히는 세미나로, 참여를 권장드립니다.</p>}
                 </div>
               </div>
