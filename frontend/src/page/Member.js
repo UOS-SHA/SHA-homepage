@@ -349,7 +349,7 @@ const Member = () => {
 
                           <div className="hanmadi">
                             {member.comment?.split("\n").map((line, index) => (
-                              <span key={index}>{line}<br /></span>
+                              <span key={index}>"{line}"<br /></span>
                             ))}
                           </div>
                         </div>

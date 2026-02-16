@@ -40,12 +40,18 @@ body {
     overflow-y: hidden;
 }
 
+
+
+
+
 .home-container {
+    background-color: transparent !important; /* 배경을 투명하게 해서 뒤의 빛이 보이게 함 */
     display: flex;
+    z-index: 2; /* 빛보다 위로 올려서 글자 클릭이 가능하게 함 */
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: black;
+    /*background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);*/
 }
 
 .video-box {
@@ -797,7 +803,7 @@ body {
   top: 45%;
   transform: translateY(-50%);
   width: 355px;
-  z-index: 1001;
+  z-index: 100;
   opacity: 0;
   transition: all 0.5s ease;
 }
