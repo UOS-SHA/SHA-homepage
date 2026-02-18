@@ -188,7 +188,7 @@ line-height: normal;
 }
 
 .number {
-    margin-left: 5px;
+    margin-left: -10px;
     width: 60px;
 color: white;
 font-family: Pretendard;
@@ -216,7 +216,7 @@ line-height: normal;
 
 
 .admin-major {
-    margin-left: 50px;
+    margin-left: 40px;
     width: 163px;
     color: white;
     font-size: 14px;
@@ -246,10 +246,10 @@ line-height: normal;
 }
 
 .admin-team {
-    margin-left: 50px;
-    width: 60px;
+    margin-left: 35px;
+    width: 80px;
     color: white;
-    font-size: 14px;
+    font-size: 12px;
 font-family: Pretendard;
 font-style: normal;
 font-weight: 400;
@@ -261,7 +261,7 @@ line-height: normal;
 }
 
 .admin-seminar {
-    margin-left: 50px;
+    margin-left: 40px;
     width: 120px;
     color: white;
     font-size: 14px;
@@ -276,7 +276,7 @@ line-height: normal;
 }
 
 .admin-studentnum {
-    margin-left: 20px;
+    margin-left: 23px;
     width: 70px;
     color: white;
     font-size: 16px;
@@ -290,7 +290,7 @@ line-height: normal;
 }
 
 .admin-phone {
-    margin-left: 60px;
+    margin-left: 70px;
     width: 160px;
     color: white;
     font-size: 16px;
@@ -305,7 +305,7 @@ line-height: normal;
 
 .admin-comment {
     margin-left: -10px;
-    margin-right: 40px;
+    margin-right: 30px;
     width: 140px;
     font-size: 16px;
     font-family: Pretendard;

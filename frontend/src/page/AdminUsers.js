@@ -161,14 +161,12 @@ const AdminUsers = () => {
         </div>
         <div className="admin-line"></div>
         {userList.map((user, idx) => {
-          // 1. 관심분야 처리: 배열일 수도, 문자열된 JSON일 수도 있음
           let displayInterests = '없음';
           try {
             if (user.interests) {
               if (Array.isArray(user.interests)) {
                 displayInterests = user.interests.join(', ');
               } else if (typeof user.interests === 'string') {
-                // 만약 "[ "Web" ]" 처럼 문자열로 오면 파싱 시도
                 const parsed = JSON.parse(user.interests);
                 displayInterests = Array.isArray(parsed) ? parsed.join(', ') : parsed;
               }

@@ -212,7 +212,7 @@ const StudyCategory = () => {
             </div>
           )}
             <div className="cate-back-button" onClick={() => navigate(-1)}>
-                    <img src={`${process.env.PUBLIC_URL}/back.png`} alt="back" className="cate-back" />
+              <img src={`${process.env.PUBLIC_URL}/back.png`} alt="back" className="cate-back" />
             </div>
         </div>
         <div className="line"></div>

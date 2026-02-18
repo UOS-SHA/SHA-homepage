@@ -12,8 +12,8 @@ const Footer = () => {
             uos hacking club<br />
             서울시립대학교 정보보안 소모임 
           </p>
-          <p className="footer-desc">designed by 박서진<br/>
-                developed by 김주현, 성수현
+          <p className="footer-desc">developed by 김주현, 성수현<br/>
+                designed by @qwerty_1207hy, @izizl.y<br/>
           </p>
         </div>
 
