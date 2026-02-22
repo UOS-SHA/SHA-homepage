@@ -9,8 +9,6 @@ import './AdminBoard.css';
 import './AdminUsers.css';
 
 
-//todo: 일단은 프론트엔드 스타일 맞추기, 버튼 기능 구현
-//todo2: 백엔드랑 연결하는 코드 짜기
 
 const AdminUsers = () => {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -24,6 +22,55 @@ const AdminUsers = () => {
 
   const [selectedUser, setSelectedUser] = useState(null);
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
+
+
+
+
+  // 엑셀 다운로드 함수 추가
+  const handleDownloadExcel = async () => {
+    try {
+      const token = localStorage.getItem('adminToken');
+      if (!token) {
+        alert('로그인이 필요합니다.');
+        return;
+      }
+
+      const response = await axios.get(`${SERVER_URL}/admin/users/export`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        responseType: 'blob', // 파일 다운로드를 위해 중요!
+      });
+
+      // 브라우저에서 다운로드를 실행하기 위한 링크 생성
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'recruit_list.xlsx'); // 다운로드될 파일명
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } catch (err) {
+      console.error('엑셀 다운로드 실패:', err);
+      alert('엑셀 파일을 다운로드하는 중 오류가 발생했습니다.');
+    }
+  };
+
+
+
+  const getTeamLabel = (teamValue) => {
+    if (!teamValue) return '미정';
+
+    const normalized = String(teamValue).trim().toUpperCase();
+    const teamLabelMap = {
+      A: 'CTF팀',
+      B: '개발팀',
+      C: '학술팀',
+      LATER: '추후선택',
+    };
+
+    return teamLabelMap[normalized] || teamValue;
+  };
 
   const handleOpenModal = (user) => {
     setSelectedUser(user);
@@ -114,14 +161,12 @@ const AdminUsers = () => {
         </div>
         <div className="admin-line"></div>
         {userList.map((user, idx) => {
-          // 1. 관심분야 처리: 배열일 수도, 문자열된 JSON일 수도 있음
           let displayInterests = '없음';
           try {
             if (user.interests) {
               if (Array.isArray(user.interests)) {
                 displayInterests = user.interests.join(', ');
               } else if (typeof user.interests === 'string') {
-                // 만약 "[ "Web" ]" 처럼 문자열로 오면 파싱 시도
                 const parsed = JSON.parse(user.interests);
                 displayInterests = Array.isArray(parsed) ? parsed.join(', ') : parsed;
               }
@@ -139,13 +184,13 @@ const AdminUsers = () => {
               <div className="admin-phone">{user.phone}</div>
       
               {/* 관심분야 출력 */}
-              <div className="admin-major">{displayInterests}</div>
+              <div className="admin-interests">{displayInterests}{user.interestEtc ? `, ${user.interestEtc}` : ''}</div>
       
               {/* 팀 출력: 대문자/소문자 모두 대응 */}
-              <div className="admin-major">{user.team || user.Team || '미정'}</div>
+              <div className="admin-team">{getTeamLabel(user.team || user.Team)}</div>
       
               {/* 세미나 출력: true/false/1/0/문자열 모두 대응 */}
-              <div className="admin-major">
+              <div className="admin-seminar">
                 {(user.seminarAvailable === true || user.seminarAvailable === 1 || user.seminarAvailable === 'true') 
                   ? "가능" : "불가능"}
               </div>
@@ -160,6 +205,19 @@ const AdminUsers = () => {
           );  
         })}
       </div>
+      {/* 플로팅 엑셀 다운로드 버튼 */}
+      <button 
+        onClick={handleDownloadExcel}
+        className="excel-floating-btn"
+        title="엑셀 다운로드"
+      >
+        <img 
+          src={`${process.env.PUBLIC_URL}/sha-logo.png`} 
+          alt="Excel" 
+          className="excel-btn-icon" 
+        />
+        <span>EXCEL</span>
+      </button>
       {isUserModalOpen && selectedUser && (
         <div className="usermodal-overlay">
           <div className="usermodal-content" onClick={(e) => e.stopPropagation()}>

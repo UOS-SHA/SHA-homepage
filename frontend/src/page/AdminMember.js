@@ -1,7 +1,7 @@
 import React from 'react';
-import { useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
-import {NavLink, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './Recruit.css';
 import './Study.css';
@@ -75,7 +75,7 @@ const AdminMember = () => {
     setModalMode('edit');
     // 백엔드의 majorAndId ("학과 / 학번")를 다시 분리
     const [major, studentId] = user.majorAndId ? user.majorAndId.split(' / ') : ['', ''];
-    
+
     setTargetMember({
       id: user.id,
       name: user.name,
@@ -86,11 +86,11 @@ const AdminMember = () => {
     });
     setIsModalOpen(true);
   };
-  
+
   // 멤버 추가/수정 처리
   const handleAction = async () => {
     const token = localStorage.getItem('adminToken');
-    
+
     // 백엔드가 기대하는 데이터 구조로 가공
     const payload = {
       name: targetMember.name,
@@ -121,7 +121,7 @@ const AdminMember = () => {
     }
   };
 
- // 멤버 삭제 처리
+  // 멤버 삭제 처리
   const handleDelete = async (id) => {
     if (!window.confirm("정말로 이 멤버를 삭제하시겠습니까?")) return;
     const token = localStorage.getItem('adminToken');
@@ -179,13 +179,15 @@ const AdminMember = () => {
         </div>
       </div>
       <div className="users-container">
-        <div className="users-index">
-          <div className="number1">#</div>
+        <div className="users-index" style={{
+          paddingLeft: '20px', display: 'flex',
+          justifyContent: 'flex-start', alignItems: 'center', gap: '20px'
+        }}>
+          <div className="number1" style={{ paddingLeft: '120px', paddingRight: '10px' }}>#</div>
           <div className="admin-username1">이름</div>
           <div className="admin-major1">학과</div>
-          <div className="admin-studentnum1">학번</div>
-          <div className="admin-interests1">관심분야</div>
-          <div className="admin-comment1">한마디</div>
+          <div className="admin-interests1" style={{ paddingLeft: '10px' }}>관심분야</div>
+          <div className="admin-comment1" style={{ width: '250px' }}>한마디</div>
           <div className="admin-header-row">
             <button className="add-btn" onClick={openAddModal}>+ 멤버 추가</button>
           </div>
@@ -193,46 +195,66 @@ const AdminMember = () => {
         <div className="admin-line"></div>
         {userList.map((user, idx) => (
           <div key={idx} className={idx % 2 === 0 ? "users-box1" : "users-box2"}>
-            <div className="number">{idx + 1}</div>
-            <div className="admin-username">{user.name}</div>
-            <div className="admin-major">{user.majorAndId}</div>
-            <div className="admin-major">{user.interests}</div>
-            <div className="admin-major">{user.selfIntro}</div>
-            <div className="admin-btns">
-              <button className="edit-mini-btn" onClick={() => openEditModal(user)}>수정</button>
-              <button className="delete-mini-btn" onClick={() => handleDelete(user.id)}>삭제</button>
+            <div className="number" style={{ paddingLeft: '165px', paddingRight: '10px' }}>{idx + 1}</div>
+            <div className="admin-username" style={{ paddingLeft: '10px' }}>{user.name}</div>
+            <div className="admin-major" style={{ paddingLeft: '8px' }}>{user.majorAndId}</div>
+            <div className="admin-major" style={{ paddingLeft: '5px' }}>{user.interests}</div>
+            <div className="admin-major" style={{ paddingLeft: '30px' }}>{user.selfIntro}</div>
+            <div className="admin-btns" style={{ width: '20px', paddingLeft: '99px' }}>
+              <button className="edit-action-btn" onClick={() => openEditModal(user)}>[ 수정 ]</button>
+              <button className="delete-action-btn" onClick={() => handleDelete(user.id)}>[ 삭제 ]</button>
             </div>
           </div>
         ))}
       </div>
       {/* 추가/수정 공용 모달 */}
       {isModalOpen && (
+        // ... (모달 부분)
         <div className="usermodal-overlay" onClick={() => setIsModalOpen(false)}>
-          <div className="usermodal-content" onClick={(e) => e.stopPropagation()}>
-            <h3>{modalMode === 'add' ? '새 멤버 추가' : '멤버 정보 수정'}</h3>
-            
-            <div className="modal-form">
-              <input type="text" placeholder="이름" value={targetMember.name} 
-                onChange={(e) => setTargetMember({...targetMember, name: e.target.value})} />
-              
-              <input type="text" placeholder="학과" value={targetMember.major} 
-                onChange={(e) => setTargetMember({...targetMember, major: e.target.value})} />
-              
-              <input type="text" placeholder="학번" value={targetMember.studentId} 
-                onChange={(e) => setTargetMember({...targetMember, studentId: e.target.value})} />
-              
-              <input type="text" placeholder="관심분야 (쉼표로 구분)" value={targetMember.interests} 
-                onChange={(e) => setTargetMember({...targetMember, interests: e.target.value})} />
-              
-              <textarea placeholder="한마디" value={targetMember.selfIntro} 
-                onChange={(e) => setTargetMember({...targetMember, selfIntro: e.target.value})} />
+          <div className="admin-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>{modalMode === 'add' ? 'New Member' : 'Edit Member'}</h2>
+              <p>멤버 정보를 정확히 입력해주세요.</p>
             </div>
 
-            <div className="modal-btns">
-              <button className="action-btn" onClick={handleAction}>
-                {modalMode === 'add' ? '추가하기' : '수정하기'}
-              </button>
+            <div className="modal-body">
+              <div className="input-group">
+                <label>이름</label>
+                <input type="text" placeholder="성함" value={targetMember.name}
+                  onChange={(e) => setTargetMember({ ...targetMember, name: e.target.value })} />
+              </div>
+
+              <div className="input-row">
+                <div className="input-group">
+                  <label>학과</label>
+                  <input type="text" placeholder="학과" value={targetMember.major}
+                    onChange={(e) => setTargetMember({ ...targetMember, major: e.target.value })} />
+                </div>
+                <div className="input-group">
+                  <label>학번</label>
+                  <input type="text" placeholder="학번" value={targetMember.studentId}
+                    onChange={(e) => setTargetMember({ ...targetMember, studentId: e.target.value })} />
+                </div>
+              </div>
+
+              <div className="input-group">
+                <label>관심분야</label>
+                <input type="text" placeholder="Web, Reversing, System..." value={targetMember.interests}
+                  onChange={(e) => setTargetMember({ ...targetMember, interests: e.target.value })} />
+              </div>
+
+              <div className="input-group">
+                <label>한마디</label>
+                <textarea placeholder="멤버 소개 메시지" value={targetMember.selfIntro}
+                  onChange={(e) => setTargetMember({ ...targetMember, selfIntro: e.target.value })} />
+              </div>
+            </div>
+
+            <div className="modal-footer">
               <button className="cancel-btn" onClick={() => setIsModalOpen(false)}>취소</button>
+              <button className="save-btn" onClick={handleAction}>
+                {modalMode === 'add' ? '멤버 등록' : '정보 업데이트'}
+              </button>
             </div>
           </div>
         </div>

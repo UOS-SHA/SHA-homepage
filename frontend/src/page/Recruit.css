@@ -448,7 +448,8 @@ line-height: normal;
     }
 
     .mobile-desc {
-        font-size: 11px; /* 모바일은 조금 더 작게 */
+        margin-bottom: 0;
+        font-size: 12px; /* 모바일은 조금 더 작게 */
         color: #999;
         margin-top: 5px;
         margin-left: 2px;
@@ -588,9 +589,9 @@ line-height: normal;
 
 
 .mobile-label-box3{
-    width: 80px;
+    width: 100px;
     height: 50px;
-    margin-left: -65%;
+    margin-left: -62%;
     margin-top: 20px;
     display: flex;
     justify-content: center;
@@ -896,10 +897,13 @@ line-height: normal;
     margin-right: 20px;
 }
 
-/* input-box2에 있던 gap을 제거했으므로 개별 스타일 유지 */
+/* 체크박스 그룹 레이아웃 */
 .checkbox-group {
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .label-box2{
@@ -953,6 +957,19 @@ line-height: normal;
   display: none;
 }
 
+/* 개별 체크박스 항목 */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+}
+
+.checkbox-text {
+    margin-left: 8px;
+    vertical-align: middle;
+}
 
 .checkbox-group {
     width: 550px;
@@ -1304,6 +1321,7 @@ input[type="radio"]:checked + .custom-radio::after {
 
 
 .etc-input {
+    margin-top: 10px;
   width: 250px;
   height: 30px;
   border: none;
@@ -1330,4 +1348,53 @@ input[type="radio"]:checked + .custom-radio::after {
   padding: 0 10px;
   border-radius: 4px;
   font-size: 13px;
+}
+
+/* PC 버전 좌측 하단 플로팅 버튼 스타일 */
+.faq-floating-btn {
+    position: absolute; /* JoinUs(fixed) 내부에서 좌측 하단 고정 */
+    bottom: 60px;
+    left: 60px;
+    width: 55px;
+    height: 70px;
+    background-color: #5DFFC6;
+    border-radius: 50%; /* 동그란 모양 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 25px rgba(93, 255, 198, 0.3);
+    z-index: 100;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: pc-bounce 2s infinite; /* 통통 튀는 효과 */
+}
+
+.faq-floating-btn:hover {
+    transform: scale(1.1); /* 마우스 올리면 살짝 커짐 */
+    background-color: #4ee6b3;
+    box-shadow: 0 12px 30px rgba(93, 255, 198, 0.5);
+}
+
+.pc-faq-icon {
+    margin-top: 3px;
+    width: 52px;
+    height: auto;
+    margin-bottom: 3px;
+}
+
+.faq-floating-btn p {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: white !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    font-family: Pretendard;
+}
+
+/* 통통 튀는 애니메이션 */
+@keyframes pc-bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
 }

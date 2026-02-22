@@ -4,7 +4,7 @@ exports.getMembers = async (req, res) => {
     try {
         const members = await Member.findAll({
             attributes: ['id', 'name', 'majorAndId', 'interests', 'selfIntro'],
-            order: [['createdAt', 'DESC']]
+            order: [['createdAt', 'ASC']]
         });
 
         res.status(200).json(members);
