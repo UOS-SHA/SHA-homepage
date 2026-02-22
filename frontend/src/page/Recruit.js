@@ -44,7 +44,9 @@ const Recruit = () => {
       questions: [
         {
           q: "구체적으로 어떤 공부나 프로젝트를 진행하나요?",
-          a: "2026년도 SHA는 팀 단위로 활동합니다. CTF팀, 개발팀, 학술팀으로 나뉘어 각 팀의 주제에 맞는 심화 학습과 프로젝트를 진행합니다."
+          a: "2026년도 SHA는 팀 단위로 활동합니다. CTF팀, 개발팀, 학술팀으로 나뉘어 각 팀의 주제에 맞는 심화 학습과 프로젝트를 진행합니다. 자세한 내용은 첨부된 노션 링크를 참고해주세요!",
+          linkText: "세부사항 보기",
+          linkUrl: "https://uos-sha.notion.site/2026-1-SHA-307df60c8c17807f9f4ffdefe7649ac2?pvs=74"
         },
         {
           q: "신규 부원 5주 세미나는 무엇인가요?",
@@ -71,6 +73,22 @@ const Recruit = () => {
       ]
     }
   ];
+
+  const renderFaqAnswer = (item) => (
+    <>
+      <p>{item.a}</p>
+      {item.linkUrl && (
+        <a
+          className="faq-answer-link"
+          href={item.linkUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {item.linkText || "세부사항 보기"}
+        </a>
+      )}
+    </>
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -334,7 +352,7 @@ const Recruit = () => {
                 다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다. <br />
                 지금, 새로운 도전과 배움의 시작에 함께하세요! <br />
 
-                <br /> 문의사항: 조재희 010-2397-4021
+                <br /> 문의사항<br/>조재희 010-2397-4021<br/>박정빈 010-5969-7249
               </p></div>
           </div>
 
@@ -374,7 +392,7 @@ const Recruit = () => {
                             />
                           </div>
                           <div className="faq-answer">
-                            <p>{item.a}</p>
+                            {renderFaqAnswer(item)}
                           </div>
                         </div>
                       );
@@ -469,7 +487,7 @@ const Recruit = () => {
 
                 {/* 항목 3: 세미나 참여 */}
                 <div className="mobile-recruit-row">
-                  <div className="mobile-name2">신규부원 5주 세미나</div>
+                  <div className="mobile-name2">신규부원 5주 세미나<br/>(화요일 19시)</div>
                   <div className="mobile-radio-group">
                     {['가능', '불가능'].map(f => (
                       <label key={f} className="mobile-check-label">
@@ -568,7 +586,7 @@ const Recruit = () => {
                 함께 배우고 고민하며 성장하는 정보 보안 소모임 SHA에서 여러분의 열정을 펼쳐보세요.
                 다양한 주제를 다루며 서로의 지식을 나누고, 협력하는 즐거움을 경험할 수 있습니다.<br />
                 지금, 새로운 도전과 배움의 시작에 함께하세요! <br />
-                <br />문의사항: 조재희 010-2397-4021</p></div>
+                <br />문의사항<br/>조재희 010-2397-4021<br/>박정빈 010-5969-7249</p></div>
           </div>
           <div className="faq-floating-btn" style={{ borderRadius: '50%' }} onClick={() => setIsFaqOpen(true)}>
             <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="FAQ" className="pc-faq-icon" />
@@ -604,7 +622,7 @@ const Recruit = () => {
                             />
                           </div>
                           <div className="faq-answer">
-                            <p>{item.a}</p>
+                            {renderFaqAnswer(item)}
                           </div>
                         </div>
                       );
@@ -707,7 +725,7 @@ const Recruit = () => {
 
               {/* 항목 3: 세미나 참여 */}
               <div className="recruit-row">
-                <label className="name2">신규부원 5주 세미나</label>
+                <label className="name2">신규부원 5주 세미나<br/>(화요일 19시)</label>
                 <div className="input-with-desc">
                   <div className="checkbox-group">
                     {['가능', '불가능'].map(f => (
