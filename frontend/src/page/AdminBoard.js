@@ -6,12 +6,13 @@ import axios from 'axios';
 import './Recruit.css';
 import './Study.css';
 import './AdminBoard.css';
+import { getAdminToken } from '../utils/adminAuth';
 
 
 
 const AdminBoard = () => {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
-  const token = localStorage.getItem('adminToken');
+  const token = getAdminToken();
 
   //다음 경로
   const adminlocation= useLocation();

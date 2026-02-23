@@ -9,6 +9,7 @@ const isAdmin = require('../middlewares/isAdmin');
 router.post('/', login);
 
 router.use(isAdmin);
+router.get('/verify', (req, res) => res.status(200).json({ ok: true }));
 
 router.get('/users/', joinList);
 router.get('/users/export', downloadJoin);

@@ -6,6 +6,7 @@ import AccordionItem from './AccordionItem';
 import axios from 'axios';
 import './Admin.css';
 import AdminBoard from './AdminBoard.js';
+import { setAdminToken } from '../utils/adminAuth';
 
 
 
@@ -34,7 +35,7 @@ const Admin = () => {
             });
 
             if (response.data.isAdmin) {
-                localStorage.setItem('adminToken', response.data.token);
+                setAdminToken(response.data.token);
                 setError('');
                 navigate('/admin/board');
             } else {

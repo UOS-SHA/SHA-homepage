@@ -8,6 +8,7 @@ import './Study.css';
 import './AdminBoard.css';
 import './AdminUsers.css';
 import './AdminMember.css';
+import { getAdminToken } from '../utils/adminAuth';
 
 
 //todo: 일단은 프론트엔드 스타일 맞추기, 버튼 기능 구현
@@ -51,7 +52,7 @@ const AdminMember = () => {
   // 데이터 불러오기
   const fetchUsers = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = getAdminToken();
       const res = await axios.get(`${SERVER_URL}/members/`, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -89,7 +90,7 @@ const AdminMember = () => {
 
   // 멤버 추가/수정 처리
   const handleAction = async () => {
-    const token = localStorage.getItem('adminToken');
+    const token = getAdminToken();
 
     // 백엔드가 기대하는 데이터 구조로 가공
     const payload = {
@@ -124,7 +125,7 @@ const AdminMember = () => {
   // 멤버 삭제 처리
   const handleDelete = async (id) => {
     if (!window.confirm("정말로 이 멤버를 삭제하시겠습니까?")) return;
-    const token = localStorage.getItem('adminToken');
+    const token = getAdminToken();
     try {
       // 라우터: router.delete('/members/:id', deleteMember);
       await axios.delete(`${SERVER_URL}/admin/members/${id}`, {

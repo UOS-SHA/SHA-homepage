@@ -10,13 +10,14 @@ import './StudyDetail.css';
 import './AdminCate.css';
 import './AdminBoard.css';
 import { useParams } from 'react-router-dom';
+import { getAdminToken } from '../utils/adminAuth';
 
 const AdminCate = () => {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const { semesterId } = useParams();
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
-  const token = localStorage.getItem('adminToken');
+  const token = getAdminToken();
 
 
   //다음 경로

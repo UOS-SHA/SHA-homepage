@@ -11,10 +11,11 @@ import './AdminBoard.css';
 import './AdminWeek.css';
 import AccordionLink from './AccordionLink';
 import Study from './Study';
+import { getAdminToken } from '../utils/adminAuth';
 
 const AdminWeek = () => {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
-  const token = localStorage.getItem('adminToken');
+  const token = getAdminToken();
 
   const { semesterId, category } = useParams();
   const navigate = useNavigate();

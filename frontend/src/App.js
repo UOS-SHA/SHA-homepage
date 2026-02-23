@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import axios from 'axios';
 import Home from './page/Home';
 import Member from './page/Member';
 import Study from './page/Study';
@@ -12,27 +13,58 @@ import AdminCate from './page/AdminCate';
 import AdminWeek from './page/AdminWeek';
 import AdminUsers from './page/AdminUsers';
 import AdminMember from './page/AdminMember';
-
-const isValidAdminToken = () => {
-  const token = localStorage.getItem('adminToken');
-  if (!token) return false;
-
-  try {
-    const payloadBase64 = token.split('.')[1];
-    if (!payloadBase64) return false;
-
-    const normalizedBase64 = payloadBase64.replace(/-/g, '+').replace(/_/g, '/');
-    const payload = JSON.parse(atob(normalizedBase64));
-    const nowInSeconds = Math.floor(Date.now() / 1000);
-
-    return payload.isAdmin === true && payload.exp > nowInSeconds;
-  } catch (err) {
-    return false;
-  }
-};
+import { clearAdminToken, getAdminToken } from './utils/adminAuth';
 
 const AdminRoute = ({ children }) => {
-  if (!isValidAdminToken()) {
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+  const [isChecking, setIsChecking] = useState(true);
+  const [isAuthorized, setIsAuthorized] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const verify = async () => {
+      const token = getAdminToken();
+
+      if (!SERVER_URL || !token) {
+        clearAdminToken();
+        if (isMounted) {
+          setIsAuthorized(false);
+          setIsChecking(false);
+        }
+        return;
+      }
+
+      try {
+        await axios.get(`${SERVER_URL}/admin/verify`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+
+        if (isMounted) {
+          setIsAuthorized(true);
+        }
+      } catch (err) {
+        clearAdminToken();
+        if (isMounted) {
+          setIsAuthorized(false);
+        }
+      } finally {
+        if (isMounted) {
+          setIsChecking(false);
+        }
+      }
+    };
+
+    verify();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [SERVER_URL]);
+
+  if (isChecking) return null;
+
+  if (!isAuthorized) {
     return <Navigate to="/admin" replace />;
   }
 
