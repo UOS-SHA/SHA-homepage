@@ -132,6 +132,15 @@
   margin: 0;
 }
 
+.faq-answer-link {
+  display: inline-block;
+  margin: 0 15px 15px;
+  color: #5DFFC6;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 @keyframes modalUp {
   from { opacity: 0; transform: translateY(50px); }
   to { opacity: 1; transform: translateY(0); }

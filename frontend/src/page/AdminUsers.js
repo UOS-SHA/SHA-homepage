@@ -7,6 +7,7 @@ import './Recruit.css';
 import './Study.css';
 import './AdminBoard.css';
 import './AdminUsers.css';
+import { getAdminToken } from '../utils/adminAuth';
 
 
 
@@ -29,7 +30,7 @@ const AdminUsers = () => {
   // 엑셀 다운로드 함수 추가
   const handleDownloadExcel = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = getAdminToken();
       if (!token) {
         alert('로그인이 필요합니다.');
         return;
@@ -85,7 +86,7 @@ const AdminUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const token = localStorage.getItem('adminToken');
+        const token = getAdminToken();
         if (!token) {
           alert('누구세요?');
           return;
