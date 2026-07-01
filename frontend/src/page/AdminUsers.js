@@ -83,6 +83,11 @@ const AdminUsers = () => {
     setIsUserModalOpen(false);
   }
 
+  const getSelfIntro = (user) => {
+    if (!user) return '';
+    return user.selfIntro || user.self_intro || '';
+  };
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -222,6 +227,10 @@ const AdminUsers = () => {
       {isUserModalOpen && selectedUser && (
         <div className="usermodal-overlay">
           <div className="usermodal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="usermodal-block">
+              <div className="usermodal-label">한줄 소개</div>
+              <div className="usermodal-info">{getSelfIntro(selectedUser) || '-'}</div>
+            </div>
             <div className="usermodal-block">
               <div className="usermodal-label">소모임에 기대하는 바</div>
               <div className="usermodal-info">{selectedUser.expect}</div>

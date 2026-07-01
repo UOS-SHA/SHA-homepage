@@ -321,16 +321,16 @@ const Recruit = () => {
       </div>
       {/*모바일 버전 */}
       <div className="mobile-recruit-container">
-        {/* 지원 기간 안내 섹션 - PC/모바일 공용 
+        {/* 지원 기간 안내 섹션 - PC/모바일 공용*/} 
         <div className="recruit-closed-overlay">
           <div className="closed-content">
             <div className="closed-icon">
               <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="closed-logo-anim" />
             </div>
-            <h2 className="closed-title">지금은 모집 기간이 아닙니다</h2>
+            <h2 className="closed-title">현재는 모집 기간이 아닙니다</h2>
             <p className="closed-desc">
               SHA에 관심을 가져주셔서 감사합니다. <br />
-              Recruit 기간: <strong>2/23(월)~3/8(일)</strong>
+              다음 모집기간에 다시 만나요!
             </p>
             <div className="closed-actions">
               <Link to="/" className="btn-back-home">홈으로 가기</Link>
@@ -341,7 +341,6 @@ const Recruit = () => {
             </div>
           </div>
         </div>
-        */}
 
         <div className="mobile-JoinUs">
           <div className="mobile-word-box">
@@ -357,7 +356,8 @@ const Recruit = () => {
           </div>
 
           {/* 추가: 모바일 FAQ 플로팅 버튼 */}
-          <div className="mobile-faq-btn" onClick={() => setIsFaqOpen(true)}>
+          <div className="mobile-faq-btn" style={{zIndex: 1}}
+           onClick={() => setIsFaqOpen(true)}>
             <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="FAQ" className="mobile-faq-icon" />
             <span>FAQ</span>
           </div>
@@ -555,7 +555,7 @@ const Recruit = () => {
       </div>
       {/*컴퓨터 버전 */}
       <div className="recruit-container">
-        {/* 지원 기간이 아닐 때 보여줄 오버레이 
+        {/* 지원 기간이 아닐 때 보여줄 오버레이 */}
         <div className="recruit-closed-overlay">
           <div className="closed-content">
             <div className="closed-icon">
@@ -564,7 +564,7 @@ const Recruit = () => {
             <h2 className="closed-title">현재는 지원 기간이 아닙니다</h2>
             <p className="closed-desc">
               SHA에 관심을 가져주셔서 감사합니다. <br />
-              Recruit 기간: <strong>2/23(월)~3/8(일)</strong>
+              다음 모집 기간에 다시 만나요!
             </p>
             <div className="closed-actions">
               <Link to="/" className="btn-back-home">홈으로 돌아가기</Link>
@@ -575,7 +575,7 @@ const Recruit = () => {
             </div>
           </div>
         </div>
-        */}
+        
 
         <div className="JoinUs">
           <div className="word-box">
@@ -636,7 +636,7 @@ const Recruit = () => {
         <div className="line"></div>
 
         <div className="recruit-sheet">
-          <div className="fillout">
+          <div className="fillout" style={{zIndex: 1}}>
             <p>Fill out the form to become a member</p>
           </div>
 
