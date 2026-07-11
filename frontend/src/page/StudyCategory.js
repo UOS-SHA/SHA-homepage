@@ -1,10 +1,10 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { getCategoryDetail } from '../data/studies';
 import './Recruit.css';
 import './StudyCategory.css';
 
@@ -14,27 +14,9 @@ import './StudyCategory.css';
 const StudyCategory = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const { semesterId, category } = useParams();
   const navigate = useNavigate();
-  const [weeks, setWeeks] = useState([]);
-
-  useEffect(() => {
-  axios
-    .get(`${SERVER_URL}/study/${semesterId}/${category}`)
-    .then((res) => {
-      const data = res.data;
-      setCategoryInfo(data.category || { name: '', comment: '' });
-      setWeeks(Array.isArray(data.weeks) ? data.weeks : []);
-    })
-    .catch((err) => {
-      console.error(err);
-      setCategoryInfo({ name: '', comment: '' });
-      setWeeks([]);
-    });
-}, [semesterId, category]);
-
-  const [categoryInfo, setCategoryInfo] = useState({ name: '', comment: '' });
+  const { category: categoryInfo, weeks } = getCategoryDetail(semesterId, category);
 
 
   return (
@@ -77,12 +59,12 @@ const StudyCategory = () => {
           </div>
           <div className="menu">
             <NavLink
-              to="/recruit"
+              to="/faq"
               className={({ isActive }) =>
                 isActive ? "nav-link active-link" : "nav-link"
               }
             >
-              RECRUIT
+              FAQ
             </NavLink>
           </div>
         </div>
@@ -121,12 +103,12 @@ const StudyCategory = () => {
                   STUDY
                 </NavLink>
                 <NavLink
-                  to="/recruit"
+                  to="/faq"
                   className={({ isActive }) =>
                   isActive ? "nav-link active-link" : "nav-link"
                   }
                 >
-                  RECRUIT
+                  FAQ
                 </NavLink>
               </div>
             </div>

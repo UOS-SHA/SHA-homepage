@@ -196,12 +196,12 @@ const Home = () => {
           </div>
           <div className="menu">
             <NavLink
-              to="/recruit"
+              to="/faq"
               className={({ isActive }) =>
                 isActive ? "nav-link active-link" : "nav-link"
               }
             >
-              RECRUIT
+              FAQ
             </NavLink>
           </div>
         </div>
@@ -240,12 +240,12 @@ const Home = () => {
                 STUDY
               </NavLink>
               <NavLink
-                to="/recruit"
+                to="/faq"
                 className={({ isActive }) =>
                   isActive ? "nav-link active-link" : "nav-link"
                 }
               >
-                RECRUIT
+                FAQ
               </NavLink>
             </div>
           </div>
@@ -260,8 +260,8 @@ const Home = () => {
         </div>
       </div>
       <div className="mobile-section">
-        <Link to="/recruit" className="mobile-jiwon">
-          <p>지원하러 가기</p>
+        <Link to="/faq" className="mobile-jiwon">
+          <p>자주 묻는 질문</p>
           <img src={`${process.env.PUBLIC_URL}/right.png`} alt="Logo" className="jiwondown" />
         </Link>
       </div>

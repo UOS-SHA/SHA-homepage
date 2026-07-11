@@ -1,71 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
+import { members as memberData } from '../data/members';
 import './Recruit.css';
 import './Member.css';
 import '../Home.css';
 
-//admin이랑 연결스
-//멤버 정보 받아오기, 지위에 따라서 이미지 달라야 함! 확인!
-
 const Member = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-
-  {/*const members = [
-    { major: "컴과25", name: "조재희", interests: "web", comment: "갓벽 그 자체 회장" },
-    { major: "컴과22", name: "박정빈", interests: "web, reversing, system, crypto, forensic", comment: "올라운더 희망" },
-    { major: "기계24", name: "김민찬", interests: "system", comment: "교환학생 중임." },
-    { major: "수학23", name: "김재승", interests: "system, crypto", comment: "코카콜라 러버" },
-    { major: "컴과24", name: "김주현", interests: "web", comment: "^_^" },
-    { major: "컴과25", name: "류재현", interests: "crypto", comment: "뚱땅뚱땅 키보드말고\n 컴퓨터 키보드" },
-    { major: "컴과24", name: "성수현", interests: "web", comment: "보안소모임 화이팅!" },
-    { major: "컴과19", name: "신희용", interests: "web3", comment: "Pache punch" },
-    { major: "컴과25", name: "안서진", interests: "reversing, system", comment: "닉네임일까요 아닐까요" },
-    { major: "컴과21", name: "이규형", interests: "web", comment: "못하는 거 없음" },
-    { major: "컴과20", name: "이성민", interests: "reversing, crypto", comment: "ㅇㄴ" },
-    { major: "컴과25", name: "이윤성", interests: "web, reversing", comment: "rev의 미래이자\n 디자인 천재" },
-    { major: "전전컴25", name: "조현재", interests: "web", comment: "web goat of goat" },
-    { major: "컴과21", name: "최원영", interests: "web", comment: "나보다 일찍 일어나는\n 사람 나와" },
-    { major: "전전컴21", name: "한건우", interests: "reversing, pwnable, forensic", comment: "의정부 부대찌개" },
-    { major: "컴과20", name: "이종관", interests: "crypto", comment: "희귀하고 희귀한 크립토님" },
-    { major: "컴과22", name: "인해", interests: "web", comment: "Mac book 소유자" },
-    { major: "국관24", name: "어진원", interests: "web", comment: "web의 숨은 인재" },
-    { major: "컴과20", name: "장성우", interests: "web, reversing", comment: "잘 부탁드립니다!" },
-    { major: "컴과21", name: "권상우", interests: "reversing", comment: "잘 부탁드립니다!" },
-    { major: "컴과21", name: "정창규", interests: "crypto", comment: "신입 인사박습니다!\n잘 부탁드립니다!" },
-    
-    
-    // 나중에 팀원 추가 가능
-  ];*/}
-  const [members, setMembers] = useState([]);
+  const members = memberData.map((member) => ({
+    major: member.majorAndId,
+    name: member.name,
+    interests: member.interests,
+    comment: member.selfIntro,
+  }));
 
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-
-  useEffect(() => {
-    const fetchMembers = async () => {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/members`);
-
-        const mappedMembers = response.data.map(m => ({
-          major: m.majorAndId, 
-          name: m.name,
-          interests: m.interests,
-          comment: m.selfIntro 
-        }));
-
-        setMembers(mappedMembers);
-      } catch (err) {
-        console.error("멤버 데이터를 가져오는데 실패했습니다.", err);
-      }
-    };
-    fetchMembers();
-  }, []);
 
   const chunkArray = (arr, size) => {
     const result = [];
@@ -115,12 +69,12 @@ const Member = () => {
           </div>
           <div className="menu">
             <NavLink
-              to="/recruit"
+              to="/faq"
               className={({ isActive }) =>
                 isActive ? "nav-link active-link" : "nav-link"
               }
             >
-              RECRUIT
+              FAQ
             </NavLink>
           </div>
         </div>
@@ -159,12 +113,12 @@ const Member = () => {
                 STUDY
               </NavLink>
               <NavLink
-                to="/recruit"
+                to="/faq"
                 className={({ isActive }) =>
                   isActive ? "nav-link active-link" : "nav-link"
                 }
               >
-                RECRUIT
+                FAQ
               </NavLink>
             </div>
           </div>

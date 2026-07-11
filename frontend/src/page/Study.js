@@ -1,8 +1,7 @@
-import React from 'react';
-import { useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
-import axios from 'axios';
+import { getSemesters } from '../data/studies';
 import './Recruit.css';
 import './Study.css';
 
@@ -11,19 +10,7 @@ import './Study.css';
 const Study = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
-  const [semesters, setSemesters] = useState([]);
-
-  useEffect(() => {
-    axios.get(`${SERVER_URL}/study`) 
-      .then((res) => {
-        setSemesters(res.data);
-      })
-      .catch((err) => {
-        console.error('학기 목록 불러오기 실패:', err);
-        setSemesters([]); 
-      });
-  }, []);
+  const semesters = getSemesters();
   
   return (
     <div className="wholearea">
@@ -65,12 +52,12 @@ const Study = () => {
           </div>
           <div className="menu">
             <NavLink
-              to="/recruit"
+              to="/faq"
               className={({ isActive }) =>
                 isActive ? "nav-link active-link" : "nav-link"
               }
             >
-              RECRUIT
+              FAQ
             </NavLink>
           </div>
         </div>
@@ -109,12 +96,12 @@ const Study = () => {
                 STUDY
               </NavLink>
               <NavLink
-                to="/recruit"
+                to="/faq"
                 className={({ isActive }) =>
                 isActive ? "nav-link active-link" : "nav-link"
                 }
               >
-                RECRUIT
+                FAQ
               </NavLink>
             </div>
           </div>

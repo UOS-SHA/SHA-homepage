@@ -1,9 +1,9 @@
 import React from 'react';
-import { useEffect, useState} from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
-import axios from 'axios';
+import { getCategories } from '../data/studies';
 import './Recruit.css';
 import './Study.css';
 import './StudyDetail.css';
@@ -14,25 +14,9 @@ import { useParams } from 'react-router-dom';
 const StudyDetail = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
-  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const { semesterId } = useParams();
   const navigate = useNavigate();
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => { 
-    axios.get(`${SERVER_URL}/study/${semesterId}`)
-      .then(res => {
-        if (res.data && res.data.length > 0) {
-          setCategories(res.data);
-        } else {
-          setCategories([]);
-        }
-      })
-      .catch(err => {
-        console.error('카테고리 불러오기 실패', err);
-        setCategories([]);
-      });
-  }, [semesterId]);
+  const categories = getCategories(semesterId);
 
    return (
       <div className="wholearea">
@@ -74,12 +58,12 @@ const StudyDetail = () => {
             </div>
             <div className="menu">
               <NavLink
-                to="/recruit"
+                to="/faq"
                 className={({ isActive }) =>
                   isActive ? "nav-link active-link" : "nav-link"
                 }
               >
-                RECRUIT
+                FAQ
               </NavLink>
             </div>
           </div>
@@ -118,12 +102,12 @@ const StudyDetail = () => {
                   STUDY
                 </NavLink>
                 <NavLink
-                  to="/recruit"
+                  to="/faq"
                   className={({ isActive }) =>
                   isActive ? "nav-link active-link" : "nav-link"
                   }
                 >
-                  RECRUIT
+                  FAQ
                 </NavLink>
               </div>
             </div>
