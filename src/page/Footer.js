@@ -25,8 +25,8 @@ const Footer = () => {
           </div>
           <div className="footer-contact">
             <p> 
-                2026 회장 조재희 010-2397-4021<br/>
-                2026 부회장 박정빈 010-5969-7249
+                2026 회장 박정빈 010-5969-7249<br/>
+                2026 부회장 한건우 010-5602-9643
             </p>
             <p>© 2025. minnnjuuu All rights reserved.</p>
           </div>

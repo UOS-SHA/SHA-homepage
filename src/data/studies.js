@@ -1,6 +1,133 @@
-// Snapshot of the study data publicly served by uos-sha.site on 2026-07-11.
+// Static study data displayed on the public site.
 // Edit this array and redeploy when the curriculum changes.
 export const studies = [
+  {
+    "id": 7,
+    "name": "2026-1학기",
+    "categories": [
+      {
+        "id": 24,
+        "name": "26-1 : 신입생 기본 교육",
+        "comment": "정보보안을 처음 접하는 신입 부원을 위한 입문 세션입니다.\n컴퓨터과학과 웹의 기초부터 리버싱·암호학·시스템 해킹·포렌식까지 핵심 개념을 실습과 함께 익힙니다.\n마지막 주에는 HSPACE 특강을 통해 AI를 활용한 보안 학습 방법을 살펴봅니다.",
+        "weeks": [
+          {
+            "weekNum": 1,
+            "title": "컴퓨터과학 기초",
+            "description": "1. 진법과 인코딩\n2. 프로그램과 메모리\n3. 웹 기초"
+          },
+          {
+            "weekNum": 2,
+            "title": "웹 해킹 기초",
+            "description": "1. SQL Injection\n2. Cross-Site Scripting(XSS)\n3. Request Forgery(CSRF, SSRF)"
+          },
+          {
+            "weekNum": 3,
+            "title": "리버싱, 암호학 기초",
+            "description": "1. 리버싱, 암호학 특징과 출제 경향\n2. 산비논대, 레지스터, 어셈블리어, PE & ELF\n3. 대칭키, 비대칭키"
+          },
+          {
+            "weekNum": 4,
+            "title": "포너블, 포렌식 기초",
+            "description": "1. OOB(Out-of-Bounds), BOF(Buffer Overflow)\n2. RAO(Return Address Overwrite), PIE(Position Independent Executable)\n3. 파일 시그니처\n4. PNG 구조와 파일 끝"
+          },
+          {
+            "weekNum": 5,
+            "title": "HSPACE 특강(dakuo)",
+            "description": "1. AI를 활용한 보안 공부 방법"
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "name": "26-1 : 암호동아리지원사업(도어락)",
+        "comment": "정수론부터 현대 암호 시스템의 핵심 원리까지 단계적으로 학습하는 암호학 세션입니다.\nRSA·Diffie-Hellman·AES·DES·해시 알고리즘을 이론과 구현으로 익히고, CryptoHack과 DreamHack 문제로 실전 감각을 기릅니다.\n개인 발표를 통해 ECC와 양자 내성 암호 등 심화 주제까지 탐구합니다.",
+        "weeks": [
+          {
+            "weekNum": 1,
+            "title": "정수론, RSA",
+            "description": "1. 유클리드 알고리즘, 중국인의 나머지 정리(CRT)\n2. 페르마의 소정리, 오일러 정리\n3. ASCII, Base64\n4. RSA 암호화, 복호화"
+          },
+          {
+            "weekNum": 2,
+            "title": "RSA (2)",
+            "description": "1. RSA-CRT\n2. Common Modulus Attack\n3. 작은 e에 대한 공격"
+          },
+          {
+            "weekNum": 3,
+            "title": "Diffie-Hellman, AES",
+            "description": "1. Diffie-Hellman Key Exchange Protocol, 이산 로그 문제\n2. AES(ShiftRows, MixColumns, AddRoundKey, Key Schedule)\n3. 운영 모드(ECB, CBC, CTR, GCM)\n4. Padding"
+          },
+          {
+            "weekNum": 4,
+            "title": "DES",
+            "description": "1. Round-key Generator, DES Function\n2. DES 설계 기준과 평가\n3. DES 구현하기"
+          },
+          {
+            "weekNum": 5,
+            "title": "Hash, SHA",
+            "description": "1. 암호학적 해시 함수, 눈사태 효과와 생일 역설\n2. SHA 알고리즘\n3. MAC과 HMAC\n4. Length Extension Attack"
+          },
+          {
+            "weekNum": 6,
+            "title": "1~5주차 복습",
+            "description": "1. 1~5주차 개념 복습\n2. CryptoHack을 통한 다양한 주제 실습\n3. DreamHack을 통한 심화 문제 풀이"
+          },
+          {
+            "weekNum": 7,
+            "title": "1~5주차 복습 (2), 개인 발표 준비",
+            "description": "1. CryptoHack을 통한 다양한 주제 실습\n2. DreamHack을 통한 심화 문제 풀이"
+          },
+          {
+            "weekNum": 8,
+            "title": "개인 발표",
+            "description": "1. Coppersmith's Attack\n2. 타원 곡선 암호 ECC\n3. 양자 내성 암호 겉핥기\n4. 양자 내성 암호: ML-KEM"
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "name": "26-1 : 학술 및 버그바운티",
+        "comment": "실제 서비스의 구조와 보안 사고를 분석하고 취약점 제보 역량을 기르는 심화 세션입니다.\n위협 모델링, 신뢰 경계, 멀티테넌트 접근 제어를 학습하고 OpenClaw·Moltbook·OpenProject 사례를 직접 살펴봅니다.\n버그바운티 정책과 리포트 작성법을 익혀 실제 취약점 분석과 제보로 연결합니다.",
+        "weeks": [
+          {
+            "weekNum": 1,
+            "title": "OpenClaw: 채팅형 Assistant는 언제 Privileged System이 되는가",
+            "description": "1. OpenClaw 실습\n2. 실제 구조\n3. 보안 모델"
+          },
+          {
+            "weekNum": 2,
+            "title": "Threat Modeling / Trust Boundary",
+            "description": "1. DFD 요소 이해\n2. Trust Boundary 이해\n3. 간단한 위협 도출"
+          },
+          {
+            "weekNum": 3,
+            "title": "Multi-tenant Access Control",
+            "description": "1. Multi-tenancy 기본 개념\n2. Tenant Boundary와 Access Control Layer\n3. Multi-tenant 환경에서 자주 깨지는 패턴\n4. GHSA 사례 공유"
+          },
+          {
+            "weekNum": 4,
+            "title": "Moltbook",
+            "description": "1. Moltbook 실습\n2. OpenClaw와 Moltbook의 관계 확인\n3. Moltbook 보안 사고의 핵심 원인"
+          },
+          {
+            "weekNum": 5,
+            "title": "Bug Bounty",
+            "description": "1. 버그바운티의 개념\n2. 윤리와 정책\n3. 정보 수집 흐름\n4. 리포트 작성\n5. 운영 방식"
+          },
+          {
+            "weekNum": 6,
+            "title": "OpenProject",
+            "description": "1. OpenProject란 무엇인가\n2. 주요 기능 및 권한 구조 파악\n3. 제보한 취약점 공유"
+          },
+          {
+            "weekNum": 7,
+            "title": "Google Bug Bounty",
+            "description": "1. Google VRP의 주요 프로그램\n2. In-scope / Out-of-scope 판단 기준\n3. 좋은 리포트의 구성 요소"
+          }
+        ]
+      }
+    ]
+  },
   {
     "id": 6,
     "name": "2025-겨울방학",
@@ -461,4 +588,3 @@ export const getCategoryDetail = (semesterName, categoryName) => {
     weeks: category.weeks,
   };
 };
-

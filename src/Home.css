@@ -743,6 +743,30 @@ body {
  
 }
 
+.achievement-bizz {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #9B9B9B;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.achievement-spoke {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1500px;
+  height: 1px;
+  border-top: 1px dotted #E0E0E0;
+  transform-origin: center center;
+  z-index: 50;
+}
+
 .bizz-text {
     position: absolute;
   /* right 대신 transform 사용 */
@@ -802,7 +826,7 @@ body {
   left: 80px; /* 왼쪽 벽에서 띄움 */
   top: 45%;
   transform: translateY(-50%);
-  width: 355px;
+  width: 440px;
   z-index: 100;
   opacity: 0;
   transition: all 0.5s ease;
@@ -815,7 +839,7 @@ body {
 
 .info-header h2 {
   color: white;
-  font-size: 2.5rem;
+  font-size: calc(2.5rem - 1px);
   margin: 10px 0 30px 0;
   font-weight: 800;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
@@ -824,20 +848,42 @@ body {
 .year-tag {
   color: #5DFFC6; /* 포인트 컬러 */
   letter-spacing: 2px;
-  font-size: 0.9rem;
+  font-size: calc(0.9rem - 1px);
 }
 
 .info-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 14px;
   list-style: none;
   padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  max-height: 1120px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(93, 255, 198, 0.65) rgba(255, 255, 255, 0.08);
+}
+
+.info-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.info-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+.info-list::-webkit-scrollbar-thumb {
+  background: rgba(93, 255, 198, 0.65);
+  border-radius: 999px;
 }
 
 .info-item-container {
-    width: 360px;
-  margin-bottom: 5px;
+  width: 100%;
+  margin-bottom: 4px;
   padding-bottom: 0;
 }
 
@@ -845,8 +891,8 @@ body {
   display: flex;
   align-items: center;
   color: white;
-  padding: 10px 0;
-  font-size: 1.2rem;
+  padding: 8px 0;
+  font-size: calc(1.2rem - 1px);
   cursor: pointer;
   transition: all 0.3s ease;
 
@@ -897,9 +943,10 @@ vertical-align: middle;
   border-left: 2px solid white;
   padding: 15px;
   margin-left: 20px;
-  font-size: 0.9rem;
+  font-size: calc(0.9rem - 1px);
   color: #ddd;
   line-height: 1.6;
+  white-space: pre-line;
 }
 
 
@@ -1276,6 +1323,7 @@ width: calc(750px + 750px * 1);  height: 1px;
     font-size: 13px;
     line-height: 1.6;
     font-weight: 400;
+    white-space: pre-line;
   }
 
   @keyframes slideUp {
@@ -1607,4 +1655,3 @@ width: calc(750px + 750px * 1);  height: 1px;
         transform: translateY(0);
     }
 }
-
