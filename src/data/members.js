@@ -2,24 +2,34 @@
 // Edit this array and redeploy when the public member list changes.
 export const members = [
   {
+    "id": 13,
+    "name": "박정빈",
+    "majorAndId": "컴과 / 22",
+    "interests": "web, rev, pwn, crypto, forensic",
+    "tags": ["CTF팀 팀장"],
+    "selfIntro": "올라운더 희망"
+  },
+  {
+    "id": 19,
+    "name": "한건우",
+    "majorAndId": "전전컴 / 21",
+    "interests": "rev, malware",
+    "tags": ["포너블 멘토", "포렌식 멘토", "버그바운티 팀 팀장"],
+    "selfIntro": "의정부 부대찌개"
+  },
+  {
     "id": 12,
     "name": "조재희",
     "majorAndId": "컴과 / 25",
     "interests": "web",
-    "selfIntro": "갓벽 그 자체 회장"
-  },
-  {
-    "id": 13,
-    "name": "박정빈",
-    "majorAndId": "컴과 / 22",
-    "interests": "web, rev, pwn, crypto, forensic, misc, osint",
-    "selfIntro": "올라운더 희망"
+    "selfIntro": "갓벽 그 자체"
   },
   {
     "id": 14,
     "name": "김민주",
     "majorAndId": "컴과 / 24",
     "interests": "web, crypto",
+    "tags": ["웹페이지 관리"],
     "selfIntro": "짱짱걸!"
   },
   {
@@ -41,6 +51,7 @@ export const members = [
     "name": "김재승",
     "majorAndId": "수학 / 23",
     "interests": "rev, crypto",
+    "tags": ["암호학(동아리 도어락) 회장"],
     "selfIntro": "코카콜라 러버"
   },
   {
@@ -51,17 +62,11 @@ export const members = [
     "selfIntro": "sad"
   },
   {
-    "id": 19,
-    "name": "한건우",
-    "majorAndId": "전전컴 / 21",
-    "interests": "rev, malware",
-    "selfIntro": "의정부 부대찌개"
-  },
-  {
     "id": 20,
     "name": "이윤성",
     "majorAndId": "컴과 / 25",
     "interests": "rev",
+    "tags": ["리버싱 멘토"],
     "selfIntro": "련선웨어에 걸렸어요"
   },
   {
@@ -385,6 +390,22 @@ export const members = [
     "majorAndId": "컴과 / 24",
     "interests": "web",
     "selfIntro": "뉴비"
+  },
+  {
+    "id": 72,
+    "name": "정현수",
+    "majorAndId": "컴과 / 23",
+    "interests": "pwn",
+    "tags": ["웹 멘토"],
+    "selfIntro": "연어초밥"
   }
 ];
 
+export const honoraryMembers = [
+  { "name": "신희용", "majorAndId": "컴과 / 19" },
+  { "name": "오유찬", "majorAndId": "컴과 / 20" },
+  { "name": "최원영", "majorAndId": "컴과 / 21" },
+  { "name": "김민찬", "majorAndId": "기계정보 / 24" },
+  { "name": "김주현", "majorAndId": "컴과 / 24" },
+  { "name": "조현재", "majorAndId": "전전컴 / 25" }
+];

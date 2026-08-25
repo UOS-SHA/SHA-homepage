@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { members as memberData } from '../data/members';
+import { honoraryMembers, members as memberData } from '../data/members';
 import './Recruit.css';
 import './Member.css';
 import '../Home.css';
@@ -12,7 +12,12 @@ const Member = () => {
     major: member.majorAndId,
     name: member.name,
     interests: member.interests,
+    tags: member.tags || [],
     comment: member.selfIntro,
+  }));
+  const honoraryMemberList = honoraryMembers.map((member) => ({
+    major: member.majorAndId,
+    name: member.name,
   }));
 
 
@@ -151,7 +156,7 @@ const Member = () => {
                     const globalIndex = idx * 2 + i;
 
                     return (
-                      <div className="mobile-individual" key={i}>
+                      <div className={`mobile-individual${member.tags.length > 0 ? ' has-tags' : ''}`} key={i}>
 
                         <div className="mobile-img-crown">
                           {globalIndex === 0 && (
@@ -184,6 +189,11 @@ const Member = () => {
                             </span>
                           ))}
                         </div>
+                        {member.tags.length > 0 && (
+                          <div className="mobile-member-tags">
+                            {member.tags.map((tag) => <span key={tag}>#{tag}</span>)}
+                          </div>
+                        )}
                         {/*
                       <div className="mobile-position-link">
                         <div className="mobile-position">관심분야: {member.interests}</div>
@@ -196,6 +206,17 @@ const Member = () => {
                   })}
                 </div>
               ))}
+              <section className="mobile-honorary-section" aria-labelledby="mobile-honorary-title">
+                <h2 id="mobile-honorary-title" className="mobile-honorary-title">HONORARY MEMBERS</h2>
+                <div className="mobile-honorary-grid">
+                  {honoraryMemberList.map((member) => (
+                    <div className="mobile-honorary-card" key={member.name}>
+                      <div className="mobile-honorary-major">{member.major}</div>
+                      <div className="mobile-honorary-name">{member.name}</div>
+                    </div>
+                  ))}
+                </div>
+              </section>
             </div>
           </div>
         </div>
@@ -306,6 +327,11 @@ const Member = () => {
                               <span key={index}>"{line}"<br /></span>
                             ))}
                           </div>
+                          {member.tags.length > 0 && (
+                            <div className="member-tags">
+                              {member.tags.map((tag) => <span key={tag}>#{tag}</span>)}
+                            </div>
+                          )}
                         </div>
                       );
                     })}
@@ -314,6 +340,17 @@ const Member = () => {
               ) : (
                 <p style={{ color: 'white' }}>ο(=•ω＜=)ρ⌒☆</p>
               )}
+              <section className="honorary-section" aria-labelledby="honorary-title">
+                <h2 id="honorary-title" className="honorary-title">HONORARY MEMBERS</h2>
+                <div className="honorary-grid">
+                  {honoraryMemberList.map((member) => (
+                    <div className="honorary-card" key={member.name}>
+                      <div className="honorary-major">{member.major}</div>
+                      <div className="honorary-name">{member.name}</div>
+                    </div>
+                  ))}
+                </div>
+              </section>
             </div>
           </div>
         </div>
