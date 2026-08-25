@@ -11,7 +11,7 @@ const achievementData = {
   0: {
     title: "2026 1학기",
     items: [
-      { title: "Dice CTF 2026 Qual 5위", detail: "Team dda.com\nDiceGang이 주최하며, 뉴욕에서 열리는 DiceCTF 본선 진출권을 두고 겨루는 국제 온라인 CTF입니다." },
+      { title: "Dice CTF 2026 Qual 5위", detail: "Team dda.com\nDiceGang이 주최하며, 뉴욕에서 열리는 DiceCTF 본선 진출권을 두고 겨루는 국제 온라인 CTF입니다. 본선은 8월 말에 개최됩니다." },
       { title: "SUCTF (XCTF 9th FINAL) 2026 2위", detail: "Team dda_com\nXCTF 국제 리그 본선 진출권을 두고 전 세계 팀이 참가하는 온라인 Jeopardy 방식의 CTF입니다." },
       { title: "CODEGATE 2026 FINAL 2위", detail: "Team 따따\n온라인 예선과 서울 오프라인 본선으로 진행되는 CODEGATE 국제 해킹방어대회입니다." },
       { title: "HACKTHEON 2026 FINAL 초급 2위·고급 1위", detail: "Team SHA-4 · 정현수의전역을축하합니다\n국내외 대학생을 대상으로 세종에서 열리는 국제 대학생 사이버보안 경진대회입니다." },
@@ -21,14 +21,13 @@ const achievementData = {
       { title: "Sekai CTF 7위", detail: "Team Jinddabi's\nProject SEKAI가 주최하며, 다양한 난이도와 보안 분야의 문제로 구성된 국제 온라인 CTF입니다." },
       { title: "SCTF (XCTF 10th FINAL) 2026 1위", detail: "Team dda_com\n중국 Syclover 팀이 주최하는 XCTF 국제 리그 예선전으로, 다양한 보안 분야를 다루는 온라인 CTF입니다." },
       { title: "Midnight Sun CTF 11위", detail: "Team dda_com\nHackingForSoju가 주최하며, 온라인 예선과 스웨덴 스톡홀름 현장 본선으로 이어지는 국제 CTF입니다." },
-      { title: "SAS CTF 2026 Qual 5위", detail: "Team dda_com\nSecurity Analyst Summit의 국제 CTF로, 온라인 Jeopardy 예선을 거쳐 현장 Attack-Defense 본선을 진행합니다." },
       { title: "SCA CTF 2026 1위", detail: "Team SHASHASHA\n세명컴퓨터고등학교 사이버보안동아리 SCA가 주최한 Jeopardy 방식의 CTF 대회입니다." },
       { title: "경기대·국민대·중앙대 동아리 연합 CTF 2위", detail: "Team SHASHASHA\n경기대 K.knock, 국민대 D-Alpha, 중앙대 CAUtion이 공동 개최한 전국 대학생 대상 실전형 해킹방어대회입니다." },
       { title: "DEF CON 34 FINAL 7위", detail: "Team Jinddabi's\n세계적인 해커 콘퍼런스 DEF CON에서 열리며, 예선을 통과한 팀들이 라스베이거스 본선에서 겨루는 국제 CTF입니다." },
       { title: "UMass CTF 8위", detail: "Team 따따\nUniversity of Massachusetts Amherst의 보안 커뮤니티가 주최하는 국제 온라인 CTF입니다." },
-      { title: "2026 KISIA CTF Qual 4위·18위", detail: "Team UOS-SHA · 도어락\n과학기술정보통신부가 주최하고 한국정보보호산업협회가 주관하는 전국 대학생·대학원생 대상 실전형 해킹방어대회입니다." },
+      { title: "2026 KISIA CTF FINAL", detail: "Team UOS-SHA · 도어락\n과학기술정보통신부가 주최하고 한국정보보호산업협회가 주관하는 전국 대학생·대학원생 대상 실전형 해킹방어대회입니다." },
       { title: "화이트햇 스쿨 4기·BoB 15기 합격", detail: "화이트햇 스쿨 4기와 차세대 보안리더 양성 프로그램(Best of the Best) 15기에 각각 1명이 합격했습니다." },
-      { title: "OpenProject 취약점 제보", detail: "OpenProject 취약점 2건을 제보해 CVE-2026-52779와 CVE-2026-47193을 발급받았습니다." },
+      { title: "취약점 제보", detail: "OpenProject: CVE-2026-52779, CVE-2026-47193\nWordPress: CVE-2026-52701\nChamilo LMS: CVE-2026-40291, CVE-2026-33737, CVE-2026-33736, CVE-2026-33710, CVE-2026-33708, CVE-2026-33707, CVE-2026-33706, CVE-2026-33705, CVE-2026-33704, CVE-2026-33618\nWordPress LMS Plugin: CVE-2026-13765" },
       { title: "DONEX 랜섬웨어 연구 논문 투고", detail: "DONEX 랜섬웨어의 실시간 탐지 및 자동 복호화에 관한 연구 논문을 투고했습니다." },
       { title: "SCPC 알고리즘 챌린지 2026 FINAL", detail: "Team Kakam\n삼성전자가 소프트웨어 인재 발굴을 위해 매년 개최하는 대학생 프로그래밍 경진대회의 알고리즘 부문입니다." }
     ],
