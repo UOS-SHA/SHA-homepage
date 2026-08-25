@@ -61,7 +61,7 @@
 .mobile-individual {
     position: relative;
     width: 160px;
-    height: 165px;
+    height: 260px;
     border-radius: 10.59px;
 border: 0.5px solid #646464;
 background: #080808;
@@ -190,7 +190,7 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
 .mobile-individual .mobile-individual-line {
     position: absolute;
     left: 15px;
-    top: 105px;
+    top: 160px;
     width: 80%;
     height: 0.7px;
     background: linear-gradient(90deg, rgba(32, 32, 32, 0.13) 0%, #FFF 50%, rgba(31, 31, 31, 0.29) 100%);
@@ -199,9 +199,9 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
 .mobile-individual .mobile-hanmadi {
     position: absolute;
     left: -18.5px;
-    bottom: -3px;
+    top: 205px;
     width: 200px;
-    height: 50px;
+    height: auto;
     color: #5DFFC6;
     text-align: center;
     font-family: Inter;
@@ -210,6 +210,29 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
     font-weight: 400;
     line-height: 20px; /* 153.222% */
     white-space: pre-line;
+}
+
+.mobile-individual.has-tags .mobile-hanmadi {
+    top: 174px;
+}
+
+.mobile-member-tags {
+    position: absolute;
+    width: 145px;
+    left: 15px;
+    bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.mobile-member-tags span {
+    color: #FFF;
+    font-family: Inter, sans-serif;
+    font-size: 10px;
+    line-height: 15px;
+    text-align: left;
 }
 
 
@@ -366,6 +389,25 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
     line-height: 20px;
 }
 
+.member-tags {
+    position: absolute;
+    left: 30px;
+    bottom: 18px;
+    width: 240px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 4px;
+}
+
+.member-tags span {
+    color: #FFF;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left;
+}
+
 .individual-line {
     position: absolute;
     left: 58px;
@@ -373,6 +415,8 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
     width: 200px;
     height: 0.7px;
     background: linear-gradient(90deg, rgba(32, 32, 32, 0.13) 0%, #FFF 50%, rgba(31, 31, 31, 0.29) 100%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .hanmadi {
@@ -388,4 +432,96 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
     font-style: normal;
     font-weight: 450;
     line-height: 30px; /* 153.222% */
+}
+
+.honorary-section {
+    width: 665px;
+    margin: 70px 0 100px;
+    padding-top: 35px;
+    border-top: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.honorary-title {
+    margin: 0 0 28px;
+    color: #FFF;
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.honorary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 65px;
+}
+
+.honorary-card {
+    box-sizing: border-box;
+    min-height: 100px;
+    padding: 22px 28px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 18px;
+    background: #080808;
+}
+
+.honorary-major {
+    color: #D0D0D0;
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+}
+
+.honorary-name {
+    margin-top: 14px;
+    color: #FFF;
+    font-family: Inter, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .mobile-honorary-section {
+        width: calc(100% - 20px);
+        margin: 10px 10px 0;
+        padding-top: 32px;
+        border-top: 0.7px solid rgba(255, 255, 255, 0.55);
+    }
+
+    .mobile-honorary-title {
+        margin: 0 0 20px;
+        color: #FFF;
+        font-family: Inter, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+    }
+
+    .mobile-honorary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px 20px;
+    }
+
+    .mobile-honorary-card {
+        box-sizing: border-box;
+        min-height: 92px;
+        padding: 18px 12px;
+        border: 0.5px solid #646464;
+        border-radius: 10.59px;
+        background: #080808;
+    }
+
+    .mobile-honorary-major {
+        color: #D0D0D0;
+        font-family: Inter, sans-serif;
+        font-size: 10px;
+    }
+
+    .mobile-honorary-name {
+        margin-top: 13px;
+        color: #FFF;
+        font-family: Inter, sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+    }
 }
