@@ -38,7 +38,7 @@ const Member = () => {
     <div className="wholearea">
       <div className="top-bar">
         <Link to="/" className="logo-wrapper">
-          <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
+          <img src={`${import.meta.env.BASE_URL}sha-logo.png`} alt="Logo" className="logobox" />
         </Link>
         <div className="nav-content">
           <div className="menu">
@@ -84,12 +84,12 @@ const Member = () => {
           </div>
         </div>
         <div className="mobile-menu" onClick={() => setIsMenuOpen(true)}>
-          <img src={`${process.env.PUBLIC_URL}/menubar.png`} alt="menubar" className="menubar" />
+          <img src={`${import.meta.env.BASE_URL}menubar.png`} alt="menubar" className="menubar" />
         </div>
         {isMenuOpen && (
           <div className="mobile-menu-content">
             <button className="close-btn" onClick={() => setIsMenuOpen(false)}>
-              <img src={`${process.env.PUBLIC_URL}/close2.png`} alt="close" className="close-icon" />
+              <img src={`${import.meta.env.BASE_URL}close2.png`} alt="close" className="close-icon" />
             </button>
             <div className="mobile-nav-content">
               <NavLink
@@ -161,7 +161,7 @@ const Member = () => {
                         <div className="mobile-img-crown">
                           {globalIndex === 0 && (
                             <img
-                              src={`${process.env.PUBLIC_URL}/yellow_crown.png`}
+                              src={`${import.meta.env.BASE_URL}yellow_crown.png`}
                               alt="회장"
                               className="mobile-crown"
                             />
@@ -169,7 +169,7 @@ const Member = () => {
 
                           {globalIndex === 1 && (
                             <img
-                              src={`${process.env.PUBLIC_URL}/grey_crown.png`}
+                              src={`${import.meta.env.BASE_URL}grey_crown.png`}
                               alt="부회장"
                               className="mobile-crown2"
                             />
@@ -255,7 +255,7 @@ const Member = () => {
                         <div className="img_crown">
                           {globalIndex === 0 && (
                             <img
-                              src={`${process.env.PUBLIC_URL}/yellow_crown.png`}
+                              src={`${import.meta.env.BASE_URL}yellow_crown.png`}
                               alt="회장"
                               className="crown"
                             />
@@ -263,7 +263,7 @@ const Member = () => {
 
                           {globalIndex === 1 && (
                             <img
-                              src={`${process.env.PUBLIC_URL}/grey_crown.png`}
+                              src={`${import.meta.env.BASE_URL}grey_crown.png`}
                               alt="부회장"
                               className="crown2"
                             />
@@ -307,8 +307,8 @@ const Member = () => {
                         <div className="individual" key={i}>
                           {/* 왕관 로직 동일 */}
                           <div className="img_crown">
-                            {globalIndex === 0 && <img src={`${process.env.PUBLIC_URL}/yellow_crown.png`} alt="회장" className="crown" />}
-                            {globalIndex === 1 && <img src={`${process.env.PUBLIC_URL}/grey_crown.png`} alt="부회장" className="crown2" />}
+                            {globalIndex === 0 && <img src={`${import.meta.env.BASE_URL}yellow_crown.png`} alt="회장" className="crown" />}
+                            {globalIndex === 1 && <img src={`${import.meta.env.BASE_URL}grey_crown.png`} alt="부회장" className="crown2" />}
                           </div>
 
                           <div className="name-major">

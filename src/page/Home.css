@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
 html, body {
   background-color: black;
   margin: 0;
@@ -10,8 +12,6 @@ html, body {
 body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
-
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
 
 /*
 @font-face {
@@ -1604,4 +1604,3 @@ width: calc(750px + 750px * 1);  height: 1px;
         transform: translateY(0);
     }
 }
-

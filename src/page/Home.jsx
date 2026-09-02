@@ -67,7 +67,7 @@ const achievementData = {
 
 const items = [
   {
-    logo: `${process.env.PUBLIC_URL}/studylogo.png`,
+    logo: `${import.meta.env.BASE_URL}studylogo.png`,
     title: "스터디",
     desc: `SHA의 핵심 활동 중 하나로 보안 분야별 스터디입니다.
           보안이 처음이어도, 함께 공부하면서 성장할 수 있도록 커리큘럼과
@@ -76,7 +76,7 @@ const items = [
     tags: ["#입문자도 환영", "#발표 중심 학습"],
   },
   {
-    logo: `${process.env.PUBLIC_URL}/reward.png`,
+    logo: `${import.meta.env.BASE_URL}reward.png`,
     title: "대회/공모전 참가",
     desc: `실전에서 실력을 검증받고 싶다면 SHA에서 기회를 
       가질 수 있습니다. hacktheon, cce, codegate 등 
@@ -84,7 +84,7 @@ const items = [
     tags: ["#국내외 CTF 대회 참여"],
   },
   {
-    logo: `${process.env.PUBLIC_URL}/click.png`,
+    logo: `${import.meta.env.BASE_URL}click.png`,
     title: "해킹/개발 프로젝트",
     desc: `SHA는 실질적인 결과물 중심의 활동을 중요하게 생각하며, 
         이를 위해 자체 개발 프로젝트와  
@@ -190,7 +190,7 @@ const Home = () => {
     <div className="wholearea" >
       <div className="top-bar">
         <Link to="/" className="logo-wrapper">
-          <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
+          <img src={`${import.meta.env.BASE_URL}sha-logo.png`} alt="Logo" className="logobox" />
         </Link>
         <div className="nav-content">
           <div className="menu">
@@ -236,12 +236,12 @@ const Home = () => {
           </div>
         </div>
         <div className="mobile-menu" onClick={() => setIsMenuOpen(true)}>
-          <img src={`${process.env.PUBLIC_URL}/menubar.png`} alt="menubar" className="menubar" />
+          <img src={`${import.meta.env.BASE_URL}menubar.png`} alt="menubar" className="menubar" />
         </div>
         {isMenuOpen && (
           <div className="mobile-menu-content">
             <button className="close-btn" onClick={() => setIsMenuOpen(false)}>
-              <img src={`${process.env.PUBLIC_URL}/close2.png`} alt="close" className="close-icon" />
+              <img src={`${import.meta.env.BASE_URL}close2.png`} alt="close" className="close-icon" />
             </button>
             <div className="mobile-nav-content">
               <NavLink
@@ -283,16 +283,16 @@ const Home = () => {
       </div>
       <div className="home-container">
         <div className="video-box">
-          <video src={`${process.env.PUBLIC_URL}/homeanimation.mp4`} preload="auto" autoPlay muted loop playsInline />
+          <video src={`${import.meta.env.BASE_URL}homeanimation.mp4`} preload="auto" autoPlay muted loop playsInline />
         </div>
         <div className="video-box-mobile">
-          <video ref={videoRef} className="mobile-animation" src={`${process.env.PUBLIC_URL}/mobileanimation_ios720.mp4`} preload="auto" autoPlay muted loop playsInline webkit-playsinline />
+          <video ref={videoRef} className="mobile-animation" src={`${import.meta.env.BASE_URL}mobileanimation_ios720.mp4`} preload="auto" autoPlay muted loop playsInline webkit-playsinline />
         </div>
       </div>
       <div className="mobile-section">
         <Link to="/faq" className="mobile-jiwon">
           <p>자주 묻는 질문</p>
-          <img src={`${process.env.PUBLIC_URL}/right.png`} alt="Logo" className="jiwondown" />
+          <img src={`${import.meta.env.BASE_URL}right.png`} alt="Logo" className="jiwondown" />
         </Link>
       </div>
       {!isMenuOpen && (
@@ -300,7 +300,7 @@ const Home = () => {
           {isHoverActivities ? (
             <div className="clickhere-container">
               <img
-                src={`${process.env.PUBLIC_URL}/clickhere.gif`}
+                src={`${import.meta.env.BASE_URL}clickhere.gif`}
                 alt="click here"
                 className="clickhere-img"
               />
@@ -308,7 +308,7 @@ const Home = () => {
             </div>
           ) : (
             <img
-              src={`${process.env.PUBLIC_URL}/mouse.png`}
+              src={`${import.meta.env.BASE_URL}mouse.png`}
               alt="scroll"
               className="mouse-img"
             />
@@ -318,9 +318,9 @@ const Home = () => {
       <div className="SHA">
         <div className="circle"></div>
         <div className="homelogo-box">
-          <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="logo" className="logo-box2" />
-          <img src={`${process.env.PUBLIC_URL}/word-SHA.png`} alt="word" className="word-SHA" />
-          <img src={`${process.env.PUBLIC_URL}/UOS-Hacking-club.png`} alt="word" className="UOS-Hacking-club" />
+          <img src={`${import.meta.env.BASE_URL}sha-logo.png`} alt="logo" className="logo-box2" />
+          <img src={`${import.meta.env.BASE_URL}word-SHA.png`} alt="word" className="word-SHA" />
+          <img src={`${import.meta.env.BASE_URL}UOS-Hacking-club.png`} alt="word" className="UOS-Hacking-club" />
         </div>
         <div className="word-box2">
           서울시립대 컴퓨터과학부 보안 소모임 SHA는 보안에 관심 있는 학생들이 함께 학습하고 성장하는 소모임입니다. <br />
@@ -413,7 +413,7 @@ const Home = () => {
         <div className="mobile-activities-box">
           <div className="mobile-studylogo-box">
             <div className="mobile-circle">
-              <img className="mobile-studylogo" src={`${process.env.PUBLIC_URL}/studylogo.png`} alt="스터디 로고" />
+              <img className="mobile-studylogo" src={`${import.meta.env.BASE_URL}studylogo.png`} alt="스터디 로고" />
             </div>
           </div>
           <div className="mobile-home-wordbox">
@@ -436,7 +436,7 @@ const Home = () => {
         <div className="mobile-activities-box">
           <div className="mobile-studylogo-box">
             <div className="mobile-circle">
-              <img className="mobile-studylogo" src={`${process.env.PUBLIC_URL}/reward.png`} alt="스터디 로고" />
+              <img className="mobile-studylogo" src={`${import.meta.env.BASE_URL}reward.png`} alt="스터디 로고" />
             </div>
           </div>
           <div className="mobile-home-wordbox">
@@ -456,7 +456,7 @@ const Home = () => {
         <div className="mobile-activities-box">
           <div className="mobile-studylogo-box">
             <div className="mobile-circle">
-              <img className="mobile-studylogo2" src={`${process.env.PUBLIC_URL}/click.png`} alt="스터디 로고" />
+              <img className="mobile-studylogo2" src={`${import.meta.env.BASE_URL}click.png`} alt="스터디 로고" />
             </div>
           </div>
           <div className="mobile-home-wordbox">

@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="footer-container">
       <div className="footer-content">
         <div className="footer-left">
-          <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="SHA Logo" className="footer-logo" />
+          <img src={`${import.meta.env.BASE_URL}sha-logo.png`} alt="SHA Logo" className="footer-logo" />
           <p className="footer-desc">
             uos hacking club<br />
             서울시립대학교 정보보안 소모임 

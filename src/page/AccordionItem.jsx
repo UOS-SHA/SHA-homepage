@@ -11,7 +11,7 @@ const AccordionItem = ({ title, detail }) => {
         {detail && (
           <img
             className={`img-down ${isOpen ? 'rotated' : ''}`}
-            src={`${process.env.PUBLIC_URL}/down.png`}
+            src={`${import.meta.env.BASE_URL}down.png`}
             alt="down"
             onClick={() => setIsOpen(!isOpen)}
           />
@@ -30,7 +30,7 @@ const AccordionItem = ({ title, detail }) => {
           {detail && (
             <img
               className={`img-down ${isOpen ? 'rotated' : ''}`}
-              src={`${process.env.PUBLIC_URL}/down.png`}
+              src={`${import.meta.env.BASE_URL}down.png`}
               alt="down"
               onClick={() => setIsOpen(!isOpen)}
             />

@@ -192,7 +192,7 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
     left: 15px;
     top: 160px;
     width: 80%;
-    height: 0.7px;
+    height: 1px;
     background: linear-gradient(90deg, rgba(32, 32, 32, 0.13) 0%, #FFF 50%, rgba(31, 31, 31, 0.29) 100%);
 }
 
@@ -413,7 +413,7 @@ box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.32);
     left: 58px;
     top: 173px;
     width: 200px;
-    height: 0.7px;
+    height: 1px;
     background: linear-gradient(90deg, rgba(32, 32, 32, 0.13) 0%, #FFF 50%, rgba(31, 31, 31, 0.29) 100%);
     z-index: 1;
     pointer-events: none;
