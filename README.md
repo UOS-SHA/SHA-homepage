@@ -31,6 +31,8 @@ const GOOGLE_FORM_URL = 'https://docs.google.com/forms/...';
 
 ## 실행
 
+Node.js 20.19 이상 또는 22.12 이상이 필요합니다.
+
 ```bash
 npm install
 npm start
@@ -44,16 +46,15 @@ npm run build
 
 ## 배포
 
-현재 `package.json`의 `homepage`는 기존 배포 주소인
-`https://uos-sha.github.io/SHA-homepage`로 설정되어 있습니다.
+현재 `vite.config.mjs`의 `base`는 기존 GitHub Pages 경로인
+`/SHA-homepage/`로 설정되어 있습니다.
 
 ```bash
 npm run deploy
 ```
 
-다른 GitHub Pages 저장소에 배포하려면 먼저 `homepage` 값을 새 저장소 주소로 바꿔야 합니다.
+다른 GitHub Pages 저장소에 배포하려면 먼저 `vite.config.mjs`의 `base`를 새 저장소 경로로 바꿔야 합니다.
 
 ## 운영 방식
 
 멤버·스터디 내용은 데이터 파일을 수정하고 Git에 커밋한 뒤 다시 배포합니다. 브라우저에 관리자 비밀번호나 토큰을 넣지 않으며, 지원서 개인정보는 이 저장소나 브라우저 저장소에 보관하지 않습니다.
-

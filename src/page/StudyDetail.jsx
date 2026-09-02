@@ -22,7 +22,7 @@ const StudyDetail = () => {
       <div className="wholearea">
         <div className="top-bar">
           <Link to="/" className="logo-wrapper">
-            <img src={`${process.env.PUBLIC_URL}/sha-logo.png`} alt="Logo" className="logobox" />
+            <img src={`${import.meta.env.BASE_URL}sha-logo.png`} alt="Logo" className="logobox" />
           </Link>
           <div className="nav-content">
             <div className="menu">
@@ -68,12 +68,12 @@ const StudyDetail = () => {
             </div>
           </div>
           <div className="mobile-menu" onClick={() => setIsMenuOpen(true)}>
-            <img src={`${process.env.PUBLIC_URL}/menubar.png`} alt="menubar" className="menubar" />
+            <img src={`${import.meta.env.BASE_URL}menubar.png`} alt="menubar" className="menubar" />
           </div>
           {isMenuOpen && (
             <div className="mobile-menu-content">
               <button className="close-btn" onClick={() => setIsMenuOpen(false)}>
-                <img src={`${process.env.PUBLIC_URL}/close2.png`} alt="close" className="close-icon" />
+                <img src={`${import.meta.env.BASE_URL}close2.png`} alt="close" className="close-icon" />
               </button>
               <div className="mobile-nav-content">
                 <NavLink
@@ -127,7 +127,7 @@ const StudyDetail = () => {
                   </div>
               </div>
               <div className="mobile-back-button" onClick={() => navigate(-1)}>
-                    <img src={`${process.env.PUBLIC_URL}/back.png`} alt="back" className="back" />
+                    <img src={`${import.meta.env.BASE_URL}back.png`} alt="back" className="back" />
                   </div>
           </div>
           <div className="mobile-line"></div>
@@ -161,7 +161,7 @@ const StudyDetail = () => {
                   </div>
               </div>
               <div className="back-button" onClick={() => navigate(-1)}>
-                    <img src={`${process.env.PUBLIC_URL}/back.png`} alt="back" className="back" />
+                    <img src={`${import.meta.env.BASE_URL}back.png`} alt="back" className="back" />
                   </div>
           </div>
           <div className="line"></div>

@@ -110,7 +110,7 @@ const FaqList = ({ activeFaq, onToggle }) => (
               >
                 <span>Q. {item.q}</span>
                 <img
-                  src={`${process.env.PUBLIC_URL}/right.png`}
+                  src={`${import.meta.env.BASE_URL}right.png`}
                   className={`faq-arrow ${isOpen ? 'rotated' : ''}`}
                   alt=""
                 />
@@ -153,7 +153,7 @@ const Faq = () => {
       <div className="top-bar">
         <Link to="/" className="logo-wrapper">
           <img
-            src={`${process.env.PUBLIC_URL}/sha-logo.png`}
+            src={`${import.meta.env.BASE_URL}sha-logo.png`}
             alt="SHA"
             className="logobox"
           />
@@ -179,7 +179,7 @@ const Faq = () => {
           onClick={() => setIsMenuOpen(true)}
         >
           <img
-            src={`${process.env.PUBLIC_URL}/menubar.png`}
+            src={`${import.meta.env.BASE_URL}menubar.png`}
             alt="메뉴 열기"
             className="menubar"
           />
@@ -192,7 +192,7 @@ const Faq = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               <img
-                src={`${process.env.PUBLIC_URL}/close2.png`}
+                src={`${import.meta.env.BASE_URL}close2.png`}
                 alt="메뉴 닫기"
                 className="close-icon"
               />

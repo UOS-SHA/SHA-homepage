@@ -9,7 +9,7 @@ const AccordionLink = ({ detail }) => {
     <div className="accordion-link">
         <img
             className={`img-right ${isOpen ? 'rotated' : ''}`}
-            src={`${process.env.PUBLIC_URL}/down.png`}
+            src={`${import.meta.env.BASE_URL}down.png`}
             alt="toggle"
             onClick={() => setIsOpen(!isOpen)}
         />
