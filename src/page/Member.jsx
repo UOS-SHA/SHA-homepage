@@ -6,19 +6,30 @@ import './Recruit.css';
 import './Member.css';
 import '../Home.css';
 
+const getAcademicYear = (member) => (
+  Number(member.majorAndId.match(/\d+$/)?.[0] ?? Number.MAX_SAFE_INTEGER)
+);
+
 const Member = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const members = memberData.map((member) => ({
-    major: member.majorAndId,
-    name: member.name,
-    interests: member.interests,
-    tags: member.tags || [],
-    comment: member.selfIntro,
-  }));
-  const honoraryMemberList = honoraryMembers.map((member) => ({
-    major: member.majorAndId,
-    name: member.name,
-  }));
+  const members = [...memberData]
+    .sort((a, b) => Number(Boolean(b.tags?.length)) - Number(Boolean(a.tags?.length)))
+    .map((member) => ({
+      major: member.majorAndId,
+      name: member.name,
+      interests: member.interests,
+      tags: member.tags || [],
+      comment: member.selfIntro,
+    }));
+  const honoraryMemberList = [...honoraryMembers]
+    .sort((a, b) => (
+      getAcademicYear(a) - getAcademicYear(b)
+      || a.name.localeCompare(b.name, 'ko')
+    ))
+    .map((member) => ({
+      major: member.majorAndId,
+      name: member.name,
+    }));
 
 
   useEffect(() => {

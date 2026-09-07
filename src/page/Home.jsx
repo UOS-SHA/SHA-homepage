@@ -481,7 +481,7 @@ const Home = () => {
           CLICK ANYWHERE
         </div> 조만간 삭제 예정*/}
         <div className="top-fade-2"></div>
-        <div className="circle-wrapper-2" style={{ transform: `rotate(-${achievementAngle}deg)`, transition: 'transform 0.8s ease' }}>
+        <div className="circle-wrapper-2" style={{ transform: `rotate(${achievementAngle}deg)`, transition: 'transform 0.8s ease' }}>
           {Array.from({ length: 8 }, (_, index) => {
             const degrees = index * 45;
             const radians = degrees * Math.PI / 180;
@@ -496,7 +496,7 @@ const Home = () => {
                   top: `${750 - 750 * Math.sin(radians)}px`,
                 }}
               >
-                <div className="bizz-text" style={{ transform: `rotate(${achievementAngle}deg) translateX(-60px)` }}>
+                <div className="bizz-text" style={{ transform: `rotate(-${achievementAngle}deg) translateX(-60px)` }}>
                   {achievementData[semesterIndex].title}
                 </div>
               </div>
